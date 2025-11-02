@@ -1,0 +1,5 @@
+Dog - собака
+cat - кошка
+rat - крыса
+hello - привет
+cheesecake - чизкейк
