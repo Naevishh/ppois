@@ -137,11 +137,11 @@ void find_translation(dictionary& dictionary_) {
             std::cout << "Такого слова в словаре нет.\n";
             return;
         }
-        if (dictionary_[english_word].empty()){
-            std::cout << "Перевод не найден.\n";
-            return;
-        }
         try {
+            if (dictionary_[english_word].empty()){
+                std::cout << "Перевод не найден.\n";
+                return;
+            }
             std::cout << "Английское слово: " << english_word << "\n" << "Перевод: " << dictionary_[english_word]
                       << "\n";
         } catch (const std::out_of_range &exception) {
@@ -165,8 +165,8 @@ void change_translation(dictionary& dictionary_) {
         std::string new_russian_word;
         std::cout << "Введите новый перевод: ";
         if(input_russian_word(new_russian_word).empty()) return;
-        dictionary_[english_word] = new_russian_word;
         try {
+            dictionary_[english_word] = new_russian_word;
             std::cout << "Английское слово: " << english_word << "\n" << "Новый перевод: " << dictionary_[english_word]
                       << "\n";
         } catch (const std::out_of_range &exception) {
