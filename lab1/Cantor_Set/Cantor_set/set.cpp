@@ -2,6 +2,7 @@
 #include <string>
 #include <variant>
 #include "set.h"
+#include "string_validator.h"
 
 cantor_set cantor_set::initialize_set_elems(const std::string &elements_string,const char &start_brace ,size_t &position) {
     cantor_set set_to_initialize(elements_string[0]);
@@ -81,7 +82,9 @@ bool cantor_set::add_element(const element &elem_to_add){
     return true;
 }
 
-bool cantor_set::add_helper(const std::string& string_to_add){
+bool cantor_set::add_helper(std::string& string_to_add){
+    if(!string_validator::set_read(string_to_add, true))
+        throw std::invalid_argument("Элемент введен неверно");
     element elem_to_add = element_initializer(string_to_add);
     return add_element(elem_to_add);
 }
@@ -93,7 +96,9 @@ bool cantor_set::delete_element(const element &elem_to_delete){
     return true;
 }
 
-bool cantor_set::delete_helper(const std::string& string_to_delete){
+bool cantor_set::delete_helper(std::string& string_to_delete){
+    if(!string_validator::set_read(string_to_delete, true))
+        throw std::invalid_argument("Элемент введен неверно");
     element elem_to_delete = element_initializer(string_to_delete);
     return delete_element(elem_to_delete);
 }
@@ -179,8 +184,9 @@ std::string cantor_set::print_helper(const cantor_set &set_to_print){
     return printed_set;
 }
 
-bool cantor_set::operator[](const std::string &input_string) {
-    //element elem_to_find=element_initializer(input_string);
+bool cantor_set::operator[](std::string &input_string) {
+    if(!string_validator::set_read(input_string, true))
+        throw std::invalid_argument("Элемент введен неверно");
     return find_element(input_string) != -1;
 }
 
