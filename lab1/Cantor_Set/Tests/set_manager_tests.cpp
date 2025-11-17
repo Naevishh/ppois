@@ -6,8 +6,8 @@
 class SetManagerTest : public ::testing::Test {
 protected:
     void SetUp() override {
-        manager.create_set_help("abc");
-        manager.create_set_help("efg");
+        manager.create_set_help("{a,b,c}");
+        manager.create_set_help("{e,f,g}");
     }
 
     void TearDown() override {
@@ -17,12 +17,12 @@ protected:
 };
 
 TEST_F(SetManagerTest, CreateSetValid) {
-    EXPECT_TRUE(manager.create_set_help("hij"));
+    EXPECT_TRUE(manager.create_set_help("{h,i,j}"));
     EXPECT_EQ(manager.get_set_count(), 3);
 }
 
 TEST_F(SetManagerTest, CreateSetDuplicate) {
-    EXPECT_FALSE(manager.create_set_help("abc"));
+    EXPECT_FALSE(manager.create_set_help("{a,b,c}"));
 }
 
 TEST_F(SetManagerTest, DeleteSetValid) {
@@ -70,20 +70,20 @@ TEST_F(SetManagerTest, SetBoolean) {
 
 TEST_F(SetManagerTest, FindSetExists) {
     set_manager local_manager;
-    local_manager.create_set_help("klm");
+    local_manager.create_set_help("{k,l,m}");
     EXPECT_NE(local_manager.get_set_count(), 0);
 }
 
 TEST_F(SetManagerTest, FindSetNotExists) {
     set_manager local_manager;
-    local_manager.create_set_help("no");
+    local_manager.create_set_help("{n,o}");
     EXPECT_EQ(local_manager.get_set_count(), 1);
 }
 
 TEST_F(SetManagerTest, MultipleOperations) {
     set_manager local_manager;
-    EXPECT_TRUE(local_manager.create_set_help("ab"));
-    EXPECT_TRUE(local_manager.create_set_help("cd"));
+    EXPECT_TRUE(local_manager.create_set_help("{a,b}"));
+    EXPECT_TRUE(local_manager.create_set_help("{c,d}"));
     EXPECT_EQ(local_manager.get_set_count(), 2);
 
     cantor_set union_result = local_manager.union_sets(0, 1);
@@ -98,6 +98,6 @@ TEST_F(SetManagerTest, BoundaryConditions) {
     EXPECT_FALSE(local_manager.delete_set_help(0));
     EXPECT_FALSE(local_manager.delete_set_help(1));
 
-    EXPECT_TRUE(local_manager.create_set_help(""));
+    EXPECT_TRUE(local_manager.create_set_help("{}"));
     EXPECT_EQ(local_manager.get_set_count(), 1);
 }
