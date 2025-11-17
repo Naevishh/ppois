@@ -1,6 +1,7 @@
 #include "set_manager.h"
 #include <iostream>
 #include <vector>
+#include "string_validator.h"
 
 bool set_manager::create_set(const std::string& elements) {
     if(find_set(elements)!=-1) return false;
@@ -22,7 +23,9 @@ size_t set_manager::find_set(const std::string& elements){
     return -1;
 }
 
-bool set_manager::create_set_help(const std::string& elements){
+bool set_manager::create_set_help(std::string& elements){
+    if(!string_validator::set_read(elements,false))
+        throw std::invalid_argument("Множество введено неверно");
     return create_set(elements);
 }
 
