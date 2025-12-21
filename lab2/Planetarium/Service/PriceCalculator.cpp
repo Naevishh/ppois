@@ -1,5 +1,6 @@
 #include "PriceCalculator.h"
 #include "../Utils/Enums.h"
+#include <stdexcept>
 
 PriceCalculator::PriceCalculator(int maxAge, int discountAge) :
         maxFreeAge(maxAge), maxDiscountAge(discountAge) {}
