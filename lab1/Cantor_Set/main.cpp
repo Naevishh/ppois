@@ -1,6 +1,6 @@
 /**
  * @file main.cpp
- * @brief Главный модуль программы для работы с множествами Кантора
+ * @brief Главный модуль программы для работы с Канторовскими множествами
  * @author Ваше имя
  */
 
@@ -10,7 +10,6 @@
 #include <limits>
 #include "Cantor_set/set.h"
 #include "Cantor_set/set_manager.h"
-#include "Cantor_set/string_validator.h"
 #include <sstream>
 
 /**
@@ -45,15 +44,10 @@ int get_integer_input() {
  * @param is_element Флаг, указывающий является ли строка элементом (true) или множеством (false)
  * @return true, если строка валидна, false в противном случае
  */
-bool valid_input(std::string& input_string, bool is_element){
+bool valid_input(std::string& input_string){
     if(input_string.size()==1){
         if (input_string.find_first_not_of("abcdefghijklmnopqrstuvwxyz") != std::string::npos) {
             std::cout << "Только латинские буквы!\n";
-            return false;
-        }
-    }else{
-        if(!string_validator::set_read(input_string, is_element)){
-            std::cout << "Неправильный формат ввода!\n";
             return false;
         }
     }
@@ -78,7 +72,7 @@ std::string get_string_input(bool is_element) {
             std::cout << "Строка слишком длинная!\n";
             continue;
         }
-        if(!valid_input(input_string, is_element)) continue;
+        if(!valid_input(input_string)) continue;
         break;
     }
     return input_string;
@@ -106,10 +100,14 @@ size_t input_set_number(set_manager& set_manager_){
  */
 void create_new_set(set_manager& set_manager_){
     std::string new_set=get_string_input(false);
-    if (set_manager_.create_set_help(new_set)){
-        std::cout << "Множество успешно создано.\n";
-    }else{
-        std::cout << "Такое множество уже существует.\n";
+    try{
+        if (set_manager_.create_set_help(new_set)){
+            std::cout << "Множество успешно создано.\n";
+        }else{
+            std::cout << "Такое множество уже существует.\n";
+        }
+    } catch (const std::exception &exception) {
+        std::cout << "Ошибка при создании множества: " << exception.what() << "\n";
     }
 }
 
@@ -135,14 +133,14 @@ void delete_set_(set_manager& set_manager_){
  * @brief Выводит элементы указанного множества
  * @param set_manager_ Менеджер множеств для вывода
  */
-void print_set_elems(set_manager& set_manager_){
+void print_set_elems(set_manager& set_manager_) {
     if (set_manager_.get_set_count() == 0) {
         std::cout << "Не найдено ни одного множества.\n";
         return;
     }
     std::cout << "Укажите номер множества, элементы которого хотите просмотреть. ";
-    size_t set_number=input_set_number(set_manager_);
-    std::cout << set_number+1 << ". " << cantor_set::print_helper(set_manager_.get_set(set_number)) << "\n";
+    size_t set_number = input_set_number(set_manager_);
+    std::cout << set_number + 1 << ". " << cantor_set::print_helper(set_manager_.get_set(set_number)) << "\n";
 }
 
 /**
@@ -165,18 +163,22 @@ void print_all_sets(set_manager& set_manager_) {
  * @brief Добавляет элемент в указанное множество
  * @param set_manager_ Менеджер множеств для добавления
  */
-void add_set_element(set_manager& set_manager_){
+void add_set_element(set_manager& set_manager_) {
     if (set_manager_.get_set_count() == 0) {
         std::cout << "Не найдено ни одного множества.\n";
         return;
     }
     std::cout << "Укажите номер множества, в которое хотите добавить элемент. ";
-    size_t set_number=input_set_number(set_manager_);
-    std::string input_element=get_string_input(true);
-    if(!set_manager_.get_set(set_number).add_helper(input_element)) {
-        std::cout << "Такой элемент уже существует в выбранном множестве.\n";
-    }else{
-        std::cout << "Элемент успешно добавлен в множество.\n";
+    size_t set_number = input_set_number(set_manager_);
+    std::string input_element = get_string_input(true);
+    try{
+        if (!set_manager_.get_set(set_number).add_helper(input_element)) {
+            std::cout << "Такой элемент уже существует в выбранном множестве.\n";
+        } else {
+            std::cout << "Элемент успешно добавлен в множество.\n";
+        }
+    } catch (const std::exception &exception) {
+        std::cout << "Ошибка при добавлении элемента: " << exception.what() << "\n";
     }
 }
 
@@ -184,22 +186,26 @@ void add_set_element(set_manager& set_manager_){
  * @brief Удаляет элемент из указанного множества
  * @param set_manager_ Менеджер множеств для удаления
  */
-void delete_set_element(set_manager& set_manager_){
+void delete_set_element(set_manager& set_manager_) {
     if (set_manager_.get_set_count() == 0) {
         std::cout << "Не найдено ни одного множества.\n";
         return;
     }
     std::cout << "Укажите номер множества, из которого хотите удалить элемент. ";
-    size_t set_number=input_set_number(set_manager_);
-    if(set_manager_.get_set(set_number).is_empty()){
+    size_t set_number = input_set_number(set_manager_);
+    if (set_manager_.get_set(set_number).is_empty()) {
         std::cout << "Данное множество пустое.\n";
         return;
     }
-    std::string input_element=get_string_input(true);
-    if(!set_manager_.get_set(set_number).delete_helper(input_element)) {
-        std::cout << "Такого элемента не существует в выбранном множестве.\n";
-    }else{
-        std::cout << "Элемент успешно удален из множества.\n";
+    std::string input_element = get_string_input(true);
+    try {
+        if (!set_manager_.get_set(set_number).delete_helper(input_element)) {
+            std::cout << "Такого элемента не существует в выбранном множестве.\n";
+        } else {
+            std::cout << "Элемент успешно удален из множества.\n";
+        }
+    } catch (const std::exception &exception) {
+        std::cout << "Ошибка при удалении элемента: " << exception.what() << "\n";
     }
 }
 
@@ -207,13 +213,13 @@ void delete_set_element(set_manager& set_manager_){
  * @brief Выводит мощность (размер) указанного множества
  * @param set_manager_ Менеджер множеств для проверки
  */
-void get_set_size(set_manager& set_manager_){
+void get_set_size(set_manager& set_manager_) {
     if (set_manager_.get_set_count() == 0) {
         std::cout << "Не найдено ни одного множества.\n";
         return;
     }
     std::cout << "Укажите номер множества, мощность которого хотите узнать. ";
-    size_t set_number=input_set_number(set_manager_);
+    size_t set_number = input_set_number(set_manager_);
     std::cout << "Мощность множества равна " << set_manager_.get_set(set_number).set_length() << "\n";
 }
 
@@ -221,16 +227,16 @@ void get_set_size(set_manager& set_manager_){
  * @brief Проверяет является ли множество пустым
  * @param set_manager_ Менеджер множеств для проверки
  */
-void is_set_empty(set_manager& set_manager_){
+void is_set_empty(set_manager& set_manager_) {
     if (set_manager_.get_set_count() == 0) {
         std::cout << "Не найдено ни одного множества.\n";
         return;
     }
     std::cout << "Укажите номер множества для проверки на пустое множество. ";
-    size_t set_number=input_set_number(set_manager_);
-    if(set_manager_.get_set(set_number).is_empty()){
+    size_t set_number = input_set_number(set_manager_);
+    if (set_manager_.get_set(set_number).is_empty()) {
         std::cout << "Данное множество пустое.\n";
-    }else{
+    } else {
         std::cout << "Данное множество не пустое.\n";
     }
 }
@@ -239,22 +245,26 @@ void is_set_empty(set_manager& set_manager_){
  * @brief Проверяет принадлежность элемента множеству
  * @param set_manager_ Менеджер множеств для проверки
  */
-void is_element_contained(set_manager& set_manager_){
+void is_element_contained(set_manager& set_manager_) {
     if (set_manager_.get_set_count() == 0) {
         std::cout << "Не найдено ни одного множества.\n";
         return;
     }
     std::cout << "Укажите номер множества, которое хотите проверить. ";
-    size_t set_number=input_set_number(set_manager_);
-    if(set_manager_.get_set(set_number).is_empty()){
+    size_t set_number = input_set_number(set_manager_);
+    if (set_manager_.get_set(set_number).is_empty()) {
         std::cout << "Данное множество пустое.\n";
         return;
     }
-    std::string element_to_find=get_string_input(true);
-    if (set_manager_.get_set(set_number)[element_to_find]){
-        std::cout << "Элемент найден в множестве.\n";
-    }else{
-        std::cout << "Элемент не найден в множестве.\n";
+    std::string element_to_find = get_string_input(true);
+    try {
+        if (set_manager_.get_set(set_number)[element_to_find]) {
+            std::cout << "Элемент найден в множестве.\n";
+        } else {
+            std::cout << "Элемент не найден в множестве.\n";
+        }
+    } catch (const std::exception &exception) {
+        std::cout << "Ошибка при поиске элемента: " << exception.what() << "\n";
     }
 }
 

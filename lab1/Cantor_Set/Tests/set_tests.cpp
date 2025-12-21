@@ -190,7 +190,7 @@ TEST_F(CantorSetTest, NestedSets) {
     EXPECT_EQ(set.set_length(), 2);
 
     cantor_set nested_set("{ab}");
-    EXPECT_TRUE(set["{ab}"]);
+    EXPECT_TRUE(set["{a,b}"]);
 }
 
 TEST_F(CantorSetTest, DirectedSets) {
@@ -237,8 +237,8 @@ TEST_F(CantorSetTest, ComplexNestedStructures) {
     EXPECT_EQ(set.set_length(), 3);
 
     EXPECT_TRUE(set["a"]);
-    EXPECT_TRUE(set["{bc}"]);
-    EXPECT_TRUE(set["{d{ef}}"]);
+    EXPECT_TRUE(set["{b,c}"]);
+    EXPECT_TRUE(set["{d,{e,f}}"]);
 }
 
 TEST_F(CantorSetTest, DuplicateElements) {

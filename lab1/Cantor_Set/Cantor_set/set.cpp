@@ -2,6 +2,7 @@
 #include <string>
 #include <variant>
 #include "set.h"
+#include "string_validator.h"
 
 cantor_set cantor_set::initialize_set_elems(const std::string &elements_string,const char &start_brace ,size_t &position) {
     cantor_set set_to_initialize(elements_string[0]);
@@ -82,7 +83,14 @@ bool cantor_set::add_element(const element &elem_to_add){
 }
 
 bool cantor_set::add_helper(const std::string& string_to_add){
-    element elem_to_add = element_initializer(string_to_add);
+    if (string_to_add.length() == 1 && string_to_add[0] >= 'a' && string_to_add[0] <= 'z') {
+        element elem_to_add = string_to_add[0];
+        return add_element(elem_to_add);
+    }
+    std::string new_string_to_add=string_to_add;
+    if(!string_validator::set_read(new_string_to_add, true))
+        throw std::invalid_argument("Элемент введен неверно");
+    element elem_to_add = element_initializer(new_string_to_add);
     return add_element(elem_to_add);
 }
 
@@ -94,7 +102,14 @@ bool cantor_set::delete_element(const element &elem_to_delete){
 }
 
 bool cantor_set::delete_helper(const std::string& string_to_delete){
-    element elem_to_delete = element_initializer(string_to_delete);
+    if (string_to_delete.length() == 1 && string_to_delete[0] >= 'a' && string_to_delete[0] <= 'z') {
+        element elem_to_delete = string_to_delete[0];
+        return delete_element(elem_to_delete);
+    }
+    std::string new_string_to_delete=string_to_delete;
+    if(!string_validator::set_read(new_string_to_delete, true))
+        throw std::invalid_argument("Элемент введен неверно");
+    element elem_to_delete = element_initializer(new_string_to_delete);
     return delete_element(elem_to_delete);
 }
 
@@ -180,8 +195,13 @@ std::string cantor_set::print_helper(const cantor_set &set_to_print){
 }
 
 bool cantor_set::operator[](const std::string &input_string) {
-    //element elem_to_find=element_initializer(input_string);
-    return find_element(input_string) != -1;
+    if (input_string.length() == 1 && input_string[0] >= 'a' && input_string[0] <= 'z') {
+        return find_element(input_string) != -1;
+    }
+    std::string new_input_string=input_string;
+    if(!string_validator::set_read(new_input_string, true))
+        throw std::invalid_argument("Элемент введен неверно");
+    return find_element(new_input_string) != -1;
 }
 
 cantor_set& cantor_set::operator+=(cantor_set& other_set) {

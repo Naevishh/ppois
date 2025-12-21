@@ -139,14 +139,14 @@ public:
      * @param string_to_add Строка с элементом для добавления
      * @return true, если элемент добавлен, false, если уже существует
      */
-    bool add_helper(const std::string&);
+    bool add_helper(std::string&);
 
     /**
      * @brief Вспомогательный метод для удаления элемента по строке
      * @param string_to_delete Строка с элементом для удаления
      * @return true, если элемент удален, false, если не найден
      */
-    bool delete_helper(const std::string&);
+    bool delete_helper(std::string&);
 
     /**
      * @brief Проверяет пустое ли множество
@@ -200,7 +200,7 @@ public:
      * @param input_string Строка с элементом для проверки
      * @return true, если элемент принадлежит множеству, иначе false
      */
-    bool operator[](const std::string &);
+    bool operator[](std::string &);
 
     /**
      * @brief Оператор объединения с присваиванием

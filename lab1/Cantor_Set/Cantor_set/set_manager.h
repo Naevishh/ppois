@@ -49,7 +49,7 @@ public:
      * @return true, если множество создано, false, если такое множество уже существует
      * @see create_set()
      */
-    bool create_set_help(const std::string&);
+    bool create_set_help(std::string&);
 
     /**
      * @brief Публичный метод для удаления множества
