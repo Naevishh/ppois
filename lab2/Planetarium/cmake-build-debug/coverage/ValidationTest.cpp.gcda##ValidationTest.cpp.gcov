@@ -1,0 +1,5599 @@
+        -:    0:Source:C:/Users/aleks/CLionProjects/PlanetariumProjectCopy/Tests/ValidationTest.cpp
+        -:    0:Graph:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Tests\CMakeFiles\Tests.dir\ValidationTest.cpp.gcno
+        -:    0:Data:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Tests\CMakeFiles\Tests.dir\ValidationTest.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include <gtest/gtest.h>
+        -:    2:#include "TimeValidator.h"
+        -:    3:#include "StringValidator.h"
+        -:    4:
+        -:    5:class ValidationTest : public ::testing::Test{
+function _ZN14ValidationTest5SetUpEv called 22 returned 100% blocks executed 100%
+       22:    6:    void SetUp() override{
+        -:    7:
+       22:    8:    }
+function _ZN14ValidationTest8TearDownEv called 22 returned 100% blocks executed 100%
+       22:    9:    void TearDown() override{
+        -:   10:
+       22:   11:    }
+        -:   12:};
+        -:   13:
+        4:   14:TEST_F(ValidationTest, getCurrentYear) {
+        1:   15:    int year = TimeValidator::getCurrentYear();
+       1*:   16:    EXPECT_GE(year, 2020);
+       1*:   17:    EXPECT_LE(year, 2100);
+        1:   18:}
+------------------
+_ZN34ValidationTest_getCurrentYear_TestC1Ev:
+function _ZN34ValidationTest_getCurrentYear_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   14:TEST_F(ValidationTest, getCurrentYear) {
+        1:   14-block  0
+call    0 returned 1
+------------------
+_ZN34ValidationTest_getCurrentYear_TestD0Ev:
+function _ZN34ValidationTest_getCurrentYear_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   14:TEST_F(ValidationTest, getCurrentYear) {
+        1:   14-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN34ValidationTest_getCurrentYear_TestD1Ev:
+function _ZN34ValidationTest_getCurrentYear_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   14:TEST_F(ValidationTest, getCurrentYear) {
+        1:   14-block  0
+call    0 returned 1
+------------------
+_ZN34ValidationTest_getCurrentYear_Test8TestBodyEv:
+function _ZN34ValidationTest_getCurrentYear_Test8TestBodyEv called 1 returned 100% blocks executed 24%
+        1:   14:TEST_F(ValidationTest, getCurrentYear) {
+        1:   15:    int year = TimeValidator::getCurrentYear();
+        1:   15-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:   16:    EXPECT_GE(year, 2020);
+        1:   16-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   16-block  1
+call    3 returned 1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:   16-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:   16-block  3
+call    9 never executed
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   16-block  4
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   16-block  5
+call   16 never executed
+call   17 never executed
+        1:   16-block  6
+call   18 returned 1
+    $$$$$:   16-block  7
+    $$$$$:   16-block  8
+call   19 never executed
+    $$$$$:   16-block  9
+    $$$$$:   16-block 10
+call   20 never executed
+    $$$$$:   16-block 11
+    $$$$$:   16-block 12
+call   21 never executed
+       1*:   17:    EXPECT_LE(year, 2100);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   17-block  0
+call    3 returned 1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:   17-block  1
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:   17-block  2
+call    9 never executed
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   17-block  3
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   17-block  4
+call   16 never executed
+call   17 never executed
+        1:   17-block  5
+call   18 returned 1
+    $$$$$:   17-block  6
+    $$$$$:   17-block  7
+call   19 never executed
+    $$$$$:   17-block  8
+    $$$$$:   17-block  9
+call   20 never executed
+    $$$$$:   17-block 10
+    $$$$$:   17-block 11
+call   21 never executed
+        1:   18:}
+------------------
+        -:   19:
+        4:   20:TEST_F(ValidationTest, isLeapYear) {
+       1*:   21:    EXPECT_TRUE(TimeValidator::isLeapYear(2024));
+       1*:   22:    EXPECT_FALSE(TimeValidator::isLeapYear(2023));
+       1*:   23:    EXPECT_FALSE(TimeValidator::isLeapYear(1900));
+       1*:   24:    EXPECT_TRUE(TimeValidator::isLeapYear(2000));
+        1:   25:}
+------------------
+_ZN30ValidationTest_isLeapYear_TestC1Ev:
+function _ZN30ValidationTest_isLeapYear_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   20:TEST_F(ValidationTest, isLeapYear) {
+        1:   20-block  0
+call    0 returned 1
+------------------
+_ZN30ValidationTest_isLeapYear_TestD0Ev:
+function _ZN30ValidationTest_isLeapYear_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   20:TEST_F(ValidationTest, isLeapYear) {
+        1:   20-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN30ValidationTest_isLeapYear_TestD1Ev:
+function _ZN30ValidationTest_isLeapYear_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   20:TEST_F(ValidationTest, isLeapYear) {
+        1:   20-block  0
+call    0 returned 1
+------------------
+_ZN30ValidationTest_isLeapYear_Test8TestBodyEv:
+function _ZN30ValidationTest_isLeapYear_Test8TestBodyEv called 1 returned 100% blocks executed 20%
+        1:   20:TEST_F(ValidationTest, isLeapYear) {
+       1*:   21:    EXPECT_TRUE(TimeValidator::isLeapYear(2024));
+        1:   21-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   21-block  1
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   21-block  2
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   21-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   21-block  4
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   21-block  5
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   21-block  6
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:   21-block  7
+call   23 returned 1
+    $$$$$:   21-block  8
+    $$$$$:   21-block  9
+call   24 never executed
+    $$$$$:   21-block 10
+call   25 never executed
+    $$$$$:   21-block 11
+    $$$$$:   21-block 12
+    $$$$$:   21-block 13
+call   26 never executed
+    $$$$$:   21-block 14
+    $$$$$:   21-block 15
+call   27 never executed
+       1*:   22:    EXPECT_FALSE(TimeValidator::isLeapYear(2023));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   22-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   22-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   22-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   22-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   22-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   22-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:   22-block  6
+call   23 returned 1
+    $$$$$:   22-block  7
+    $$$$$:   22-block  8
+call   24 never executed
+    $$$$$:   22-block  9
+call   25 never executed
+    $$$$$:   22-block 10
+    $$$$$:   22-block 11
+    $$$$$:   22-block 12
+call   26 never executed
+    $$$$$:   22-block 13
+    $$$$$:   22-block 14
+call   27 never executed
+       1*:   23:    EXPECT_FALSE(TimeValidator::isLeapYear(1900));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   23-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   23-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   23-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   23-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   23-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   23-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:   23-block  6
+call   23 returned 1
+    $$$$$:   23-block  7
+    $$$$$:   23-block  8
+call   24 never executed
+    $$$$$:   23-block  9
+call   25 never executed
+    $$$$$:   23-block 10
+    $$$$$:   23-block 11
+    $$$$$:   23-block 12
+call   26 never executed
+    $$$$$:   23-block 13
+    $$$$$:   23-block 14
+call   27 never executed
+       1*:   24:    EXPECT_TRUE(TimeValidator::isLeapYear(2000));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   24-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   24-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   24-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   24-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   24-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   24-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:   24-block  6
+call   23 returned 1
+    $$$$$:   24-block  7
+    $$$$$:   24-block  8
+call   24 never executed
+    $$$$$:   24-block  9
+call   25 never executed
+    $$$$$:   24-block 10
+    $$$$$:   24-block 11
+    $$$$$:   24-block 12
+call   26 never executed
+    $$$$$:   24-block 13
+    $$$$$:   24-block 14
+call   27 never executed
+        1:   25:}
+------------------
+        -:   26:
+        4:   27:TEST_F(ValidationTest, getDaysInMonth) {
+       1*:   28:    EXPECT_EQ(TimeValidator::getDaysInMonth(1), 31);
+       1*:   29:    EXPECT_EQ(TimeValidator::getDaysInMonth(2), 28);
+       1*:   30:    EXPECT_EQ(TimeValidator::getDaysInMonth(2, 2024), 29);
+       1*:   31:    EXPECT_EQ(TimeValidator::getDaysInMonth(4), 30);
+       1*:   32:    EXPECT_EQ(TimeValidator::getDaysInMonth(13), 0);
+        1:   33:}
+------------------
+_ZN34ValidationTest_getDaysInMonth_TestC1Ev:
+function _ZN34ValidationTest_getDaysInMonth_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   27:TEST_F(ValidationTest, getDaysInMonth) {
+        1:   27-block  0
+call    0 returned 1
+------------------
+_ZN34ValidationTest_getDaysInMonth_TestD0Ev:
+function _ZN34ValidationTest_getDaysInMonth_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   27:TEST_F(ValidationTest, getDaysInMonth) {
+        1:   27-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN34ValidationTest_getDaysInMonth_TestD1Ev:
+function _ZN34ValidationTest_getDaysInMonth_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   27:TEST_F(ValidationTest, getDaysInMonth) {
+        1:   27-block  0
+call    0 returned 1
+------------------
+_ZN34ValidationTest_getDaysInMonth_Test8TestBodyEv:
+function _ZN34ValidationTest_getDaysInMonth_Test8TestBodyEv called 1 returned 100% blocks executed 23%
+        1:   27:TEST_F(ValidationTest, getDaysInMonth) {
+       1*:   28:    EXPECT_EQ(TimeValidator::getDaysInMonth(1), 31);
+        1:   28-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   28-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   28-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   28-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   28-block  4
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   28-block  5
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   28-block  6
+call   19 never executed
+call   20 never executed
+        1:   28-block  7
+call   21 returned 1
+    $$$$$:   28-block  8
+    $$$$$:   28-block  9
+    $$$$$:   28-block 10
+call   22 never executed
+    $$$$$:   28-block 11
+    $$$$$:   28-block 12
+call   23 never executed
+    $$$$$:   28-block 13
+    $$$$$:   28-block 14
+call   24 never executed
+       1*:   29:    EXPECT_EQ(TimeValidator::getDaysInMonth(2), 28);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   29-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   29-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   29-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   29-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   29-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   29-block  5
+call   19 never executed
+call   20 never executed
+        1:   29-block  6
+call   21 returned 1
+    $$$$$:   29-block  7
+    $$$$$:   29-block  8
+    $$$$$:   29-block  9
+call   22 never executed
+    $$$$$:   29-block 10
+    $$$$$:   29-block 11
+call   23 never executed
+    $$$$$:   29-block 12
+    $$$$$:   29-block 13
+call   24 never executed
+       1*:   30:    EXPECT_EQ(TimeValidator::getDaysInMonth(2, 2024), 29);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   30-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   30-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   30-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   30-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   30-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   30-block  5
+call   19 never executed
+call   20 never executed
+        1:   30-block  6
+call   21 returned 1
+    $$$$$:   30-block  7
+    $$$$$:   30-block  8
+    $$$$$:   30-block  9
+call   22 never executed
+    $$$$$:   30-block 10
+    $$$$$:   30-block 11
+call   23 never executed
+    $$$$$:   30-block 12
+    $$$$$:   30-block 13
+call   24 never executed
+       1*:   31:    EXPECT_EQ(TimeValidator::getDaysInMonth(4), 30);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   31-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   31-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   31-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   31-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   31-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   31-block  5
+call   19 never executed
+call   20 never executed
+        1:   31-block  6
+call   21 returned 1
+    $$$$$:   31-block  7
+    $$$$$:   31-block  8
+    $$$$$:   31-block  9
+call   22 never executed
+    $$$$$:   31-block 10
+    $$$$$:   31-block 11
+call   23 never executed
+    $$$$$:   31-block 12
+    $$$$$:   31-block 13
+call   24 never executed
+       1*:   32:    EXPECT_EQ(TimeValidator::getDaysInMonth(13), 0);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   32-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   32-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   32-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   32-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   32-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   32-block  5
+call   19 never executed
+call   20 never executed
+        1:   32-block  6
+call   21 returned 1
+    $$$$$:   32-block  7
+    $$$$$:   32-block  8
+    $$$$$:   32-block  9
+call   22 never executed
+    $$$$$:   32-block 10
+    $$$$$:   32-block 11
+call   23 never executed
+    $$$$$:   32-block 12
+    $$$$$:   32-block 13
+call   24 never executed
+        1:   33:}
+------------------
+        -:   34:
+        4:   35:TEST_F(ValidationTest, stringToInt) {
+       3*:   36:    EXPECT_EQ(TimeValidator::stringToInt("123"), 123);
+       3*:   37:    EXPECT_EQ(TimeValidator::stringToInt("-1"), -1);
+       3*:   38:    EXPECT_EQ(TimeValidator::stringToInt("abc"), -1);
+       3*:   39:    EXPECT_EQ(TimeValidator::stringToInt(""), -1);
+        1:   40:}
+------------------
+_ZN31ValidationTest_stringToInt_TestC1Ev:
+function _ZN31ValidationTest_stringToInt_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   35:TEST_F(ValidationTest, stringToInt) {
+        1:   35-block  0
+call    0 returned 1
+------------------
+_ZN31ValidationTest_stringToInt_TestD0Ev:
+function _ZN31ValidationTest_stringToInt_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   35:TEST_F(ValidationTest, stringToInt) {
+        1:   35-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN31ValidationTest_stringToInt_TestD1Ev:
+function _ZN31ValidationTest_stringToInt_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   35:TEST_F(ValidationTest, stringToInt) {
+        1:   35-block  0
+call    0 returned 1
+------------------
+_ZN31ValidationTest_stringToInt_Test8TestBodyEv:
+function _ZN31ValidationTest_stringToInt_Test8TestBodyEv called 1 returned 100% blocks executed 31%
+        1:   35:TEST_F(ValidationTest, stringToInt) {
+       3*:   36:    EXPECT_EQ(TimeValidator::stringToInt("123"), 123);
+        1:   36-block  0
+        1:   36-block  1
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   36-block  2
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   36-block  3
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:   36-block  4
+call    9 returned 1
+call   10 returned 1
+branch 11 taken 0 (fallthrough)
+branch 12 taken 1
+    %%%%%:   36-block  5
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   36-block  6
+call   16 never executed
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   36-block  7
+call   20 never executed
+branch 21 never executed (fallthrough)
+branch 22 never executed (throw)
+    %%%%%:   36-block  8
+call   23 never executed
+call   24 never executed
+        1:   36-block  9
+call   25 returned 1
+    $$$$$:   36-block 10
+call   26 never executed
+    $$$$$:   36-block 11
+    $$$$$:   36-block 12
+    $$$$$:   36-block 13
+    $$$$$:   36-block 14
+    $$$$$:   36-block 15
+call   27 never executed
+    $$$$$:   36-block 16
+    $$$$$:   36-block 17
+call   28 never executed
+    $$$$$:   36-block 18
+    $$$$$:   36-block 19
+call   29 never executed
+       3*:   37:    EXPECT_EQ(TimeValidator::stringToInt("-1"), -1);
+        1:   37-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   37-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   37-block  2
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:   37-block  3
+call    9 returned 1
+call   10 returned 1
+branch 11 taken 0 (fallthrough)
+branch 12 taken 1
+    %%%%%:   37-block  4
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   37-block  5
+call   16 never executed
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   37-block  6
+call   20 never executed
+branch 21 never executed (fallthrough)
+branch 22 never executed (throw)
+    %%%%%:   37-block  7
+call   23 never executed
+call   24 never executed
+        1:   37-block  8
+call   25 returned 1
+    $$$$$:   37-block  9
+call   26 never executed
+    $$$$$:   37-block 10
+    $$$$$:   37-block 11
+    $$$$$:   37-block 12
+    $$$$$:   37-block 13
+    $$$$$:   37-block 14
+call   27 never executed
+    $$$$$:   37-block 15
+    $$$$$:   37-block 16
+call   28 never executed
+    $$$$$:   37-block 17
+    $$$$$:   37-block 18
+call   29 never executed
+       3*:   38:    EXPECT_EQ(TimeValidator::stringToInt("abc"), -1);
+        1:   38-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   38-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   38-block  2
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:   38-block  3
+call    9 returned 1
+call   10 returned 1
+branch 11 taken 0 (fallthrough)
+branch 12 taken 1
+    %%%%%:   38-block  4
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   38-block  5
+call   16 never executed
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   38-block  6
+call   20 never executed
+branch 21 never executed (fallthrough)
+branch 22 never executed (throw)
+    %%%%%:   38-block  7
+call   23 never executed
+call   24 never executed
+        1:   38-block  8
+call   25 returned 1
+    $$$$$:   38-block  9
+call   26 never executed
+    $$$$$:   38-block 10
+    $$$$$:   38-block 11
+    $$$$$:   38-block 12
+    $$$$$:   38-block 13
+    $$$$$:   38-block 14
+call   27 never executed
+    $$$$$:   38-block 15
+    $$$$$:   38-block 16
+call   28 never executed
+    $$$$$:   38-block 17
+    $$$$$:   38-block 18
+call   29 never executed
+       3*:   39:    EXPECT_EQ(TimeValidator::stringToInt(""), -1);
+        1:   39-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   39-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   39-block  2
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:   39-block  3
+call    9 returned 1
+call   10 returned 1
+branch 11 taken 0 (fallthrough)
+branch 12 taken 1
+    %%%%%:   39-block  4
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   39-block  5
+call   16 never executed
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   39-block  6
+call   20 never executed
+branch 21 never executed (fallthrough)
+branch 22 never executed (throw)
+    %%%%%:   39-block  7
+call   23 never executed
+call   24 never executed
+        1:   39-block  8
+call   25 returned 1
+    $$$$$:   39-block  9
+call   26 never executed
+    $$$$$:   39-block 10
+    $$$$$:   39-block 11
+    $$$$$:   39-block 12
+    $$$$$:   39-block 13
+    $$$$$:   39-block 14
+call   27 never executed
+    $$$$$:   39-block 15
+    $$$$$:   39-block 16
+call   28 never executed
+    $$$$$:   39-block 17
+    $$$$$:   39-block 18
+call   29 never executed
+        1:   40:}
+------------------
+        -:   41:
+        4:   42:TEST_F(ValidationTest, isValidHourString) {
+       2*:   43:    EXPECT_TRUE(TimeValidator::isValidHour("0"));
+       2*:   44:    EXPECT_TRUE(TimeValidator::isValidHour("23"));
+       2*:   45:    EXPECT_FALSE(TimeValidator::isValidHour("24"));
+       2*:   46:    EXPECT_FALSE(TimeValidator::isValidHour("-1"));
+       2*:   47:    EXPECT_FALSE(TimeValidator::isValidHour("abc"));
+        1:   48:}
+------------------
+_ZN37ValidationTest_isValidHourString_TestC1Ev:
+function _ZN37ValidationTest_isValidHourString_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   42:TEST_F(ValidationTest, isValidHourString) {
+        1:   42-block  0
+call    0 returned 1
+------------------
+_ZN37ValidationTest_isValidHourString_TestD0Ev:
+function _ZN37ValidationTest_isValidHourString_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   42:TEST_F(ValidationTest, isValidHourString) {
+        1:   42-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN37ValidationTest_isValidHourString_TestD1Ev:
+function _ZN37ValidationTest_isValidHourString_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   42:TEST_F(ValidationTest, isValidHourString) {
+        1:   42-block  0
+call    0 returned 1
+------------------
+_ZN37ValidationTest_isValidHourString_Test8TestBodyEv:
+function _ZN37ValidationTest_isValidHourString_Test8TestBodyEv called 1 returned 100% blocks executed 27%
+        1:   42:TEST_F(ValidationTest, isValidHourString) {
+        1:   42-block  0
+       2*:   43:    EXPECT_TRUE(TimeValidator::isValidHour("0"));
+        1:   43-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   43-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   43-block  2
+call    6 returned 1
+call    7 returned 1
+call    8 returned 1
+branch  9 taken 0 (fallthrough)
+branch 10 taken 1
+    %%%%%:   43-block  3
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:   43-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   43-block  5
+call   17 never executed
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:   43-block  6
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:   43-block  7
+call   24 never executed
+call   25 never executed
+call   26 never executed
+        1:   43-block  8
+call   27 returned 1
+    $$$$$:   43-block  9
+call   28 never executed
+    $$$$$:   43-block 10
+    $$$$$:   43-block 11
+    $$$$$:   43-block 12
+    $$$$$:   43-block 13
+call   29 never executed
+    $$$$$:   43-block 14
+call   30 never executed
+    $$$$$:   43-block 15
+    $$$$$:   43-block 16
+    $$$$$:   43-block 17
+call   31 never executed
+    $$$$$:   43-block 18
+    $$$$$:   43-block 19
+call   32 never executed
+       2*:   44:    EXPECT_TRUE(TimeValidator::isValidHour("23"));
+        1:   44-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   44-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   44-block  2
+call    6 returned 1
+call    7 returned 1
+call    8 returned 1
+branch  9 taken 0 (fallthrough)
+branch 10 taken 1
+    %%%%%:   44-block  3
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:   44-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   44-block  5
+call   17 never executed
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:   44-block  6
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:   44-block  7
+call   24 never executed
+call   25 never executed
+call   26 never executed
+        1:   44-block  8
+call   27 returned 1
+    $$$$$:   44-block  9
+call   28 never executed
+    $$$$$:   44-block 10
+    $$$$$:   44-block 11
+    $$$$$:   44-block 12
+    $$$$$:   44-block 13
+call   29 never executed
+    $$$$$:   44-block 14
+call   30 never executed
+    $$$$$:   44-block 15
+    $$$$$:   44-block 16
+    $$$$$:   44-block 17
+call   31 never executed
+    $$$$$:   44-block 18
+    $$$$$:   44-block 19
+call   32 never executed
+       2*:   45:    EXPECT_FALSE(TimeValidator::isValidHour("24"));
+        1:   45-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   45-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   45-block  2
+call    6 returned 1
+call    7 returned 1
+call    8 returned 1
+branch  9 taken 0 (fallthrough)
+branch 10 taken 1
+    %%%%%:   45-block  3
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:   45-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   45-block  5
+call   17 never executed
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:   45-block  6
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:   45-block  7
+call   24 never executed
+call   25 never executed
+call   26 never executed
+        1:   45-block  8
+call   27 returned 1
+    $$$$$:   45-block  9
+call   28 never executed
+    $$$$$:   45-block 10
+    $$$$$:   45-block 11
+    $$$$$:   45-block 12
+    $$$$$:   45-block 13
+call   29 never executed
+    $$$$$:   45-block 14
+call   30 never executed
+    $$$$$:   45-block 15
+    $$$$$:   45-block 16
+    $$$$$:   45-block 17
+call   31 never executed
+    $$$$$:   45-block 18
+    $$$$$:   45-block 19
+call   32 never executed
+       2*:   46:    EXPECT_FALSE(TimeValidator::isValidHour("-1"));
+        1:   46-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   46-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   46-block  2
+call    6 returned 1
+call    7 returned 1
+call    8 returned 1
+branch  9 taken 0 (fallthrough)
+branch 10 taken 1
+    %%%%%:   46-block  3
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:   46-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   46-block  5
+call   17 never executed
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:   46-block  6
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:   46-block  7
+call   24 never executed
+call   25 never executed
+call   26 never executed
+        1:   46-block  8
+call   27 returned 1
+    $$$$$:   46-block  9
+call   28 never executed
+    $$$$$:   46-block 10
+    $$$$$:   46-block 11
+    $$$$$:   46-block 12
+    $$$$$:   46-block 13
+call   29 never executed
+    $$$$$:   46-block 14
+call   30 never executed
+    $$$$$:   46-block 15
+    $$$$$:   46-block 16
+    $$$$$:   46-block 17
+call   31 never executed
+    $$$$$:   46-block 18
+    $$$$$:   46-block 19
+call   32 never executed
+       2*:   47:    EXPECT_FALSE(TimeValidator::isValidHour("abc"));
+        1:   47-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   47-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   47-block  2
+call    6 returned 1
+call    7 returned 1
+call    8 returned 1
+branch  9 taken 0 (fallthrough)
+branch 10 taken 1
+    %%%%%:   47-block  3
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:   47-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   47-block  5
+call   17 never executed
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:   47-block  6
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:   47-block  7
+call   24 never executed
+call   25 never executed
+call   26 never executed
+        1:   47-block  8
+call   27 returned 1
+    $$$$$:   47-block  9
+call   28 never executed
+    $$$$$:   47-block 10
+    $$$$$:   47-block 11
+    $$$$$:   47-block 12
+    $$$$$:   47-block 13
+call   29 never executed
+    $$$$$:   47-block 14
+call   30 never executed
+    $$$$$:   47-block 15
+    $$$$$:   47-block 16
+    $$$$$:   47-block 17
+call   31 never executed
+    $$$$$:   47-block 18
+    $$$$$:   47-block 19
+call   32 never executed
+        1:   48:}
+------------------
+        -:   49:
+        4:   50:TEST_F(ValidationTest, isValidHourInt) {
+       1*:   51:    EXPECT_TRUE(TimeValidator::isValidHour(0));
+       1*:   52:    EXPECT_TRUE(TimeValidator::isValidHour(23));
+       1*:   53:    EXPECT_FALSE(TimeValidator::isValidHour(24));
+       1*:   54:    EXPECT_FALSE(TimeValidator::isValidHour(-1));
+        1:   55:}
+------------------
+_ZN34ValidationTest_isValidHourInt_TestC1Ev:
+function _ZN34ValidationTest_isValidHourInt_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   50:TEST_F(ValidationTest, isValidHourInt) {
+        1:   50-block  0
+call    0 returned 1
+------------------
+_ZN34ValidationTest_isValidHourInt_TestD0Ev:
+function _ZN34ValidationTest_isValidHourInt_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   50:TEST_F(ValidationTest, isValidHourInt) {
+        1:   50-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN34ValidationTest_isValidHourInt_TestD1Ev:
+function _ZN34ValidationTest_isValidHourInt_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   50:TEST_F(ValidationTest, isValidHourInt) {
+        1:   50-block  0
+call    0 returned 1
+------------------
+_ZN34ValidationTest_isValidHourInt_Test8TestBodyEv:
+function _ZN34ValidationTest_isValidHourInt_Test8TestBodyEv called 1 returned 100% blocks executed 20%
+        1:   50:TEST_F(ValidationTest, isValidHourInt) {
+       1*:   51:    EXPECT_TRUE(TimeValidator::isValidHour(0));
+        1:   51-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   51-block  1
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   51-block  2
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   51-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   51-block  4
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   51-block  5
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   51-block  6
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:   51-block  7
+call   23 returned 1
+    $$$$$:   51-block  8
+    $$$$$:   51-block  9
+call   24 never executed
+    $$$$$:   51-block 10
+call   25 never executed
+    $$$$$:   51-block 11
+    $$$$$:   51-block 12
+    $$$$$:   51-block 13
+call   26 never executed
+    $$$$$:   51-block 14
+    $$$$$:   51-block 15
+call   27 never executed
+       1*:   52:    EXPECT_TRUE(TimeValidator::isValidHour(23));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   52-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   52-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   52-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   52-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   52-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   52-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:   52-block  6
+call   23 returned 1
+    $$$$$:   52-block  7
+    $$$$$:   52-block  8
+call   24 never executed
+    $$$$$:   52-block  9
+call   25 never executed
+    $$$$$:   52-block 10
+    $$$$$:   52-block 11
+    $$$$$:   52-block 12
+call   26 never executed
+    $$$$$:   52-block 13
+    $$$$$:   52-block 14
+call   27 never executed
+       1*:   53:    EXPECT_FALSE(TimeValidator::isValidHour(24));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   53-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   53-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   53-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   53-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   53-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   53-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:   53-block  6
+call   23 returned 1
+    $$$$$:   53-block  7
+    $$$$$:   53-block  8
+call   24 never executed
+    $$$$$:   53-block  9
+call   25 never executed
+    $$$$$:   53-block 10
+    $$$$$:   53-block 11
+    $$$$$:   53-block 12
+call   26 never executed
+    $$$$$:   53-block 13
+    $$$$$:   53-block 14
+call   27 never executed
+       1*:   54:    EXPECT_FALSE(TimeValidator::isValidHour(-1));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   54-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   54-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   54-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   54-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   54-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   54-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:   54-block  6
+call   23 returned 1
+    $$$$$:   54-block  7
+    $$$$$:   54-block  8
+call   24 never executed
+    $$$$$:   54-block  9
+call   25 never executed
+    $$$$$:   54-block 10
+    $$$$$:   54-block 11
+    $$$$$:   54-block 12
+call   26 never executed
+    $$$$$:   54-block 13
+    $$$$$:   54-block 14
+call   27 never executed
+        1:   55:}
+------------------
+        -:   56:
+        4:   57:TEST_F(ValidationTest, isValidMinuteString) {
+       2*:   58:    EXPECT_TRUE(TimeValidator::isValidMinute("0"));
+       2*:   59:    EXPECT_TRUE(TimeValidator::isValidMinute("59"));
+       2*:   60:    EXPECT_FALSE(TimeValidator::isValidMinute("60"));
+       2*:   61:    EXPECT_FALSE(TimeValidator::isValidMinute("-1"));
+       2*:   62:    EXPECT_FALSE(TimeValidator::isValidMinute("abc"));
+        1:   63:}
+------------------
+_ZN39ValidationTest_isValidMinuteString_TestC1Ev:
+function _ZN39ValidationTest_isValidMinuteString_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   57:TEST_F(ValidationTest, isValidMinuteString) {
+        1:   57-block  0
+call    0 returned 1
+------------------
+_ZN39ValidationTest_isValidMinuteString_TestD0Ev:
+function _ZN39ValidationTest_isValidMinuteString_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   57:TEST_F(ValidationTest, isValidMinuteString) {
+        1:   57-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN39ValidationTest_isValidMinuteString_TestD1Ev:
+function _ZN39ValidationTest_isValidMinuteString_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   57:TEST_F(ValidationTest, isValidMinuteString) {
+        1:   57-block  0
+call    0 returned 1
+------------------
+_ZN39ValidationTest_isValidMinuteString_Test8TestBodyEv:
+function _ZN39ValidationTest_isValidMinuteString_Test8TestBodyEv called 1 returned 100% blocks executed 27%
+        1:   57:TEST_F(ValidationTest, isValidMinuteString) {
+        1:   57-block  0
+       2*:   58:    EXPECT_TRUE(TimeValidator::isValidMinute("0"));
+        1:   58-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   58-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   58-block  2
+call    6 returned 1
+call    7 returned 1
+call    8 returned 1
+branch  9 taken 0 (fallthrough)
+branch 10 taken 1
+    %%%%%:   58-block  3
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:   58-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   58-block  5
+call   17 never executed
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:   58-block  6
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:   58-block  7
+call   24 never executed
+call   25 never executed
+call   26 never executed
+        1:   58-block  8
+call   27 returned 1
+    $$$$$:   58-block  9
+call   28 never executed
+    $$$$$:   58-block 10
+    $$$$$:   58-block 11
+    $$$$$:   58-block 12
+    $$$$$:   58-block 13
+call   29 never executed
+    $$$$$:   58-block 14
+call   30 never executed
+    $$$$$:   58-block 15
+    $$$$$:   58-block 16
+    $$$$$:   58-block 17
+call   31 never executed
+    $$$$$:   58-block 18
+    $$$$$:   58-block 19
+call   32 never executed
+       2*:   59:    EXPECT_TRUE(TimeValidator::isValidMinute("59"));
+        1:   59-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   59-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   59-block  2
+call    6 returned 1
+call    7 returned 1
+call    8 returned 1
+branch  9 taken 0 (fallthrough)
+branch 10 taken 1
+    %%%%%:   59-block  3
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:   59-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   59-block  5
+call   17 never executed
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:   59-block  6
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:   59-block  7
+call   24 never executed
+call   25 never executed
+call   26 never executed
+        1:   59-block  8
+call   27 returned 1
+    $$$$$:   59-block  9
+call   28 never executed
+    $$$$$:   59-block 10
+    $$$$$:   59-block 11
+    $$$$$:   59-block 12
+    $$$$$:   59-block 13
+call   29 never executed
+    $$$$$:   59-block 14
+call   30 never executed
+    $$$$$:   59-block 15
+    $$$$$:   59-block 16
+    $$$$$:   59-block 17
+call   31 never executed
+    $$$$$:   59-block 18
+    $$$$$:   59-block 19
+call   32 never executed
+       2*:   60:    EXPECT_FALSE(TimeValidator::isValidMinute("60"));
+        1:   60-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   60-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   60-block  2
+call    6 returned 1
+call    7 returned 1
+call    8 returned 1
+branch  9 taken 0 (fallthrough)
+branch 10 taken 1
+    %%%%%:   60-block  3
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:   60-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   60-block  5
+call   17 never executed
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:   60-block  6
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:   60-block  7
+call   24 never executed
+call   25 never executed
+call   26 never executed
+        1:   60-block  8
+call   27 returned 1
+    $$$$$:   60-block  9
+call   28 never executed
+    $$$$$:   60-block 10
+    $$$$$:   60-block 11
+    $$$$$:   60-block 12
+    $$$$$:   60-block 13
+call   29 never executed
+    $$$$$:   60-block 14
+call   30 never executed
+    $$$$$:   60-block 15
+    $$$$$:   60-block 16
+    $$$$$:   60-block 17
+call   31 never executed
+    $$$$$:   60-block 18
+    $$$$$:   60-block 19
+call   32 never executed
+       2*:   61:    EXPECT_FALSE(TimeValidator::isValidMinute("-1"));
+        1:   61-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   61-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   61-block  2
+call    6 returned 1
+call    7 returned 1
+call    8 returned 1
+branch  9 taken 0 (fallthrough)
+branch 10 taken 1
+    %%%%%:   61-block  3
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:   61-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   61-block  5
+call   17 never executed
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:   61-block  6
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:   61-block  7
+call   24 never executed
+call   25 never executed
+call   26 never executed
+        1:   61-block  8
+call   27 returned 1
+    $$$$$:   61-block  9
+call   28 never executed
+    $$$$$:   61-block 10
+    $$$$$:   61-block 11
+    $$$$$:   61-block 12
+    $$$$$:   61-block 13
+call   29 never executed
+    $$$$$:   61-block 14
+call   30 never executed
+    $$$$$:   61-block 15
+    $$$$$:   61-block 16
+    $$$$$:   61-block 17
+call   31 never executed
+    $$$$$:   61-block 18
+    $$$$$:   61-block 19
+call   32 never executed
+       2*:   62:    EXPECT_FALSE(TimeValidator::isValidMinute("abc"));
+        1:   62-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   62-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   62-block  2
+call    6 returned 1
+call    7 returned 1
+call    8 returned 1
+branch  9 taken 0 (fallthrough)
+branch 10 taken 1
+    %%%%%:   62-block  3
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:   62-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   62-block  5
+call   17 never executed
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:   62-block  6
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:   62-block  7
+call   24 never executed
+call   25 never executed
+call   26 never executed
+        1:   62-block  8
+call   27 returned 1
+    $$$$$:   62-block  9
+call   28 never executed
+    $$$$$:   62-block 10
+    $$$$$:   62-block 11
+    $$$$$:   62-block 12
+    $$$$$:   62-block 13
+call   29 never executed
+    $$$$$:   62-block 14
+call   30 never executed
+    $$$$$:   62-block 15
+    $$$$$:   62-block 16
+    $$$$$:   62-block 17
+call   31 never executed
+    $$$$$:   62-block 18
+    $$$$$:   62-block 19
+call   32 never executed
+        1:   63:}
+------------------
+        -:   64:
+        4:   65:TEST_F(ValidationTest, isValidMinuteInt) {
+       1*:   66:    EXPECT_TRUE(TimeValidator::isValidMinute(0));
+       1*:   67:    EXPECT_TRUE(TimeValidator::isValidMinute(59));
+       1*:   68:    EXPECT_FALSE(TimeValidator::isValidMinute(60));
+       1*:   69:    EXPECT_FALSE(TimeValidator::isValidMinute(-1));
+        1:   70:}
+------------------
+_ZN36ValidationTest_isValidMinuteInt_TestC1Ev:
+function _ZN36ValidationTest_isValidMinuteInt_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   65:TEST_F(ValidationTest, isValidMinuteInt) {
+        1:   65-block  0
+call    0 returned 1
+------------------
+_ZN36ValidationTest_isValidMinuteInt_TestD0Ev:
+function _ZN36ValidationTest_isValidMinuteInt_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   65:TEST_F(ValidationTest, isValidMinuteInt) {
+        1:   65-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN36ValidationTest_isValidMinuteInt_TestD1Ev:
+function _ZN36ValidationTest_isValidMinuteInt_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   65:TEST_F(ValidationTest, isValidMinuteInt) {
+        1:   65-block  0
+call    0 returned 1
+------------------
+_ZN36ValidationTest_isValidMinuteInt_Test8TestBodyEv:
+function _ZN36ValidationTest_isValidMinuteInt_Test8TestBodyEv called 1 returned 100% blocks executed 20%
+        1:   65:TEST_F(ValidationTest, isValidMinuteInt) {
+       1*:   66:    EXPECT_TRUE(TimeValidator::isValidMinute(0));
+        1:   66-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   66-block  1
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   66-block  2
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   66-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   66-block  4
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   66-block  5
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   66-block  6
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:   66-block  7
+call   23 returned 1
+    $$$$$:   66-block  8
+    $$$$$:   66-block  9
+call   24 never executed
+    $$$$$:   66-block 10
+call   25 never executed
+    $$$$$:   66-block 11
+    $$$$$:   66-block 12
+    $$$$$:   66-block 13
+call   26 never executed
+    $$$$$:   66-block 14
+    $$$$$:   66-block 15
+call   27 never executed
+       1*:   67:    EXPECT_TRUE(TimeValidator::isValidMinute(59));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   67-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   67-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   67-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   67-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   67-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   67-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:   67-block  6
+call   23 returned 1
+    $$$$$:   67-block  7
+    $$$$$:   67-block  8
+call   24 never executed
+    $$$$$:   67-block  9
+call   25 never executed
+    $$$$$:   67-block 10
+    $$$$$:   67-block 11
+    $$$$$:   67-block 12
+call   26 never executed
+    $$$$$:   67-block 13
+    $$$$$:   67-block 14
+call   27 never executed
+       1*:   68:    EXPECT_FALSE(TimeValidator::isValidMinute(60));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   68-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   68-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   68-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   68-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   68-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   68-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:   68-block  6
+call   23 returned 1
+    $$$$$:   68-block  7
+    $$$$$:   68-block  8
+call   24 never executed
+    $$$$$:   68-block  9
+call   25 never executed
+    $$$$$:   68-block 10
+    $$$$$:   68-block 11
+    $$$$$:   68-block 12
+call   26 never executed
+    $$$$$:   68-block 13
+    $$$$$:   68-block 14
+call   27 never executed
+       1*:   69:    EXPECT_FALSE(TimeValidator::isValidMinute(-1));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   69-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   69-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   69-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   69-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   69-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   69-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:   69-block  6
+call   23 returned 1
+    $$$$$:   69-block  7
+    $$$$$:   69-block  8
+call   24 never executed
+    $$$$$:   69-block  9
+call   25 never executed
+    $$$$$:   69-block 10
+    $$$$$:   69-block 11
+    $$$$$:   69-block 12
+call   26 never executed
+    $$$$$:   69-block 13
+    $$$$$:   69-block 14
+call   27 never executed
+        1:   70:}
+------------------
+        -:   71:
+        4:   72:TEST_F(ValidationTest, isValidSecondString) {
+       2*:   73:    EXPECT_TRUE(TimeValidator::isValidSecond("0"));
+       2*:   74:    EXPECT_TRUE(TimeValidator::isValidSecond("59"));
+       2*:   75:    EXPECT_FALSE(TimeValidator::isValidSecond("60"));
+       2*:   76:    EXPECT_FALSE(TimeValidator::isValidSecond("-1"));
+       2*:   77:    EXPECT_FALSE(TimeValidator::isValidSecond("abc"));
+        1:   78:}
+------------------
+_ZN39ValidationTest_isValidSecondString_TestC1Ev:
+function _ZN39ValidationTest_isValidSecondString_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   72:TEST_F(ValidationTest, isValidSecondString) {
+        1:   72-block  0
+call    0 returned 1
+------------------
+_ZN39ValidationTest_isValidSecondString_TestD0Ev:
+function _ZN39ValidationTest_isValidSecondString_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   72:TEST_F(ValidationTest, isValidSecondString) {
+        1:   72-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN39ValidationTest_isValidSecondString_TestD1Ev:
+function _ZN39ValidationTest_isValidSecondString_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   72:TEST_F(ValidationTest, isValidSecondString) {
+        1:   72-block  0
+call    0 returned 1
+------------------
+_ZN39ValidationTest_isValidSecondString_Test8TestBodyEv:
+function _ZN39ValidationTest_isValidSecondString_Test8TestBodyEv called 1 returned 100% blocks executed 27%
+        1:   72:TEST_F(ValidationTest, isValidSecondString) {
+        1:   72-block  0
+       2*:   73:    EXPECT_TRUE(TimeValidator::isValidSecond("0"));
+        1:   73-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   73-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   73-block  2
+call    6 returned 1
+call    7 returned 1
+call    8 returned 1
+branch  9 taken 0 (fallthrough)
+branch 10 taken 1
+    %%%%%:   73-block  3
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:   73-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   73-block  5
+call   17 never executed
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:   73-block  6
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:   73-block  7
+call   24 never executed
+call   25 never executed
+call   26 never executed
+        1:   73-block  8
+call   27 returned 1
+    $$$$$:   73-block  9
+call   28 never executed
+    $$$$$:   73-block 10
+    $$$$$:   73-block 11
+    $$$$$:   73-block 12
+    $$$$$:   73-block 13
+call   29 never executed
+    $$$$$:   73-block 14
+call   30 never executed
+    $$$$$:   73-block 15
+    $$$$$:   73-block 16
+    $$$$$:   73-block 17
+call   31 never executed
+    $$$$$:   73-block 18
+    $$$$$:   73-block 19
+call   32 never executed
+       2*:   74:    EXPECT_TRUE(TimeValidator::isValidSecond("59"));
+        1:   74-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   74-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   74-block  2
+call    6 returned 1
+call    7 returned 1
+call    8 returned 1
+branch  9 taken 0 (fallthrough)
+branch 10 taken 1
+    %%%%%:   74-block  3
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:   74-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   74-block  5
+call   17 never executed
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:   74-block  6
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:   74-block  7
+call   24 never executed
+call   25 never executed
+call   26 never executed
+        1:   74-block  8
+call   27 returned 1
+    $$$$$:   74-block  9
+call   28 never executed
+    $$$$$:   74-block 10
+    $$$$$:   74-block 11
+    $$$$$:   74-block 12
+    $$$$$:   74-block 13
+call   29 never executed
+    $$$$$:   74-block 14
+call   30 never executed
+    $$$$$:   74-block 15
+    $$$$$:   74-block 16
+    $$$$$:   74-block 17
+call   31 never executed
+    $$$$$:   74-block 18
+    $$$$$:   74-block 19
+call   32 never executed
+       2*:   75:    EXPECT_FALSE(TimeValidator::isValidSecond("60"));
+        1:   75-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   75-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   75-block  2
+call    6 returned 1
+call    7 returned 1
+call    8 returned 1
+branch  9 taken 0 (fallthrough)
+branch 10 taken 1
+    %%%%%:   75-block  3
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:   75-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   75-block  5
+call   17 never executed
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:   75-block  6
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:   75-block  7
+call   24 never executed
+call   25 never executed
+call   26 never executed
+        1:   75-block  8
+call   27 returned 1
+    $$$$$:   75-block  9
+call   28 never executed
+    $$$$$:   75-block 10
+    $$$$$:   75-block 11
+    $$$$$:   75-block 12
+    $$$$$:   75-block 13
+call   29 never executed
+    $$$$$:   75-block 14
+call   30 never executed
+    $$$$$:   75-block 15
+    $$$$$:   75-block 16
+    $$$$$:   75-block 17
+call   31 never executed
+    $$$$$:   75-block 18
+    $$$$$:   75-block 19
+call   32 never executed
+       2*:   76:    EXPECT_FALSE(TimeValidator::isValidSecond("-1"));
+        1:   76-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   76-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   76-block  2
+call    6 returned 1
+call    7 returned 1
+call    8 returned 1
+branch  9 taken 0 (fallthrough)
+branch 10 taken 1
+    %%%%%:   76-block  3
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:   76-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   76-block  5
+call   17 never executed
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:   76-block  6
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:   76-block  7
+call   24 never executed
+call   25 never executed
+call   26 never executed
+        1:   76-block  8
+call   27 returned 1
+    $$$$$:   76-block  9
+call   28 never executed
+    $$$$$:   76-block 10
+    $$$$$:   76-block 11
+    $$$$$:   76-block 12
+    $$$$$:   76-block 13
+call   29 never executed
+    $$$$$:   76-block 14
+call   30 never executed
+    $$$$$:   76-block 15
+    $$$$$:   76-block 16
+    $$$$$:   76-block 17
+call   31 never executed
+    $$$$$:   76-block 18
+    $$$$$:   76-block 19
+call   32 never executed
+       2*:   77:    EXPECT_FALSE(TimeValidator::isValidSecond("abc"));
+        1:   77-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   77-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   77-block  2
+call    6 returned 1
+call    7 returned 1
+call    8 returned 1
+branch  9 taken 0 (fallthrough)
+branch 10 taken 1
+    %%%%%:   77-block  3
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:   77-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   77-block  5
+call   17 never executed
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:   77-block  6
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:   77-block  7
+call   24 never executed
+call   25 never executed
+call   26 never executed
+        1:   77-block  8
+call   27 returned 1
+    $$$$$:   77-block  9
+call   28 never executed
+    $$$$$:   77-block 10
+    $$$$$:   77-block 11
+    $$$$$:   77-block 12
+    $$$$$:   77-block 13
+call   29 never executed
+    $$$$$:   77-block 14
+call   30 never executed
+    $$$$$:   77-block 15
+    $$$$$:   77-block 16
+    $$$$$:   77-block 17
+call   31 never executed
+    $$$$$:   77-block 18
+    $$$$$:   77-block 19
+call   32 never executed
+        1:   78:}
+------------------
+        -:   79:
+        4:   80:TEST_F(ValidationTest, isValidSecondInt) {
+       1*:   81:    EXPECT_TRUE(TimeValidator::isValidSecond(0));
+       1*:   82:    EXPECT_TRUE(TimeValidator::isValidSecond(59));
+       1*:   83:    EXPECT_FALSE(TimeValidator::isValidSecond(60));
+       1*:   84:    EXPECT_FALSE(TimeValidator::isValidSecond(-1));
+        1:   85:}
+------------------
+_ZN36ValidationTest_isValidSecondInt_TestC1Ev:
+function _ZN36ValidationTest_isValidSecondInt_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   80:TEST_F(ValidationTest, isValidSecondInt) {
+        1:   80-block  0
+call    0 returned 1
+------------------
+_ZN36ValidationTest_isValidSecondInt_TestD0Ev:
+function _ZN36ValidationTest_isValidSecondInt_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   80:TEST_F(ValidationTest, isValidSecondInt) {
+        1:   80-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN36ValidationTest_isValidSecondInt_TestD1Ev:
+function _ZN36ValidationTest_isValidSecondInt_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   80:TEST_F(ValidationTest, isValidSecondInt) {
+        1:   80-block  0
+call    0 returned 1
+------------------
+_ZN36ValidationTest_isValidSecondInt_Test8TestBodyEv:
+function _ZN36ValidationTest_isValidSecondInt_Test8TestBodyEv called 1 returned 100% blocks executed 20%
+        1:   80:TEST_F(ValidationTest, isValidSecondInt) {
+       1*:   81:    EXPECT_TRUE(TimeValidator::isValidSecond(0));
+        1:   81-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   81-block  1
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   81-block  2
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   81-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   81-block  4
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   81-block  5
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   81-block  6
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:   81-block  7
+call   23 returned 1
+    $$$$$:   81-block  8
+    $$$$$:   81-block  9
+call   24 never executed
+    $$$$$:   81-block 10
+call   25 never executed
+    $$$$$:   81-block 11
+    $$$$$:   81-block 12
+    $$$$$:   81-block 13
+call   26 never executed
+    $$$$$:   81-block 14
+    $$$$$:   81-block 15
+call   27 never executed
+       1*:   82:    EXPECT_TRUE(TimeValidator::isValidSecond(59));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   82-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   82-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   82-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   82-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   82-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   82-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:   82-block  6
+call   23 returned 1
+    $$$$$:   82-block  7
+    $$$$$:   82-block  8
+call   24 never executed
+    $$$$$:   82-block  9
+call   25 never executed
+    $$$$$:   82-block 10
+    $$$$$:   82-block 11
+    $$$$$:   82-block 12
+call   26 never executed
+    $$$$$:   82-block 13
+    $$$$$:   82-block 14
+call   27 never executed
+       1*:   83:    EXPECT_FALSE(TimeValidator::isValidSecond(60));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   83-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   83-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   83-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   83-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   83-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   83-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:   83-block  6
+call   23 returned 1
+    $$$$$:   83-block  7
+    $$$$$:   83-block  8
+call   24 never executed
+    $$$$$:   83-block  9
+call   25 never executed
+    $$$$$:   83-block 10
+    $$$$$:   83-block 11
+    $$$$$:   83-block 12
+call   26 never executed
+    $$$$$:   83-block 13
+    $$$$$:   83-block 14
+call   27 never executed
+       1*:   84:    EXPECT_FALSE(TimeValidator::isValidSecond(-1));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   84-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   84-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   84-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   84-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   84-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   84-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:   84-block  6
+call   23 returned 1
+    $$$$$:   84-block  7
+    $$$$$:   84-block  8
+call   24 never executed
+    $$$$$:   84-block  9
+call   25 never executed
+    $$$$$:   84-block 10
+    $$$$$:   84-block 11
+    $$$$$:   84-block 12
+call   26 never executed
+    $$$$$:   84-block 13
+    $$$$$:   84-block 14
+call   27 never executed
+        1:   85:}
+------------------
+        -:   86:
+        4:   87:TEST_F(ValidationTest, isValidMonthString) {
+       2*:   88:    EXPECT_TRUE(TimeValidator::isValidMonth("1"));
+       2*:   89:    EXPECT_TRUE(TimeValidator::isValidMonth("12"));
+       2*:   90:    EXPECT_FALSE(TimeValidator::isValidMonth("0"));
+       2*:   91:    EXPECT_FALSE(TimeValidator::isValidMonth("13"));
+       2*:   92:    EXPECT_FALSE(TimeValidator::isValidMonth("abc"));
+        1:   93:}
+------------------
+_ZN38ValidationTest_isValidMonthString_TestC1Ev:
+function _ZN38ValidationTest_isValidMonthString_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   87:TEST_F(ValidationTest, isValidMonthString) {
+        1:   87-block  0
+call    0 returned 1
+------------------
+_ZN38ValidationTest_isValidMonthString_TestD0Ev:
+function _ZN38ValidationTest_isValidMonthString_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   87:TEST_F(ValidationTest, isValidMonthString) {
+        1:   87-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN38ValidationTest_isValidMonthString_TestD1Ev:
+function _ZN38ValidationTest_isValidMonthString_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   87:TEST_F(ValidationTest, isValidMonthString) {
+        1:   87-block  0
+call    0 returned 1
+------------------
+_ZN38ValidationTest_isValidMonthString_Test8TestBodyEv:
+function _ZN38ValidationTest_isValidMonthString_Test8TestBodyEv called 1 returned 100% blocks executed 27%
+        1:   87:TEST_F(ValidationTest, isValidMonthString) {
+        1:   87-block  0
+       2*:   88:    EXPECT_TRUE(TimeValidator::isValidMonth("1"));
+        1:   88-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   88-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   88-block  2
+call    6 returned 1
+call    7 returned 1
+call    8 returned 1
+branch  9 taken 0 (fallthrough)
+branch 10 taken 1
+    %%%%%:   88-block  3
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:   88-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   88-block  5
+call   17 never executed
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:   88-block  6
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:   88-block  7
+call   24 never executed
+call   25 never executed
+call   26 never executed
+        1:   88-block  8
+call   27 returned 1
+    $$$$$:   88-block  9
+call   28 never executed
+    $$$$$:   88-block 10
+    $$$$$:   88-block 11
+    $$$$$:   88-block 12
+    $$$$$:   88-block 13
+call   29 never executed
+    $$$$$:   88-block 14
+call   30 never executed
+    $$$$$:   88-block 15
+    $$$$$:   88-block 16
+    $$$$$:   88-block 17
+call   31 never executed
+    $$$$$:   88-block 18
+    $$$$$:   88-block 19
+call   32 never executed
+       2*:   89:    EXPECT_TRUE(TimeValidator::isValidMonth("12"));
+        1:   89-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   89-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   89-block  2
+call    6 returned 1
+call    7 returned 1
+call    8 returned 1
+branch  9 taken 0 (fallthrough)
+branch 10 taken 1
+    %%%%%:   89-block  3
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:   89-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   89-block  5
+call   17 never executed
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:   89-block  6
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:   89-block  7
+call   24 never executed
+call   25 never executed
+call   26 never executed
+        1:   89-block  8
+call   27 returned 1
+    $$$$$:   89-block  9
+call   28 never executed
+    $$$$$:   89-block 10
+    $$$$$:   89-block 11
+    $$$$$:   89-block 12
+    $$$$$:   89-block 13
+call   29 never executed
+    $$$$$:   89-block 14
+call   30 never executed
+    $$$$$:   89-block 15
+    $$$$$:   89-block 16
+    $$$$$:   89-block 17
+call   31 never executed
+    $$$$$:   89-block 18
+    $$$$$:   89-block 19
+call   32 never executed
+       2*:   90:    EXPECT_FALSE(TimeValidator::isValidMonth("0"));
+        1:   90-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   90-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   90-block  2
+call    6 returned 1
+call    7 returned 1
+call    8 returned 1
+branch  9 taken 0 (fallthrough)
+branch 10 taken 1
+    %%%%%:   90-block  3
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:   90-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   90-block  5
+call   17 never executed
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:   90-block  6
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:   90-block  7
+call   24 never executed
+call   25 never executed
+call   26 never executed
+        1:   90-block  8
+call   27 returned 1
+    $$$$$:   90-block  9
+call   28 never executed
+    $$$$$:   90-block 10
+    $$$$$:   90-block 11
+    $$$$$:   90-block 12
+    $$$$$:   90-block 13
+call   29 never executed
+    $$$$$:   90-block 14
+call   30 never executed
+    $$$$$:   90-block 15
+    $$$$$:   90-block 16
+    $$$$$:   90-block 17
+call   31 never executed
+    $$$$$:   90-block 18
+    $$$$$:   90-block 19
+call   32 never executed
+       2*:   91:    EXPECT_FALSE(TimeValidator::isValidMonth("13"));
+        1:   91-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   91-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   91-block  2
+call    6 returned 1
+call    7 returned 1
+call    8 returned 1
+branch  9 taken 0 (fallthrough)
+branch 10 taken 1
+    %%%%%:   91-block  3
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:   91-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   91-block  5
+call   17 never executed
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:   91-block  6
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:   91-block  7
+call   24 never executed
+call   25 never executed
+call   26 never executed
+        1:   91-block  8
+call   27 returned 1
+    $$$$$:   91-block  9
+call   28 never executed
+    $$$$$:   91-block 10
+    $$$$$:   91-block 11
+    $$$$$:   91-block 12
+    $$$$$:   91-block 13
+call   29 never executed
+    $$$$$:   91-block 14
+call   30 never executed
+    $$$$$:   91-block 15
+    $$$$$:   91-block 16
+    $$$$$:   91-block 17
+call   31 never executed
+    $$$$$:   91-block 18
+    $$$$$:   91-block 19
+call   32 never executed
+       2*:   92:    EXPECT_FALSE(TimeValidator::isValidMonth("abc"));
+        1:   92-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   92-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   92-block  2
+call    6 returned 1
+call    7 returned 1
+call    8 returned 1
+branch  9 taken 0 (fallthrough)
+branch 10 taken 1
+    %%%%%:   92-block  3
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:   92-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   92-block  5
+call   17 never executed
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:   92-block  6
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:   92-block  7
+call   24 never executed
+call   25 never executed
+call   26 never executed
+        1:   92-block  8
+call   27 returned 1
+    $$$$$:   92-block  9
+call   28 never executed
+    $$$$$:   92-block 10
+    $$$$$:   92-block 11
+    $$$$$:   92-block 12
+    $$$$$:   92-block 13
+call   29 never executed
+    $$$$$:   92-block 14
+call   30 never executed
+    $$$$$:   92-block 15
+    $$$$$:   92-block 16
+    $$$$$:   92-block 17
+call   31 never executed
+    $$$$$:   92-block 18
+    $$$$$:   92-block 19
+call   32 never executed
+        1:   93:}
+------------------
+        -:   94:
+        4:   95:TEST_F(ValidationTest, isValidMonthInt) {
+       1*:   96:    EXPECT_TRUE(TimeValidator::isValidMonth(1));
+       1*:   97:    EXPECT_TRUE(TimeValidator::isValidMonth(12));
+       1*:   98:    EXPECT_FALSE(TimeValidator::isValidMonth(0));
+       1*:   99:    EXPECT_FALSE(TimeValidator::isValidMonth(13));
+        1:  100:}
+------------------
+_ZN35ValidationTest_isValidMonthInt_TestC1Ev:
+function _ZN35ValidationTest_isValidMonthInt_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   95:TEST_F(ValidationTest, isValidMonthInt) {
+        1:   95-block  0
+call    0 returned 1
+------------------
+_ZN35ValidationTest_isValidMonthInt_TestD0Ev:
+function _ZN35ValidationTest_isValidMonthInt_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   95:TEST_F(ValidationTest, isValidMonthInt) {
+        1:   95-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN35ValidationTest_isValidMonthInt_TestD1Ev:
+function _ZN35ValidationTest_isValidMonthInt_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   95:TEST_F(ValidationTest, isValidMonthInt) {
+        1:   95-block  0
+call    0 returned 1
+------------------
+_ZN35ValidationTest_isValidMonthInt_Test8TestBodyEv:
+function _ZN35ValidationTest_isValidMonthInt_Test8TestBodyEv called 1 returned 100% blocks executed 20%
+        1:   95:TEST_F(ValidationTest, isValidMonthInt) {
+       1*:   96:    EXPECT_TRUE(TimeValidator::isValidMonth(1));
+        1:   96-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   96-block  1
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   96-block  2
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   96-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   96-block  4
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   96-block  5
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   96-block  6
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:   96-block  7
+call   23 returned 1
+    $$$$$:   96-block  8
+    $$$$$:   96-block  9
+call   24 never executed
+    $$$$$:   96-block 10
+call   25 never executed
+    $$$$$:   96-block 11
+    $$$$$:   96-block 12
+    $$$$$:   96-block 13
+call   26 never executed
+    $$$$$:   96-block 14
+    $$$$$:   96-block 15
+call   27 never executed
+       1*:   97:    EXPECT_TRUE(TimeValidator::isValidMonth(12));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   97-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   97-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   97-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   97-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   97-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   97-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:   97-block  6
+call   23 returned 1
+    $$$$$:   97-block  7
+    $$$$$:   97-block  8
+call   24 never executed
+    $$$$$:   97-block  9
+call   25 never executed
+    $$$$$:   97-block 10
+    $$$$$:   97-block 11
+    $$$$$:   97-block 12
+call   26 never executed
+    $$$$$:   97-block 13
+    $$$$$:   97-block 14
+call   27 never executed
+       1*:   98:    EXPECT_FALSE(TimeValidator::isValidMonth(0));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   98-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   98-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   98-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   98-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   98-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   98-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:   98-block  6
+call   23 returned 1
+    $$$$$:   98-block  7
+    $$$$$:   98-block  8
+call   24 never executed
+    $$$$$:   98-block  9
+call   25 never executed
+    $$$$$:   98-block 10
+    $$$$$:   98-block 11
+    $$$$$:   98-block 12
+call   26 never executed
+    $$$$$:   98-block 13
+    $$$$$:   98-block 14
+call   27 never executed
+       1*:   99:    EXPECT_FALSE(TimeValidator::isValidMonth(13));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   99-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   99-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   99-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   99-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   99-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   99-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:   99-block  6
+call   23 returned 1
+    $$$$$:   99-block  7
+    $$$$$:   99-block  8
+call   24 never executed
+    $$$$$:   99-block  9
+call   25 never executed
+    $$$$$:   99-block 10
+    $$$$$:   99-block 11
+    $$$$$:   99-block 12
+call   26 never executed
+    $$$$$:   99-block 13
+    $$$$$:   99-block 14
+call   27 never executed
+        1:  100:}
+------------------
+        -:  101:
+        4:  102:TEST_F(ValidationTest, isValidDayString) {
+       2*:  103:    EXPECT_TRUE(TimeValidator::isValidDay("15", 7, 2023));
+       2*:  104:    EXPECT_FALSE(TimeValidator::isValidDay("32", 7, 2023));
+       2*:  105:    EXPECT_FALSE(TimeValidator::isValidDay("29", 2, 2023));
+       2*:  106:    EXPECT_TRUE(TimeValidator::isValidDay("29", 2, 2024));
+       2*:  107:    EXPECT_FALSE(TimeValidator::isValidDay("abc", 1, 2023));
+        1:  108:}
+------------------
+_ZN36ValidationTest_isValidDayString_TestC1Ev:
+function _ZN36ValidationTest_isValidDayString_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  102:TEST_F(ValidationTest, isValidDayString) {
+        1:  102-block  0
+call    0 returned 1
+------------------
+_ZN36ValidationTest_isValidDayString_TestD0Ev:
+function _ZN36ValidationTest_isValidDayString_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  102:TEST_F(ValidationTest, isValidDayString) {
+        1:  102-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN36ValidationTest_isValidDayString_TestD1Ev:
+function _ZN36ValidationTest_isValidDayString_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  102:TEST_F(ValidationTest, isValidDayString) {
+        1:  102-block  0
+call    0 returned 1
+------------------
+_ZN36ValidationTest_isValidDayString_Test8TestBodyEv:
+function _ZN36ValidationTest_isValidDayString_Test8TestBodyEv called 1 returned 100% blocks executed 27%
+        1:  102:TEST_F(ValidationTest, isValidDayString) {
+        1:  102-block  0
+       2*:  103:    EXPECT_TRUE(TimeValidator::isValidDay("15", 7, 2023));
+        1:  103-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  103-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  103-block  2
+call    6 returned 1
+call    7 returned 1
+call    8 returned 1
+branch  9 taken 0 (fallthrough)
+branch 10 taken 1
+    %%%%%:  103-block  3
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:  103-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  103-block  5
+call   17 never executed
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:  103-block  6
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:  103-block  7
+call   24 never executed
+call   25 never executed
+call   26 never executed
+        1:  103-block  8
+call   27 returned 1
+    $$$$$:  103-block  9
+call   28 never executed
+    $$$$$:  103-block 10
+    $$$$$:  103-block 11
+    $$$$$:  103-block 12
+    $$$$$:  103-block 13
+call   29 never executed
+    $$$$$:  103-block 14
+call   30 never executed
+    $$$$$:  103-block 15
+    $$$$$:  103-block 16
+    $$$$$:  103-block 17
+call   31 never executed
+    $$$$$:  103-block 18
+    $$$$$:  103-block 19
+call   32 never executed
+       2*:  104:    EXPECT_FALSE(TimeValidator::isValidDay("32", 7, 2023));
+        1:  104-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  104-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  104-block  2
+call    6 returned 1
+call    7 returned 1
+call    8 returned 1
+branch  9 taken 0 (fallthrough)
+branch 10 taken 1
+    %%%%%:  104-block  3
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:  104-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  104-block  5
+call   17 never executed
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:  104-block  6
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:  104-block  7
+call   24 never executed
+call   25 never executed
+call   26 never executed
+        1:  104-block  8
+call   27 returned 1
+    $$$$$:  104-block  9
+call   28 never executed
+    $$$$$:  104-block 10
+    $$$$$:  104-block 11
+    $$$$$:  104-block 12
+    $$$$$:  104-block 13
+call   29 never executed
+    $$$$$:  104-block 14
+call   30 never executed
+    $$$$$:  104-block 15
+    $$$$$:  104-block 16
+    $$$$$:  104-block 17
+call   31 never executed
+    $$$$$:  104-block 18
+    $$$$$:  104-block 19
+call   32 never executed
+       2*:  105:    EXPECT_FALSE(TimeValidator::isValidDay("29", 2, 2023));
+        1:  105-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  105-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  105-block  2
+call    6 returned 1
+call    7 returned 1
+call    8 returned 1
+branch  9 taken 0 (fallthrough)
+branch 10 taken 1
+    %%%%%:  105-block  3
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:  105-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  105-block  5
+call   17 never executed
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:  105-block  6
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:  105-block  7
+call   24 never executed
+call   25 never executed
+call   26 never executed
+        1:  105-block  8
+call   27 returned 1
+    $$$$$:  105-block  9
+call   28 never executed
+    $$$$$:  105-block 10
+    $$$$$:  105-block 11
+    $$$$$:  105-block 12
+    $$$$$:  105-block 13
+call   29 never executed
+    $$$$$:  105-block 14
+call   30 never executed
+    $$$$$:  105-block 15
+    $$$$$:  105-block 16
+    $$$$$:  105-block 17
+call   31 never executed
+    $$$$$:  105-block 18
+    $$$$$:  105-block 19
+call   32 never executed
+       2*:  106:    EXPECT_TRUE(TimeValidator::isValidDay("29", 2, 2024));
+        1:  106-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  106-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  106-block  2
+call    6 returned 1
+call    7 returned 1
+call    8 returned 1
+branch  9 taken 0 (fallthrough)
+branch 10 taken 1
+    %%%%%:  106-block  3
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:  106-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  106-block  5
+call   17 never executed
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:  106-block  6
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:  106-block  7
+call   24 never executed
+call   25 never executed
+call   26 never executed
+        1:  106-block  8
+call   27 returned 1
+    $$$$$:  106-block  9
+call   28 never executed
+    $$$$$:  106-block 10
+    $$$$$:  106-block 11
+    $$$$$:  106-block 12
+    $$$$$:  106-block 13
+call   29 never executed
+    $$$$$:  106-block 14
+call   30 never executed
+    $$$$$:  106-block 15
+    $$$$$:  106-block 16
+    $$$$$:  106-block 17
+call   31 never executed
+    $$$$$:  106-block 18
+    $$$$$:  106-block 19
+call   32 never executed
+       2*:  107:    EXPECT_FALSE(TimeValidator::isValidDay("abc", 1, 2023));
+        1:  107-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  107-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  107-block  2
+call    6 returned 1
+call    7 returned 1
+call    8 returned 1
+branch  9 taken 0 (fallthrough)
+branch 10 taken 1
+    %%%%%:  107-block  3
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:  107-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  107-block  5
+call   17 never executed
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:  107-block  6
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:  107-block  7
+call   24 never executed
+call   25 never executed
+call   26 never executed
+        1:  107-block  8
+call   27 returned 1
+    $$$$$:  107-block  9
+call   28 never executed
+    $$$$$:  107-block 10
+    $$$$$:  107-block 11
+    $$$$$:  107-block 12
+    $$$$$:  107-block 13
+call   29 never executed
+    $$$$$:  107-block 14
+call   30 never executed
+    $$$$$:  107-block 15
+    $$$$$:  107-block 16
+    $$$$$:  107-block 17
+call   31 never executed
+    $$$$$:  107-block 18
+    $$$$$:  107-block 19
+call   32 never executed
+        1:  108:}
+------------------
+        -:  109:
+        4:  110:TEST_F(ValidationTest, isValidDayInt) {
+       1*:  111:    EXPECT_TRUE(TimeValidator::isValidDay(15, 7, 2023));
+       1*:  112:    EXPECT_FALSE(TimeValidator::isValidDay(32, 7, 2023));
+       1*:  113:    EXPECT_FALSE(TimeValidator::isValidDay(29, 2, 2023));
+       1*:  114:    EXPECT_TRUE(TimeValidator::isValidDay(29, 2, 2024));
+       1*:  115:    EXPECT_TRUE(TimeValidator::isValidDay(10, -1, 2023));
+       1*:  116:    EXPECT_FALSE(TimeValidator::isValidDay(0, 1, 2023));
+        1:  117:}
+------------------
+_ZN33ValidationTest_isValidDayInt_TestC1Ev:
+function _ZN33ValidationTest_isValidDayInt_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  110:TEST_F(ValidationTest, isValidDayInt) {
+        1:  110-block  0
+call    0 returned 1
+------------------
+_ZN33ValidationTest_isValidDayInt_TestD0Ev:
+function _ZN33ValidationTest_isValidDayInt_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  110:TEST_F(ValidationTest, isValidDayInt) {
+        1:  110-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN33ValidationTest_isValidDayInt_TestD1Ev:
+function _ZN33ValidationTest_isValidDayInt_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  110:TEST_F(ValidationTest, isValidDayInt) {
+        1:  110-block  0
+call    0 returned 1
+------------------
+_ZN33ValidationTest_isValidDayInt_Test8TestBodyEv:
+function _ZN33ValidationTest_isValidDayInt_Test8TestBodyEv called 1 returned 100% blocks executed 20%
+        1:  110:TEST_F(ValidationTest, isValidDayInt) {
+       1*:  111:    EXPECT_TRUE(TimeValidator::isValidDay(15, 7, 2023));
+        1:  111-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  111-block  1
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  111-block  2
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  111-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  111-block  4
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  111-block  5
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  111-block  6
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  111-block  7
+call   23 returned 1
+    $$$$$:  111-block  8
+    $$$$$:  111-block  9
+call   24 never executed
+    $$$$$:  111-block 10
+call   25 never executed
+    $$$$$:  111-block 11
+    $$$$$:  111-block 12
+    $$$$$:  111-block 13
+call   26 never executed
+    $$$$$:  111-block 14
+    $$$$$:  111-block 15
+call   27 never executed
+       1*:  112:    EXPECT_FALSE(TimeValidator::isValidDay(32, 7, 2023));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  112-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  112-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  112-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  112-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  112-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  112-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  112-block  6
+call   23 returned 1
+    $$$$$:  112-block  7
+    $$$$$:  112-block  8
+call   24 never executed
+    $$$$$:  112-block  9
+call   25 never executed
+    $$$$$:  112-block 10
+    $$$$$:  112-block 11
+    $$$$$:  112-block 12
+call   26 never executed
+    $$$$$:  112-block 13
+    $$$$$:  112-block 14
+call   27 never executed
+       1*:  113:    EXPECT_FALSE(TimeValidator::isValidDay(29, 2, 2023));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  113-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  113-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  113-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  113-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  113-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  113-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  113-block  6
+call   23 returned 1
+    $$$$$:  113-block  7
+    $$$$$:  113-block  8
+call   24 never executed
+    $$$$$:  113-block  9
+call   25 never executed
+    $$$$$:  113-block 10
+    $$$$$:  113-block 11
+    $$$$$:  113-block 12
+call   26 never executed
+    $$$$$:  113-block 13
+    $$$$$:  113-block 14
+call   27 never executed
+       1*:  114:    EXPECT_TRUE(TimeValidator::isValidDay(29, 2, 2024));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  114-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  114-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  114-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  114-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  114-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  114-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  114-block  6
+call   23 returned 1
+    $$$$$:  114-block  7
+    $$$$$:  114-block  8
+call   24 never executed
+    $$$$$:  114-block  9
+call   25 never executed
+    $$$$$:  114-block 10
+    $$$$$:  114-block 11
+    $$$$$:  114-block 12
+call   26 never executed
+    $$$$$:  114-block 13
+    $$$$$:  114-block 14
+call   27 never executed
+       1*:  115:    EXPECT_TRUE(TimeValidator::isValidDay(10, -1, 2023));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  115-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  115-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  115-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  115-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  115-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  115-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  115-block  6
+call   23 returned 1
+    $$$$$:  115-block  7
+    $$$$$:  115-block  8
+call   24 never executed
+    $$$$$:  115-block  9
+call   25 never executed
+    $$$$$:  115-block 10
+    $$$$$:  115-block 11
+    $$$$$:  115-block 12
+call   26 never executed
+    $$$$$:  115-block 13
+    $$$$$:  115-block 14
+call   27 never executed
+       1*:  116:    EXPECT_FALSE(TimeValidator::isValidDay(0, 1, 2023));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  116-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  116-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  116-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  116-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  116-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  116-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  116-block  6
+call   23 returned 1
+    $$$$$:  116-block  7
+    $$$$$:  116-block  8
+call   24 never executed
+    $$$$$:  116-block  9
+call   25 never executed
+    $$$$$:  116-block 10
+    $$$$$:  116-block 11
+    $$$$$:  116-block 12
+call   26 never executed
+    $$$$$:  116-block 13
+    $$$$$:  116-block 14
+call   27 never executed
+        1:  117:}
+------------------
+        -:  118:
+        4:  119:TEST_F(ValidationTest, isValidYearString) {
+        1:  120:    int currentYear = TimeValidator::getCurrentYear();
+       1*:  121:    EXPECT_TRUE(TimeValidator::isValidYear(std::to_string(currentYear)));
+       1*:  122:    EXPECT_TRUE(TimeValidator::isValidYear(std::to_string(currentYear + 50), 1900, 100));
+       1*:  123:    EXPECT_FALSE(TimeValidator::isValidYear(std::to_string(currentYear + 150)));
+       2*:  124:    EXPECT_FALSE(TimeValidator::isValidYear("abc"));
+        1:  125:}
+------------------
+_ZN37ValidationTest_isValidYearString_TestC1Ev:
+function _ZN37ValidationTest_isValidYearString_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  119:TEST_F(ValidationTest, isValidYearString) {
+        1:  119-block  0
+call    0 returned 1
+------------------
+_ZN37ValidationTest_isValidYearString_TestD0Ev:
+function _ZN37ValidationTest_isValidYearString_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  119:TEST_F(ValidationTest, isValidYearString) {
+        1:  119-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN37ValidationTest_isValidYearString_TestD1Ev:
+function _ZN37ValidationTest_isValidYearString_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  119:TEST_F(ValidationTest, isValidYearString) {
+        1:  119-block  0
+call    0 returned 1
+------------------
+_ZN37ValidationTest_isValidYearString_Test8TestBodyEv:
+function _ZN37ValidationTest_isValidYearString_Test8TestBodyEv called 1 returned 100% blocks executed 25%
+        1:  119:TEST_F(ValidationTest, isValidYearString) {
+        1:  120:    int currentYear = TimeValidator::getCurrentYear();
+        1:  120-block  0
+call    0 returned 1
+       1*:  121:    EXPECT_TRUE(TimeValidator::isValidYear(std::to_string(currentYear)));
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:  121-block  0
+call    4 returned 1
+call    5 returned 1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  121-block  1
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  121-block  2
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:  121-block  3
+call   15 never executed
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  121-block  4
+call   19 never executed
+branch 20 never executed (fallthrough)
+branch 21 never executed (throw)
+    %%%%%:  121-block  5
+call   22 never executed
+call   23 never executed
+call   24 never executed
+        1:  121-block  6
+call   25 returned 1
+    $$$$$:  121-block  7
+call   26 never executed
+    $$$$$:  121-block  8
+    $$$$$:  121-block  9
+    $$$$$:  121-block 10
+call   27 never executed
+    $$$$$:  121-block 11
+call   28 never executed
+    $$$$$:  121-block 12
+    $$$$$:  121-block 13
+    $$$$$:  121-block 14
+call   29 never executed
+    $$$$$:  121-block 15
+    $$$$$:  121-block 16
+call   30 never executed
+       1*:  122:    EXPECT_TRUE(TimeValidator::isValidYear(std::to_string(currentYear + 50), 1900, 100));
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:  122-block  0
+call    4 returned 1
+call    5 returned 1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  122-block  1
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  122-block  2
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:  122-block  3
+call   15 never executed
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  122-block  4
+call   19 never executed
+branch 20 never executed (fallthrough)
+branch 21 never executed (throw)
+    %%%%%:  122-block  5
+call   22 never executed
+call   23 never executed
+call   24 never executed
+        1:  122-block  6
+call   25 returned 1
+    $$$$$:  122-block  7
+call   26 never executed
+    $$$$$:  122-block  8
+    $$$$$:  122-block  9
+    $$$$$:  122-block 10
+call   27 never executed
+    $$$$$:  122-block 11
+call   28 never executed
+    $$$$$:  122-block 12
+    $$$$$:  122-block 13
+    $$$$$:  122-block 14
+call   29 never executed
+    $$$$$:  122-block 15
+    $$$$$:  122-block 16
+call   30 never executed
+       1*:  123:    EXPECT_FALSE(TimeValidator::isValidYear(std::to_string(currentYear + 150)));
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:  123-block  0
+call    4 returned 1
+call    5 returned 1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  123-block  1
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  123-block  2
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:  123-block  3
+call   15 never executed
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  123-block  4
+call   19 never executed
+branch 20 never executed (fallthrough)
+branch 21 never executed (throw)
+    %%%%%:  123-block  5
+call   22 never executed
+call   23 never executed
+call   24 never executed
+        1:  123-block  6
+call   25 returned 1
+    $$$$$:  123-block  7
+call   26 never executed
+    $$$$$:  123-block  8
+    $$$$$:  123-block  9
+    $$$$$:  123-block 10
+call   27 never executed
+    $$$$$:  123-block 11
+call   28 never executed
+    $$$$$:  123-block 12
+    $$$$$:  123-block 13
+    $$$$$:  123-block 14
+call   29 never executed
+    $$$$$:  123-block 15
+    $$$$$:  123-block 16
+call   30 never executed
+       2*:  124:    EXPECT_FALSE(TimeValidator::isValidYear("abc"));
+        1:  124-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  124-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  124-block  2
+call    6 returned 1
+call    7 returned 1
+call    8 returned 1
+branch  9 taken 0 (fallthrough)
+branch 10 taken 1
+    %%%%%:  124-block  3
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:  124-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  124-block  5
+call   17 never executed
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:  124-block  6
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:  124-block  7
+call   24 never executed
+call   25 never executed
+call   26 never executed
+        1:  124-block  8
+call   27 returned 1
+    $$$$$:  124-block  9
+call   28 never executed
+    $$$$$:  124-block 10
+    $$$$$:  124-block 11
+    $$$$$:  124-block 12
+    $$$$$:  124-block 13
+call   29 never executed
+    $$$$$:  124-block 14
+call   30 never executed
+    $$$$$:  124-block 15
+    $$$$$:  124-block 16
+    $$$$$:  124-block 17
+call   31 never executed
+    $$$$$:  124-block 18
+    $$$$$:  124-block 19
+call   32 never executed
+        1:  125:}
+------------------
+        -:  126:
+        4:  127:TEST_F(ValidationTest, isValidYearInt) {
+        1:  128:    int currentYear = TimeValidator::getCurrentYear();
+       1*:  129:    EXPECT_TRUE(TimeValidator::isValidYear(currentYear));
+       1*:  130:    EXPECT_FALSE(TimeValidator::isValidYear(currentYear + 50));
+       1*:  131:    EXPECT_FALSE(TimeValidator::isValidYear(currentYear + 150));
+       1*:  132:    EXPECT_FALSE(TimeValidator::isValidYear(1899));
+        1:  133:}
+------------------
+_ZN34ValidationTest_isValidYearInt_TestC1Ev:
+function _ZN34ValidationTest_isValidYearInt_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  127:TEST_F(ValidationTest, isValidYearInt) {
+        1:  127-block  0
+call    0 returned 1
+------------------
+_ZN34ValidationTest_isValidYearInt_TestD0Ev:
+function _ZN34ValidationTest_isValidYearInt_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  127:TEST_F(ValidationTest, isValidYearInt) {
+        1:  127-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN34ValidationTest_isValidYearInt_TestD1Ev:
+function _ZN34ValidationTest_isValidYearInt_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  127:TEST_F(ValidationTest, isValidYearInt) {
+        1:  127-block  0
+call    0 returned 1
+------------------
+_ZN34ValidationTest_isValidYearInt_Test8TestBodyEv:
+function _ZN34ValidationTest_isValidYearInt_Test8TestBodyEv called 1 returned 100% blocks executed 21%
+        1:  127:TEST_F(ValidationTest, isValidYearInt) {
+        1:  128:    int currentYear = TimeValidator::getCurrentYear();
+        1:  128-block  0
+call    0 returned 1
+       1*:  129:    EXPECT_TRUE(TimeValidator::isValidYear(currentYear));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  129-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  129-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  129-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  129-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  129-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  129-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  129-block  6
+call   23 returned 1
+    $$$$$:  129-block  7
+    $$$$$:  129-block  8
+call   24 never executed
+    $$$$$:  129-block  9
+call   25 never executed
+    $$$$$:  129-block 10
+    $$$$$:  129-block 11
+    $$$$$:  129-block 12
+call   26 never executed
+    $$$$$:  129-block 13
+    $$$$$:  129-block 14
+call   27 never executed
+       1*:  130:    EXPECT_FALSE(TimeValidator::isValidYear(currentYear + 50));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  130-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  130-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  130-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  130-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  130-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  130-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  130-block  6
+call   23 returned 1
+    $$$$$:  130-block  7
+    $$$$$:  130-block  8
+call   24 never executed
+    $$$$$:  130-block  9
+call   25 never executed
+    $$$$$:  130-block 10
+    $$$$$:  130-block 11
+    $$$$$:  130-block 12
+call   26 never executed
+    $$$$$:  130-block 13
+    $$$$$:  130-block 14
+call   27 never executed
+       1*:  131:    EXPECT_FALSE(TimeValidator::isValidYear(currentYear + 150));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  131-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  131-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  131-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  131-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  131-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  131-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  131-block  6
+call   23 returned 1
+    $$$$$:  131-block  7
+    $$$$$:  131-block  8
+call   24 never executed
+    $$$$$:  131-block  9
+call   25 never executed
+    $$$$$:  131-block 10
+    $$$$$:  131-block 11
+    $$$$$:  131-block 12
+call   26 never executed
+    $$$$$:  131-block 13
+    $$$$$:  131-block 14
+call   27 never executed
+       1*:  132:    EXPECT_FALSE(TimeValidator::isValidYear(1899));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  132-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  132-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  132-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  132-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  132-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  132-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  132-block  6
+call   23 returned 1
+    $$$$$:  132-block  7
+    $$$$$:  132-block  8
+call   24 never executed
+    $$$$$:  132-block  9
+call   25 never executed
+    $$$$$:  132-block 10
+    $$$$$:  132-block 11
+    $$$$$:  132-block 12
+call   26 never executed
+    $$$$$:  132-block 13
+    $$$$$:  132-block 14
+call   27 never executed
+        1:  133:}
+------------------
+        -:  134:
+        4:  135:TEST_F(ValidationTest, isValidTimeWithSecond) {
+       1*:  136:    EXPECT_TRUE(TimeValidator::isValidTime(12, 30, 45));
+       1*:  137:    EXPECT_FALSE(TimeValidator::isValidTime(25, 30, 45));
+       1*:  138:    EXPECT_FALSE(TimeValidator::isValidTime(12, 60, 45));
+       1*:  139:    EXPECT_FALSE(TimeValidator::isValidTime(12, 30, 60));
+        1:  140:}
+------------------
+_ZN41ValidationTest_isValidTimeWithSecond_TestC1Ev:
+function _ZN41ValidationTest_isValidTimeWithSecond_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  135:TEST_F(ValidationTest, isValidTimeWithSecond) {
+        1:  135-block  0
+call    0 returned 1
+------------------
+_ZN41ValidationTest_isValidTimeWithSecond_TestD0Ev:
+function _ZN41ValidationTest_isValidTimeWithSecond_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  135:TEST_F(ValidationTest, isValidTimeWithSecond) {
+        1:  135-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN41ValidationTest_isValidTimeWithSecond_TestD1Ev:
+function _ZN41ValidationTest_isValidTimeWithSecond_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  135:TEST_F(ValidationTest, isValidTimeWithSecond) {
+        1:  135-block  0
+call    0 returned 1
+------------------
+_ZN41ValidationTest_isValidTimeWithSecond_Test8TestBodyEv:
+function _ZN41ValidationTest_isValidTimeWithSecond_Test8TestBodyEv called 1 returned 100% blocks executed 20%
+        1:  135:TEST_F(ValidationTest, isValidTimeWithSecond) {
+       1*:  136:    EXPECT_TRUE(TimeValidator::isValidTime(12, 30, 45));
+        1:  136-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  136-block  1
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  136-block  2
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  136-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  136-block  4
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  136-block  5
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  136-block  6
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  136-block  7
+call   23 returned 1
+    $$$$$:  136-block  8
+    $$$$$:  136-block  9
+call   24 never executed
+    $$$$$:  136-block 10
+call   25 never executed
+    $$$$$:  136-block 11
+    $$$$$:  136-block 12
+    $$$$$:  136-block 13
+call   26 never executed
+    $$$$$:  136-block 14
+    $$$$$:  136-block 15
+call   27 never executed
+       1*:  137:    EXPECT_FALSE(TimeValidator::isValidTime(25, 30, 45));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  137-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  137-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  137-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  137-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  137-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  137-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  137-block  6
+call   23 returned 1
+    $$$$$:  137-block  7
+    $$$$$:  137-block  8
+call   24 never executed
+    $$$$$:  137-block  9
+call   25 never executed
+    $$$$$:  137-block 10
+    $$$$$:  137-block 11
+    $$$$$:  137-block 12
+call   26 never executed
+    $$$$$:  137-block 13
+    $$$$$:  137-block 14
+call   27 never executed
+       1*:  138:    EXPECT_FALSE(TimeValidator::isValidTime(12, 60, 45));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  138-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  138-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  138-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  138-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  138-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  138-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  138-block  6
+call   23 returned 1
+    $$$$$:  138-block  7
+    $$$$$:  138-block  8
+call   24 never executed
+    $$$$$:  138-block  9
+call   25 never executed
+    $$$$$:  138-block 10
+    $$$$$:  138-block 11
+    $$$$$:  138-block 12
+call   26 never executed
+    $$$$$:  138-block 13
+    $$$$$:  138-block 14
+call   27 never executed
+       1*:  139:    EXPECT_FALSE(TimeValidator::isValidTime(12, 30, 60));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  139-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  139-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  139-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  139-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  139-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  139-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  139-block  6
+call   23 returned 1
+    $$$$$:  139-block  7
+    $$$$$:  139-block  8
+call   24 never executed
+    $$$$$:  139-block  9
+call   25 never executed
+    $$$$$:  139-block 10
+    $$$$$:  139-block 11
+    $$$$$:  139-block 12
+call   26 never executed
+    $$$$$:  139-block 13
+    $$$$$:  139-block 14
+call   27 never executed
+        1:  140:}
+------------------
+        -:  141:
+        4:  142:TEST_F(ValidationTest, isValidTimeWithoutSecond) {
+       1*:  143:    EXPECT_TRUE(TimeValidator::isValidTime(12, 30));
+       1*:  144:    EXPECT_FALSE(TimeValidator::isValidTime(25, 30));
+       1*:  145:    EXPECT_FALSE(TimeValidator::isValidTime(12, 60));
+        1:  146:}
+------------------
+_ZN44ValidationTest_isValidTimeWithoutSecond_TestC1Ev:
+function _ZN44ValidationTest_isValidTimeWithoutSecond_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  142:TEST_F(ValidationTest, isValidTimeWithoutSecond) {
+        1:  142-block  0
+call    0 returned 1
+------------------
+_ZN44ValidationTest_isValidTimeWithoutSecond_TestD0Ev:
+function _ZN44ValidationTest_isValidTimeWithoutSecond_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  142:TEST_F(ValidationTest, isValidTimeWithoutSecond) {
+        1:  142-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN44ValidationTest_isValidTimeWithoutSecond_TestD1Ev:
+function _ZN44ValidationTest_isValidTimeWithoutSecond_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  142:TEST_F(ValidationTest, isValidTimeWithoutSecond) {
+        1:  142-block  0
+call    0 returned 1
+------------------
+_ZN44ValidationTest_isValidTimeWithoutSecond_Test8TestBodyEv:
+function _ZN44ValidationTest_isValidTimeWithoutSecond_Test8TestBodyEv called 1 returned 100% blocks executed 21%
+        1:  142:TEST_F(ValidationTest, isValidTimeWithoutSecond) {
+       1*:  143:    EXPECT_TRUE(TimeValidator::isValidTime(12, 30));
+        1:  143-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  143-block  1
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  143-block  2
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  143-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  143-block  4
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  143-block  5
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  143-block  6
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  143-block  7
+call   23 returned 1
+    $$$$$:  143-block  8
+    $$$$$:  143-block  9
+call   24 never executed
+    $$$$$:  143-block 10
+call   25 never executed
+    $$$$$:  143-block 11
+    $$$$$:  143-block 12
+    $$$$$:  143-block 13
+call   26 never executed
+    $$$$$:  143-block 14
+    $$$$$:  143-block 15
+call   27 never executed
+       1*:  144:    EXPECT_FALSE(TimeValidator::isValidTime(25, 30));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  144-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  144-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  144-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  144-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  144-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  144-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  144-block  6
+call   23 returned 1
+    $$$$$:  144-block  7
+    $$$$$:  144-block  8
+call   24 never executed
+    $$$$$:  144-block  9
+call   25 never executed
+    $$$$$:  144-block 10
+    $$$$$:  144-block 11
+    $$$$$:  144-block 12
+call   26 never executed
+    $$$$$:  144-block 13
+    $$$$$:  144-block 14
+call   27 never executed
+       1*:  145:    EXPECT_FALSE(TimeValidator::isValidTime(12, 60));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  145-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  145-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  145-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  145-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  145-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  145-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  145-block  6
+call   23 returned 1
+    $$$$$:  145-block  7
+    $$$$$:  145-block  8
+call   24 never executed
+    $$$$$:  145-block  9
+call   25 never executed
+    $$$$$:  145-block 10
+    $$$$$:  145-block 11
+    $$$$$:  145-block 12
+call   26 never executed
+    $$$$$:  145-block 13
+    $$$$$:  145-block 14
+call   27 never executed
+        1:  146:}
+------------------
+        -:  147:
+        4:  148:TEST_F(ValidationTest, isValidDate) {
+       1*:  149:    EXPECT_TRUE(TimeValidator::isValidDate(15, 7, 2023));
+       1*:  150:    EXPECT_FALSE(TimeValidator::isValidDate(29, 2, 2023));
+       1*:  151:    EXPECT_TRUE(TimeValidator::isValidDate(29, 2, 2024));
+       1*:  152:    EXPECT_FALSE(TimeValidator::isValidDate(32, 7, 2023));
+       1*:  153:    EXPECT_FALSE(TimeValidator::isValidDate(15, 13, 2023));
+        1:  154:}
+------------------
+_ZN31ValidationTest_isValidDate_TestC1Ev:
+function _ZN31ValidationTest_isValidDate_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  148:TEST_F(ValidationTest, isValidDate) {
+        1:  148-block  0
+call    0 returned 1
+------------------
+_ZN31ValidationTest_isValidDate_TestD0Ev:
+function _ZN31ValidationTest_isValidDate_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  148:TEST_F(ValidationTest, isValidDate) {
+        1:  148-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN31ValidationTest_isValidDate_TestD1Ev:
+function _ZN31ValidationTest_isValidDate_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  148:TEST_F(ValidationTest, isValidDate) {
+        1:  148-block  0
+call    0 returned 1
+------------------
+_ZN31ValidationTest_isValidDate_Test8TestBodyEv:
+function _ZN31ValidationTest_isValidDate_Test8TestBodyEv called 1 returned 100% blocks executed 20%
+        1:  148:TEST_F(ValidationTest, isValidDate) {
+       1*:  149:    EXPECT_TRUE(TimeValidator::isValidDate(15, 7, 2023));
+        1:  149-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  149-block  1
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  149-block  2
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  149-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  149-block  4
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  149-block  5
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  149-block  6
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  149-block  7
+call   23 returned 1
+    $$$$$:  149-block  8
+    $$$$$:  149-block  9
+call   24 never executed
+    $$$$$:  149-block 10
+call   25 never executed
+    $$$$$:  149-block 11
+    $$$$$:  149-block 12
+    $$$$$:  149-block 13
+call   26 never executed
+    $$$$$:  149-block 14
+    $$$$$:  149-block 15
+call   27 never executed
+       1*:  150:    EXPECT_FALSE(TimeValidator::isValidDate(29, 2, 2023));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  150-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  150-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  150-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  150-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  150-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  150-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  150-block  6
+call   23 returned 1
+    $$$$$:  150-block  7
+    $$$$$:  150-block  8
+call   24 never executed
+    $$$$$:  150-block  9
+call   25 never executed
+    $$$$$:  150-block 10
+    $$$$$:  150-block 11
+    $$$$$:  150-block 12
+call   26 never executed
+    $$$$$:  150-block 13
+    $$$$$:  150-block 14
+call   27 never executed
+       1*:  151:    EXPECT_TRUE(TimeValidator::isValidDate(29, 2, 2024));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  151-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  151-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  151-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  151-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  151-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  151-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  151-block  6
+call   23 returned 1
+    $$$$$:  151-block  7
+    $$$$$:  151-block  8
+call   24 never executed
+    $$$$$:  151-block  9
+call   25 never executed
+    $$$$$:  151-block 10
+    $$$$$:  151-block 11
+    $$$$$:  151-block 12
+call   26 never executed
+    $$$$$:  151-block 13
+    $$$$$:  151-block 14
+call   27 never executed
+       1*:  152:    EXPECT_FALSE(TimeValidator::isValidDate(32, 7, 2023));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  152-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  152-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  152-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  152-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  152-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  152-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  152-block  6
+call   23 returned 1
+    $$$$$:  152-block  7
+    $$$$$:  152-block  8
+call   24 never executed
+    $$$$$:  152-block  9
+call   25 never executed
+    $$$$$:  152-block 10
+    $$$$$:  152-block 11
+    $$$$$:  152-block 12
+call   26 never executed
+    $$$$$:  152-block 13
+    $$$$$:  152-block 14
+call   27 never executed
+       1*:  153:    EXPECT_FALSE(TimeValidator::isValidDate(15, 13, 2023));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  153-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  153-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  153-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  153-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  153-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  153-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  153-block  6
+call   23 returned 1
+    $$$$$:  153-block  7
+    $$$$$:  153-block  8
+call   24 never executed
+    $$$$$:  153-block  9
+call   25 never executed
+    $$$$$:  153-block 10
+    $$$$$:  153-block 11
+    $$$$$:  153-block 12
+call   26 never executed
+    $$$$$:  153-block 13
+    $$$$$:  153-block 14
+call   27 never executed
+        1:  154:}
+------------------
+        -:  155:
+        4:  156:TEST_F(ValidationTest, isValidDateTime) {
+       1*:  157:    EXPECT_TRUE(TimeValidator::isValidDateTime(15, 7, 2023, 12, 30, 45));
+       1*:  158:    EXPECT_FALSE(TimeValidator::isValidDateTime(29, 2, 2023, 12, 30, 45));
+       1*:  159:    EXPECT_FALSE(TimeValidator::isValidDateTime(15, 7, 2023, 25, 30, 45));
+        1:  160:}
+------------------
+_ZN35ValidationTest_isValidDateTime_TestC1Ev:
+function _ZN35ValidationTest_isValidDateTime_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  156:TEST_F(ValidationTest, isValidDateTime) {
+        1:  156-block  0
+call    0 returned 1
+------------------
+_ZN35ValidationTest_isValidDateTime_TestD0Ev:
+function _ZN35ValidationTest_isValidDateTime_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  156:TEST_F(ValidationTest, isValidDateTime) {
+        1:  156-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN35ValidationTest_isValidDateTime_TestD1Ev:
+function _ZN35ValidationTest_isValidDateTime_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  156:TEST_F(ValidationTest, isValidDateTime) {
+        1:  156-block  0
+call    0 returned 1
+------------------
+_ZN35ValidationTest_isValidDateTime_Test8TestBodyEv:
+function _ZN35ValidationTest_isValidDateTime_Test8TestBodyEv called 1 returned 100% blocks executed 21%
+        1:  156:TEST_F(ValidationTest, isValidDateTime) {
+       1*:  157:    EXPECT_TRUE(TimeValidator::isValidDateTime(15, 7, 2023, 12, 30, 45));
+        1:  157-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  157-block  1
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  157-block  2
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  157-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  157-block  4
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  157-block  5
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  157-block  6
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  157-block  7
+call   23 returned 1
+    $$$$$:  157-block  8
+    $$$$$:  157-block  9
+call   24 never executed
+    $$$$$:  157-block 10
+call   25 never executed
+    $$$$$:  157-block 11
+    $$$$$:  157-block 12
+    $$$$$:  157-block 13
+call   26 never executed
+    $$$$$:  157-block 14
+    $$$$$:  157-block 15
+call   27 never executed
+       1*:  158:    EXPECT_FALSE(TimeValidator::isValidDateTime(29, 2, 2023, 12, 30, 45));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  158-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  158-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  158-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  158-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  158-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  158-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  158-block  6
+call   23 returned 1
+    $$$$$:  158-block  7
+    $$$$$:  158-block  8
+call   24 never executed
+    $$$$$:  158-block  9
+call   25 never executed
+    $$$$$:  158-block 10
+    $$$$$:  158-block 11
+    $$$$$:  158-block 12
+call   26 never executed
+    $$$$$:  158-block 13
+    $$$$$:  158-block 14
+call   27 never executed
+       1*:  159:    EXPECT_FALSE(TimeValidator::isValidDateTime(15, 7, 2023, 25, 30, 45));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  159-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  159-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  159-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  159-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  159-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  159-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  159-block  6
+call   23 returned 1
+    $$$$$:  159-block  7
+    $$$$$:  159-block  8
+call   24 never executed
+    $$$$$:  159-block  9
+call   25 never executed
+    $$$$$:  159-block 10
+    $$$$$:  159-block 11
+    $$$$$:  159-block 12
+call   26 never executed
+    $$$$$:  159-block 13
+    $$$$$:  159-block 14
+call   27 never executed
+        1:  160:}
+------------------
+        -:  161:
+        4:  162:TEST_F(ValidationTest, isValidCharacter) {
+       1*:  163:    EXPECT_TRUE(StringValidator::isValidCharacter('A'));
+       1*:  164:    EXPECT_TRUE(StringValidator::isValidCharacter('z'));
+       1*:  165:    EXPECT_TRUE(StringValidator::isValidCharacter('5'));
+       1*:  166:    EXPECT_TRUE(StringValidator::isValidCharacter('-'));
+       1*:  167:    EXPECT_TRUE(StringValidator::isValidCharacter('\''));
+       1*:  168:    EXPECT_TRUE(StringValidator::isValidCharacter(' '));
+       1*:  169:    EXPECT_TRUE(StringValidator::isValidCharacter('.'));
+       1*:  170:    EXPECT_FALSE(StringValidator::isValidCharacter('!'));
+       1*:  171:    EXPECT_FALSE(StringValidator::isValidCharacter('@'));
+        1:  172:}
+------------------
+_ZN36ValidationTest_isValidCharacter_TestC1Ev:
+function _ZN36ValidationTest_isValidCharacter_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  162:TEST_F(ValidationTest, isValidCharacter) {
+        1:  162-block  0
+call    0 returned 1
+------------------
+_ZN36ValidationTest_isValidCharacter_TestD0Ev:
+function _ZN36ValidationTest_isValidCharacter_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  162:TEST_F(ValidationTest, isValidCharacter) {
+        1:  162-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN36ValidationTest_isValidCharacter_TestD1Ev:
+function _ZN36ValidationTest_isValidCharacter_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  162:TEST_F(ValidationTest, isValidCharacter) {
+        1:  162-block  0
+call    0 returned 1
+------------------
+_ZN36ValidationTest_isValidCharacter_Test8TestBodyEv:
+function _ZN36ValidationTest_isValidCharacter_Test8TestBodyEv called 1 returned 100% blocks executed 19%
+        1:  162:TEST_F(ValidationTest, isValidCharacter) {
+       1*:  163:    EXPECT_TRUE(StringValidator::isValidCharacter('A'));
+        1:  163-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  163-block  1
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  163-block  2
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  163-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  163-block  4
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  163-block  5
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  163-block  6
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  163-block  7
+call   23 returned 1
+    $$$$$:  163-block  8
+    $$$$$:  163-block  9
+call   24 never executed
+    $$$$$:  163-block 10
+call   25 never executed
+    $$$$$:  163-block 11
+    $$$$$:  163-block 12
+    $$$$$:  163-block 13
+call   26 never executed
+    $$$$$:  163-block 14
+    $$$$$:  163-block 15
+call   27 never executed
+       1*:  164:    EXPECT_TRUE(StringValidator::isValidCharacter('z'));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  164-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  164-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  164-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  164-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  164-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  164-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  164-block  6
+call   23 returned 1
+    $$$$$:  164-block  7
+    $$$$$:  164-block  8
+call   24 never executed
+    $$$$$:  164-block  9
+call   25 never executed
+    $$$$$:  164-block 10
+    $$$$$:  164-block 11
+    $$$$$:  164-block 12
+call   26 never executed
+    $$$$$:  164-block 13
+    $$$$$:  164-block 14
+call   27 never executed
+       1*:  165:    EXPECT_TRUE(StringValidator::isValidCharacter('5'));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  165-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  165-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  165-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  165-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  165-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  165-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  165-block  6
+call   23 returned 1
+    $$$$$:  165-block  7
+    $$$$$:  165-block  8
+call   24 never executed
+    $$$$$:  165-block  9
+call   25 never executed
+    $$$$$:  165-block 10
+    $$$$$:  165-block 11
+    $$$$$:  165-block 12
+call   26 never executed
+    $$$$$:  165-block 13
+    $$$$$:  165-block 14
+call   27 never executed
+       1*:  166:    EXPECT_TRUE(StringValidator::isValidCharacter('-'));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  166-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  166-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  166-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  166-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  166-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  166-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  166-block  6
+call   23 returned 1
+    $$$$$:  166-block  7
+    $$$$$:  166-block  8
+call   24 never executed
+    $$$$$:  166-block  9
+call   25 never executed
+    $$$$$:  166-block 10
+    $$$$$:  166-block 11
+    $$$$$:  166-block 12
+call   26 never executed
+    $$$$$:  166-block 13
+    $$$$$:  166-block 14
+call   27 never executed
+       1*:  167:    EXPECT_TRUE(StringValidator::isValidCharacter('\''));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  167-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  167-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  167-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  167-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  167-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  167-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  167-block  6
+call   23 returned 1
+    $$$$$:  167-block  7
+    $$$$$:  167-block  8
+call   24 never executed
+    $$$$$:  167-block  9
+call   25 never executed
+    $$$$$:  167-block 10
+    $$$$$:  167-block 11
+    $$$$$:  167-block 12
+call   26 never executed
+    $$$$$:  167-block 13
+    $$$$$:  167-block 14
+call   27 never executed
+       1*:  168:    EXPECT_TRUE(StringValidator::isValidCharacter(' '));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  168-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  168-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  168-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  168-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  168-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  168-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  168-block  6
+call   23 returned 1
+    $$$$$:  168-block  7
+    $$$$$:  168-block  8
+call   24 never executed
+    $$$$$:  168-block  9
+call   25 never executed
+    $$$$$:  168-block 10
+    $$$$$:  168-block 11
+    $$$$$:  168-block 12
+call   26 never executed
+    $$$$$:  168-block 13
+    $$$$$:  168-block 14
+call   27 never executed
+       1*:  169:    EXPECT_TRUE(StringValidator::isValidCharacter('.'));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  169-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  169-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  169-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  169-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  169-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  169-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  169-block  6
+call   23 returned 1
+    $$$$$:  169-block  7
+    $$$$$:  169-block  8
+call   24 never executed
+    $$$$$:  169-block  9
+call   25 never executed
+    $$$$$:  169-block 10
+    $$$$$:  169-block 11
+    $$$$$:  169-block 12
+call   26 never executed
+    $$$$$:  169-block 13
+    $$$$$:  169-block 14
+call   27 never executed
+       1*:  170:    EXPECT_FALSE(StringValidator::isValidCharacter('!'));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  170-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  170-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  170-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  170-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  170-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  170-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  170-block  6
+call   23 returned 1
+    $$$$$:  170-block  7
+    $$$$$:  170-block  8
+call   24 never executed
+    $$$$$:  170-block  9
+call   25 never executed
+    $$$$$:  170-block 10
+    $$$$$:  170-block 11
+    $$$$$:  170-block 12
+call   26 never executed
+    $$$$$:  170-block 13
+    $$$$$:  170-block 14
+call   27 never executed
+       1*:  171:    EXPECT_FALSE(StringValidator::isValidCharacter('@'));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  171-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  171-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  171-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  171-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  171-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  171-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  171-block  6
+call   23 returned 1
+    $$$$$:  171-block  7
+    $$$$$:  171-block  8
+call   24 never executed
+    $$$$$:  171-block  9
+call   25 never executed
+    $$$$$:  171-block 10
+    $$$$$:  171-block 11
+    $$$$$:  171-block 12
+call   26 never executed
+    $$$$$:  171-block 13
+    $$$$$:  171-block 14
+call   27 never executed
+        1:  172:}
+------------------
+        -:  173:
+        4:  174:TEST_F(ValidationTest, validate) {
+       2*:  175:    EXPECT_TRUE(StringValidator::validate("Hello World"));
+       2*:  176:    EXPECT_TRUE(StringValidator::validate("Test-Case"));
+       2*:  177:    EXPECT_TRUE(StringValidator::validate("O'Neill"));
+       2*:  178:    EXPECT_TRUE(StringValidator::validate("Dr. Smith"));
+       2*:  179:    EXPECT_TRUE(StringValidator::validate("123 ABC"));
+       2*:  180:    EXPECT_FALSE(StringValidator::validate(""));
+       2*:  181:    EXPECT_FALSE(StringValidator::validate("Hello!"));
+       2*:  182:    EXPECT_FALSE(StringValidator::validate("Test@Case"));
+        1:  183:}
+------------------
+_ZN28ValidationTest_validate_TestC1Ev:
+function _ZN28ValidationTest_validate_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  174:TEST_F(ValidationTest, validate) {
+        1:  174-block  0
+call    0 returned 1
+------------------
+_ZN28ValidationTest_validate_TestD0Ev:
+function _ZN28ValidationTest_validate_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  174:TEST_F(ValidationTest, validate) {
+        1:  174-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN28ValidationTest_validate_TestD1Ev:
+function _ZN28ValidationTest_validate_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  174:TEST_F(ValidationTest, validate) {
+        1:  174-block  0
+call    0 returned 1
+------------------
+_ZN28ValidationTest_validate_Test8TestBodyEv:
+function _ZN28ValidationTest_validate_Test8TestBodyEv called 1 returned 100% blocks executed 27%
+        1:  174:TEST_F(ValidationTest, validate) {
+        1:  174-block  0
+       2*:  175:    EXPECT_TRUE(StringValidator::validate("Hello World"));
+        1:  175-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  175-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  175-block  2
+call    6 returned 1
+call    7 returned 1
+call    8 returned 1
+branch  9 taken 0 (fallthrough)
+branch 10 taken 1
+    %%%%%:  175-block  3
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:  175-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  175-block  5
+call   17 never executed
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:  175-block  6
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:  175-block  7
+call   24 never executed
+call   25 never executed
+call   26 never executed
+        1:  175-block  8
+call   27 returned 1
+    $$$$$:  175-block  9
+call   28 never executed
+    $$$$$:  175-block 10
+    $$$$$:  175-block 11
+    $$$$$:  175-block 12
+    $$$$$:  175-block 13
+call   29 never executed
+    $$$$$:  175-block 14
+call   30 never executed
+    $$$$$:  175-block 15
+    $$$$$:  175-block 16
+    $$$$$:  175-block 17
+call   31 never executed
+    $$$$$:  175-block 18
+    $$$$$:  175-block 19
+call   32 never executed
+       2*:  176:    EXPECT_TRUE(StringValidator::validate("Test-Case"));
+        1:  176-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  176-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  176-block  2
+call    6 returned 1
+call    7 returned 1
+call    8 returned 1
+branch  9 taken 0 (fallthrough)
+branch 10 taken 1
+    %%%%%:  176-block  3
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:  176-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  176-block  5
+call   17 never executed
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:  176-block  6
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:  176-block  7
+call   24 never executed
+call   25 never executed
+call   26 never executed
+        1:  176-block  8
+call   27 returned 1
+    $$$$$:  176-block  9
+call   28 never executed
+    $$$$$:  176-block 10
+    $$$$$:  176-block 11
+    $$$$$:  176-block 12
+    $$$$$:  176-block 13
+call   29 never executed
+    $$$$$:  176-block 14
+call   30 never executed
+    $$$$$:  176-block 15
+    $$$$$:  176-block 16
+    $$$$$:  176-block 17
+call   31 never executed
+    $$$$$:  176-block 18
+    $$$$$:  176-block 19
+call   32 never executed
+       2*:  177:    EXPECT_TRUE(StringValidator::validate("O'Neill"));
+        1:  177-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  177-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  177-block  2
+call    6 returned 1
+call    7 returned 1
+call    8 returned 1
+branch  9 taken 0 (fallthrough)
+branch 10 taken 1
+    %%%%%:  177-block  3
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:  177-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  177-block  5
+call   17 never executed
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:  177-block  6
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:  177-block  7
+call   24 never executed
+call   25 never executed
+call   26 never executed
+        1:  177-block  8
+call   27 returned 1
+    $$$$$:  177-block  9
+call   28 never executed
+    $$$$$:  177-block 10
+    $$$$$:  177-block 11
+    $$$$$:  177-block 12
+    $$$$$:  177-block 13
+call   29 never executed
+    $$$$$:  177-block 14
+call   30 never executed
+    $$$$$:  177-block 15
+    $$$$$:  177-block 16
+    $$$$$:  177-block 17
+call   31 never executed
+    $$$$$:  177-block 18
+    $$$$$:  177-block 19
+call   32 never executed
+       2*:  178:    EXPECT_TRUE(StringValidator::validate("Dr. Smith"));
+        1:  178-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  178-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  178-block  2
+call    6 returned 1
+call    7 returned 1
+call    8 returned 1
+branch  9 taken 0 (fallthrough)
+branch 10 taken 1
+    %%%%%:  178-block  3
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:  178-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  178-block  5
+call   17 never executed
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:  178-block  6
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:  178-block  7
+call   24 never executed
+call   25 never executed
+call   26 never executed
+        1:  178-block  8
+call   27 returned 1
+    $$$$$:  178-block  9
+call   28 never executed
+    $$$$$:  178-block 10
+    $$$$$:  178-block 11
+    $$$$$:  178-block 12
+    $$$$$:  178-block 13
+call   29 never executed
+    $$$$$:  178-block 14
+call   30 never executed
+    $$$$$:  178-block 15
+    $$$$$:  178-block 16
+    $$$$$:  178-block 17
+call   31 never executed
+    $$$$$:  178-block 18
+    $$$$$:  178-block 19
+call   32 never executed
+       2*:  179:    EXPECT_TRUE(StringValidator::validate("123 ABC"));
+        1:  179-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  179-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  179-block  2
+call    6 returned 1
+call    7 returned 1
+call    8 returned 1
+branch  9 taken 0 (fallthrough)
+branch 10 taken 1
+    %%%%%:  179-block  3
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:  179-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  179-block  5
+call   17 never executed
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:  179-block  6
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:  179-block  7
+call   24 never executed
+call   25 never executed
+call   26 never executed
+        1:  179-block  8
+call   27 returned 1
+    $$$$$:  179-block  9
+call   28 never executed
+    $$$$$:  179-block 10
+    $$$$$:  179-block 11
+    $$$$$:  179-block 12
+    $$$$$:  179-block 13
+call   29 never executed
+    $$$$$:  179-block 14
+call   30 never executed
+    $$$$$:  179-block 15
+    $$$$$:  179-block 16
+    $$$$$:  179-block 17
+call   31 never executed
+    $$$$$:  179-block 18
+    $$$$$:  179-block 19
+call   32 never executed
+       2*:  180:    EXPECT_FALSE(StringValidator::validate(""));
+        1:  180-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  180-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  180-block  2
+call    6 returned 1
+call    7 returned 1
+call    8 returned 1
+branch  9 taken 0 (fallthrough)
+branch 10 taken 1
+    %%%%%:  180-block  3
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:  180-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  180-block  5
+call   17 never executed
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:  180-block  6
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:  180-block  7
+call   24 never executed
+call   25 never executed
+call   26 never executed
+        1:  180-block  8
+call   27 returned 1
+    $$$$$:  180-block  9
+call   28 never executed
+    $$$$$:  180-block 10
+    $$$$$:  180-block 11
+    $$$$$:  180-block 12
+    $$$$$:  180-block 13
+call   29 never executed
+    $$$$$:  180-block 14
+call   30 never executed
+    $$$$$:  180-block 15
+    $$$$$:  180-block 16
+    $$$$$:  180-block 17
+call   31 never executed
+    $$$$$:  180-block 18
+    $$$$$:  180-block 19
+call   32 never executed
+       2*:  181:    EXPECT_FALSE(StringValidator::validate("Hello!"));
+        1:  181-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  181-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  181-block  2
+call    6 returned 1
+call    7 returned 1
+call    8 returned 1
+branch  9 taken 0 (fallthrough)
+branch 10 taken 1
+    %%%%%:  181-block  3
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:  181-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  181-block  5
+call   17 never executed
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:  181-block  6
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:  181-block  7
+call   24 never executed
+call   25 never executed
+call   26 never executed
+        1:  181-block  8
+call   27 returned 1
+    $$$$$:  181-block  9
+call   28 never executed
+    $$$$$:  181-block 10
+    $$$$$:  181-block 11
+    $$$$$:  181-block 12
+    $$$$$:  181-block 13
+call   29 never executed
+    $$$$$:  181-block 14
+call   30 never executed
+    $$$$$:  181-block 15
+    $$$$$:  181-block 16
+    $$$$$:  181-block 17
+call   31 never executed
+    $$$$$:  181-block 18
+    $$$$$:  181-block 19
+call   32 never executed
+       2*:  182:    EXPECT_FALSE(StringValidator::validate("Test@Case"));
+        1:  182-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  182-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  182-block  2
+call    6 returned 1
+call    7 returned 1
+call    8 returned 1
+branch  9 taken 0 (fallthrough)
+branch 10 taken 1
+    %%%%%:  182-block  3
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:  182-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  182-block  5
+call   17 never executed
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:  182-block  6
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:  182-block  7
+call   24 never executed
+call   25 never executed
+call   26 never executed
+        1:  182-block  8
+call   27 returned 1
+    $$$$$:  182-block  9
+call   28 never executed
+    $$$$$:  182-block 10
+    $$$$$:  182-block 11
+    $$$$$:  182-block 12
+    $$$$$:  182-block 13
+call   29 never executed
+    $$$$$:  182-block 14
+call   30 never executed
+    $$$$$:  182-block 15
+    $$$$$:  182-block 16
+    $$$$$:  182-block 17
+call   31 never executed
+    $$$$$:  182-block 18
+    $$$$$:  182-block 19
+call   32 never executed
+        1:  183:}
+------------------

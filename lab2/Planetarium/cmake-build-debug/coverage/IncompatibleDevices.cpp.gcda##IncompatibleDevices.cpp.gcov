@@ -1,0 +1,19 @@
+        -:    0:Source:C:/Users/aleks/CLionProjects/PlanetariumProjectCopy/Exceptions/IncompatibleDevices.cpp
+        -:    0:Graph:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Exceptions\CMakeFiles\Exceptions.dir\IncompatibleDevices.cpp.gcno
+        -:    0:Data:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Exceptions\CMakeFiles\Exceptions.dir\IncompatibleDevices.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "IncompatibleDevices.h"
+        -:    2:
+function _ZN19IncompatibleDevicesC2ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 2 returned 100% blocks executed 100%
+        2:    3:IncompatibleDevices::IncompatibleDevices(std::string message_) : message(std::move(message_)) {}
+        2:    3-block  0
+call    0 returned 2
+call    1 returned 2
+call    2 returned 2
+        -:    4:
+function _ZNK19IncompatibleDevices4whatEv called 0 returned 0% blocks executed 0%
+    #####:    5:const char* IncompatibleDevices::what() const noexcept {
+    #####:    6:    return message.c_str();
+    %%%%%:    6-block  0
+call    0 never executed
+        -:    7:}

@@ -1,0 +1,86 @@
+        -:    0:Source:C:/Users/aleks/CLionProjects/PlanetariumProjectCopy/Inventory/Microphone.cpp
+        -:    0:Graph:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Inventory\CMakeFiles\Inventory.dir\Microphone.cpp.gcno
+        -:    0:Data:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Inventory\CMakeFiles\Inventory.dir\Microphone.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "Microphone.h"
+        -:    2:#include <stdexcept>
+        -:    3:#include "../Exceptions/DeviceSwitchedOff.h"
+        -:    4:
+function _ZN10MicrophoneC2ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb called 5 returned 100% blocks executed 100%
+        5:    5:Microphone::Microphone(const std::string& name, bool isWireless_) :
+        5:    6:        AudioDevice(name), isMovable(true), connectedSpeaker(nullptr) {}
+        5:    6-block  0
+call    0 returned 5
+call    1 returned 5
+        -:    7:
+function _ZN10Microphone12mountOnStandEv called 1 returned 100% blocks executed 100%
+        1:    8:void Microphone::mountOnStand() {
+        1:    9:    isMovable = false;
+        1:   10:}
+        -:   11:
+function _ZN10Microphone16connectToSpeakerESt10unique_ptrI7SpeakerSt14default_deleteIS1_EE called 1 returned 0% blocks executed 29%
+        1:   12:void Microphone::connectToSpeaker(std::unique_ptr<Speaker> speaker) {
+        3:   13:    if (!speaker->active()) throw DeviceSwitchedOff("Device is off.");
+        1:   13-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:   13-block  1
+call    4 returned 1
+        1:   13-block  2
+call    5 returned 1
+branch  6 taken 1 (fallthrough)
+branch  7 taken 0 (throw)
+        1:   13-block  3
+call    8 returned 1
+branch  9 taken 1 (fallthrough)
+branch 10 taken 0 (throw)
+        1:   13-block  4
+call   11 returned 1
+call   12 returned 0
+    $$$$$:   13-block  5
+call   13 never executed
+    $$$$$:   13-block  6
+    $$$$$:   13-block  7
+    $$$$$:   13-block  8
+call   14 never executed
+    #####:   14:    for (const auto& connection : getConnections()) {
+    %%%%%:   14-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:   14-block  1
+call    3 never executed
+call    4 never executed
+    %%%%%:   14-block  2
+call    5 never executed
+    %%%%%:   14-block  3
+call    6 never executed
+    %%%%%:   14-block  4
+call    7 never executed
+branch  8 never executed
+branch  9 never executed (fallthrough)
+    #####:   15:        if (speaker->supportsConnection(connection)) {
+call    0 never executed
+call    1 never executed
+branch  2 never executed (fallthrough)
+branch  3 never executed (throw)
+    %%%%%:   15-block  0
+branch  4 never executed (fallthrough)
+branch  5 never executed
+    #####:   16:            connectedSpeaker = std::move(speaker);
+    %%%%%:   16-block  0
+call    0 never executed
+call    1 never executed
+    #####:   17:            return;
+        -:   18:        }
+    #####:   19:    }
+    %%%%%:   19-block  0
+    %%%%%:   19-block  1
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed
+    $$$$$:   19-block  2
+call    3 never executed
+        -:   20:}

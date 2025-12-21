@@ -1,0 +1,3417 @@
+        -:    0:Source:C:/Users/aleks/CLionProjects/PlanetariumProjectCopy/Tests/UtilsTest.cpp
+        -:    0:Graph:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Tests\CMakeFiles\Tests.dir\UtilsTest.cpp.gcno
+        -:    0:Data:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Tests\CMakeFiles\Tests.dir\UtilsTest.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include <gtest/gtest.h>
+        -:    2:#include <string>
+        -:    3:#include <stdexcept>
+        -:    4:#include <ctime>
+        -:    5:#include "Weather.h"
+        -:    6:#include "MyTime.h"
+        -:    7:#include "Date.h"
+        -:    8:
+        -:    9:class UtilsTest : public ::testing::Test {
+        -:   10:protected:
+function _ZN9UtilsTest5SetUpEv called 18 returned 100% blocks executed 100%
+       18:   11:    void SetUp() override {}
+function _ZN9UtilsTest8TearDownEv called 18 returned 100% blocks executed 100%
+       18:   12:    void TearDown() override {}
+        -:   13:};
+        -:   14:
+        4:   15:TEST_F(UtilsTest, ParameterizedConstructorValidWeather) {
+        1:   16:    Weather w1(Enums::WeatherCondition::SUNNY);
+        1:   17:    Weather w2(Enums::WeatherCondition::CLOUDY);
+        1:   18:    Weather w3(Enums::WeatherCondition::HAZY);
+       1*:   19:    EXPECT_EQ(w1.getWeatherCondition(), Enums::WeatherCondition::SUNNY);
+       1*:   20:    EXPECT_EQ(w2.getWeatherCondition(), Enums::WeatherCondition::CLOUDY);
+       1*:   21:    EXPECT_EQ(w3.getWeatherCondition(), Enums::WeatherCondition::HAZY);
+        1:   22:}
+------------------
+_ZN51UtilsTest_ParameterizedConstructorValidWeather_TestC1Ev:
+function _ZN51UtilsTest_ParameterizedConstructorValidWeather_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   15:TEST_F(UtilsTest, ParameterizedConstructorValidWeather) {
+        1:   15-block  0
+call    0 returned 1
+------------------
+_ZN51UtilsTest_ParameterizedConstructorValidWeather_TestD0Ev:
+function _ZN51UtilsTest_ParameterizedConstructorValidWeather_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   15:TEST_F(UtilsTest, ParameterizedConstructorValidWeather) {
+        1:   15-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN51UtilsTest_ParameterizedConstructorValidWeather_TestD1Ev:
+function _ZN51UtilsTest_ParameterizedConstructorValidWeather_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   15:TEST_F(UtilsTest, ParameterizedConstructorValidWeather) {
+        1:   15-block  0
+call    0 returned 1
+------------------
+_ZN51UtilsTest_ParameterizedConstructorValidWeather_Test8TestBodyEv:
+function _ZN51UtilsTest_ParameterizedConstructorValidWeather_Test8TestBodyEv called 1 returned 100% blocks executed 26%
+        1:   15:TEST_F(UtilsTest, ParameterizedConstructorValidWeather) {
+        1:   16:    Weather w1(Enums::WeatherCondition::SUNNY);
+        1:   16-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:   16-block  1
+        1:   17:    Weather w2(Enums::WeatherCondition::CLOUDY);
+        1:   17-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:   17-block  1
+        1:   18:    Weather w3(Enums::WeatherCondition::HAZY);
+        1:   18-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:   18-block  1
+       1*:   19:    EXPECT_EQ(w1.getWeatherCondition(), Enums::WeatherCondition::SUNNY);
+        1:   19-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   19-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   19-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   19-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   19-block  4
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   19-block  5
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   19-block  6
+call   19 never executed
+call   20 never executed
+        1:   19-block  7
+call   21 returned 1
+    $$$$$:   19-block  8
+    $$$$$:   19-block  9
+    $$$$$:   19-block 10
+call   22 never executed
+    $$$$$:   19-block 11
+    $$$$$:   19-block 12
+call   23 never executed
+    $$$$$:   19-block 13
+    $$$$$:   19-block 14
+call   24 never executed
+       1*:   20:    EXPECT_EQ(w2.getWeatherCondition(), Enums::WeatherCondition::CLOUDY);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   20-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   20-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   20-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   20-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   20-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   20-block  5
+call   19 never executed
+call   20 never executed
+        1:   20-block  6
+call   21 returned 1
+    $$$$$:   20-block  7
+    $$$$$:   20-block  8
+    $$$$$:   20-block  9
+call   22 never executed
+    $$$$$:   20-block 10
+    $$$$$:   20-block 11
+call   23 never executed
+    $$$$$:   20-block 12
+    $$$$$:   20-block 13
+call   24 never executed
+       1*:   21:    EXPECT_EQ(w3.getWeatherCondition(), Enums::WeatherCondition::HAZY);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   21-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   21-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   21-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   21-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   21-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   21-block  5
+call   19 never executed
+call   20 never executed
+        1:   21-block  6
+call   21 returned 1
+    $$$$$:   21-block  7
+    $$$$$:   21-block  8
+    $$$$$:   21-block  9
+call   22 never executed
+    $$$$$:   21-block 10
+    $$$$$:   21-block 11
+call   23 never executed
+    $$$$$:   21-block 12
+    $$$$$:   21-block 13
+call   24 never executed
+        1:   22:}
+------------------
+        -:   23:
+        4:   24:TEST_F(UtilsTest, GetWeatherByIndexValidIndex) {
+       1*:   25:    EXPECT_EQ(Weather::getWeatherByIndex(0), Enums::WeatherCondition::SUNNY);
+       1*:   26:    EXPECT_EQ(Weather::getWeatherByIndex(1), Enums::WeatherCondition::CLOUDY);
+       1*:   27:    EXPECT_EQ(Weather::getWeatherByIndex(8), Enums::WeatherCondition::HAZY);
+        1:   28:}
+------------------
+_ZN42UtilsTest_GetWeatherByIndexValidIndex_TestC1Ev:
+function _ZN42UtilsTest_GetWeatherByIndexValidIndex_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   24:TEST_F(UtilsTest, GetWeatherByIndexValidIndex) {
+        1:   24-block  0
+call    0 returned 1
+------------------
+_ZN42UtilsTest_GetWeatherByIndexValidIndex_TestD0Ev:
+function _ZN42UtilsTest_GetWeatherByIndexValidIndex_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   24:TEST_F(UtilsTest, GetWeatherByIndexValidIndex) {
+        1:   24-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN42UtilsTest_GetWeatherByIndexValidIndex_TestD1Ev:
+function _ZN42UtilsTest_GetWeatherByIndexValidIndex_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   24:TEST_F(UtilsTest, GetWeatherByIndexValidIndex) {
+        1:   24-block  0
+call    0 returned 1
+------------------
+_ZN42UtilsTest_GetWeatherByIndexValidIndex_Test8TestBodyEv:
+function _ZN42UtilsTest_GetWeatherByIndexValidIndex_Test8TestBodyEv called 1 returned 100% blocks executed 24%
+        1:   24:TEST_F(UtilsTest, GetWeatherByIndexValidIndex) {
+       1*:   25:    EXPECT_EQ(Weather::getWeatherByIndex(0), Enums::WeatherCondition::SUNNY);
+        1:   25-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   25-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   25-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   25-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   25-block  4
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   25-block  5
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   25-block  6
+call   19 never executed
+call   20 never executed
+        1:   25-block  7
+call   21 returned 1
+    $$$$$:   25-block  8
+    $$$$$:   25-block  9
+    $$$$$:   25-block 10
+call   22 never executed
+    $$$$$:   25-block 11
+    $$$$$:   25-block 12
+call   23 never executed
+    $$$$$:   25-block 13
+    $$$$$:   25-block 14
+call   24 never executed
+       1*:   26:    EXPECT_EQ(Weather::getWeatherByIndex(1), Enums::WeatherCondition::CLOUDY);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   26-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   26-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   26-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   26-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   26-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   26-block  5
+call   19 never executed
+call   20 never executed
+        1:   26-block  6
+call   21 returned 1
+    $$$$$:   26-block  7
+    $$$$$:   26-block  8
+    $$$$$:   26-block  9
+call   22 never executed
+    $$$$$:   26-block 10
+    $$$$$:   26-block 11
+call   23 never executed
+    $$$$$:   26-block 12
+    $$$$$:   26-block 13
+call   24 never executed
+       1*:   27:    EXPECT_EQ(Weather::getWeatherByIndex(8), Enums::WeatherCondition::HAZY);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   27-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   27-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   27-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   27-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   27-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   27-block  5
+call   19 never executed
+call   20 never executed
+        1:   27-block  6
+call   21 returned 1
+    $$$$$:   27-block  7
+    $$$$$:   27-block  8
+    $$$$$:   27-block  9
+call   22 never executed
+    $$$$$:   27-block 10
+    $$$$$:   27-block 11
+call   23 never executed
+    $$$$$:   27-block 12
+    $$$$$:   27-block 13
+call   24 never executed
+        1:   28:}
+------------------
+        -:   29:
+        4:   30:TEST_F(UtilsTest, GetWeatherByIndexInvalidIndex) {
+       1*:   31:    EXPECT_EQ(Weather::getWeatherByIndex(100), Enums::WeatherCondition::SUNNY);
+       1*:   32:    EXPECT_EQ(Weather::getWeatherByIndex(9), Enums::WeatherCondition::SUNNY);
+        1:   33:}
+------------------
+_ZN44UtilsTest_GetWeatherByIndexInvalidIndex_TestC1Ev:
+function _ZN44UtilsTest_GetWeatherByIndexInvalidIndex_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   30:TEST_F(UtilsTest, GetWeatherByIndexInvalidIndex) {
+        1:   30-block  0
+call    0 returned 1
+------------------
+_ZN44UtilsTest_GetWeatherByIndexInvalidIndex_TestD0Ev:
+function _ZN44UtilsTest_GetWeatherByIndexInvalidIndex_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   30:TEST_F(UtilsTest, GetWeatherByIndexInvalidIndex) {
+        1:   30-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN44UtilsTest_GetWeatherByIndexInvalidIndex_TestD1Ev:
+function _ZN44UtilsTest_GetWeatherByIndexInvalidIndex_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   30:TEST_F(UtilsTest, GetWeatherByIndexInvalidIndex) {
+        1:   30-block  0
+call    0 returned 1
+------------------
+_ZN44UtilsTest_GetWeatherByIndexInvalidIndex_Test8TestBodyEv:
+function _ZN44UtilsTest_GetWeatherByIndexInvalidIndex_Test8TestBodyEv called 1 returned 100% blocks executed 26%
+        1:   30:TEST_F(UtilsTest, GetWeatherByIndexInvalidIndex) {
+       1*:   31:    EXPECT_EQ(Weather::getWeatherByIndex(100), Enums::WeatherCondition::SUNNY);
+        1:   31-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   31-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   31-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   31-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   31-block  4
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   31-block  5
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   31-block  6
+call   19 never executed
+call   20 never executed
+        1:   31-block  7
+call   21 returned 1
+    $$$$$:   31-block  8
+    $$$$$:   31-block  9
+    $$$$$:   31-block 10
+call   22 never executed
+    $$$$$:   31-block 11
+    $$$$$:   31-block 12
+call   23 never executed
+    $$$$$:   31-block 13
+    $$$$$:   31-block 14
+call   24 never executed
+       1*:   32:    EXPECT_EQ(Weather::getWeatherByIndex(9), Enums::WeatherCondition::SUNNY);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   32-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   32-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   32-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   32-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   32-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   32-block  5
+call   19 never executed
+call   20 never executed
+        1:   32-block  6
+call   21 returned 1
+    $$$$$:   32-block  7
+    $$$$$:   32-block  8
+    $$$$$:   32-block  9
+call   22 never executed
+    $$$$$:   32-block 10
+    $$$$$:   32-block 11
+call   23 never executed
+    $$$$$:   32-block 12
+    $$$$$:   32-block 13
+call   24 never executed
+        1:   33:}
+------------------
+        -:   34:
+        4:   35:TEST_F(UtilsTest, GetWeatherCondition) {
+        1:   36:    Weather w;
+        1:   37:    auto cond = w.getWeatherCondition();
+        -:   38:    std::vector<Enums::WeatherCondition> all = {
+        -:   39:            Enums::WeatherCondition::SUNNY,
+        -:   40:            Enums::WeatherCondition::CLOUDY,
+        -:   41:            Enums::WeatherCondition::PARTLY_CLOUDY,
+        -:   42:            Enums::WeatherCondition::RAINY,
+        -:   43:            Enums::WeatherCondition::STORMY,
+        -:   44:            Enums::WeatherCondition::SNOWY,
+        -:   45:            Enums::WeatherCondition::FOGGY,
+        -:   46:            Enums::WeatherCondition::WINDY,
+        -:   47:            Enums::WeatherCondition::HAZY
+        2:   48:    };
+        1:   49:    bool found = false;
+        6:   50:    for (auto c : all) {
+        6:   51:        if (cond == c) {
+        1:   52:            found = true;
+        1:   53:            break;
+        -:   54:        }
+        -:   55:    }
+       1*:   56:    EXPECT_TRUE(found);
+        1:   57:}
+------------------
+_ZN34UtilsTest_GetWeatherCondition_TestC1Ev:
+function _ZN34UtilsTest_GetWeatherCondition_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   35:TEST_F(UtilsTest, GetWeatherCondition) {
+        1:   35-block  0
+call    0 returned 1
+------------------
+_ZN34UtilsTest_GetWeatherCondition_TestD0Ev:
+function _ZN34UtilsTest_GetWeatherCondition_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   35:TEST_F(UtilsTest, GetWeatherCondition) {
+        1:   35-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN34UtilsTest_GetWeatherCondition_TestD1Ev:
+function _ZN34UtilsTest_GetWeatherCondition_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   35:TEST_F(UtilsTest, GetWeatherCondition) {
+        1:   35-block  0
+call    0 returned 1
+------------------
+_ZN34UtilsTest_GetWeatherCondition_Test8TestBodyEv:
+function _ZN34UtilsTest_GetWeatherCondition_Test8TestBodyEv called 1 returned 100% blocks executed 44%
+        1:   35:TEST_F(UtilsTest, GetWeatherCondition) {
+        1:   36:    Weather w;
+        1:   36-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   37:    auto cond = w.getWeatherCondition();
+        1:   37-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   38:    std::vector<Enums::WeatherCondition> all = {
+        -:   39:            Enums::WeatherCondition::SUNNY,
+        -:   40:            Enums::WeatherCondition::CLOUDY,
+        -:   41:            Enums::WeatherCondition::PARTLY_CLOUDY,
+        -:   42:            Enums::WeatherCondition::RAINY,
+        -:   43:            Enums::WeatherCondition::STORMY,
+        -:   44:            Enums::WeatherCondition::SNOWY,
+        -:   45:            Enums::WeatherCondition::FOGGY,
+        -:   46:            Enums::WeatherCondition::WINDY,
+        -:   47:            Enums::WeatherCondition::HAZY
+        2:   48:    };
+        1:   48-block  0
+        1:   48-block  1
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:   48-block  2
+    $$$$$:   48-block  3
+        1:   49:    bool found = false;
+        6:   50:    for (auto c : all) {
+call    0 returned 1
+call    1 returned 1
+        6:   50-block  0
+call    2 returned 6
+        5:   50-block  1
+call    3 returned 5
+        6:   50-block  2
+call    4 returned 6
+branch  5 taken 6
+branch  6 taken 0 (fallthrough)
+        6:   51:        if (cond == c) {
+branch  0 taken 1 (fallthrough)
+branch  1 taken 5
+        1:   52:            found = true;
+        1:   53:            break;
+        1:   53-block  0
+        -:   54:        }
+        -:   55:    }
+       1*:   56:    EXPECT_TRUE(found);
+        1:   56-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 0 (fallthrough)
+branch  3 taken 1
+    %%%%%:   56-block  1
+call    4 never executed
+branch  5 never executed (fallthrough)
+branch  6 never executed (throw)
+    %%%%%:   56-block  2
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   56-block  3
+call   10 never executed
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:   56-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   56-block  5
+call   17 never executed
+call   18 never executed
+call   19 never executed
+        1:   56-block  6
+call   20 returned 1
+    $$$$$:   56-block  7
+call   21 never executed
+    $$$$$:   56-block  8
+call   22 never executed
+    $$$$$:   56-block  9
+    $$$$$:   56-block 10
+    $$$$$:   56-block 11
+call   23 never executed
+    $$$$$:   56-block 12
+    $$$$$:   56-block 13
+call   24 never executed
+        1:   57:}
+call    0 returned 1
+    $$$$$:   57-block  0
+call    1 never executed
+------------------
+        -:   58:
+        4:   59:TEST_F(UtilsTest, DefaultConstructor) {
+        1:   60:    MyTime t;
+       1*:   61:    EXPECT_GE(t.getHours(), 0);
+       1*:   62:    EXPECT_LE(t.getHours(), 23);
+       1*:   63:    EXPECT_GE(t.getMinutes(), 0);
+       1*:   64:    EXPECT_LE(t.getMinutes(), 59);
+       1*:   65:    EXPECT_GE(t.getSeconds(), 0);
+       1*:   66:    EXPECT_LE(t.getSeconds(), 59);
+        1:   67:}
+------------------
+_ZN33UtilsTest_DefaultConstructor_TestC1Ev:
+function _ZN33UtilsTest_DefaultConstructor_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   59:TEST_F(UtilsTest, DefaultConstructor) {
+        1:   59-block  0
+call    0 returned 1
+------------------
+_ZN33UtilsTest_DefaultConstructor_TestD0Ev:
+function _ZN33UtilsTest_DefaultConstructor_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   59:TEST_F(UtilsTest, DefaultConstructor) {
+        1:   59-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN33UtilsTest_DefaultConstructor_TestD1Ev:
+function _ZN33UtilsTest_DefaultConstructor_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   59:TEST_F(UtilsTest, DefaultConstructor) {
+        1:   59-block  0
+call    0 returned 1
+------------------
+_ZN33UtilsTest_DefaultConstructor_Test8TestBodyEv:
+function _ZN33UtilsTest_DefaultConstructor_Test8TestBodyEv called 1 returned 100% blocks executed 23%
+        1:   59:TEST_F(UtilsTest, DefaultConstructor) {
+        1:   60:    MyTime t;
+        1:   60-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:   61:    EXPECT_GE(t.getHours(), 0);
+        1:   61-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   61-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   61-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   61-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   61-block  4
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   61-block  5
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   61-block  6
+call   19 never executed
+call   20 never executed
+        1:   61-block  7
+call   21 returned 1
+    $$$$$:   61-block  8
+    $$$$$:   61-block  9
+    $$$$$:   61-block 10
+call   22 never executed
+    $$$$$:   61-block 11
+    $$$$$:   61-block 12
+call   23 never executed
+    $$$$$:   61-block 13
+    $$$$$:   61-block 14
+call   24 never executed
+       1*:   62:    EXPECT_LE(t.getHours(), 23);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   62-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   62-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   62-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   62-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   62-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   62-block  5
+call   19 never executed
+call   20 never executed
+        1:   62-block  6
+call   21 returned 1
+    $$$$$:   62-block  7
+    $$$$$:   62-block  8
+    $$$$$:   62-block  9
+call   22 never executed
+    $$$$$:   62-block 10
+    $$$$$:   62-block 11
+call   23 never executed
+    $$$$$:   62-block 12
+    $$$$$:   62-block 13
+call   24 never executed
+       1*:   63:    EXPECT_GE(t.getMinutes(), 0);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   63-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   63-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   63-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   63-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   63-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   63-block  5
+call   19 never executed
+call   20 never executed
+        1:   63-block  6
+call   21 returned 1
+    $$$$$:   63-block  7
+    $$$$$:   63-block  8
+    $$$$$:   63-block  9
+call   22 never executed
+    $$$$$:   63-block 10
+    $$$$$:   63-block 11
+call   23 never executed
+    $$$$$:   63-block 12
+    $$$$$:   63-block 13
+call   24 never executed
+       1*:   64:    EXPECT_LE(t.getMinutes(), 59);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   64-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   64-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   64-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   64-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   64-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   64-block  5
+call   19 never executed
+call   20 never executed
+        1:   64-block  6
+call   21 returned 1
+    $$$$$:   64-block  7
+    $$$$$:   64-block  8
+    $$$$$:   64-block  9
+call   22 never executed
+    $$$$$:   64-block 10
+    $$$$$:   64-block 11
+call   23 never executed
+    $$$$$:   64-block 12
+    $$$$$:   64-block 13
+call   24 never executed
+       1*:   65:    EXPECT_GE(t.getSeconds(), 0);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   65-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   65-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   65-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   65-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   65-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   65-block  5
+call   19 never executed
+call   20 never executed
+        1:   65-block  6
+call   21 returned 1
+    $$$$$:   65-block  7
+    $$$$$:   65-block  8
+    $$$$$:   65-block  9
+call   22 never executed
+    $$$$$:   65-block 10
+    $$$$$:   65-block 11
+call   23 never executed
+    $$$$$:   65-block 12
+    $$$$$:   65-block 13
+call   24 never executed
+       1*:   66:    EXPECT_LE(t.getSeconds(), 59);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   66-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   66-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   66-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   66-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   66-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   66-block  5
+call   19 never executed
+call   20 never executed
+        1:   66-block  6
+call   21 returned 1
+    $$$$$:   66-block  7
+    $$$$$:   66-block  8
+    $$$$$:   66-block  9
+call   22 never executed
+    $$$$$:   66-block 10
+    $$$$$:   66-block 11
+call   23 never executed
+    $$$$$:   66-block 12
+    $$$$$:   66-block 13
+call   24 never executed
+        1:   67:}
+------------------
+        -:   68:
+        4:   69:TEST_F(UtilsTest, ParameterizedConstructorValid) {
+        1:   70:    MyTime t(12, 30, 45);
+       1*:   71:    EXPECT_EQ(t.getHours(), 12);
+       1*:   72:    EXPECT_EQ(t.getMinutes(), 30);
+       1*:   73:    EXPECT_EQ(t.getSeconds(), 45);
+        1:   74:}
+------------------
+_ZN44UtilsTest_ParameterizedConstructorValid_TestC1Ev:
+function _ZN44UtilsTest_ParameterizedConstructorValid_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   69:TEST_F(UtilsTest, ParameterizedConstructorValid) {
+        1:   69-block  0
+call    0 returned 1
+------------------
+_ZN44UtilsTest_ParameterizedConstructorValid_TestD0Ev:
+function _ZN44UtilsTest_ParameterizedConstructorValid_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   69:TEST_F(UtilsTest, ParameterizedConstructorValid) {
+        1:   69-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN44UtilsTest_ParameterizedConstructorValid_TestD1Ev:
+function _ZN44UtilsTest_ParameterizedConstructorValid_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   69:TEST_F(UtilsTest, ParameterizedConstructorValid) {
+        1:   69-block  0
+call    0 returned 1
+------------------
+_ZN44UtilsTest_ParameterizedConstructorValid_Test8TestBodyEv:
+function _ZN44UtilsTest_ParameterizedConstructorValid_Test8TestBodyEv called 1 returned 100% blocks executed 25%
+        1:   69:TEST_F(UtilsTest, ParameterizedConstructorValid) {
+        1:   70:    MyTime t(12, 30, 45);
+        1:   70-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:   71:    EXPECT_EQ(t.getHours(), 12);
+        1:   71-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   71-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   71-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   71-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   71-block  4
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   71-block  5
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   71-block  6
+call   19 never executed
+call   20 never executed
+        1:   71-block  7
+call   21 returned 1
+    $$$$$:   71-block  8
+    $$$$$:   71-block  9
+    $$$$$:   71-block 10
+call   22 never executed
+    $$$$$:   71-block 11
+    $$$$$:   71-block 12
+call   23 never executed
+    $$$$$:   71-block 13
+    $$$$$:   71-block 14
+call   24 never executed
+       1*:   72:    EXPECT_EQ(t.getMinutes(), 30);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   72-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   72-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   72-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   72-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   72-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   72-block  5
+call   19 never executed
+call   20 never executed
+        1:   72-block  6
+call   21 returned 1
+    $$$$$:   72-block  7
+    $$$$$:   72-block  8
+    $$$$$:   72-block  9
+call   22 never executed
+    $$$$$:   72-block 10
+    $$$$$:   72-block 11
+call   23 never executed
+    $$$$$:   72-block 12
+    $$$$$:   72-block 13
+call   24 never executed
+       1*:   73:    EXPECT_EQ(t.getSeconds(), 45);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   73-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   73-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   73-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   73-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   73-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   73-block  5
+call   19 never executed
+call   20 never executed
+        1:   73-block  6
+call   21 returned 1
+    $$$$$:   73-block  7
+    $$$$$:   73-block  8
+    $$$$$:   73-block  9
+call   22 never executed
+    $$$$$:   73-block 10
+    $$$$$:   73-block 11
+call   23 never executed
+    $$$$$:   73-block 12
+    $$$$$:   73-block 13
+call   24 never executed
+        1:   74:}
+------------------
+        -:   75:
+        4:   76:TEST_F(UtilsTest, ParameterizedConstructorInvalid) {
+       1*:   77:    EXPECT_THROW(MyTime(25, 0, 0), std::invalid_argument);
+       1*:   78:    EXPECT_THROW(MyTime(0, 60, 0), std::invalid_argument);
+       1*:   79:    EXPECT_THROW(MyTime(0, 0, 60), std::invalid_argument);
+        1:   80:}
+------------------
+_ZN46UtilsTest_ParameterizedConstructorInvalid_TestC1Ev:
+function _ZN46UtilsTest_ParameterizedConstructorInvalid_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   76:TEST_F(UtilsTest, ParameterizedConstructorInvalid) {
+        1:   76-block  0
+call    0 returned 1
+------------------
+_ZN46UtilsTest_ParameterizedConstructorInvalid_TestD0Ev:
+function _ZN46UtilsTest_ParameterizedConstructorInvalid_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   76:TEST_F(UtilsTest, ParameterizedConstructorInvalid) {
+        1:   76-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN46UtilsTest_ParameterizedConstructorInvalid_TestD1Ev:
+function _ZN46UtilsTest_ParameterizedConstructorInvalid_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   76:TEST_F(UtilsTest, ParameterizedConstructorInvalid) {
+        1:   76-block  0
+call    0 returned 1
+------------------
+_ZN46UtilsTest_ParameterizedConstructorInvalid_Test8TestBodyEv:
+function _ZN46UtilsTest_ParameterizedConstructorInvalid_Test8TestBodyEv called 1 returned 100% blocks executed 24%
+        1:   76:TEST_F(UtilsTest, ParameterizedConstructorInvalid) {
+       1*:   77:    EXPECT_THROW(MyTime(25, 0, 0), std::invalid_argument);
+        1:   77-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:   77-block  1
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:   77-block  2
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:   77-block  3
+call    9 returned 1
+branch 10 taken 0 (fallthrough)
+branch 11 taken 1 (throw)
+    %%%%%:   77-block  4
+        1:   77-block  5
+branch 12 taken 0 (fallthrough)
+branch 13 taken 1
+    %%%%%:   77-block  6
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   77-block  7
+    %%%%%:   77-block  8
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   77-block  9
+call   20 never executed
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:   77-block 10
+call   24 never executed
+branch 25 never executed (fallthrough)
+branch 26 never executed (throw)
+    %%%%%:   77-block 11
+call   27 never executed
+call   28 never executed
+        1:   77-block 12
+call   29 returned 1
+        1:   77-block 13
+        1:   77-block 14
+branch 30 taken 1
+branch 31 taken 0
+branch 32 taken 0
+        1:   77-block 15
+call   33 returned 1
+call   34 returned 1
+    $$$$$:   77-block 16
+call   35 never executed
+call   36 never executed
+branch 37 never executed (fallthrough)
+branch 38 never executed (throw)
+    $$$$$:   77-block 17
+call   39 never executed
+branch 40 never executed (fallthrough)
+branch 41 never executed (throw)
+    $$$$$:   77-block 18
+call   42 never executed
+branch 43 never executed (fallthrough)
+branch 44 never executed (throw)
+    $$$$$:   77-block 19
+call   45 never executed
+call   46 never executed
+branch 47 never executed (fallthrough)
+branch 48 never executed (throw)
+    $$$$$:   77-block 20
+call   49 never executed
+call   50 never executed
+branch 51 never executed (fallthrough)
+branch 52 never executed (throw)
+    $$$$$:   77-block 21
+call   53 never executed
+branch 54 never executed (fallthrough)
+branch 55 never executed (throw)
+    $$$$$:   77-block 22
+    $$$$$:   77-block 23
+call   56 never executed
+    $$$$$:   77-block 24
+call   57 never executed
+call   58 never executed
+branch 59 never executed (fallthrough)
+branch 60 never executed (throw)
+    $$$$$:   77-block 25
+    $$$$$:   77-block 26
+call   61 never executed
+branch 62 never executed (fallthrough)
+branch 63 never executed (throw)
+    $$$$$:   77-block 27
+call   64 never executed
+    $$$$$:   77-block 28
+    $$$$$:   77-block 29
+call   65 never executed
+    $$$$$:   77-block 30
+call   66 never executed
+    $$$$$:   77-block 31
+call   67 never executed
+    $$$$$:   77-block 32
+    $$$$$:   77-block 33
+call   68 never executed
+    $$$$$:   77-block 34
+    $$$$$:   77-block 35
+call   69 never executed
+       1*:   78:    EXPECT_THROW(MyTime(0, 60, 0), std::invalid_argument);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:   78-block  0
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:   78-block  1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:   78-block  2
+call    9 returned 1
+branch 10 taken 0 (fallthrough)
+branch 11 taken 1 (throw)
+    %%%%%:   78-block  3
+        1:   78-block  4
+branch 12 taken 0 (fallthrough)
+branch 13 taken 1
+    %%%%%:   78-block  5
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   78-block  6
+    %%%%%:   78-block  7
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   78-block  8
+call   20 never executed
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:   78-block  9
+call   24 never executed
+branch 25 never executed (fallthrough)
+branch 26 never executed (throw)
+    %%%%%:   78-block 10
+call   27 never executed
+call   28 never executed
+        1:   78-block 11
+call   29 returned 1
+        1:   78-block 12
+        1:   78-block 13
+branch 30 taken 1
+branch 31 taken 0
+branch 32 taken 0
+        1:   78-block 14
+call   33 returned 1
+call   34 returned 1
+    $$$$$:   78-block 15
+call   35 never executed
+call   36 never executed
+branch 37 never executed (fallthrough)
+branch 38 never executed (throw)
+    $$$$$:   78-block 16
+call   39 never executed
+branch 40 never executed (fallthrough)
+branch 41 never executed (throw)
+    $$$$$:   78-block 17
+call   42 never executed
+branch 43 never executed (fallthrough)
+branch 44 never executed (throw)
+    $$$$$:   78-block 18
+call   45 never executed
+call   46 never executed
+branch 47 never executed (fallthrough)
+branch 48 never executed (throw)
+    $$$$$:   78-block 19
+call   49 never executed
+call   50 never executed
+branch 51 never executed (fallthrough)
+branch 52 never executed (throw)
+    $$$$$:   78-block 20
+call   53 never executed
+branch 54 never executed (fallthrough)
+branch 55 never executed (throw)
+    $$$$$:   78-block 21
+    $$$$$:   78-block 22
+call   56 never executed
+    $$$$$:   78-block 23
+call   57 never executed
+call   58 never executed
+branch 59 never executed (fallthrough)
+branch 60 never executed (throw)
+    $$$$$:   78-block 24
+    $$$$$:   78-block 25
+call   61 never executed
+branch 62 never executed (fallthrough)
+branch 63 never executed (throw)
+    $$$$$:   78-block 26
+call   64 never executed
+    $$$$$:   78-block 27
+    $$$$$:   78-block 28
+call   65 never executed
+    $$$$$:   78-block 29
+call   66 never executed
+    $$$$$:   78-block 30
+call   67 never executed
+    $$$$$:   78-block 31
+    $$$$$:   78-block 32
+call   68 never executed
+    $$$$$:   78-block 33
+    $$$$$:   78-block 34
+call   69 never executed
+       1*:   79:    EXPECT_THROW(MyTime(0, 0, 60), std::invalid_argument);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:   79-block  0
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:   79-block  1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:   79-block  2
+call    9 returned 1
+branch 10 taken 0 (fallthrough)
+branch 11 taken 1 (throw)
+    %%%%%:   79-block  3
+        1:   79-block  4
+branch 12 taken 0 (fallthrough)
+branch 13 taken 1
+    %%%%%:   79-block  5
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   79-block  6
+    %%%%%:   79-block  7
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   79-block  8
+call   20 never executed
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:   79-block  9
+call   24 never executed
+branch 25 never executed (fallthrough)
+branch 26 never executed (throw)
+    %%%%%:   79-block 10
+call   27 never executed
+call   28 never executed
+        1:   79-block 11
+call   29 returned 1
+        1:   79-block 12
+        1:   79-block 13
+branch 30 taken 1
+branch 31 taken 0
+branch 32 taken 0
+        1:   79-block 14
+call   33 returned 1
+call   34 returned 1
+    $$$$$:   79-block 15
+call   35 never executed
+call   36 never executed
+branch 37 never executed (fallthrough)
+branch 38 never executed (throw)
+    $$$$$:   79-block 16
+call   39 never executed
+branch 40 never executed (fallthrough)
+branch 41 never executed (throw)
+    $$$$$:   79-block 17
+call   42 never executed
+branch 43 never executed (fallthrough)
+branch 44 never executed (throw)
+    $$$$$:   79-block 18
+call   45 never executed
+call   46 never executed
+branch 47 never executed (fallthrough)
+branch 48 never executed (throw)
+    $$$$$:   79-block 19
+call   49 never executed
+call   50 never executed
+branch 51 never executed (fallthrough)
+branch 52 never executed (throw)
+    $$$$$:   79-block 20
+call   53 never executed
+branch 54 never executed (fallthrough)
+branch 55 never executed (throw)
+    $$$$$:   79-block 21
+    $$$$$:   79-block 22
+call   56 never executed
+    $$$$$:   79-block 23
+call   57 never executed
+call   58 never executed
+branch 59 never executed (fallthrough)
+branch 60 never executed (throw)
+    $$$$$:   79-block 24
+    $$$$$:   79-block 25
+call   61 never executed
+branch 62 never executed (fallthrough)
+branch 63 never executed (throw)
+    $$$$$:   79-block 26
+call   64 never executed
+    $$$$$:   79-block 27
+    $$$$$:   79-block 28
+call   65 never executed
+    $$$$$:   79-block 29
+call   66 never executed
+    $$$$$:   79-block 30
+call   67 never executed
+    $$$$$:   79-block 31
+    $$$$$:   79-block 32
+call   68 never executed
+    $$$$$:   79-block 33
+    $$$$$:   79-block 34
+call   69 never executed
+        1:   80:}
+------------------
+        -:   81:
+        4:   82:TEST_F(UtilsTest, GetTime) {
+        1:   83:    MyTime t(5, 9, 3);
+       1*:   84:    EXPECT_EQ(t.getTime(), "05:09:03");
+        1:   85:    MyTime t2(12, 30, 45);
+       1*:   86:    EXPECT_EQ(t2.getTime(), "12:30:45");
+        1:   87:}
+------------------
+_ZN22UtilsTest_GetTime_TestC1Ev:
+function _ZN22UtilsTest_GetTime_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   82:TEST_F(UtilsTest, GetTime) {
+        1:   82-block  0
+call    0 returned 1
+------------------
+_ZN22UtilsTest_GetTime_TestD0Ev:
+function _ZN22UtilsTest_GetTime_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   82:TEST_F(UtilsTest, GetTime) {
+        1:   82-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN22UtilsTest_GetTime_TestD1Ev:
+function _ZN22UtilsTest_GetTime_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   82:TEST_F(UtilsTest, GetTime) {
+        1:   82-block  0
+call    0 returned 1
+------------------
+_ZN22UtilsTest_GetTime_Test8TestBodyEv:
+function _ZN22UtilsTest_GetTime_Test8TestBodyEv called 1 returned 100% blocks executed 30%
+        1:   82:TEST_F(UtilsTest, GetTime) {
+        1:   83:    MyTime t(5, 9, 3);
+        1:   83-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:   84:    EXPECT_EQ(t.getTime(), "05:09:03");
+        1:   84-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   84-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   84-block  2
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:   84-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   84-block  4
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   84-block  5
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   84-block  6
+call   20 never executed
+call   21 never executed
+        1:   84-block  7
+call   22 returned 1
+    $$$$$:   84-block  8
+call   23 never executed
+    $$$$$:   84-block  9
+    $$$$$:   84-block 10
+call   24 never executed
+    $$$$$:   84-block 11
+    $$$$$:   84-block 12
+call   25 never executed
+    $$$$$:   84-block 13
+    $$$$$:   84-block 14
+call   26 never executed
+        1:   85:    MyTime t2(12, 30, 45);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:   86:    EXPECT_EQ(t2.getTime(), "12:30:45");
+        1:   86-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   86-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   86-block  2
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:   86-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   86-block  4
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   86-block  5
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   86-block  6
+call   20 never executed
+call   21 never executed
+        1:   86-block  7
+call   22 returned 1
+    $$$$$:   86-block  8
+call   23 never executed
+    $$$$$:   86-block  9
+    $$$$$:   86-block 10
+call   24 never executed
+    $$$$$:   86-block 11
+    $$$$$:   86-block 12
+call   25 never executed
+    $$$$$:   86-block 13
+    $$$$$:   86-block 14
+call   26 never executed
+        1:   87:}
+------------------
+        -:   88:
+        4:   89:TEST_F(UtilsTest, EqualityOperatorsTime) {
+        1:   90:    MyTime t1(10, 20, 30);
+        1:   91:    MyTime t2(10, 20, 30);
+        1:   92:    MyTime t3(11, 0, 0);
+       1*:   93:    EXPECT_TRUE(t1 == t2);
+       1*:   94:    EXPECT_FALSE(t1 == t3);
+       1*:   95:    EXPECT_TRUE(t1 < t3);
+       1*:   96:    EXPECT_TRUE(t3 > t1);
+       1*:   97:    EXPECT_TRUE(t1 <= t2);
+       1*:   98:    EXPECT_TRUE(t1 <= t3);
+       1*:   99:    EXPECT_TRUE(t3 >= t1);
+       1*:  100:    EXPECT_TRUE(t2 >= t1);
+        1:  101:}
+------------------
+_ZN36UtilsTest_EqualityOperatorsTime_TestC1Ev:
+function _ZN36UtilsTest_EqualityOperatorsTime_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   89:TEST_F(UtilsTest, EqualityOperatorsTime) {
+        1:   89-block  0
+call    0 returned 1
+------------------
+_ZN36UtilsTest_EqualityOperatorsTime_TestD0Ev:
+function _ZN36UtilsTest_EqualityOperatorsTime_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   89:TEST_F(UtilsTest, EqualityOperatorsTime) {
+        1:   89-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN36UtilsTest_EqualityOperatorsTime_TestD1Ev:
+function _ZN36UtilsTest_EqualityOperatorsTime_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   89:TEST_F(UtilsTest, EqualityOperatorsTime) {
+        1:   89-block  0
+call    0 returned 1
+------------------
+_ZN36UtilsTest_EqualityOperatorsTime_Test8TestBodyEv:
+function _ZN36UtilsTest_EqualityOperatorsTime_Test8TestBodyEv called 1 returned 100% blocks executed 20%
+        1:   89:TEST_F(UtilsTest, EqualityOperatorsTime) {
+        1:   90:    MyTime t1(10, 20, 30);
+        1:   90-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   91:    MyTime t2(10, 20, 30);
+        1:   91-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   92:    MyTime t3(11, 0, 0);
+        1:   92-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:   93:    EXPECT_TRUE(t1 == t2);
+        1:   93-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   93-block  1
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   93-block  2
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   93-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   93-block  4
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   93-block  5
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   93-block  6
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:   93-block  7
+call   23 returned 1
+    $$$$$:   93-block  8
+    $$$$$:   93-block  9
+call   24 never executed
+    $$$$$:   93-block 10
+call   25 never executed
+    $$$$$:   93-block 11
+    $$$$$:   93-block 12
+    $$$$$:   93-block 13
+call   26 never executed
+    $$$$$:   93-block 14
+    $$$$$:   93-block 15
+call   27 never executed
+       1*:   94:    EXPECT_FALSE(t1 == t3);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   94-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   94-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   94-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   94-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   94-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   94-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:   94-block  6
+call   23 returned 1
+    $$$$$:   94-block  7
+    $$$$$:   94-block  8
+call   24 never executed
+    $$$$$:   94-block  9
+call   25 never executed
+    $$$$$:   94-block 10
+    $$$$$:   94-block 11
+    $$$$$:   94-block 12
+call   26 never executed
+    $$$$$:   94-block 13
+    $$$$$:   94-block 14
+call   27 never executed
+       1*:   95:    EXPECT_TRUE(t1 < t3);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   95-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   95-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   95-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   95-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   95-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   95-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:   95-block  6
+call   23 returned 1
+    $$$$$:   95-block  7
+    $$$$$:   95-block  8
+call   24 never executed
+    $$$$$:   95-block  9
+call   25 never executed
+    $$$$$:   95-block 10
+    $$$$$:   95-block 11
+    $$$$$:   95-block 12
+call   26 never executed
+    $$$$$:   95-block 13
+    $$$$$:   95-block 14
+call   27 never executed
+       1*:   96:    EXPECT_TRUE(t3 > t1);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   96-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   96-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   96-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   96-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   96-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   96-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:   96-block  6
+call   23 returned 1
+    $$$$$:   96-block  7
+    $$$$$:   96-block  8
+call   24 never executed
+    $$$$$:   96-block  9
+call   25 never executed
+    $$$$$:   96-block 10
+    $$$$$:   96-block 11
+    $$$$$:   96-block 12
+call   26 never executed
+    $$$$$:   96-block 13
+    $$$$$:   96-block 14
+call   27 never executed
+       1*:   97:    EXPECT_TRUE(t1 <= t2);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   97-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   97-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   97-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   97-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   97-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   97-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:   97-block  6
+call   23 returned 1
+    $$$$$:   97-block  7
+    $$$$$:   97-block  8
+call   24 never executed
+    $$$$$:   97-block  9
+call   25 never executed
+    $$$$$:   97-block 10
+    $$$$$:   97-block 11
+    $$$$$:   97-block 12
+call   26 never executed
+    $$$$$:   97-block 13
+    $$$$$:   97-block 14
+call   27 never executed
+       1*:   98:    EXPECT_TRUE(t1 <= t3);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   98-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   98-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   98-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   98-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   98-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   98-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:   98-block  6
+call   23 returned 1
+    $$$$$:   98-block  7
+    $$$$$:   98-block  8
+call   24 never executed
+    $$$$$:   98-block  9
+call   25 never executed
+    $$$$$:   98-block 10
+    $$$$$:   98-block 11
+    $$$$$:   98-block 12
+call   26 never executed
+    $$$$$:   98-block 13
+    $$$$$:   98-block 14
+call   27 never executed
+       1*:   99:    EXPECT_TRUE(t3 >= t1);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   99-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   99-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   99-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   99-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   99-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   99-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:   99-block  6
+call   23 returned 1
+    $$$$$:   99-block  7
+    $$$$$:   99-block  8
+call   24 never executed
+    $$$$$:   99-block  9
+call   25 never executed
+    $$$$$:   99-block 10
+    $$$$$:   99-block 11
+    $$$$$:   99-block 12
+call   26 never executed
+    $$$$$:   99-block 13
+    $$$$$:   99-block 14
+call   27 never executed
+       1*:  100:    EXPECT_TRUE(t2 >= t1);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  100-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  100-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  100-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  100-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  100-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  100-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  100-block  6
+call   23 returned 1
+    $$$$$:  100-block  7
+    $$$$$:  100-block  8
+call   24 never executed
+    $$$$$:  100-block  9
+call   25 never executed
+    $$$$$:  100-block 10
+    $$$$$:  100-block 11
+    $$$$$:  100-block 12
+call   26 never executed
+    $$$$$:  100-block 13
+    $$$$$:  100-block 14
+call   27 never executed
+        1:  101:}
+------------------
+        -:  102:
+        4:  103:TEST_F(UtilsTest, GetCurrentTime) {
+        1:  104:    MyTime t = MyTime::getCurrentTime();
+       1*:  105:    EXPECT_GE(t.getHours(), 0);
+       1*:  106:    EXPECT_LE(t.getHours(), 23);
+        1:  107:}
+------------------
+_ZN29UtilsTest_GetCurrentTime_TestC1Ev:
+function _ZN29UtilsTest_GetCurrentTime_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  103:TEST_F(UtilsTest, GetCurrentTime) {
+        1:  103-block  0
+call    0 returned 1
+------------------
+_ZN29UtilsTest_GetCurrentTime_TestD0Ev:
+function _ZN29UtilsTest_GetCurrentTime_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  103:TEST_F(UtilsTest, GetCurrentTime) {
+        1:  103-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN29UtilsTest_GetCurrentTime_TestD1Ev:
+function _ZN29UtilsTest_GetCurrentTime_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  103:TEST_F(UtilsTest, GetCurrentTime) {
+        1:  103-block  0
+call    0 returned 1
+------------------
+_ZN29UtilsTest_GetCurrentTime_Test8TestBodyEv:
+function _ZN29UtilsTest_GetCurrentTime_Test8TestBodyEv called 1 returned 100% blocks executed 27%
+        1:  103:TEST_F(UtilsTest, GetCurrentTime) {
+        1:  104:    MyTime t = MyTime::getCurrentTime();
+        1:  104-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:  105:    EXPECT_GE(t.getHours(), 0);
+        1:  105-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  105-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  105-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  105-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  105-block  4
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  105-block  5
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  105-block  6
+call   19 never executed
+call   20 never executed
+        1:  105-block  7
+call   21 returned 1
+    $$$$$:  105-block  8
+    $$$$$:  105-block  9
+    $$$$$:  105-block 10
+call   22 never executed
+    $$$$$:  105-block 11
+    $$$$$:  105-block 12
+call   23 never executed
+    $$$$$:  105-block 13
+    $$$$$:  105-block 14
+call   24 never executed
+       1*:  106:    EXPECT_LE(t.getHours(), 23);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  106-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  106-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  106-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  106-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  106-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  106-block  5
+call   19 never executed
+call   20 never executed
+        1:  106-block  6
+call   21 returned 1
+    $$$$$:  106-block  7
+    $$$$$:  106-block  8
+    $$$$$:  106-block  9
+call   22 never executed
+    $$$$$:  106-block 10
+    $$$$$:  106-block 11
+call   23 never executed
+    $$$$$:  106-block 12
+    $$$$$:  106-block 13
+call   24 never executed
+        1:  107:}
+------------------
+        -:  108:
+        4:  109:TEST_F(UtilsTest, ConstructorValid) {
+        1:  110:    Date d(2023, 12, 25);
+       1*:  111:    EXPECT_EQ(d.getDate(), "25.12.2023");
+        1:  112:}
+------------------
+_ZN31UtilsTest_ConstructorValid_TestC1Ev:
+function _ZN31UtilsTest_ConstructorValid_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  109:TEST_F(UtilsTest, ConstructorValid) {
+        1:  109-block  0
+call    0 returned 1
+------------------
+_ZN31UtilsTest_ConstructorValid_TestD0Ev:
+function _ZN31UtilsTest_ConstructorValid_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  109:TEST_F(UtilsTest, ConstructorValid) {
+        1:  109-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN31UtilsTest_ConstructorValid_TestD1Ev:
+function _ZN31UtilsTest_ConstructorValid_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  109:TEST_F(UtilsTest, ConstructorValid) {
+        1:  109-block  0
+call    0 returned 1
+------------------
+_ZN31UtilsTest_ConstructorValid_Test8TestBodyEv:
+function _ZN31UtilsTest_ConstructorValid_Test8TestBodyEv called 1 returned 100% blocks executed 32%
+        1:  109:TEST_F(UtilsTest, ConstructorValid) {
+        1:  110:    Date d(2023, 12, 25);
+        1:  110-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:  111:    EXPECT_EQ(d.getDate(), "25.12.2023");
+        1:  111-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  111-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  111-block  2
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:  111-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  111-block  4
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  111-block  5
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  111-block  6
+call   20 never executed
+call   21 never executed
+        1:  111-block  7
+call   22 returned 1
+    $$$$$:  111-block  8
+call   23 never executed
+    $$$$$:  111-block  9
+    $$$$$:  111-block 10
+call   24 never executed
+    $$$$$:  111-block 11
+    $$$$$:  111-block 12
+call   25 never executed
+    $$$$$:  111-block 13
+    $$$$$:  111-block 14
+call   26 never executed
+        1:  112:}
+------------------
+        -:  113:
+        4:  114:TEST_F(UtilsTest, ConstructorInvalid) {
+       1*:  115:    EXPECT_THROW(Date(2023, 13, 1), std::invalid_argument);
+       1*:  116:    EXPECT_THROW(Date(2023, 2, 30), std::invalid_argument);
+       1*:  117:    EXPECT_THROW(Date(2023, 0, 1), std::invalid_argument);
+        1:  118:}
+------------------
+_ZN33UtilsTest_ConstructorInvalid_TestC1Ev:
+function _ZN33UtilsTest_ConstructorInvalid_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  114:TEST_F(UtilsTest, ConstructorInvalid) {
+        1:  114-block  0
+call    0 returned 1
+------------------
+_ZN33UtilsTest_ConstructorInvalid_TestD0Ev:
+function _ZN33UtilsTest_ConstructorInvalid_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  114:TEST_F(UtilsTest, ConstructorInvalid) {
+        1:  114-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN33UtilsTest_ConstructorInvalid_TestD1Ev:
+function _ZN33UtilsTest_ConstructorInvalid_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  114:TEST_F(UtilsTest, ConstructorInvalid) {
+        1:  114-block  0
+call    0 returned 1
+------------------
+_ZN33UtilsTest_ConstructorInvalid_Test8TestBodyEv:
+function _ZN33UtilsTest_ConstructorInvalid_Test8TestBodyEv called 1 returned 100% blocks executed 24%
+        1:  114:TEST_F(UtilsTest, ConstructorInvalid) {
+       1*:  115:    EXPECT_THROW(Date(2023, 13, 1), std::invalid_argument);
+        1:  115-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:  115-block  1
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:  115-block  2
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:  115-block  3
+call    9 returned 1
+branch 10 taken 0 (fallthrough)
+branch 11 taken 1 (throw)
+    %%%%%:  115-block  4
+        1:  115-block  5
+branch 12 taken 0 (fallthrough)
+branch 13 taken 1
+    %%%%%:  115-block  6
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  115-block  7
+    %%%%%:  115-block  8
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  115-block  9
+call   20 never executed
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:  115-block 10
+call   24 never executed
+branch 25 never executed (fallthrough)
+branch 26 never executed (throw)
+    %%%%%:  115-block 11
+call   27 never executed
+call   28 never executed
+        1:  115-block 12
+call   29 returned 1
+        1:  115-block 13
+        1:  115-block 14
+branch 30 taken 1
+branch 31 taken 0
+branch 32 taken 0
+        1:  115-block 15
+call   33 returned 1
+call   34 returned 1
+    $$$$$:  115-block 16
+call   35 never executed
+call   36 never executed
+branch 37 never executed (fallthrough)
+branch 38 never executed (throw)
+    $$$$$:  115-block 17
+call   39 never executed
+branch 40 never executed (fallthrough)
+branch 41 never executed (throw)
+    $$$$$:  115-block 18
+call   42 never executed
+branch 43 never executed (fallthrough)
+branch 44 never executed (throw)
+    $$$$$:  115-block 19
+call   45 never executed
+call   46 never executed
+branch 47 never executed (fallthrough)
+branch 48 never executed (throw)
+    $$$$$:  115-block 20
+call   49 never executed
+call   50 never executed
+branch 51 never executed (fallthrough)
+branch 52 never executed (throw)
+    $$$$$:  115-block 21
+call   53 never executed
+branch 54 never executed (fallthrough)
+branch 55 never executed (throw)
+    $$$$$:  115-block 22
+    $$$$$:  115-block 23
+call   56 never executed
+    $$$$$:  115-block 24
+call   57 never executed
+call   58 never executed
+branch 59 never executed (fallthrough)
+branch 60 never executed (throw)
+    $$$$$:  115-block 25
+    $$$$$:  115-block 26
+call   61 never executed
+branch 62 never executed (fallthrough)
+branch 63 never executed (throw)
+    $$$$$:  115-block 27
+call   64 never executed
+    $$$$$:  115-block 28
+    $$$$$:  115-block 29
+call   65 never executed
+    $$$$$:  115-block 30
+call   66 never executed
+    $$$$$:  115-block 31
+call   67 never executed
+    $$$$$:  115-block 32
+    $$$$$:  115-block 33
+call   68 never executed
+    $$$$$:  115-block 34
+    $$$$$:  115-block 35
+call   69 never executed
+       1*:  116:    EXPECT_THROW(Date(2023, 2, 30), std::invalid_argument);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:  116-block  0
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:  116-block  1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:  116-block  2
+call    9 returned 1
+branch 10 taken 0 (fallthrough)
+branch 11 taken 1 (throw)
+    %%%%%:  116-block  3
+        1:  116-block  4
+branch 12 taken 0 (fallthrough)
+branch 13 taken 1
+    %%%%%:  116-block  5
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  116-block  6
+    %%%%%:  116-block  7
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  116-block  8
+call   20 never executed
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:  116-block  9
+call   24 never executed
+branch 25 never executed (fallthrough)
+branch 26 never executed (throw)
+    %%%%%:  116-block 10
+call   27 never executed
+call   28 never executed
+        1:  116-block 11
+call   29 returned 1
+        1:  116-block 12
+        1:  116-block 13
+branch 30 taken 1
+branch 31 taken 0
+branch 32 taken 0
+        1:  116-block 14
+call   33 returned 1
+call   34 returned 1
+    $$$$$:  116-block 15
+call   35 never executed
+call   36 never executed
+branch 37 never executed (fallthrough)
+branch 38 never executed (throw)
+    $$$$$:  116-block 16
+call   39 never executed
+branch 40 never executed (fallthrough)
+branch 41 never executed (throw)
+    $$$$$:  116-block 17
+call   42 never executed
+branch 43 never executed (fallthrough)
+branch 44 never executed (throw)
+    $$$$$:  116-block 18
+call   45 never executed
+call   46 never executed
+branch 47 never executed (fallthrough)
+branch 48 never executed (throw)
+    $$$$$:  116-block 19
+call   49 never executed
+call   50 never executed
+branch 51 never executed (fallthrough)
+branch 52 never executed (throw)
+    $$$$$:  116-block 20
+call   53 never executed
+branch 54 never executed (fallthrough)
+branch 55 never executed (throw)
+    $$$$$:  116-block 21
+    $$$$$:  116-block 22
+call   56 never executed
+    $$$$$:  116-block 23
+call   57 never executed
+call   58 never executed
+branch 59 never executed (fallthrough)
+branch 60 never executed (throw)
+    $$$$$:  116-block 24
+    $$$$$:  116-block 25
+call   61 never executed
+branch 62 never executed (fallthrough)
+branch 63 never executed (throw)
+    $$$$$:  116-block 26
+call   64 never executed
+    $$$$$:  116-block 27
+    $$$$$:  116-block 28
+call   65 never executed
+    $$$$$:  116-block 29
+call   66 never executed
+    $$$$$:  116-block 30
+call   67 never executed
+    $$$$$:  116-block 31
+    $$$$$:  116-block 32
+call   68 never executed
+    $$$$$:  116-block 33
+    $$$$$:  116-block 34
+call   69 never executed
+       1*:  117:    EXPECT_THROW(Date(2023, 0, 1), std::invalid_argument);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:  117-block  0
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:  117-block  1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:  117-block  2
+call    9 returned 1
+branch 10 taken 0 (fallthrough)
+branch 11 taken 1 (throw)
+    %%%%%:  117-block  3
+        1:  117-block  4
+branch 12 taken 0 (fallthrough)
+branch 13 taken 1
+    %%%%%:  117-block  5
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  117-block  6
+    %%%%%:  117-block  7
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  117-block  8
+call   20 never executed
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:  117-block  9
+call   24 never executed
+branch 25 never executed (fallthrough)
+branch 26 never executed (throw)
+    %%%%%:  117-block 10
+call   27 never executed
+call   28 never executed
+        1:  117-block 11
+call   29 returned 1
+        1:  117-block 12
+        1:  117-block 13
+branch 30 taken 1
+branch 31 taken 0
+branch 32 taken 0
+        1:  117-block 14
+call   33 returned 1
+call   34 returned 1
+    $$$$$:  117-block 15
+call   35 never executed
+call   36 never executed
+branch 37 never executed (fallthrough)
+branch 38 never executed (throw)
+    $$$$$:  117-block 16
+call   39 never executed
+branch 40 never executed (fallthrough)
+branch 41 never executed (throw)
+    $$$$$:  117-block 17
+call   42 never executed
+branch 43 never executed (fallthrough)
+branch 44 never executed (throw)
+    $$$$$:  117-block 18
+call   45 never executed
+call   46 never executed
+branch 47 never executed (fallthrough)
+branch 48 never executed (throw)
+    $$$$$:  117-block 19
+call   49 never executed
+call   50 never executed
+branch 51 never executed (fallthrough)
+branch 52 never executed (throw)
+    $$$$$:  117-block 20
+call   53 never executed
+branch 54 never executed (fallthrough)
+branch 55 never executed (throw)
+    $$$$$:  117-block 21
+    $$$$$:  117-block 22
+call   56 never executed
+    $$$$$:  117-block 23
+call   57 never executed
+call   58 never executed
+branch 59 never executed (fallthrough)
+branch 60 never executed (throw)
+    $$$$$:  117-block 24
+    $$$$$:  117-block 25
+call   61 never executed
+branch 62 never executed (fallthrough)
+branch 63 never executed (throw)
+    $$$$$:  117-block 26
+call   64 never executed
+    $$$$$:  117-block 27
+    $$$$$:  117-block 28
+call   65 never executed
+    $$$$$:  117-block 29
+call   66 never executed
+    $$$$$:  117-block 30
+call   67 never executed
+    $$$$$:  117-block 31
+    $$$$$:  117-block 32
+call   68 never executed
+    $$$$$:  117-block 33
+    $$$$$:  117-block 34
+call   69 never executed
+        1:  118:}
+------------------
+        -:  119:
+        4:  120:TEST_F(UtilsTest, GetDate) {
+        1:  121:    Date d(2022, 5, 7);
+       1*:  122:    EXPECT_EQ(d.getDate(), "07.05.2022");
+        1:  123:    Date d2(2022, 12, 15);
+       1*:  124:    EXPECT_EQ(d2.getDate(), "15.12.2022");
+        1:  125:}
+------------------
+_ZN22UtilsTest_GetDate_TestC1Ev:
+function _ZN22UtilsTest_GetDate_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  120:TEST_F(UtilsTest, GetDate) {
+        1:  120-block  0
+call    0 returned 1
+------------------
+_ZN22UtilsTest_GetDate_TestD0Ev:
+function _ZN22UtilsTest_GetDate_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  120:TEST_F(UtilsTest, GetDate) {
+        1:  120-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN22UtilsTest_GetDate_TestD1Ev:
+function _ZN22UtilsTest_GetDate_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  120:TEST_F(UtilsTest, GetDate) {
+        1:  120-block  0
+call    0 returned 1
+------------------
+_ZN22UtilsTest_GetDate_Test8TestBodyEv:
+function _ZN22UtilsTest_GetDate_Test8TestBodyEv called 1 returned 100% blocks executed 30%
+        1:  120:TEST_F(UtilsTest, GetDate) {
+        1:  121:    Date d(2022, 5, 7);
+        1:  121-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:  122:    EXPECT_EQ(d.getDate(), "07.05.2022");
+        1:  122-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  122-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  122-block  2
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:  122-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  122-block  4
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  122-block  5
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  122-block  6
+call   20 never executed
+call   21 never executed
+        1:  122-block  7
+call   22 returned 1
+    $$$$$:  122-block  8
+call   23 never executed
+    $$$$$:  122-block  9
+    $$$$$:  122-block 10
+call   24 never executed
+    $$$$$:  122-block 11
+    $$$$$:  122-block 12
+call   25 never executed
+    $$$$$:  122-block 13
+    $$$$$:  122-block 14
+call   26 never executed
+        1:  123:    Date d2(2022, 12, 15);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:  124:    EXPECT_EQ(d2.getDate(), "15.12.2022");
+        1:  124-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  124-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  124-block  2
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:  124-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  124-block  4
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  124-block  5
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  124-block  6
+call   20 never executed
+call   21 never executed
+        1:  124-block  7
+call   22 returned 1
+    $$$$$:  124-block  8
+call   23 never executed
+    $$$$$:  124-block  9
+    $$$$$:  124-block 10
+call   24 never executed
+    $$$$$:  124-block 11
+    $$$$$:  124-block 12
+call   25 never executed
+    $$$$$:  124-block 13
+    $$$$$:  124-block 14
+call   26 never executed
+        1:  125:}
+------------------
+        -:  126:
+        4:  127:TEST_F(UtilsTest, GetWeather) {
+        1:  128:    Date d(2023, 1, 1);
+        1:  129:    auto w = d.getWeather();
+        -:  130:    std::vector<Enums::WeatherCondition> all = {
+        -:  131:            Enums::WeatherCondition::SUNNY,
+        -:  132:            Enums::WeatherCondition::CLOUDY,
+        -:  133:            Enums::WeatherCondition::PARTLY_CLOUDY,
+        -:  134:            Enums::WeatherCondition::RAINY,
+        -:  135:            Enums::WeatherCondition::STORMY,
+        -:  136:            Enums::WeatherCondition::SNOWY,
+        -:  137:            Enums::WeatherCondition::FOGGY,
+        -:  138:            Enums::WeatherCondition::WINDY,
+        -:  139:            Enums::WeatherCondition::HAZY
+        2:  140:    };
+        1:  141:    bool found = false;
+       1*:  142:    for (auto c : all) {
+        1:  143:        if (w == c) {
+        1:  144:            found = true;
+        1:  145:            break;
+        -:  146:        }
+        -:  147:    }
+       1*:  148:    EXPECT_TRUE(found);
+        1:  149:}
+------------------
+_ZN25UtilsTest_GetWeather_TestC1Ev:
+function _ZN25UtilsTest_GetWeather_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  127:TEST_F(UtilsTest, GetWeather) {
+        1:  127-block  0
+call    0 returned 1
+------------------
+_ZN25UtilsTest_GetWeather_TestD0Ev:
+function _ZN25UtilsTest_GetWeather_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  127:TEST_F(UtilsTest, GetWeather) {
+        1:  127-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN25UtilsTest_GetWeather_TestD1Ev:
+function _ZN25UtilsTest_GetWeather_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  127:TEST_F(UtilsTest, GetWeather) {
+        1:  127-block  0
+call    0 returned 1
+------------------
+_ZN25UtilsTest_GetWeather_Test8TestBodyEv:
+function _ZN25UtilsTest_GetWeather_Test8TestBodyEv called 1 returned 100% blocks executed 42%
+        1:  127:TEST_F(UtilsTest, GetWeather) {
+        1:  128:    Date d(2023, 1, 1);
+        1:  128-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  129:    auto w = d.getWeather();
+        1:  129-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  130:    std::vector<Enums::WeatherCondition> all = {
+        -:  131:            Enums::WeatherCondition::SUNNY,
+        -:  132:            Enums::WeatherCondition::CLOUDY,
+        -:  133:            Enums::WeatherCondition::PARTLY_CLOUDY,
+        -:  134:            Enums::WeatherCondition::RAINY,
+        -:  135:            Enums::WeatherCondition::STORMY,
+        -:  136:            Enums::WeatherCondition::SNOWY,
+        -:  137:            Enums::WeatherCondition::FOGGY,
+        -:  138:            Enums::WeatherCondition::WINDY,
+        -:  139:            Enums::WeatherCondition::HAZY
+        2:  140:    };
+        1:  140-block  0
+        1:  140-block  1
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:  140-block  2
+    $$$$$:  140-block  3
+        1:  141:    bool found = false;
+       1*:  142:    for (auto c : all) {
+call    0 returned 1
+call    1 returned 1
+        1:  142-block  0
+call    2 returned 1
+    %%%%%:  142-block  1
+call    3 never executed
+        1:  142-block  2
+call    4 returned 1
+branch  5 taken 1
+branch  6 taken 0 (fallthrough)
+        1:  143:        if (w == c) {
+branch  0 taken 1 (fallthrough)
+branch  1 taken 0
+        1:  144:            found = true;
+        1:  145:            break;
+        1:  145-block  0
+        -:  146:        }
+        -:  147:    }
+       1*:  148:    EXPECT_TRUE(found);
+        1:  148-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 0 (fallthrough)
+branch  3 taken 1
+    %%%%%:  148-block  1
+call    4 never executed
+branch  5 never executed (fallthrough)
+branch  6 never executed (throw)
+    %%%%%:  148-block  2
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  148-block  3
+call   10 never executed
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:  148-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  148-block  5
+call   17 never executed
+call   18 never executed
+call   19 never executed
+        1:  148-block  6
+call   20 returned 1
+    $$$$$:  148-block  7
+call   21 never executed
+    $$$$$:  148-block  8
+call   22 never executed
+    $$$$$:  148-block  9
+    $$$$$:  148-block 10
+    $$$$$:  148-block 11
+call   23 never executed
+    $$$$$:  148-block 12
+    $$$$$:  148-block 13
+call   24 never executed
+        1:  149:}
+call    0 returned 1
+    $$$$$:  149-block  0
+call    1 never executed
+------------------
+        -:  150:
+        4:  151:TEST_F(UtilsTest, EqualityOperatorsDate) {
+        1:  152:    Date d1(2023, 5, 10);
+        1:  153:    Date d2(2023, 5, 10);
+        1:  154:    Date d3(2023, 6, 1);
+       1*:  155:    EXPECT_TRUE(d1 == d2);
+       1*:  156:    EXPECT_FALSE(d1 == d3);
+       1*:  157:    EXPECT_TRUE(d1 < d3);
+       1*:  158:    EXPECT_TRUE(d3 > d1);
+       1*:  159:    EXPECT_FALSE(d1 > d3);
+       1*:  160:    EXPECT_FALSE(d3 < d1);
+        1:  161:}
+------------------
+_ZN36UtilsTest_EqualityOperatorsDate_TestC1Ev:
+function _ZN36UtilsTest_EqualityOperatorsDate_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  151:TEST_F(UtilsTest, EqualityOperatorsDate) {
+        1:  151-block  0
+call    0 returned 1
+------------------
+_ZN36UtilsTest_EqualityOperatorsDate_TestD0Ev:
+function _ZN36UtilsTest_EqualityOperatorsDate_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  151:TEST_F(UtilsTest, EqualityOperatorsDate) {
+        1:  151-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN36UtilsTest_EqualityOperatorsDate_TestD1Ev:
+function _ZN36UtilsTest_EqualityOperatorsDate_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  151:TEST_F(UtilsTest, EqualityOperatorsDate) {
+        1:  151-block  0
+call    0 returned 1
+------------------
+_ZN36UtilsTest_EqualityOperatorsDate_Test8TestBodyEv:
+function _ZN36UtilsTest_EqualityOperatorsDate_Test8TestBodyEv called 1 returned 100% blocks executed 21%
+        1:  151:TEST_F(UtilsTest, EqualityOperatorsDate) {
+        1:  152:    Date d1(2023, 5, 10);
+        1:  152-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  153:    Date d2(2023, 5, 10);
+        1:  153-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  154:    Date d3(2023, 6, 1);
+        1:  154-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:  155:    EXPECT_TRUE(d1 == d2);
+        1:  155-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  155-block  1
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  155-block  2
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  155-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  155-block  4
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  155-block  5
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  155-block  6
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  155-block  7
+call   23 returned 1
+    $$$$$:  155-block  8
+    $$$$$:  155-block  9
+call   24 never executed
+    $$$$$:  155-block 10
+call   25 never executed
+    $$$$$:  155-block 11
+    $$$$$:  155-block 12
+    $$$$$:  155-block 13
+call   26 never executed
+    $$$$$:  155-block 14
+    $$$$$:  155-block 15
+call   27 never executed
+       1*:  156:    EXPECT_FALSE(d1 == d3);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  156-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  156-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  156-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  156-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  156-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  156-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  156-block  6
+call   23 returned 1
+    $$$$$:  156-block  7
+    $$$$$:  156-block  8
+call   24 never executed
+    $$$$$:  156-block  9
+call   25 never executed
+    $$$$$:  156-block 10
+    $$$$$:  156-block 11
+    $$$$$:  156-block 12
+call   26 never executed
+    $$$$$:  156-block 13
+    $$$$$:  156-block 14
+call   27 never executed
+       1*:  157:    EXPECT_TRUE(d1 < d3);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  157-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  157-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  157-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  157-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  157-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  157-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  157-block  6
+call   23 returned 1
+    $$$$$:  157-block  7
+    $$$$$:  157-block  8
+call   24 never executed
+    $$$$$:  157-block  9
+call   25 never executed
+    $$$$$:  157-block 10
+    $$$$$:  157-block 11
+    $$$$$:  157-block 12
+call   26 never executed
+    $$$$$:  157-block 13
+    $$$$$:  157-block 14
+call   27 never executed
+       1*:  158:    EXPECT_TRUE(d3 > d1);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  158-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  158-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  158-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  158-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  158-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  158-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  158-block  6
+call   23 returned 1
+    $$$$$:  158-block  7
+    $$$$$:  158-block  8
+call   24 never executed
+    $$$$$:  158-block  9
+call   25 never executed
+    $$$$$:  158-block 10
+    $$$$$:  158-block 11
+    $$$$$:  158-block 12
+call   26 never executed
+    $$$$$:  158-block 13
+    $$$$$:  158-block 14
+call   27 never executed
+       1*:  159:    EXPECT_FALSE(d1 > d3);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  159-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  159-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  159-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  159-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  159-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  159-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  159-block  6
+call   23 returned 1
+    $$$$$:  159-block  7
+    $$$$$:  159-block  8
+call   24 never executed
+    $$$$$:  159-block  9
+call   25 never executed
+    $$$$$:  159-block 10
+    $$$$$:  159-block 11
+    $$$$$:  159-block 12
+call   26 never executed
+    $$$$$:  159-block 13
+    $$$$$:  159-block 14
+call   27 never executed
+       1*:  160:    EXPECT_FALSE(d3 < d1);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  160-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  160-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  160-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  160-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  160-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  160-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  160-block  6
+call   23 returned 1
+    $$$$$:  160-block  7
+    $$$$$:  160-block  8
+call   24 never executed
+    $$$$$:  160-block  9
+call   25 never executed
+    $$$$$:  160-block 10
+    $$$$$:  160-block 11
+    $$$$$:  160-block 12
+call   26 never executed
+    $$$$$:  160-block 13
+    $$$$$:  160-block 14
+call   27 never executed
+        1:  161:}
+------------------
+        -:  162:
+        4:  163:TEST_F(UtilsTest, OperatorPlus) {
+        1:  164:    Date d(2020, 6, 15);
+        1:  165:    Date d2 = d + 5;
+       1*:  166:    EXPECT_EQ(d2.getDate(), "15.06.2025");
+        1:  167:}
+------------------
+_ZN27UtilsTest_OperatorPlus_TestC1Ev:
+function _ZN27UtilsTest_OperatorPlus_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  163:TEST_F(UtilsTest, OperatorPlus) {
+        1:  163-block  0
+call    0 returned 1
+------------------
+_ZN27UtilsTest_OperatorPlus_TestD0Ev:
+function _ZN27UtilsTest_OperatorPlus_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  163:TEST_F(UtilsTest, OperatorPlus) {
+        1:  163-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN27UtilsTest_OperatorPlus_TestD1Ev:
+function _ZN27UtilsTest_OperatorPlus_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  163:TEST_F(UtilsTest, OperatorPlus) {
+        1:  163-block  0
+call    0 returned 1
+------------------
+_ZN27UtilsTest_OperatorPlus_Test8TestBodyEv:
+function _ZN27UtilsTest_OperatorPlus_Test8TestBodyEv called 1 returned 100% blocks executed 34%
+        1:  163:TEST_F(UtilsTest, OperatorPlus) {
+        1:  164:    Date d(2020, 6, 15);
+        1:  164-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  165:    Date d2 = d + 5;
+        1:  165-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:  166:    EXPECT_EQ(d2.getDate(), "15.06.2025");
+        1:  166-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  166-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  166-block  2
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:  166-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  166-block  4
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  166-block  5
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  166-block  6
+call   20 never executed
+call   21 never executed
+        1:  166-block  7
+call   22 returned 1
+    $$$$$:  166-block  8
+call   23 never executed
+    $$$$$:  166-block  9
+    $$$$$:  166-block 10
+call   24 never executed
+    $$$$$:  166-block 11
+    $$$$$:  166-block 12
+call   25 never executed
+    $$$$$:  166-block 13
+    $$$$$:  166-block 14
+call   26 never executed
+        1:  167:}
+------------------
+        -:  168:
+        4:  169:TEST_F(UtilsTest, Setters) {
+        1:  170:    Date d(2020, 1, 1);
+        1:  171:    d.setYear(2025);
+        1:  172:    d.setMonth(12);
+        1:  173:    d.setDay(31);
+       1*:  174:    EXPECT_EQ(d.getDate(), "31.12.2025");
+        1:  175:}
+------------------
+_ZN22UtilsTest_Setters_TestC1Ev:
+function _ZN22UtilsTest_Setters_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  169:TEST_F(UtilsTest, Setters) {
+        1:  169-block  0
+call    0 returned 1
+------------------
+_ZN22UtilsTest_Setters_TestD0Ev:
+function _ZN22UtilsTest_Setters_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  169:TEST_F(UtilsTest, Setters) {
+        1:  169-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN22UtilsTest_Setters_TestD1Ev:
+function _ZN22UtilsTest_Setters_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  169:TEST_F(UtilsTest, Setters) {
+        1:  169-block  0
+call    0 returned 1
+------------------
+_ZN22UtilsTest_Setters_Test8TestBodyEv:
+function _ZN22UtilsTest_Setters_Test8TestBodyEv called 1 returned 100% blocks executed 39%
+        1:  169:TEST_F(UtilsTest, Setters) {
+        1:  170:    Date d(2020, 1, 1);
+        1:  170-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  171:    d.setYear(2025);
+        1:  171-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  172:    d.setMonth(12);
+        1:  172-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  173:    d.setDay(31);
+        1:  173-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:  174:    EXPECT_EQ(d.getDate(), "31.12.2025");
+        1:  174-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  174-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  174-block  2
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:  174-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  174-block  4
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  174-block  5
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  174-block  6
+call   20 never executed
+call   21 never executed
+        1:  174-block  7
+call   22 returned 1
+    $$$$$:  174-block  8
+call   23 never executed
+    $$$$$:  174-block  9
+    $$$$$:  174-block 10
+call   24 never executed
+    $$$$$:  174-block 11
+    $$$$$:  174-block 12
+call   25 never executed
+    $$$$$:  174-block 13
+    $$$$$:  174-block 14
+call   26 never executed
+        1:  175:}
+------------------
+        -:  176:
+        4:  177:TEST_F(UtilsTest, CurrentDate) {
+        1:  178:    Date d = Date::currentDate();
+        1:  179:    time_t now = time(nullptr);
+        1:  180:    tm* local = localtime(&now);
+        1:  181:    int expectedYear = local->tm_year + 1900;
+        1:  182:    int expectedMonth = local->tm_mon + 1;
+        1:  183:    int expectedDay = local->tm_mday;
+       2*:  184:    std::string expected = (expectedDay < 10 ? "0" : "") + std::to_string(expectedDay) + "." +
+        4:  185:                           (expectedMonth < 10 ? "0" : "") + std::to_string(expectedMonth) + "." +
+        3:  186:                           std::to_string(expectedYear);
+       1*:  187:    EXPECT_EQ(d.getDate().substr(6), expected.substr(6));
+        1:  188:}
+------------------
+_ZN26UtilsTest_CurrentDate_TestC1Ev:
+function _ZN26UtilsTest_CurrentDate_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  177:TEST_F(UtilsTest, CurrentDate) {
+        1:  177-block  0
+call    0 returned 1
+------------------
+_ZN26UtilsTest_CurrentDate_TestD0Ev:
+function _ZN26UtilsTest_CurrentDate_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  177:TEST_F(UtilsTest, CurrentDate) {
+        1:  177-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN26UtilsTest_CurrentDate_TestD1Ev:
+function _ZN26UtilsTest_CurrentDate_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  177:TEST_F(UtilsTest, CurrentDate) {
+        1:  177-block  0
+call    0 returned 1
+------------------
+_ZN26UtilsTest_CurrentDate_Test8TestBodyEv:
+function _ZN26UtilsTest_CurrentDate_Test8TestBodyEv called 1 returned 100% blocks executed 41%
+        1:  177:TEST_F(UtilsTest, CurrentDate) {
+        1:  178:    Date d = Date::currentDate();
+        1:  178-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  179:    time_t now = time(nullptr);
+        1:  179-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  180:    tm* local = localtime(&now);
+        1:  180-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  181:    int expectedYear = local->tm_year + 1900;
+        1:  182:    int expectedMonth = local->tm_mon + 1;
+        1:  183:    int expectedDay = local->tm_mday;
+       2*:  184:    std::string expected = (expectedDay < 10 ? "0" : "") + std::to_string(expectedDay) + "." +
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  184-block  0
+        1:  184-block  1
+        1:  184-block  2
+call    2 returned 1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:  184-block  3
+        1:  184-block  4
+        1:  184-block  5
+call    5 returned 1
+branch  6 taken 1 (fallthrough)
+branch  7 taken 0 (throw)
+        1:  184-block  6
+call    8 returned 1
+branch  9 taken 1 (fallthrough)
+branch 10 taken 0 (throw)
+        1:  184-block  7
+call   11 returned 1
+branch 12 taken 1 (fallthrough)
+branch 13 taken 0 (throw)
+call   14 returned 1
+call   15 returned 1
+call   16 returned 1
+call   17 returned 1
+    $$$$$:  184-block  8
+call   18 never executed
+    $$$$$:  184-block  9
+call   19 never executed
+    $$$$$:  184-block 10
+call   20 never executed
+    $$$$$:  184-block 11
+call   21 never executed
+    $$$$$:  184-block 12
+    $$$$$:  184-block 13
+    $$$$$:  184-block 14
+    $$$$$:  184-block 15
+        4:  185:                           (expectedMonth < 10 ? "0" : "") + std::to_string(expectedMonth) + "." +
+call    0 returned 1
+        1:  185-block  0
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:  185-block  1
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:  185-block  2
+call    7 returned 1
+call    8 returned 1
+call    9 returned 1
+    $$$$$:  185-block  3
+call   10 never executed
+    $$$$$:  185-block  4
+call   11 never executed
+    $$$$$:  185-block  5
+call   12 never executed
+    $$$$$:  185-block  6
+    $$$$$:  185-block  7
+    $$$$$:  185-block  8
+        3:  186:                           std::to_string(expectedYear);
+        1:  186-block  0
+call    0 returned 1
+        1:  186-block  1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+call    4 returned 1
+    $$$$$:  186-block  2
+call    5 never executed
+    $$$$$:  186-block  3
+       1*:  187:    EXPECT_EQ(d.getDate().substr(6), expected.substr(6));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  187-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  187-block  1
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:  187-block  2
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:  187-block  3
+call   12 returned 1
+call   13 returned 1
+call   14 returned 1
+call   15 returned 1
+branch 16 taken 0 (fallthrough)
+branch 17 taken 1
+    %%%%%:  187-block  4
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:  187-block  5
+call   21 never executed
+call   22 never executed
+branch 23 never executed (fallthrough)
+branch 24 never executed (throw)
+    %%%%%:  187-block  6
+call   25 never executed
+branch 26 never executed (fallthrough)
+branch 27 never executed (throw)
+    %%%%%:  187-block  7
+call   28 never executed
+call   29 never executed
+        1:  187-block  8
+call   30 returned 1
+    $$$$$:  187-block  9
+call   31 never executed
+    $$$$$:  187-block 10
+call   32 never executed
+    $$$$$:  187-block 11
+    $$$$$:  187-block 12
+    $$$$$:  187-block 13
+call   33 never executed
+    $$$$$:  187-block 14
+    $$$$$:  187-block 15
+call   34 never executed
+    $$$$$:  187-block 16
+    $$$$$:  187-block 17
+call   35 never executed
+    $$$$$:  187-block 18
+    $$$$$:  187-block 19
+call   36 never executed
+        1:  188:}
+call    0 returned 1
+    $$$$$:  188-block  0
+call    1 never executed
+------------------

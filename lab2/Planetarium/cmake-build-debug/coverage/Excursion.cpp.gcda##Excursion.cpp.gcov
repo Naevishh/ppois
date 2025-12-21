@@ -1,0 +1,214 @@
+        -:    0:Source:C:/Users/aleks/CLionProjects/PlanetariumProjectCopy/Events/Excursion.cpp
+        -:    0:Graph:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Events\CMakeFiles\Events.dir\Excursion.cpp.gcno
+        -:    0:Data:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Events\CMakeFiles\Events.dir\Excursion.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "Excursion.h"
+        -:    2:#include "../Validation/StringValidator.h"
+        -:    3:
+function _ZN9ExcursionC2ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEdN5Enums13ActivityThemeEP6MuseumS5_ called 6 returned 100% blocks executed 100%
+        6:    4:Excursion::Excursion(const std::string& name, double duration, Enums::ActivityTheme theme, Museum* museum_,
+        6:    5:                     std::string routeName_) :
+        -:    6:        Activity(name, duration, theme, museum_),
+        6:    7:        routeName(std::move(routeName_)), museum(museum_) {}
+        6:    7-block  0
+call    0 returned 6
+call    1 returned 6
+call    2 returned 6
+call    3 returned 6
+call    4 returned 6
+        -:    8:
+function _ZNK9Excursion21isAvailableInLanguageERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 8 returned 62% blocks executed 95%
+        8:    9:bool Excursion::isAvailableInLanguage(const std::string& language_) const {
+        8:   10:    if(!StringValidator::validate(language_)) throw std::invalid_argument("Invalid language!");
+        8:   10-block  0
+call    0 returned 8
+branch  1 taken 3 (fallthrough)
+branch  2 taken 5
+        3:   10-block  1
+call    3 returned 3
+call    4 returned 3
+branch  5 taken 3 (fallthrough)
+branch  6 taken 0 (throw)
+        3:   10-block  2
+call    7 returned 0
+    $$$$$:   10-block  3
+call    8 never executed
+        8:   11:    for (const auto &language : languages) {
+        5:   11-block  0
+call    0 returned 5
+call    1 returned 5
+        5:   11-block  1
+call    2 returned 5
+        3:   11-block  2
+call    3 returned 3
+        8:   11-block  3
+call    4 returned 8
+branch  5 taken 5
+branch  6 taken 3 (fallthrough)
+        5:   12:        if (language == language_) return true;
+call    0 returned 5
+branch  1 taken 2 (fallthrough)
+branch  2 taken 3
+        2:   12-block  0
+        2:   12-block  1
+        -:   13:    }
+        3:   14:    return false;
+        3:   14-block  0
+        -:   15:}
+        -:   16:
+function _ZN9Excursion14isRoutePopularEv called 1 returned 100% blocks executed 100%
+        1:   17:bool Excursion::isRoutePopular() {
+        1:   18:    double total = 0;
+        3:   19:    for (const auto &exhibit : routeExhibits) {
+        1:   19-block  0
+call    0 returned 1
+call    1 returned 1
+        2:   19-block  1
+call    2 returned 2
+        3:   19-block  2
+call    3 returned 3
+branch  4 taken 2
+branch  5 taken 1 (fallthrough)
+        2:   20:        total += exhibit->getRating();
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:   20-block  0
+call    3 returned 2
+        -:   21:    }
+        1:   22:    return total / routeExhibits.size() > 8;
+        1:   22-block  0
+call    0 returned 1
+        1:   22-block  1
+        -:   23:}
+        -:   24:
+function _ZN9Excursion4holdB5cxx11ERK4Date called 1 returned 100% blocks executed 47%
+        1:   25:std::string Excursion::hold(const Date& date) {
+       1*:   26:    for (const auto &exhibit: routeExhibits) {
+        1:   26-block  0
+call    0 returned 1
+call    1 returned 1
+    %%%%%:   26-block  1
+call    2 never executed
+        1:   26-block  2
+call    3 returned 1
+branch  4 taken 0
+branch  5 taken 1 (fallthrough)
+    #####:   27:        museum->viewExhibit(exhibit);
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:   27-block  0
+call    3 never executed
+call    4 never executed
+    $$$$$:   27-block  1
+        -:   28:    }
+        1:   29:    return "Excursion '" + getName() + "' is held on " + date.getDate() + ". Route is called '" + routeName + "'.";
+        1:   29-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   29-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   29-block  2
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:   29-block  3
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:   29-block  4
+call   12 returned 1
+branch 13 taken 1 (fallthrough)
+branch 14 taken 0 (throw)
+        1:   29-block  5
+call   15 returned 1
+branch 16 taken 1 (fallthrough)
+branch 17 taken 0 (throw)
+        1:   29-block  6
+call   18 returned 1
+branch 19 taken 1 (fallthrough)
+branch 20 taken 0 (throw)
+        1:   29-block  7
+call   21 returned 1
+branch 22 taken 1 (fallthrough)
+branch 23 taken 0 (throw)
+        1:   29-block  8
+        1:   29-block  9
+call   24 returned 1
+call   25 returned 1
+call   26 returned 1
+call   27 returned 1
+call   28 returned 1
+call   29 returned 1
+call   30 returned 1
+        1:   29-block 10
+    $$$$$:   29-block 11
+call   31 never executed
+    $$$$$:   29-block 12
+call   32 never executed
+    $$$$$:   29-block 13
+call   33 never executed
+    $$$$$:   29-block 14
+call   34 never executed
+    $$$$$:   29-block 15
+call   35 never executed
+    $$$$$:   29-block 16
+call   36 never executed
+    $$$$$:   29-block 17
+    $$$$$:   29-block 18
+    $$$$$:   29-block 19
+    $$$$$:   29-block 20
+call   37 never executed
+    $$$$$:   29-block 21
+    $$$$$:   29-block 22
+    $$$$$:   29-block 23
+        -:   30:}
+        -:   31:
+function _ZN9Excursion11addLanguageERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 2 returned 100% blocks executed 56%
+        2:   32:void Excursion::addLanguage(const std::string& language) {
+        2:   33:    if (!StringValidator::validate(language)) {
+        2:   33-block  0
+call    0 returned 2
+branch  1 taken 0 (fallthrough)
+branch  2 taken 2
+    #####:   34:        throw std::invalid_argument("Invalid language!");
+    %%%%%:   34-block  0
+call    0 never executed
+call    1 never executed
+branch  2 never executed (fallthrough)
+branch  3 never executed (throw)
+    %%%%%:   34-block  1
+call    4 never executed
+    $$$$$:   34-block  2
+call    5 never executed
+        -:   35:    }
+        2:   36:    languages.push_back(language);
+        2:   36-block  0
+call    0 returned 2
+        2:   37:}
+        -:   38:
+function _ZN9Excursion10addExhibitEP7Exhibit called 2 returned 100% blocks executed 50%
+        2:   39:void Excursion::addExhibit(Exhibit* exhibit) {
+        2:   40:    if (exhibit == nullptr) {
+        2:   40-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 2
+    #####:   41:        throw std::invalid_argument("Exhibit cannot be null!");
+    %%%%%:   41-block  0
+call    0 never executed
+call    1 never executed
+branch  2 never executed (fallthrough)
+branch  3 never executed (throw)
+    %%%%%:   41-block  1
+call    4 never executed
+    $$$$$:   41-block  2
+call    5 never executed
+        -:   42:    }
+        2:   43:    routeExhibits.push_back(exhibit);
+        2:   43-block  0
+call    0 returned 2
+        2:   44:}

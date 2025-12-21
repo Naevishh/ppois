@@ -1,0 +1,94 @@
+        -:    0:Source:C:/Users/aleks/CLionProjects/PlanetariumProjectCopy/Inventory/Telescope.cpp
+        -:    0:Graph:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Inventory\CMakeFiles\Inventory.dir\Telescope.cpp.gcno
+        -:    0:Data:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Inventory\CMakeFiles\Inventory.dir\Telescope.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "Telescope.h"
+        -:    2:#include <cmath>
+        -:    3:
+function _ZN9TelescopeC2ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEddN5Enums13TelescopeTypeE called 13 returned 100% blocks executed 60%
+       13:    4:Telescope::Telescope(const std::string& name_, double diameter_, double focalLength_, Enums::TelescopeType type_) :
+       13:    5:        Device(name_), objectiveDiameter(diameter_), focalLength(focalLength_), type(type_),
+       13:    6:        position(0, 0) {}
+       13:    6-block  0
+call    0 returned 13
+branch  1 taken 13 (fallthrough)
+branch  2 taken 0 (throw)
+       13:    6-block  1
+call    3 returned 13
+branch  4 taken 13 (fallthrough)
+branch  5 taken 0 (throw)
+       13:    6-block  2
+call    6 returned 13
+call    7 returned 13
+branch  8 taken 13 (fallthrough)
+branch  9 taken 0 (throw)
+       13:    6-block  3
+    $$$$$:    6-block  4
+call   10 never executed
+    $$$$$:    6-block  5
+call   11 never executed
+    $$$$$:    6-block  6
+call   12 never executed
+        -:    7:
+function _ZN9Telescope5focusEdd called 1 returned 100% blocks executed 50%
+        1:    8:void Telescope::focus(double azimuth_, double altitude_) {
+        -:    9:    try{
+        1:   10:        position.setAzimuth(azimuth_);
+        1:   10-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   11:        position.setAltitude(altitude_);
+        1:   11-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+    =====:   12:    }catch (...) {
+    $$$$$:   12-block  0
+    $$$$$:   12-block  1
+call    0 never executed
+    =====:   13:        throw;
+call    0 never executed
+    =====:   14:    }
+    $$$$$:   14-block  0
+call    0 never executed
+        1:   15:}
+        1:   15-block  0
+        -:   16:
+function _ZNK9Telescope19calculateResolutionEv called 2 returned 100% blocks executed 100%
+        2:   17:double Telescope::calculateResolution() const {
+        2:   18:    return 116 / objectiveDiameter;
+        2:   18-block  0
+        -:   19:}
+        -:   20:
+function _ZNK9Telescope10canObserveERK18AstronomicalObject called 3 returned 100% blocks executed 100%
+        3:   21:bool Telescope::canObserve(const AstronomicalObject& object) const {
+        3:   22:    if (object.getMagnitude() > calculateLimitingMagnitude()) {
+        3:   22-block  0
+call    0 returned 3
+call    1 returned 3
+branch  2 taken 1 (fallthrough)
+branch  3 taken 2
+        1:   23:        return false;
+        1:   23-block  0
+        -:   24:    }
+        2:   25:    if (object.getType() == Enums::ObjectType::STAR) {
+        2:   25-block  0
+call    0 returned 2
+branch  1 taken 1 (fallthrough)
+branch  2 taken 1
+        1:   26:        return true;
+        1:   26-block  0
+        -:   27:    }
+        1:   28:    double angularSize = object.calculateAngularDiameter();
+        1:   28-block  0
+call    0 returned 1
+        1:   29:    return angularSize >= calculateResolution();
+call    0 returned 1
+        -:   30:}
+        -:   31:
+function _ZNK9Telescope26calculateLimitingMagnitudeEv called 4 returned 100% blocks executed 100%
+        4:   32:double Telescope::calculateLimitingMagnitude() const {
+        4:   33:    return 2.7 + 5 * log10(objectiveDiameter);
+        4:   33-block  0
+        -:   34:}

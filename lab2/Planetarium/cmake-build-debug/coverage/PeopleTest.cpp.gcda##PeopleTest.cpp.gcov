@@ -1,0 +1,4918 @@
+        -:    0:Source:C:/Users/aleks/CLionProjects/PlanetariumProjectCopy/Tests/PeopleTest.cpp
+        -:    0:Graph:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Tests\CMakeFiles\Tests.dir\PeopleTest.cpp.gcno
+        -:    0:Data:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Tests\CMakeFiles\Tests.dir\PeopleTest.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "gtest/gtest.h"
+        -:    2:#include "Human.h"
+        -:    3:#include "Visitor.h"
+        -:    4:#include "Employee.h"
+        -:    5:#include "Ticket.h"
+        -:    6:#include "PlanetariumVenue.h"
+        -:    7:#include <vector>
+        -:    8:
+        -:    9:class PeopleTest : public ::testing::Test{
+function _ZN10PeopleTest5SetUpEv called 23 returned 100% blocks executed 100%
+       23:   10:    void SetUp() override{
+        -:   11:
+       23:   12:    }
+function _ZN10PeopleTest8TearDownEv called 23 returned 100% blocks executed 100%
+       23:   13:    void TearDown() override{
+        -:   14:
+       23:   15:    }
+        -:   16:};
+        -:   17:
+        4:   18:TEST_F(PeopleTest, DifferentAges) {
+        2:   19:    Human child("Child", 5);
+        2:   20:    Human adult("Adult", 25);
+        1:   21:    Human senior("Senior", 70);
+       1*:   22:    EXPECT_EQ(child.getAge(), 5);
+       1*:   23:    EXPECT_EQ(adult.getAge(), 25);
+       1*:   24:    EXPECT_EQ(senior.getAge(), 70);
+        1:   25:}
+------------------
+_ZN29PeopleTest_DifferentAges_TestC1Ev:
+function _ZN29PeopleTest_DifferentAges_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   18:TEST_F(PeopleTest, DifferentAges) {
+        1:   18-block  0
+call    0 returned 1
+------------------
+_ZN29PeopleTest_DifferentAges_TestD0Ev:
+function _ZN29PeopleTest_DifferentAges_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   18:TEST_F(PeopleTest, DifferentAges) {
+        1:   18-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN29PeopleTest_DifferentAges_TestD1Ev:
+function _ZN29PeopleTest_DifferentAges_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   18:TEST_F(PeopleTest, DifferentAges) {
+        1:   18-block  0
+call    0 returned 1
+------------------
+_ZN29PeopleTest_DifferentAges_Test8TestBodyEv:
+function _ZN29PeopleTest_DifferentAges_Test8TestBodyEv called 1 returned 100% blocks executed 33%
+        1:   18:TEST_F(PeopleTest, DifferentAges) {
+        1:   18-block  0
+        2:   19:    Human child("Child", 5);
+        1:   19-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   19-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   19-block  2
+call    6 returned 1
+    $$$$$:   19-block  3
+call    7 never executed
+    $$$$$:   19-block  4
+    $$$$$:   19-block  5
+        2:   20:    Human adult("Adult", 25);
+        1:   20-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   20-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   20-block  2
+call    6 returned 1
+    $$$$$:   20-block  3
+call    7 never executed
+    $$$$$:   20-block  4
+    $$$$$:   20-block  5
+        1:   21:    Human senior("Senior", 70);
+        1:   21-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   21-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   21-block  2
+call    6 returned 1
+    $$$$$:   21-block  3
+call    7 never executed
+    $$$$$:   21-block  4
+    $$$$$:   21-block  5
+       1*:   22:    EXPECT_EQ(child.getAge(), 5);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   22-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   22-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   22-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   22-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   22-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   22-block  5
+call   19 never executed
+call   20 never executed
+        1:   22-block  6
+call   21 returned 1
+    $$$$$:   22-block  7
+    $$$$$:   22-block  8
+    $$$$$:   22-block  9
+call   22 never executed
+    $$$$$:   22-block 10
+    $$$$$:   22-block 11
+call   23 never executed
+    $$$$$:   22-block 12
+    $$$$$:   22-block 13
+call   24 never executed
+       1*:   23:    EXPECT_EQ(adult.getAge(), 25);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   23-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   23-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   23-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   23-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   23-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   23-block  5
+call   19 never executed
+call   20 never executed
+        1:   23-block  6
+call   21 returned 1
+    $$$$$:   23-block  7
+    $$$$$:   23-block  8
+    $$$$$:   23-block  9
+call   22 never executed
+    $$$$$:   23-block 10
+    $$$$$:   23-block 11
+call   23 never executed
+    $$$$$:   23-block 12
+    $$$$$:   23-block 13
+call   24 never executed
+       1*:   24:    EXPECT_EQ(senior.getAge(), 70);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   24-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   24-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   24-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   24-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   24-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   24-block  5
+call   19 never executed
+call   20 never executed
+        1:   24-block  6
+call   21 returned 1
+    $$$$$:   24-block  7
+    $$$$$:   24-block  8
+    $$$$$:   24-block  9
+call   22 never executed
+    $$$$$:   24-block 10
+    $$$$$:   24-block 11
+call   23 never executed
+    $$$$$:   24-block 12
+    $$$$$:   24-block 13
+call   24 never executed
+        1:   25:}
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+    $$$$$:   25-block  0
+call    3 never executed
+    $$$$$:   25-block  1
+call    4 never executed
+    $$$$$:   25-block  2
+call    5 never executed
+------------------
+        -:   26:
+        4:   27:TEST_F(PeopleTest, EmptyName) {
+        1:   28:    Human human("", 20);
+       1*:   29:    EXPECT_EQ(human.getName(), "");
+        1:   30:}
+------------------
+_ZN25PeopleTest_EmptyName_TestC1Ev:
+function _ZN25PeopleTest_EmptyName_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   27:TEST_F(PeopleTest, EmptyName) {
+        1:   27-block  0
+call    0 returned 1
+------------------
+_ZN25PeopleTest_EmptyName_TestD0Ev:
+function _ZN25PeopleTest_EmptyName_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   27:TEST_F(PeopleTest, EmptyName) {
+        1:   27-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN25PeopleTest_EmptyName_TestD1Ev:
+function _ZN25PeopleTest_EmptyName_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   27:TEST_F(PeopleTest, EmptyName) {
+        1:   27-block  0
+call    0 returned 1
+------------------
+_ZN25PeopleTest_EmptyName_Test8TestBodyEv:
+function _ZN25PeopleTest_EmptyName_Test8TestBodyEv called 1 returned 100% blocks executed 36%
+        1:   27:TEST_F(PeopleTest, EmptyName) {
+        1:   27-block  0
+        1:   28:    Human human("", 20);
+        1:   28-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   28-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   28-block  2
+call    6 returned 1
+    $$$$$:   28-block  3
+call    7 never executed
+    $$$$$:   28-block  4
+    $$$$$:   28-block  5
+       1*:   29:    EXPECT_EQ(human.getName(), "");
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   29-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   29-block  1
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:   29-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   29-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   29-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   29-block  5
+call   20 never executed
+call   21 never executed
+        1:   29-block  6
+call   22 returned 1
+    $$$$$:   29-block  7
+call   23 never executed
+    $$$$$:   29-block  8
+    $$$$$:   29-block  9
+call   24 never executed
+    $$$$$:   29-block 10
+    $$$$$:   29-block 11
+call   25 never executed
+    $$$$$:   29-block 12
+    $$$$$:   29-block 13
+call   26 never executed
+        1:   30:}
+call    0 returned 1
+    $$$$$:   30-block  0
+call    1 never executed
+------------------
+        -:   31:
+        4:   32:TEST_F(PeopleTest, NameWithSpaces) {
+        1:   33:    Human human("First Middle Last", 40);
+       1*:   34:    EXPECT_EQ(human.getName(), "First Middle Last");
+        1:   35:}
+------------------
+_ZN30PeopleTest_NameWithSpaces_TestC1Ev:
+function _ZN30PeopleTest_NameWithSpaces_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   32:TEST_F(PeopleTest, NameWithSpaces) {
+        1:   32-block  0
+call    0 returned 1
+------------------
+_ZN30PeopleTest_NameWithSpaces_TestD0Ev:
+function _ZN30PeopleTest_NameWithSpaces_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   32:TEST_F(PeopleTest, NameWithSpaces) {
+        1:   32-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN30PeopleTest_NameWithSpaces_TestD1Ev:
+function _ZN30PeopleTest_NameWithSpaces_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   32:TEST_F(PeopleTest, NameWithSpaces) {
+        1:   32-block  0
+call    0 returned 1
+------------------
+_ZN30PeopleTest_NameWithSpaces_Test8TestBodyEv:
+function _ZN30PeopleTest_NameWithSpaces_Test8TestBodyEv called 1 returned 100% blocks executed 36%
+        1:   32:TEST_F(PeopleTest, NameWithSpaces) {
+        1:   32-block  0
+        1:   33:    Human human("First Middle Last", 40);
+        1:   33-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   33-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   33-block  2
+call    6 returned 1
+    $$$$$:   33-block  3
+call    7 never executed
+    $$$$$:   33-block  4
+    $$$$$:   33-block  5
+       1*:   34:    EXPECT_EQ(human.getName(), "First Middle Last");
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   34-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   34-block  1
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:   34-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   34-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   34-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   34-block  5
+call   20 never executed
+call   21 never executed
+        1:   34-block  6
+call   22 returned 1
+    $$$$$:   34-block  7
+call   23 never executed
+    $$$$$:   34-block  8
+    $$$$$:   34-block  9
+call   24 never executed
+    $$$$$:   34-block 10
+    $$$$$:   34-block 11
+call   25 never executed
+    $$$$$:   34-block 12
+    $$$$$:   34-block 13
+call   26 never executed
+        1:   35:}
+call    0 returned 1
+    $$$$$:   35-block  0
+call    1 never executed
+------------------
+        -:   36:
+        4:   37:TEST_F(PeopleTest, ConstructorAndGetters) {
+        1:   38:    Visitor visitor("Alice", 20, Enums::DiscountCategory::STUDENT);
+       1*:   39:    EXPECT_EQ(visitor.getName(), "Alice");
+       1*:   40:    EXPECT_EQ(visitor.getAge(), 20);
+       1*:   41:    EXPECT_EQ(visitor.getCategory(), Enums::DiscountCategory::STUDENT);
+        1:   42:}
+------------------
+_ZN37PeopleTest_ConstructorAndGetters_TestC1Ev:
+function _ZN37PeopleTest_ConstructorAndGetters_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   37:TEST_F(PeopleTest, ConstructorAndGetters) {
+        1:   37-block  0
+call    0 returned 1
+------------------
+_ZN37PeopleTest_ConstructorAndGetters_TestD0Ev:
+function _ZN37PeopleTest_ConstructorAndGetters_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   37:TEST_F(PeopleTest, ConstructorAndGetters) {
+        1:   37-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN37PeopleTest_ConstructorAndGetters_TestD1Ev:
+function _ZN37PeopleTest_ConstructorAndGetters_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   37:TEST_F(PeopleTest, ConstructorAndGetters) {
+        1:   37-block  0
+call    0 returned 1
+------------------
+_ZN37PeopleTest_ConstructorAndGetters_Test8TestBodyEv:
+function _ZN37PeopleTest_ConstructorAndGetters_Test8TestBodyEv called 1 returned 100% blocks executed 28%
+        1:   37:TEST_F(PeopleTest, ConstructorAndGetters) {
+        1:   37-block  0
+        1:   38:    Visitor visitor("Alice", 20, Enums::DiscountCategory::STUDENT);
+        1:   38-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   38-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   38-block  2
+call    6 returned 1
+    $$$$$:   38-block  3
+call    7 never executed
+    $$$$$:   38-block  4
+    $$$$$:   38-block  5
+       1*:   39:    EXPECT_EQ(visitor.getName(), "Alice");
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   39-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   39-block  1
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:   39-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   39-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   39-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   39-block  5
+call   20 never executed
+call   21 never executed
+        1:   39-block  6
+call   22 returned 1
+    $$$$$:   39-block  7
+call   23 never executed
+    $$$$$:   39-block  8
+    $$$$$:   39-block  9
+call   24 never executed
+    $$$$$:   39-block 10
+    $$$$$:   39-block 11
+call   25 never executed
+    $$$$$:   39-block 12
+    $$$$$:   39-block 13
+call   26 never executed
+       1*:   40:    EXPECT_EQ(visitor.getAge(), 20);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   40-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   40-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   40-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   40-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   40-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   40-block  5
+call   19 never executed
+call   20 never executed
+        1:   40-block  6
+call   21 returned 1
+    $$$$$:   40-block  7
+    $$$$$:   40-block  8
+    $$$$$:   40-block  9
+call   22 never executed
+    $$$$$:   40-block 10
+    $$$$$:   40-block 11
+call   23 never executed
+    $$$$$:   40-block 12
+    $$$$$:   40-block 13
+call   24 never executed
+       1*:   41:    EXPECT_EQ(visitor.getCategory(), Enums::DiscountCategory::STUDENT);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   41-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   41-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   41-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   41-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   41-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   41-block  5
+call   19 never executed
+call   20 never executed
+        1:   41-block  6
+call   21 returned 1
+    $$$$$:   41-block  7
+    $$$$$:   41-block  8
+    $$$$$:   41-block  9
+call   22 never executed
+    $$$$$:   41-block 10
+    $$$$$:   41-block 11
+call   23 never executed
+    $$$$$:   41-block 12
+    $$$$$:   41-block 13
+call   24 never executed
+        1:   42:}
+call    0 returned 1
+    $$$$$:   42-block  0
+call    1 never executed
+------------------
+        -:   43:
+        4:   44:TEST_F(PeopleTest, AllDiscountCategories) {
+        2:   45:    Visitor student("Student", 20, Enums::DiscountCategory::STUDENT);
+        2:   46:    Visitor child("Child", 10, Enums::DiscountCategory::NONE);
+        2:   47:    Visitor senior("Senior", 65, Enums::DiscountCategory::SENIOR);
+        1:   48:    Visitor NONE("NONE", 30, Enums::DiscountCategory::NONE);
+        -:   49:
+       1*:   50:    EXPECT_EQ(student.getCategory(), Enums::DiscountCategory::STUDENT);
+       1*:   51:    EXPECT_EQ(child.getCategory(), Enums::DiscountCategory::NONE);
+       1*:   52:    EXPECT_EQ(senior.getCategory(), Enums::DiscountCategory::SENIOR);
+       1*:   53:    EXPECT_EQ(NONE.getCategory(), Enums::DiscountCategory::NONE);
+        1:   54:}
+------------------
+_ZN37PeopleTest_AllDiscountCategories_TestC1Ev:
+function _ZN37PeopleTest_AllDiscountCategories_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   44:TEST_F(PeopleTest, AllDiscountCategories) {
+        1:   44-block  0
+call    0 returned 1
+------------------
+_ZN37PeopleTest_AllDiscountCategories_TestD0Ev:
+function _ZN37PeopleTest_AllDiscountCategories_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   44:TEST_F(PeopleTest, AllDiscountCategories) {
+        1:   44-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN37PeopleTest_AllDiscountCategories_TestD1Ev:
+function _ZN37PeopleTest_AllDiscountCategories_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   44:TEST_F(PeopleTest, AllDiscountCategories) {
+        1:   44-block  0
+call    0 returned 1
+------------------
+_ZN37PeopleTest_AllDiscountCategories_Test8TestBodyEv:
+function _ZN37PeopleTest_AllDiscountCategories_Test8TestBodyEv called 1 returned 100% blocks executed 32%
+        1:   44:TEST_F(PeopleTest, AllDiscountCategories) {
+        1:   44-block  0
+        2:   45:    Visitor student("Student", 20, Enums::DiscountCategory::STUDENT);
+        1:   45-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   45-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   45-block  2
+call    6 returned 1
+    $$$$$:   45-block  3
+call    7 never executed
+    $$$$$:   45-block  4
+    $$$$$:   45-block  5
+        2:   46:    Visitor child("Child", 10, Enums::DiscountCategory::NONE);
+        1:   46-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   46-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   46-block  2
+call    6 returned 1
+    $$$$$:   46-block  3
+call    7 never executed
+    $$$$$:   46-block  4
+    $$$$$:   46-block  5
+        2:   47:    Visitor senior("Senior", 65, Enums::DiscountCategory::SENIOR);
+        1:   47-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   47-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   47-block  2
+call    6 returned 1
+    $$$$$:   47-block  3
+call    7 never executed
+    $$$$$:   47-block  4
+    $$$$$:   47-block  5
+        1:   48:    Visitor NONE("NONE", 30, Enums::DiscountCategory::NONE);
+        1:   48-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   48-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   48-block  2
+call    6 returned 1
+    $$$$$:   48-block  3
+call    7 never executed
+    $$$$$:   48-block  4
+    $$$$$:   48-block  5
+        -:   49:
+       1*:   50:    EXPECT_EQ(student.getCategory(), Enums::DiscountCategory::STUDENT);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   50-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   50-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   50-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   50-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   50-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   50-block  5
+call   19 never executed
+call   20 never executed
+        1:   50-block  6
+call   21 returned 1
+    $$$$$:   50-block  7
+    $$$$$:   50-block  8
+    $$$$$:   50-block  9
+call   22 never executed
+    $$$$$:   50-block 10
+    $$$$$:   50-block 11
+call   23 never executed
+    $$$$$:   50-block 12
+    $$$$$:   50-block 13
+call   24 never executed
+       1*:   51:    EXPECT_EQ(child.getCategory(), Enums::DiscountCategory::NONE);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   51-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   51-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   51-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   51-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   51-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   51-block  5
+call   19 never executed
+call   20 never executed
+        1:   51-block  6
+call   21 returned 1
+    $$$$$:   51-block  7
+    $$$$$:   51-block  8
+    $$$$$:   51-block  9
+call   22 never executed
+    $$$$$:   51-block 10
+    $$$$$:   51-block 11
+call   23 never executed
+    $$$$$:   51-block 12
+    $$$$$:   51-block 13
+call   24 never executed
+       1*:   52:    EXPECT_EQ(senior.getCategory(), Enums::DiscountCategory::SENIOR);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   52-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   52-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   52-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   52-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   52-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   52-block  5
+call   19 never executed
+call   20 never executed
+        1:   52-block  6
+call   21 returned 1
+    $$$$$:   52-block  7
+    $$$$$:   52-block  8
+    $$$$$:   52-block  9
+call   22 never executed
+    $$$$$:   52-block 10
+    $$$$$:   52-block 11
+call   23 never executed
+    $$$$$:   52-block 12
+    $$$$$:   52-block 13
+call   24 never executed
+       1*:   53:    EXPECT_EQ(NONE.getCategory(), Enums::DiscountCategory::NONE);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   53-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   53-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   53-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   53-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   53-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   53-block  5
+call   19 never executed
+call   20 never executed
+        1:   53-block  6
+call   21 returned 1
+    $$$$$:   53-block  7
+    $$$$$:   53-block  8
+    $$$$$:   53-block  9
+call   22 never executed
+    $$$$$:   53-block 10
+    $$$$$:   53-block 11
+call   23 never executed
+    $$$$$:   53-block 12
+    $$$$$:   53-block 13
+call   24 never executed
+        1:   54:}
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+call    3 returned 1
+    $$$$$:   54-block  0
+call    4 never executed
+    $$$$$:   54-block  1
+call    5 never executed
+    $$$$$:   54-block  2
+call    6 never executed
+    $$$$$:   54-block  3
+call    7 never executed
+------------------
+        -:   55:
+        4:   56:TEST_F(PeopleTest, BuyTicketAndCanVisit) {
+        2:   57:    Visitor visitor("Bob", 25, Enums::DiscountCategory::NONE);
+        2:   58:    PlanetariumVenue venue("Main Hall", 100);
+        1:   59:    Ticket ticket(&venue, "Bob", 50.0);
+        -:   60:
+       1*:   61:    EXPECT_FALSE(visitor.canVisitVenue(&venue));
+        1:   62:    visitor.buyTicket(&ticket);
+       1*:   63:    EXPECT_TRUE(visitor.canVisitVenue(&venue));
+        1:   64:}
+------------------
+_ZN36PeopleTest_BuyTicketAndCanVisit_TestC1Ev:
+function _ZN36PeopleTest_BuyTicketAndCanVisit_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   56:TEST_F(PeopleTest, BuyTicketAndCanVisit) {
+        1:   56-block  0
+call    0 returned 1
+------------------
+_ZN36PeopleTest_BuyTicketAndCanVisit_TestD0Ev:
+function _ZN36PeopleTest_BuyTicketAndCanVisit_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   56:TEST_F(PeopleTest, BuyTicketAndCanVisit) {
+        1:   56-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN36PeopleTest_BuyTicketAndCanVisit_TestD1Ev:
+function _ZN36PeopleTest_BuyTicketAndCanVisit_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   56:TEST_F(PeopleTest, BuyTicketAndCanVisit) {
+        1:   56-block  0
+call    0 returned 1
+------------------
+_ZN36PeopleTest_BuyTicketAndCanVisit_Test8TestBodyEv:
+function _ZN36PeopleTest_BuyTicketAndCanVisit_Test8TestBodyEv called 1 returned 100% blocks executed 33%
+        1:   56:TEST_F(PeopleTest, BuyTicketAndCanVisit) {
+        1:   56-block  0
+        2:   57:    Visitor visitor("Bob", 25, Enums::DiscountCategory::NONE);
+        1:   57-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   57-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   57-block  2
+call    6 returned 1
+    $$$$$:   57-block  3
+call    7 never executed
+    $$$$$:   57-block  4
+    $$$$$:   57-block  5
+        2:   58:    PlanetariumVenue venue("Main Hall", 100);
+        1:   58-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   58-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   58-block  2
+call    6 returned 1
+    $$$$$:   58-block  3
+call    7 never executed
+    $$$$$:   58-block  4
+    $$$$$:   58-block  5
+        1:   59:    Ticket ticket(&venue, "Bob", 50.0);
+        1:   59-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   59-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   59-block  2
+call    6 returned 1
+    $$$$$:   59-block  3
+call    7 never executed
+    $$$$$:   59-block  4
+    $$$$$:   59-block  5
+        -:   60:
+       1*:   61:    EXPECT_FALSE(visitor.canVisitVenue(&venue));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   61-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   61-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   61-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   61-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   61-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   61-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:   61-block  6
+call   23 returned 1
+    $$$$$:   61-block  7
+    $$$$$:   61-block  8
+call   24 never executed
+    $$$$$:   61-block  9
+call   25 never executed
+    $$$$$:   61-block 10
+    $$$$$:   61-block 11
+    $$$$$:   61-block 12
+call   26 never executed
+    $$$$$:   61-block 13
+    $$$$$:   61-block 14
+call   27 never executed
+        1:   62:    visitor.buyTicket(&ticket);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:   63:    EXPECT_TRUE(visitor.canVisitVenue(&venue));
+        1:   63-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   63-block  1
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   63-block  2
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   63-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   63-block  4
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   63-block  5
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   63-block  6
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:   63-block  7
+call   23 returned 1
+    $$$$$:   63-block  8
+    $$$$$:   63-block  9
+call   24 never executed
+    $$$$$:   63-block 10
+call   25 never executed
+    $$$$$:   63-block 11
+    $$$$$:   63-block 12
+    $$$$$:   63-block 13
+call   26 never executed
+    $$$$$:   63-block 14
+    $$$$$:   63-block 15
+call   27 never executed
+        1:   64:}
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+    $$$$$:   64-block  0
+call    3 never executed
+    $$$$$:   64-block  1
+call    4 never executed
+    $$$$$:   64-block  2
+call    5 never executed
+------------------
+        -:   65:
+        4:   66:TEST_F(PeopleTest, MultipleTicketsDifferentVenues) {
+        2:   67:    Visitor visitor("Charlie", 30, Enums::DiscountCategory::NONE);
+        2:   68:    PlanetariumVenue venue1("Main Hall", 150);
+        2:   69:    PlanetariumVenue venue2("Observatory", 50);
+        2:   70:    PlanetariumVenue venue3("Exhibition", 200);
+        -:   71:
+        2:   72:    Ticket ticket1(&venue1, "Charlie", 50.0);
+        1:   73:    Ticket ticket2(&venue2, "Charlie", 75.0);
+        -:   74:
+        1:   75:    visitor.buyTicket(&ticket1);
+        1:   76:    visitor.buyTicket(&ticket2);
+        -:   77:
+       1*:   78:    EXPECT_TRUE(visitor.canVisitVenue(&venue1));
+       1*:   79:    EXPECT_TRUE(visitor.canVisitVenue(&venue2));
+       1*:   80:    EXPECT_FALSE(visitor.canVisitVenue(&venue3));
+        1:   81:}
+------------------
+_ZN46PeopleTest_MultipleTicketsDifferentVenues_TestC1Ev:
+function _ZN46PeopleTest_MultipleTicketsDifferentVenues_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   66:TEST_F(PeopleTest, MultipleTicketsDifferentVenues) {
+        1:   66-block  0
+call    0 returned 1
+------------------
+_ZN46PeopleTest_MultipleTicketsDifferentVenues_TestD0Ev:
+function _ZN46PeopleTest_MultipleTicketsDifferentVenues_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   66:TEST_F(PeopleTest, MultipleTicketsDifferentVenues) {
+        1:   66-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN46PeopleTest_MultipleTicketsDifferentVenues_TestD1Ev:
+function _ZN46PeopleTest_MultipleTicketsDifferentVenues_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   66:TEST_F(PeopleTest, MultipleTicketsDifferentVenues) {
+        1:   66-block  0
+call    0 returned 1
+------------------
+_ZN46PeopleTest_MultipleTicketsDifferentVenues_Test8TestBodyEv:
+function _ZN46PeopleTest_MultipleTicketsDifferentVenues_Test8TestBodyEv called 1 returned 100% blocks executed 35%
+        1:   66:TEST_F(PeopleTest, MultipleTicketsDifferentVenues) {
+        1:   66-block  0
+        2:   67:    Visitor visitor("Charlie", 30, Enums::DiscountCategory::NONE);
+        1:   67-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   67-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   67-block  2
+call    6 returned 1
+    $$$$$:   67-block  3
+call    7 never executed
+    $$$$$:   67-block  4
+    $$$$$:   67-block  5
+        2:   68:    PlanetariumVenue venue1("Main Hall", 150);
+        1:   68-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   68-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   68-block  2
+call    6 returned 1
+    $$$$$:   68-block  3
+call    7 never executed
+    $$$$$:   68-block  4
+    $$$$$:   68-block  5
+        2:   69:    PlanetariumVenue venue2("Observatory", 50);
+        1:   69-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   69-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   69-block  2
+call    6 returned 1
+    $$$$$:   69-block  3
+call    7 never executed
+    $$$$$:   69-block  4
+    $$$$$:   69-block  5
+        2:   70:    PlanetariumVenue venue3("Exhibition", 200);
+        1:   70-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   70-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   70-block  2
+call    6 returned 1
+    $$$$$:   70-block  3
+call    7 never executed
+    $$$$$:   70-block  4
+    $$$$$:   70-block  5
+        -:   71:
+        2:   72:    Ticket ticket1(&venue1, "Charlie", 50.0);
+        1:   72-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   72-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   72-block  2
+call    6 returned 1
+    $$$$$:   72-block  3
+call    7 never executed
+    $$$$$:   72-block  4
+    $$$$$:   72-block  5
+        1:   73:    Ticket ticket2(&venue2, "Charlie", 75.0);
+        1:   73-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   73-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   73-block  2
+call    6 returned 1
+    $$$$$:   73-block  3
+call    7 never executed
+    $$$$$:   73-block  4
+    $$$$$:   73-block  5
+        -:   74:
+        1:   75:    visitor.buyTicket(&ticket1);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   76:    visitor.buyTicket(&ticket2);
+        1:   76-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   77:
+       1*:   78:    EXPECT_TRUE(visitor.canVisitVenue(&venue1));
+        1:   78-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   78-block  1
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   78-block  2
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   78-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   78-block  4
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   78-block  5
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   78-block  6
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:   78-block  7
+call   23 returned 1
+    $$$$$:   78-block  8
+    $$$$$:   78-block  9
+call   24 never executed
+    $$$$$:   78-block 10
+call   25 never executed
+    $$$$$:   78-block 11
+    $$$$$:   78-block 12
+    $$$$$:   78-block 13
+call   26 never executed
+    $$$$$:   78-block 14
+    $$$$$:   78-block 15
+call   27 never executed
+       1*:   79:    EXPECT_TRUE(visitor.canVisitVenue(&venue2));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   79-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   79-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   79-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   79-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   79-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   79-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:   79-block  6
+call   23 returned 1
+    $$$$$:   79-block  7
+    $$$$$:   79-block  8
+call   24 never executed
+    $$$$$:   79-block  9
+call   25 never executed
+    $$$$$:   79-block 10
+    $$$$$:   79-block 11
+    $$$$$:   79-block 12
+call   26 never executed
+    $$$$$:   79-block 13
+    $$$$$:   79-block 14
+call   27 never executed
+       1*:   80:    EXPECT_FALSE(visitor.canVisitVenue(&venue3));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   80-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   80-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   80-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   80-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   80-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   80-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:   80-block  6
+call   23 returned 1
+    $$$$$:   80-block  7
+    $$$$$:   80-block  8
+call   24 never executed
+    $$$$$:   80-block  9
+call   25 never executed
+    $$$$$:   80-block 10
+    $$$$$:   80-block 11
+    $$$$$:   80-block 12
+call   26 never executed
+    $$$$$:   80-block 13
+    $$$$$:   80-block 14
+call   27 never executed
+        1:   81:}
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+call    3 returned 1
+call    4 returned 1
+call    5 returned 1
+    $$$$$:   81-block  0
+call    6 never executed
+    $$$$$:   81-block  1
+call    7 never executed
+    $$$$$:   81-block  2
+call    8 never executed
+    $$$$$:   81-block  3
+call    9 never executed
+    $$$$$:   81-block  4
+call   10 never executed
+    $$$$$:   81-block  5
+call   11 never executed
+------------------
+        -:   82:
+        4:   83:TEST_F(PeopleTest, MultipleTicketsSameVenue) {
+        2:   84:    Visitor visitor("David", 28, Enums::DiscountCategory::STUDENT);
+        2:   85:    PlanetariumVenue venue("Main Hall", 120);
+        -:   86:
+        2:   87:    Ticket ticket1(&venue, "David", 40.0);
+        1:   88:    Ticket ticket2(&venue, "David", 40.0);
+        -:   89:
+        1:   90:    visitor.buyTicket(&ticket1);
+        1:   91:    visitor.buyTicket(&ticket2);
+        -:   92:
+       1*:   93:    EXPECT_TRUE(visitor.canVisitVenue(&venue));
+        1:   94:}
+------------------
+_ZN40PeopleTest_MultipleTicketsSameVenue_TestC1Ev:
+function _ZN40PeopleTest_MultipleTicketsSameVenue_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   83:TEST_F(PeopleTest, MultipleTicketsSameVenue) {
+        1:   83-block  0
+call    0 returned 1
+------------------
+_ZN40PeopleTest_MultipleTicketsSameVenue_TestD0Ev:
+function _ZN40PeopleTest_MultipleTicketsSameVenue_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   83:TEST_F(PeopleTest, MultipleTicketsSameVenue) {
+        1:   83-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN40PeopleTest_MultipleTicketsSameVenue_TestD1Ev:
+function _ZN40PeopleTest_MultipleTicketsSameVenue_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   83:TEST_F(PeopleTest, MultipleTicketsSameVenue) {
+        1:   83-block  0
+call    0 returned 1
+------------------
+_ZN40PeopleTest_MultipleTicketsSameVenue_Test8TestBodyEv:
+function _ZN40PeopleTest_MultipleTicketsSameVenue_Test8TestBodyEv called 1 returned 100% blocks executed 41%
+        1:   83:TEST_F(PeopleTest, MultipleTicketsSameVenue) {
+        1:   83-block  0
+        2:   84:    Visitor visitor("David", 28, Enums::DiscountCategory::STUDENT);
+        1:   84-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   84-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   84-block  2
+call    6 returned 1
+    $$$$$:   84-block  3
+call    7 never executed
+    $$$$$:   84-block  4
+    $$$$$:   84-block  5
+        2:   85:    PlanetariumVenue venue("Main Hall", 120);
+        1:   85-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   85-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   85-block  2
+call    6 returned 1
+    $$$$$:   85-block  3
+call    7 never executed
+    $$$$$:   85-block  4
+    $$$$$:   85-block  5
+        -:   86:
+        2:   87:    Ticket ticket1(&venue, "David", 40.0);
+        1:   87-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   87-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   87-block  2
+call    6 returned 1
+    $$$$$:   87-block  3
+call    7 never executed
+    $$$$$:   87-block  4
+    $$$$$:   87-block  5
+        1:   88:    Ticket ticket2(&venue, "David", 40.0);
+        1:   88-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   88-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   88-block  2
+call    6 returned 1
+    $$$$$:   88-block  3
+call    7 never executed
+    $$$$$:   88-block  4
+    $$$$$:   88-block  5
+        -:   89:
+        1:   90:    visitor.buyTicket(&ticket1);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   91:    visitor.buyTicket(&ticket2);
+        1:   91-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   92:
+       1*:   93:    EXPECT_TRUE(visitor.canVisitVenue(&venue));
+        1:   93-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   93-block  1
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   93-block  2
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   93-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   93-block  4
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   93-block  5
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   93-block  6
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:   93-block  7
+call   23 returned 1
+    $$$$$:   93-block  8
+    $$$$$:   93-block  9
+call   24 never executed
+    $$$$$:   93-block 10
+call   25 never executed
+    $$$$$:   93-block 11
+    $$$$$:   93-block 12
+    $$$$$:   93-block 13
+call   26 never executed
+    $$$$$:   93-block 14
+    $$$$$:   93-block 15
+call   27 never executed
+        1:   94:}
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+call    3 returned 1
+    $$$$$:   94-block  0
+call    4 never executed
+    $$$$$:   94-block  1
+call    5 never executed
+    $$$$$:   94-block  2
+call    6 never executed
+    $$$$$:   94-block  3
+call    7 never executed
+------------------
+        -:   95:
+        4:   96:TEST_F(PeopleTest, CanVisitEmptyTicketList) {
+        2:   97:    Visitor visitor("Henry", 50, Enums::DiscountCategory::NONE);
+        1:   98:    PlanetariumVenue venue("Any Venue", 70);
+        -:   99:
+       1*:  100:    EXPECT_FALSE(visitor.canVisitVenue(&venue));
+        1:  101:}
+------------------
+_ZN39PeopleTest_CanVisitEmptyTicketList_TestC1Ev:
+function _ZN39PeopleTest_CanVisitEmptyTicketList_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   96:TEST_F(PeopleTest, CanVisitEmptyTicketList) {
+        1:   96-block  0
+call    0 returned 1
+------------------
+_ZN39PeopleTest_CanVisitEmptyTicketList_TestD0Ev:
+function _ZN39PeopleTest_CanVisitEmptyTicketList_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   96:TEST_F(PeopleTest, CanVisitEmptyTicketList) {
+        1:   96-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN39PeopleTest_CanVisitEmptyTicketList_TestD1Ev:
+function _ZN39PeopleTest_CanVisitEmptyTicketList_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   96:TEST_F(PeopleTest, CanVisitEmptyTicketList) {
+        1:   96-block  0
+call    0 returned 1
+------------------
+_ZN39PeopleTest_CanVisitEmptyTicketList_Test8TestBodyEv:
+function _ZN39PeopleTest_CanVisitEmptyTicketList_Test8TestBodyEv called 1 returned 100% blocks executed 36%
+        1:   96:TEST_F(PeopleTest, CanVisitEmptyTicketList) {
+        1:   96-block  0
+        2:   97:    Visitor visitor("Henry", 50, Enums::DiscountCategory::NONE);
+        1:   97-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   97-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   97-block  2
+call    6 returned 1
+    $$$$$:   97-block  3
+call    7 never executed
+    $$$$$:   97-block  4
+    $$$$$:   97-block  5
+        1:   98:    PlanetariumVenue venue("Any Venue", 70);
+        1:   98-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   98-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   98-block  2
+call    6 returned 1
+    $$$$$:   98-block  3
+call    7 never executed
+    $$$$$:   98-block  4
+    $$$$$:   98-block  5
+        -:   99:
+       1*:  100:    EXPECT_FALSE(visitor.canVisitVenue(&venue));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  100-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  100-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  100-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  100-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  100-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  100-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  100-block  6
+call   23 returned 1
+    $$$$$:  100-block  7
+    $$$$$:  100-block  8
+call   24 never executed
+    $$$$$:  100-block  9
+call   25 never executed
+    $$$$$:  100-block 10
+    $$$$$:  100-block 11
+    $$$$$:  100-block 12
+call   26 never executed
+    $$$$$:  100-block 13
+    $$$$$:  100-block 14
+call   27 never executed
+        1:  101:}
+call    0 returned 1
+call    1 returned 1
+    $$$$$:  101-block  0
+call    2 never executed
+    $$$$$:  101-block  1
+call    3 never executed
+------------------
+        -:  102:
+        4:  103:TEST_F(PeopleTest, VenueNameMatchingExact) {
+        2:  104:    Visitor visitor("Ivan", 33, Enums::DiscountCategory::NONE);
+        2:  105:    PlanetariumVenue venue1("Main Hall", 100);
+        2:  106:    PlanetariumVenue venue2("main hall", 100);
+        2:  107:    PlanetariumVenue venue3("Main  Hall", 100);
+        -:  108:
+        1:  109:    Ticket ticket(&venue1, "Ivan", 50.0);
+        1:  110:    visitor.buyTicket(&ticket);
+        -:  111:
+       1*:  112:    EXPECT_TRUE(visitor.canVisitVenue(&venue1));
+       1*:  113:    EXPECT_FALSE(visitor.canVisitVenue(&venue2));
+       1*:  114:    EXPECT_FALSE(visitor.canVisitVenue(&venue3));
+        1:  115:}
+------------------
+_ZN38PeopleTest_VenueNameMatchingExact_TestC1Ev:
+function _ZN38PeopleTest_VenueNameMatchingExact_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  103:TEST_F(PeopleTest, VenueNameMatchingExact) {
+        1:  103-block  0
+call    0 returned 1
+------------------
+_ZN38PeopleTest_VenueNameMatchingExact_TestD0Ev:
+function _ZN38PeopleTest_VenueNameMatchingExact_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  103:TEST_F(PeopleTest, VenueNameMatchingExact) {
+        1:  103-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN38PeopleTest_VenueNameMatchingExact_TestD1Ev:
+function _ZN38PeopleTest_VenueNameMatchingExact_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  103:TEST_F(PeopleTest, VenueNameMatchingExact) {
+        1:  103-block  0
+call    0 returned 1
+------------------
+_ZN38PeopleTest_VenueNameMatchingExact_Test8TestBodyEv:
+function _ZN38PeopleTest_VenueNameMatchingExact_Test8TestBodyEv called 1 returned 100% blocks executed 33%
+        1:  103:TEST_F(PeopleTest, VenueNameMatchingExact) {
+        1:  103-block  0
+        2:  104:    Visitor visitor("Ivan", 33, Enums::DiscountCategory::NONE);
+        1:  104-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  104-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  104-block  2
+call    6 returned 1
+    $$$$$:  104-block  3
+call    7 never executed
+    $$$$$:  104-block  4
+    $$$$$:  104-block  5
+        2:  105:    PlanetariumVenue venue1("Main Hall", 100);
+        1:  105-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  105-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  105-block  2
+call    6 returned 1
+    $$$$$:  105-block  3
+call    7 never executed
+    $$$$$:  105-block  4
+    $$$$$:  105-block  5
+        2:  106:    PlanetariumVenue venue2("main hall", 100);
+        1:  106-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  106-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  106-block  2
+call    6 returned 1
+    $$$$$:  106-block  3
+call    7 never executed
+    $$$$$:  106-block  4
+    $$$$$:  106-block  5
+        2:  107:    PlanetariumVenue venue3("Main  Hall", 100);
+        1:  107-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  107-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  107-block  2
+call    6 returned 1
+    $$$$$:  107-block  3
+call    7 never executed
+    $$$$$:  107-block  4
+    $$$$$:  107-block  5
+        -:  108:
+        1:  109:    Ticket ticket(&venue1, "Ivan", 50.0);
+        1:  109-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  109-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  109-block  2
+call    6 returned 1
+    $$$$$:  109-block  3
+call    7 never executed
+    $$$$$:  109-block  4
+    $$$$$:  109-block  5
+        1:  110:    visitor.buyTicket(&ticket);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  111:
+       1*:  112:    EXPECT_TRUE(visitor.canVisitVenue(&venue1));
+        1:  112-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  112-block  1
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  112-block  2
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  112-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  112-block  4
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  112-block  5
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  112-block  6
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  112-block  7
+call   23 returned 1
+    $$$$$:  112-block  8
+    $$$$$:  112-block  9
+call   24 never executed
+    $$$$$:  112-block 10
+call   25 never executed
+    $$$$$:  112-block 11
+    $$$$$:  112-block 12
+    $$$$$:  112-block 13
+call   26 never executed
+    $$$$$:  112-block 14
+    $$$$$:  112-block 15
+call   27 never executed
+       1*:  113:    EXPECT_FALSE(visitor.canVisitVenue(&venue2));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  113-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  113-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  113-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  113-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  113-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  113-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  113-block  6
+call   23 returned 1
+    $$$$$:  113-block  7
+    $$$$$:  113-block  8
+call   24 never executed
+    $$$$$:  113-block  9
+call   25 never executed
+    $$$$$:  113-block 10
+    $$$$$:  113-block 11
+    $$$$$:  113-block 12
+call   26 never executed
+    $$$$$:  113-block 13
+    $$$$$:  113-block 14
+call   27 never executed
+       1*:  114:    EXPECT_FALSE(visitor.canVisitVenue(&venue3));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  114-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  114-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  114-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  114-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  114-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  114-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  114-block  6
+call   23 returned 1
+    $$$$$:  114-block  7
+    $$$$$:  114-block  8
+call   24 never executed
+    $$$$$:  114-block  9
+call   25 never executed
+    $$$$$:  114-block 10
+    $$$$$:  114-block 11
+    $$$$$:  114-block 12
+call   26 never executed
+    $$$$$:  114-block 13
+    $$$$$:  114-block 14
+call   27 never executed
+        1:  115:}
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+call    3 returned 1
+call    4 returned 1
+    $$$$$:  115-block  0
+call    5 never executed
+    $$$$$:  115-block  1
+call    6 never executed
+    $$$$$:  115-block  2
+call    7 never executed
+    $$$$$:  115-block  3
+call    8 never executed
+    $$$$$:  115-block  4
+call    9 never executed
+------------------
+        -:  116:
+        4:  117:TEST_F(PeopleTest, AgeBoundariesWithCategories) {
+        2:  118:    Visitor child("Kid", 3, Enums::DiscountCategory::NONE);
+        2:  119:    Visitor teen("Teen", 17, Enums::DiscountCategory::STUDENT);
+        2:  120:    Visitor adult("Adult", 30, Enums::DiscountCategory::NONE);
+        1:  121:    Visitor old("Old", 80, Enums::DiscountCategory::SENIOR);
+        -:  122:
+       1*:  123:    EXPECT_EQ(child.getAge(), 3);
+       1*:  124:    EXPECT_EQ(teen.getAge(), 17);
+       1*:  125:    EXPECT_EQ(adult.getAge(), 30);
+       1*:  126:    EXPECT_EQ(old.getAge(), 80);
+        1:  127:}
+------------------
+_ZN43PeopleTest_AgeBoundariesWithCategories_TestC1Ev:
+function _ZN43PeopleTest_AgeBoundariesWithCategories_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  117:TEST_F(PeopleTest, AgeBoundariesWithCategories) {
+        1:  117-block  0
+call    0 returned 1
+------------------
+_ZN43PeopleTest_AgeBoundariesWithCategories_TestD0Ev:
+function _ZN43PeopleTest_AgeBoundariesWithCategories_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  117:TEST_F(PeopleTest, AgeBoundariesWithCategories) {
+        1:  117-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN43PeopleTest_AgeBoundariesWithCategories_TestD1Ev:
+function _ZN43PeopleTest_AgeBoundariesWithCategories_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  117:TEST_F(PeopleTest, AgeBoundariesWithCategories) {
+        1:  117-block  0
+call    0 returned 1
+------------------
+_ZN43PeopleTest_AgeBoundariesWithCategories_Test8TestBodyEv:
+function _ZN43PeopleTest_AgeBoundariesWithCategories_Test8TestBodyEv called 1 returned 100% blocks executed 32%
+        1:  117:TEST_F(PeopleTest, AgeBoundariesWithCategories) {
+        1:  117-block  0
+        2:  118:    Visitor child("Kid", 3, Enums::DiscountCategory::NONE);
+        1:  118-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  118-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  118-block  2
+call    6 returned 1
+    $$$$$:  118-block  3
+call    7 never executed
+    $$$$$:  118-block  4
+    $$$$$:  118-block  5
+        2:  119:    Visitor teen("Teen", 17, Enums::DiscountCategory::STUDENT);
+        1:  119-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  119-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  119-block  2
+call    6 returned 1
+    $$$$$:  119-block  3
+call    7 never executed
+    $$$$$:  119-block  4
+    $$$$$:  119-block  5
+        2:  120:    Visitor adult("Adult", 30, Enums::DiscountCategory::NONE);
+        1:  120-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  120-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  120-block  2
+call    6 returned 1
+    $$$$$:  120-block  3
+call    7 never executed
+    $$$$$:  120-block  4
+    $$$$$:  120-block  5
+        1:  121:    Visitor old("Old", 80, Enums::DiscountCategory::SENIOR);
+        1:  121-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  121-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  121-block  2
+call    6 returned 1
+    $$$$$:  121-block  3
+call    7 never executed
+    $$$$$:  121-block  4
+    $$$$$:  121-block  5
+        -:  122:
+       1*:  123:    EXPECT_EQ(child.getAge(), 3);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  123-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  123-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  123-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  123-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  123-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  123-block  5
+call   19 never executed
+call   20 never executed
+        1:  123-block  6
+call   21 returned 1
+    $$$$$:  123-block  7
+    $$$$$:  123-block  8
+    $$$$$:  123-block  9
+call   22 never executed
+    $$$$$:  123-block 10
+    $$$$$:  123-block 11
+call   23 never executed
+    $$$$$:  123-block 12
+    $$$$$:  123-block 13
+call   24 never executed
+       1*:  124:    EXPECT_EQ(teen.getAge(), 17);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  124-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  124-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  124-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  124-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  124-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  124-block  5
+call   19 never executed
+call   20 never executed
+        1:  124-block  6
+call   21 returned 1
+    $$$$$:  124-block  7
+    $$$$$:  124-block  8
+    $$$$$:  124-block  9
+call   22 never executed
+    $$$$$:  124-block 10
+    $$$$$:  124-block 11
+call   23 never executed
+    $$$$$:  124-block 12
+    $$$$$:  124-block 13
+call   24 never executed
+       1*:  125:    EXPECT_EQ(adult.getAge(), 30);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  125-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  125-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  125-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  125-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  125-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  125-block  5
+call   19 never executed
+call   20 never executed
+        1:  125-block  6
+call   21 returned 1
+    $$$$$:  125-block  7
+    $$$$$:  125-block  8
+    $$$$$:  125-block  9
+call   22 never executed
+    $$$$$:  125-block 10
+    $$$$$:  125-block 11
+call   23 never executed
+    $$$$$:  125-block 12
+    $$$$$:  125-block 13
+call   24 never executed
+       1*:  126:    EXPECT_EQ(old.getAge(), 80);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  126-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  126-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  126-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  126-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  126-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  126-block  5
+call   19 never executed
+call   20 never executed
+        1:  126-block  6
+call   21 returned 1
+    $$$$$:  126-block  7
+    $$$$$:  126-block  8
+    $$$$$:  126-block  9
+call   22 never executed
+    $$$$$:  126-block 10
+    $$$$$:  126-block 11
+call   23 never executed
+    $$$$$:  126-block 12
+    $$$$$:  126-block 13
+call   24 never executed
+        1:  127:}
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+call    3 returned 1
+    $$$$$:  127-block  0
+call    4 never executed
+    $$$$$:  127-block  1
+call    5 never executed
+    $$$$$:  127-block  2
+call    6 never executed
+    $$$$$:  127-block  3
+call    7 never executed
+------------------
+        -:  128:
+        4:  129:TEST_F(PeopleTest, DifferentVenueCapacities) {
+        2:  130:    Visitor visitor("Test", 25, Enums::DiscountCategory::NONE);
+        2:  131:    PlanetariumVenue smallVenue("Small", 10);
+        2:  132:    PlanetariumVenue mediumVenue("Medium", 100);
+        2:  133:    PlanetariumVenue largeVenue("Large", 1000);
+        -:  134:
+        2:  135:    Ticket ticket1(&smallVenue, "Test", 30.0);
+        1:  136:    Ticket ticket2(&mediumVenue, "Test", 50.0);
+        -:  137:
+        1:  138:    visitor.buyTicket(&ticket1);
+        1:  139:    visitor.buyTicket(&ticket2);
+        -:  140:
+       1*:  141:    EXPECT_TRUE(visitor.canVisitVenue(&smallVenue));
+       1*:  142:    EXPECT_TRUE(visitor.canVisitVenue(&mediumVenue));
+       1*:  143:    EXPECT_FALSE(visitor.canVisitVenue(&largeVenue));
+        1:  144:}
+------------------
+_ZN40PeopleTest_DifferentVenueCapacities_TestC1Ev:
+function _ZN40PeopleTest_DifferentVenueCapacities_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  129:TEST_F(PeopleTest, DifferentVenueCapacities) {
+        1:  129-block  0
+call    0 returned 1
+------------------
+_ZN40PeopleTest_DifferentVenueCapacities_TestD0Ev:
+function _ZN40PeopleTest_DifferentVenueCapacities_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  129:TEST_F(PeopleTest, DifferentVenueCapacities) {
+        1:  129-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN40PeopleTest_DifferentVenueCapacities_TestD1Ev:
+function _ZN40PeopleTest_DifferentVenueCapacities_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  129:TEST_F(PeopleTest, DifferentVenueCapacities) {
+        1:  129-block  0
+call    0 returned 1
+------------------
+_ZN40PeopleTest_DifferentVenueCapacities_Test8TestBodyEv:
+function _ZN40PeopleTest_DifferentVenueCapacities_Test8TestBodyEv called 1 returned 100% blocks executed 35%
+        1:  129:TEST_F(PeopleTest, DifferentVenueCapacities) {
+        1:  129-block  0
+        2:  130:    Visitor visitor("Test", 25, Enums::DiscountCategory::NONE);
+        1:  130-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  130-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  130-block  2
+call    6 returned 1
+    $$$$$:  130-block  3
+call    7 never executed
+    $$$$$:  130-block  4
+    $$$$$:  130-block  5
+        2:  131:    PlanetariumVenue smallVenue("Small", 10);
+        1:  131-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  131-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  131-block  2
+call    6 returned 1
+    $$$$$:  131-block  3
+call    7 never executed
+    $$$$$:  131-block  4
+    $$$$$:  131-block  5
+        2:  132:    PlanetariumVenue mediumVenue("Medium", 100);
+        1:  132-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  132-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  132-block  2
+call    6 returned 1
+    $$$$$:  132-block  3
+call    7 never executed
+    $$$$$:  132-block  4
+    $$$$$:  132-block  5
+        2:  133:    PlanetariumVenue largeVenue("Large", 1000);
+        1:  133-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  133-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  133-block  2
+call    6 returned 1
+    $$$$$:  133-block  3
+call    7 never executed
+    $$$$$:  133-block  4
+    $$$$$:  133-block  5
+        -:  134:
+        2:  135:    Ticket ticket1(&smallVenue, "Test", 30.0);
+        1:  135-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  135-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  135-block  2
+call    6 returned 1
+    $$$$$:  135-block  3
+call    7 never executed
+    $$$$$:  135-block  4
+    $$$$$:  135-block  5
+        1:  136:    Ticket ticket2(&mediumVenue, "Test", 50.0);
+        1:  136-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  136-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  136-block  2
+call    6 returned 1
+    $$$$$:  136-block  3
+call    7 never executed
+    $$$$$:  136-block  4
+    $$$$$:  136-block  5
+        -:  137:
+        1:  138:    visitor.buyTicket(&ticket1);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  139:    visitor.buyTicket(&ticket2);
+        1:  139-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  140:
+       1*:  141:    EXPECT_TRUE(visitor.canVisitVenue(&smallVenue));
+        1:  141-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  141-block  1
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  141-block  2
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  141-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  141-block  4
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  141-block  5
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  141-block  6
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  141-block  7
+call   23 returned 1
+    $$$$$:  141-block  8
+    $$$$$:  141-block  9
+call   24 never executed
+    $$$$$:  141-block 10
+call   25 never executed
+    $$$$$:  141-block 11
+    $$$$$:  141-block 12
+    $$$$$:  141-block 13
+call   26 never executed
+    $$$$$:  141-block 14
+    $$$$$:  141-block 15
+call   27 never executed
+       1*:  142:    EXPECT_TRUE(visitor.canVisitVenue(&mediumVenue));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  142-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  142-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  142-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  142-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  142-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  142-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  142-block  6
+call   23 returned 1
+    $$$$$:  142-block  7
+    $$$$$:  142-block  8
+call   24 never executed
+    $$$$$:  142-block  9
+call   25 never executed
+    $$$$$:  142-block 10
+    $$$$$:  142-block 11
+    $$$$$:  142-block 12
+call   26 never executed
+    $$$$$:  142-block 13
+    $$$$$:  142-block 14
+call   27 never executed
+       1*:  143:    EXPECT_FALSE(visitor.canVisitVenue(&largeVenue));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  143-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  143-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  143-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  143-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  143-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  143-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  143-block  6
+call   23 returned 1
+    $$$$$:  143-block  7
+    $$$$$:  143-block  8
+call   24 never executed
+    $$$$$:  143-block  9
+call   25 never executed
+    $$$$$:  143-block 10
+    $$$$$:  143-block 11
+    $$$$$:  143-block 12
+call   26 never executed
+    $$$$$:  143-block 13
+    $$$$$:  143-block 14
+call   27 never executed
+        1:  144:}
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+call    3 returned 1
+call    4 returned 1
+call    5 returned 1
+    $$$$$:  144-block  0
+call    6 never executed
+    $$$$$:  144-block  1
+call    7 never executed
+    $$$$$:  144-block  2
+call    8 never executed
+    $$$$$:  144-block  3
+call    9 never executed
+    $$$$$:  144-block  4
+call   10 never executed
+    $$$$$:  144-block  5
+call   11 never executed
+------------------
+        -:  145:
+        4:  146:TEST_F(PeopleTest, ConstructorAndGettersMale) {
+        1:  147:    Employee employee("John", 35, Enums::EmployeePosition::TOUR_GUIDE);
+       1*:  148:    EXPECT_EQ(employee.getName(), "John");
+       1*:  149:    EXPECT_EQ(employee.getAge(), 35);
+       1*:  150:    EXPECT_EQ(employee.getPosition(), Enums::EmployeePosition::TOUR_GUIDE);
+        1:  151:}
+------------------
+_ZN41PeopleTest_ConstructorAndGettersMale_TestC1Ev:
+function _ZN41PeopleTest_ConstructorAndGettersMale_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  146:TEST_F(PeopleTest, ConstructorAndGettersMale) {
+        1:  146-block  0
+call    0 returned 1
+------------------
+_ZN41PeopleTest_ConstructorAndGettersMale_TestD0Ev:
+function _ZN41PeopleTest_ConstructorAndGettersMale_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  146:TEST_F(PeopleTest, ConstructorAndGettersMale) {
+        1:  146-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN41PeopleTest_ConstructorAndGettersMale_TestD1Ev:
+function _ZN41PeopleTest_ConstructorAndGettersMale_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  146:TEST_F(PeopleTest, ConstructorAndGettersMale) {
+        1:  146-block  0
+call    0 returned 1
+------------------
+_ZN41PeopleTest_ConstructorAndGettersMale_Test8TestBodyEv:
+function _ZN41PeopleTest_ConstructorAndGettersMale_Test8TestBodyEv called 1 returned 100% blocks executed 28%
+        1:  146:TEST_F(PeopleTest, ConstructorAndGettersMale) {
+        1:  146-block  0
+        1:  147:    Employee employee("John", 35, Enums::EmployeePosition::TOUR_GUIDE);
+        1:  147-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  147-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  147-block  2
+call    6 returned 1
+    $$$$$:  147-block  3
+call    7 never executed
+    $$$$$:  147-block  4
+    $$$$$:  147-block  5
+       1*:  148:    EXPECT_EQ(employee.getName(), "John");
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  148-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  148-block  1
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:  148-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  148-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  148-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  148-block  5
+call   20 never executed
+call   21 never executed
+        1:  148-block  6
+call   22 returned 1
+    $$$$$:  148-block  7
+call   23 never executed
+    $$$$$:  148-block  8
+    $$$$$:  148-block  9
+call   24 never executed
+    $$$$$:  148-block 10
+    $$$$$:  148-block 11
+call   25 never executed
+    $$$$$:  148-block 12
+    $$$$$:  148-block 13
+call   26 never executed
+       1*:  149:    EXPECT_EQ(employee.getAge(), 35);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  149-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  149-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  149-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  149-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  149-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  149-block  5
+call   19 never executed
+call   20 never executed
+        1:  149-block  6
+call   21 returned 1
+    $$$$$:  149-block  7
+    $$$$$:  149-block  8
+    $$$$$:  149-block  9
+call   22 never executed
+    $$$$$:  149-block 10
+    $$$$$:  149-block 11
+call   23 never executed
+    $$$$$:  149-block 12
+    $$$$$:  149-block 13
+call   24 never executed
+       1*:  150:    EXPECT_EQ(employee.getPosition(), Enums::EmployeePosition::TOUR_GUIDE);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  150-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  150-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  150-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  150-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  150-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  150-block  5
+call   19 never executed
+call   20 never executed
+        1:  150-block  6
+call   21 returned 1
+    $$$$$:  150-block  7
+    $$$$$:  150-block  8
+    $$$$$:  150-block  9
+call   22 never executed
+    $$$$$:  150-block 10
+    $$$$$:  150-block 11
+call   23 never executed
+    $$$$$:  150-block 12
+    $$$$$:  150-block 13
+call   24 never executed
+        1:  151:}
+call    0 returned 1
+    $$$$$:  151-block  0
+call    1 never executed
+------------------
+        -:  152:
+        4:  153:TEST_F(PeopleTest, AllEmployeePositions) {
+        2:  154:    Employee director("Director", 50, Enums::EmployeePosition::DIRECTOR);
+        2:  155:    Employee deputy("Deputy", 45, Enums::EmployeePosition::DEPUTY_DIRECTOR);
+        2:  156:    Employee astronomer("Astro", 40, Enums::EmployeePosition::ASTRONOMER);
+        2:  157:    Employee lecturer("Lecturer", 38, Enums::EmployeePosition::LECTURER);
+        2:  158:    Employee presenter("Presenter", 32, Enums::EmployeePosition::PRESENTER);
+        2:  159:    Employee guide("Guide", 28, Enums::EmployeePosition::TOUR_GUIDE);
+        2:  160:    Employee coordinator("Coord", 35, Enums::EmployeePosition::EDUCATION_COORDINATOR);
+        2:  161:    Employee technician("Tech", 30, Enums::EmployeePosition::TECHNICIAN);
+        2:  162:    Employee projectionist("Proj", 33, Enums::EmployeePosition::PROJECTIONIST);
+        2:  163:    Employee seller("Seller", 25, Enums::EmployeePosition::TICKET_SELLER);
+        2:  164:    Employee cashier("Cashier", 26, Enums::EmployeePosition::CASHIER);
+        2:  165:    Employee security("Security", 29, Enums::EmployeePosition::SECURITY_GUARD);
+        2:  166:    Employee cleaner("Cleaner", 40, Enums::EmployeePosition::CLEANER);
+        1:  167:    Employee volunteer("Volunteer", 22, Enums::EmployeePosition::VOLUNTEER);
+        -:  168:
+       1*:  169:    EXPECT_EQ(director.getPosition(), Enums::EmployeePosition::DIRECTOR);
+       1*:  170:    EXPECT_EQ(deputy.getPosition(), Enums::EmployeePosition::DEPUTY_DIRECTOR);
+       1*:  171:    EXPECT_EQ(astronomer.getPosition(), Enums::EmployeePosition::ASTRONOMER);
+       1*:  172:    EXPECT_EQ(lecturer.getPosition(), Enums::EmployeePosition::LECTURER);
+       1*:  173:    EXPECT_EQ(presenter.getPosition(), Enums::EmployeePosition::PRESENTER);
+       1*:  174:    EXPECT_EQ(guide.getPosition(), Enums::EmployeePosition::TOUR_GUIDE);
+       1*:  175:    EXPECT_EQ(coordinator.getPosition(), Enums::EmployeePosition::EDUCATION_COORDINATOR);
+       1*:  176:    EXPECT_EQ(technician.getPosition(), Enums::EmployeePosition::TECHNICIAN);
+       1*:  177:    EXPECT_EQ(projectionist.getPosition(), Enums::EmployeePosition::PROJECTIONIST);
+       1*:  178:    EXPECT_EQ(seller.getPosition(), Enums::EmployeePosition::TICKET_SELLER);
+       1*:  179:    EXPECT_EQ(cashier.getPosition(), Enums::EmployeePosition::CASHIER);
+       1*:  180:    EXPECT_EQ(security.getPosition(), Enums::EmployeePosition::SECURITY_GUARD);
+       1*:  181:    EXPECT_EQ(cleaner.getPosition(), Enums::EmployeePosition::CLEANER);
+       1*:  182:    EXPECT_EQ(volunteer.getPosition(), Enums::EmployeePosition::VOLUNTEER);
+        1:  183:}
+------------------
+_ZN36PeopleTest_AllEmployeePositions_TestC1Ev:
+function _ZN36PeopleTest_AllEmployeePositions_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  153:TEST_F(PeopleTest, AllEmployeePositions) {
+        1:  153-block  0
+call    0 returned 1
+------------------
+_ZN36PeopleTest_AllEmployeePositions_TestD0Ev:
+function _ZN36PeopleTest_AllEmployeePositions_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  153:TEST_F(PeopleTest, AllEmployeePositions) {
+        1:  153-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN36PeopleTest_AllEmployeePositions_TestD1Ev:
+function _ZN36PeopleTest_AllEmployeePositions_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  153:TEST_F(PeopleTest, AllEmployeePositions) {
+        1:  153-block  0
+call    0 returned 1
+------------------
+_ZN36PeopleTest_AllEmployeePositions_Test8TestBodyEv:
+function _ZN36PeopleTest_AllEmployeePositions_Test8TestBodyEv called 1 returned 100% blocks executed 32%
+        1:  153:TEST_F(PeopleTest, AllEmployeePositions) {
+        1:  153-block  0
+        2:  154:    Employee director("Director", 50, Enums::EmployeePosition::DIRECTOR);
+        1:  154-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  154-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  154-block  2
+call    6 returned 1
+    $$$$$:  154-block  3
+call    7 never executed
+    $$$$$:  154-block  4
+    $$$$$:  154-block  5
+        2:  155:    Employee deputy("Deputy", 45, Enums::EmployeePosition::DEPUTY_DIRECTOR);
+        1:  155-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  155-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  155-block  2
+call    6 returned 1
+    $$$$$:  155-block  3
+call    7 never executed
+    $$$$$:  155-block  4
+    $$$$$:  155-block  5
+        2:  156:    Employee astronomer("Astro", 40, Enums::EmployeePosition::ASTRONOMER);
+        1:  156-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  156-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  156-block  2
+call    6 returned 1
+    $$$$$:  156-block  3
+call    7 never executed
+    $$$$$:  156-block  4
+    $$$$$:  156-block  5
+        2:  157:    Employee lecturer("Lecturer", 38, Enums::EmployeePosition::LECTURER);
+        1:  157-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  157-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  157-block  2
+call    6 returned 1
+    $$$$$:  157-block  3
+call    7 never executed
+    $$$$$:  157-block  4
+    $$$$$:  157-block  5
+        2:  158:    Employee presenter("Presenter", 32, Enums::EmployeePosition::PRESENTER);
+        1:  158-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  158-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  158-block  2
+call    6 returned 1
+    $$$$$:  158-block  3
+call    7 never executed
+    $$$$$:  158-block  4
+    $$$$$:  158-block  5
+        2:  159:    Employee guide("Guide", 28, Enums::EmployeePosition::TOUR_GUIDE);
+        1:  159-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  159-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  159-block  2
+call    6 returned 1
+    $$$$$:  159-block  3
+call    7 never executed
+    $$$$$:  159-block  4
+    $$$$$:  159-block  5
+        2:  160:    Employee coordinator("Coord", 35, Enums::EmployeePosition::EDUCATION_COORDINATOR);
+        1:  160-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  160-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  160-block  2
+call    6 returned 1
+    $$$$$:  160-block  3
+call    7 never executed
+    $$$$$:  160-block  4
+    $$$$$:  160-block  5
+        2:  161:    Employee technician("Tech", 30, Enums::EmployeePosition::TECHNICIAN);
+        1:  161-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  161-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  161-block  2
+call    6 returned 1
+    $$$$$:  161-block  3
+call    7 never executed
+    $$$$$:  161-block  4
+    $$$$$:  161-block  5
+        2:  162:    Employee projectionist("Proj", 33, Enums::EmployeePosition::PROJECTIONIST);
+        1:  162-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  162-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  162-block  2
+call    6 returned 1
+    $$$$$:  162-block  3
+call    7 never executed
+    $$$$$:  162-block  4
+    $$$$$:  162-block  5
+        2:  163:    Employee seller("Seller", 25, Enums::EmployeePosition::TICKET_SELLER);
+        1:  163-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  163-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  163-block  2
+call    6 returned 1
+    $$$$$:  163-block  3
+call    7 never executed
+    $$$$$:  163-block  4
+    $$$$$:  163-block  5
+        2:  164:    Employee cashier("Cashier", 26, Enums::EmployeePosition::CASHIER);
+        1:  164-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  164-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  164-block  2
+call    6 returned 1
+    $$$$$:  164-block  3
+call    7 never executed
+    $$$$$:  164-block  4
+    $$$$$:  164-block  5
+        2:  165:    Employee security("Security", 29, Enums::EmployeePosition::SECURITY_GUARD);
+        1:  165-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  165-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  165-block  2
+call    6 returned 1
+    $$$$$:  165-block  3
+call    7 never executed
+    $$$$$:  165-block  4
+    $$$$$:  165-block  5
+        2:  166:    Employee cleaner("Cleaner", 40, Enums::EmployeePosition::CLEANER);
+        1:  166-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  166-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  166-block  2
+call    6 returned 1
+    $$$$$:  166-block  3
+call    7 never executed
+    $$$$$:  166-block  4
+    $$$$$:  166-block  5
+        1:  167:    Employee volunteer("Volunteer", 22, Enums::EmployeePosition::VOLUNTEER);
+        1:  167-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  167-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  167-block  2
+call    6 returned 1
+    $$$$$:  167-block  3
+call    7 never executed
+    $$$$$:  167-block  4
+    $$$$$:  167-block  5
+        -:  168:
+       1*:  169:    EXPECT_EQ(director.getPosition(), Enums::EmployeePosition::DIRECTOR);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  169-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  169-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  169-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  169-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  169-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  169-block  5
+call   19 never executed
+call   20 never executed
+        1:  169-block  6
+call   21 returned 1
+    $$$$$:  169-block  7
+    $$$$$:  169-block  8
+    $$$$$:  169-block  9
+call   22 never executed
+    $$$$$:  169-block 10
+    $$$$$:  169-block 11
+call   23 never executed
+    $$$$$:  169-block 12
+    $$$$$:  169-block 13
+call   24 never executed
+       1*:  170:    EXPECT_EQ(deputy.getPosition(), Enums::EmployeePosition::DEPUTY_DIRECTOR);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  170-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  170-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  170-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  170-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  170-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  170-block  5
+call   19 never executed
+call   20 never executed
+        1:  170-block  6
+call   21 returned 1
+    $$$$$:  170-block  7
+    $$$$$:  170-block  8
+    $$$$$:  170-block  9
+call   22 never executed
+    $$$$$:  170-block 10
+    $$$$$:  170-block 11
+call   23 never executed
+    $$$$$:  170-block 12
+    $$$$$:  170-block 13
+call   24 never executed
+       1*:  171:    EXPECT_EQ(astronomer.getPosition(), Enums::EmployeePosition::ASTRONOMER);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  171-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  171-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  171-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  171-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  171-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  171-block  5
+call   19 never executed
+call   20 never executed
+        1:  171-block  6
+call   21 returned 1
+    $$$$$:  171-block  7
+    $$$$$:  171-block  8
+    $$$$$:  171-block  9
+call   22 never executed
+    $$$$$:  171-block 10
+    $$$$$:  171-block 11
+call   23 never executed
+    $$$$$:  171-block 12
+    $$$$$:  171-block 13
+call   24 never executed
+       1*:  172:    EXPECT_EQ(lecturer.getPosition(), Enums::EmployeePosition::LECTURER);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  172-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  172-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  172-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  172-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  172-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  172-block  5
+call   19 never executed
+call   20 never executed
+        1:  172-block  6
+call   21 returned 1
+    $$$$$:  172-block  7
+    $$$$$:  172-block  8
+    $$$$$:  172-block  9
+call   22 never executed
+    $$$$$:  172-block 10
+    $$$$$:  172-block 11
+call   23 never executed
+    $$$$$:  172-block 12
+    $$$$$:  172-block 13
+call   24 never executed
+       1*:  173:    EXPECT_EQ(presenter.getPosition(), Enums::EmployeePosition::PRESENTER);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  173-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  173-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  173-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  173-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  173-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  173-block  5
+call   19 never executed
+call   20 never executed
+        1:  173-block  6
+call   21 returned 1
+    $$$$$:  173-block  7
+    $$$$$:  173-block  8
+    $$$$$:  173-block  9
+call   22 never executed
+    $$$$$:  173-block 10
+    $$$$$:  173-block 11
+call   23 never executed
+    $$$$$:  173-block 12
+    $$$$$:  173-block 13
+call   24 never executed
+       1*:  174:    EXPECT_EQ(guide.getPosition(), Enums::EmployeePosition::TOUR_GUIDE);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  174-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  174-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  174-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  174-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  174-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  174-block  5
+call   19 never executed
+call   20 never executed
+        1:  174-block  6
+call   21 returned 1
+    $$$$$:  174-block  7
+    $$$$$:  174-block  8
+    $$$$$:  174-block  9
+call   22 never executed
+    $$$$$:  174-block 10
+    $$$$$:  174-block 11
+call   23 never executed
+    $$$$$:  174-block 12
+    $$$$$:  174-block 13
+call   24 never executed
+       1*:  175:    EXPECT_EQ(coordinator.getPosition(), Enums::EmployeePosition::EDUCATION_COORDINATOR);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  175-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  175-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  175-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  175-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  175-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  175-block  5
+call   19 never executed
+call   20 never executed
+        1:  175-block  6
+call   21 returned 1
+    $$$$$:  175-block  7
+    $$$$$:  175-block  8
+    $$$$$:  175-block  9
+call   22 never executed
+    $$$$$:  175-block 10
+    $$$$$:  175-block 11
+call   23 never executed
+    $$$$$:  175-block 12
+    $$$$$:  175-block 13
+call   24 never executed
+       1*:  176:    EXPECT_EQ(technician.getPosition(), Enums::EmployeePosition::TECHNICIAN);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  176-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  176-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  176-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  176-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  176-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  176-block  5
+call   19 never executed
+call   20 never executed
+        1:  176-block  6
+call   21 returned 1
+    $$$$$:  176-block  7
+    $$$$$:  176-block  8
+    $$$$$:  176-block  9
+call   22 never executed
+    $$$$$:  176-block 10
+    $$$$$:  176-block 11
+call   23 never executed
+    $$$$$:  176-block 12
+    $$$$$:  176-block 13
+call   24 never executed
+       1*:  177:    EXPECT_EQ(projectionist.getPosition(), Enums::EmployeePosition::PROJECTIONIST);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  177-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  177-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  177-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  177-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  177-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  177-block  5
+call   19 never executed
+call   20 never executed
+        1:  177-block  6
+call   21 returned 1
+    $$$$$:  177-block  7
+    $$$$$:  177-block  8
+    $$$$$:  177-block  9
+call   22 never executed
+    $$$$$:  177-block 10
+    $$$$$:  177-block 11
+call   23 never executed
+    $$$$$:  177-block 12
+    $$$$$:  177-block 13
+call   24 never executed
+       1*:  178:    EXPECT_EQ(seller.getPosition(), Enums::EmployeePosition::TICKET_SELLER);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  178-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  178-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  178-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  178-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  178-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  178-block  5
+call   19 never executed
+call   20 never executed
+        1:  178-block  6
+call   21 returned 1
+    $$$$$:  178-block  7
+    $$$$$:  178-block  8
+    $$$$$:  178-block  9
+call   22 never executed
+    $$$$$:  178-block 10
+    $$$$$:  178-block 11
+call   23 never executed
+    $$$$$:  178-block 12
+    $$$$$:  178-block 13
+call   24 never executed
+       1*:  179:    EXPECT_EQ(cashier.getPosition(), Enums::EmployeePosition::CASHIER);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  179-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  179-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  179-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  179-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  179-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  179-block  5
+call   19 never executed
+call   20 never executed
+        1:  179-block  6
+call   21 returned 1
+    $$$$$:  179-block  7
+    $$$$$:  179-block  8
+    $$$$$:  179-block  9
+call   22 never executed
+    $$$$$:  179-block 10
+    $$$$$:  179-block 11
+call   23 never executed
+    $$$$$:  179-block 12
+    $$$$$:  179-block 13
+call   24 never executed
+       1*:  180:    EXPECT_EQ(security.getPosition(), Enums::EmployeePosition::SECURITY_GUARD);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  180-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  180-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  180-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  180-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  180-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  180-block  5
+call   19 never executed
+call   20 never executed
+        1:  180-block  6
+call   21 returned 1
+    $$$$$:  180-block  7
+    $$$$$:  180-block  8
+    $$$$$:  180-block  9
+call   22 never executed
+    $$$$$:  180-block 10
+    $$$$$:  180-block 11
+call   23 never executed
+    $$$$$:  180-block 12
+    $$$$$:  180-block 13
+call   24 never executed
+       1*:  181:    EXPECT_EQ(cleaner.getPosition(), Enums::EmployeePosition::CLEANER);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  181-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  181-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  181-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  181-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  181-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  181-block  5
+call   19 never executed
+call   20 never executed
+        1:  181-block  6
+call   21 returned 1
+    $$$$$:  181-block  7
+    $$$$$:  181-block  8
+    $$$$$:  181-block  9
+call   22 never executed
+    $$$$$:  181-block 10
+    $$$$$:  181-block 11
+call   23 never executed
+    $$$$$:  181-block 12
+    $$$$$:  181-block 13
+call   24 never executed
+       1*:  182:    EXPECT_EQ(volunteer.getPosition(), Enums::EmployeePosition::VOLUNTEER);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  182-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  182-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  182-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  182-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  182-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  182-block  5
+call   19 never executed
+call   20 never executed
+        1:  182-block  6
+call   21 returned 1
+    $$$$$:  182-block  7
+    $$$$$:  182-block  8
+    $$$$$:  182-block  9
+call   22 never executed
+    $$$$$:  182-block 10
+    $$$$$:  182-block 11
+call   23 never executed
+    $$$$$:  182-block 12
+    $$$$$:  182-block 13
+call   24 never executed
+        1:  183:}
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+call    3 returned 1
+call    4 returned 1
+call    5 returned 1
+call    6 returned 1
+call    7 returned 1
+call    8 returned 1
+call    9 returned 1
+call   10 returned 1
+call   11 returned 1
+call   12 returned 1
+call   13 returned 1
+    $$$$$:  183-block  0
+call   14 never executed
+    $$$$$:  183-block  1
+call   15 never executed
+    $$$$$:  183-block  2
+call   16 never executed
+    $$$$$:  183-block  3
+call   17 never executed
+    $$$$$:  183-block  4
+call   18 never executed
+    $$$$$:  183-block  5
+call   19 never executed
+    $$$$$:  183-block  6
+call   20 never executed
+    $$$$$:  183-block  7
+call   21 never executed
+    $$$$$:  183-block  8
+call   22 never executed
+    $$$$$:  183-block  9
+call   23 never executed
+    $$$$$:  183-block 10
+call   24 never executed
+    $$$$$:  183-block 11
+call   25 never executed
+    $$$$$:  183-block 12
+call   26 never executed
+    $$$$$:  183-block 13
+call   27 never executed
+------------------
+        -:  184:
+        4:  185:TEST_F(PeopleTest, EmployeeAgeExtremes) {
+        2:  186:    Employee young("Young", 18, Enums::EmployeePosition::VOLUNTEER);
+        1:  187:    Employee old("Old", 67, Enums::EmployeePosition::DIRECTOR);
+        -:  188:
+       1*:  189:    EXPECT_EQ(young.getAge(), 18);
+       1*:  190:    EXPECT_EQ(old.getAge(), 67);
+        1:  191:}
+------------------
+_ZN35PeopleTest_EmployeeAgeExtremes_TestC1Ev:
+function _ZN35PeopleTest_EmployeeAgeExtremes_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  185:TEST_F(PeopleTest, EmployeeAgeExtremes) {
+        1:  185-block  0
+call    0 returned 1
+------------------
+_ZN35PeopleTest_EmployeeAgeExtremes_TestD0Ev:
+function _ZN35PeopleTest_EmployeeAgeExtremes_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  185:TEST_F(PeopleTest, EmployeeAgeExtremes) {
+        1:  185-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN35PeopleTest_EmployeeAgeExtremes_TestD1Ev:
+function _ZN35PeopleTest_EmployeeAgeExtremes_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  185:TEST_F(PeopleTest, EmployeeAgeExtremes) {
+        1:  185-block  0
+call    0 returned 1
+------------------
+_ZN35PeopleTest_EmployeeAgeExtremes_Test8TestBodyEv:
+function _ZN35PeopleTest_EmployeeAgeExtremes_Test8TestBodyEv called 1 returned 100% blocks executed 33%
+        1:  185:TEST_F(PeopleTest, EmployeeAgeExtremes) {
+        1:  185-block  0
+        2:  186:    Employee young("Young", 18, Enums::EmployeePosition::VOLUNTEER);
+        1:  186-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  186-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  186-block  2
+call    6 returned 1
+    $$$$$:  186-block  3
+call    7 never executed
+    $$$$$:  186-block  4
+    $$$$$:  186-block  5
+        1:  187:    Employee old("Old", 67, Enums::EmployeePosition::DIRECTOR);
+        1:  187-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  187-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  187-block  2
+call    6 returned 1
+    $$$$$:  187-block  3
+call    7 never executed
+    $$$$$:  187-block  4
+    $$$$$:  187-block  5
+        -:  188:
+       1*:  189:    EXPECT_EQ(young.getAge(), 18);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  189-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  189-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  189-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  189-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  189-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  189-block  5
+call   19 never executed
+call   20 never executed
+        1:  189-block  6
+call   21 returned 1
+    $$$$$:  189-block  7
+    $$$$$:  189-block  8
+    $$$$$:  189-block  9
+call   22 never executed
+    $$$$$:  189-block 10
+    $$$$$:  189-block 11
+call   23 never executed
+    $$$$$:  189-block 12
+    $$$$$:  189-block 13
+call   24 never executed
+       1*:  190:    EXPECT_EQ(old.getAge(), 67);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  190-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  190-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  190-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  190-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  190-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  190-block  5
+call   19 never executed
+call   20 never executed
+        1:  190-block  6
+call   21 returned 1
+    $$$$$:  190-block  7
+    $$$$$:  190-block  8
+    $$$$$:  190-block  9
+call   22 never executed
+    $$$$$:  190-block 10
+    $$$$$:  190-block 11
+call   23 never executed
+    $$$$$:  190-block 12
+    $$$$$:  190-block 13
+call   24 never executed
+        1:  191:}
+call    0 returned 1
+call    1 returned 1
+    $$$$$:  191-block  0
+call    2 never executed
+    $$$$$:  191-block  1
+call    3 never executed
+------------------
+        -:  192:
+        4:  193:TEST_F(PeopleTest, EmployeeLongName) {
+        1:  194:    std::string longName = "Dr. Alexander Maximilian Rodriguez III";
+        1:  195:    Employee employee(longName, 45, Enums::EmployeePosition::ASTRONOMER);
+        -:  196:
+       1*:  197:    EXPECT_EQ(employee.getName(), longName);
+        1:  198:}
+------------------
+_ZN32PeopleTest_EmployeeLongName_TestC1Ev:
+function _ZN32PeopleTest_EmployeeLongName_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  193:TEST_F(PeopleTest, EmployeeLongName) {
+        1:  193-block  0
+call    0 returned 1
+------------------
+_ZN32PeopleTest_EmployeeLongName_TestD0Ev:
+function _ZN32PeopleTest_EmployeeLongName_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  193:TEST_F(PeopleTest, EmployeeLongName) {
+        1:  193-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN32PeopleTest_EmployeeLongName_TestD1Ev:
+function _ZN32PeopleTest_EmployeeLongName_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  193:TEST_F(PeopleTest, EmployeeLongName) {
+        1:  193-block  0
+call    0 returned 1
+------------------
+_ZN32PeopleTest_EmployeeLongName_Test8TestBodyEv:
+function _ZN32PeopleTest_EmployeeLongName_Test8TestBodyEv called 1 returned 100% blocks executed 37%
+        1:  193:TEST_F(PeopleTest, EmployeeLongName) {
+        1:  193-block  0
+        1:  194:    std::string longName = "Dr. Alexander Maximilian Rodriguez III";
+        1:  194-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:  194-block  1
+        1:  195:    Employee employee(longName, 45, Enums::EmployeePosition::ASTRONOMER);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  195-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  195-block  1
+call    6 returned 1
+    $$$$$:  195-block  2
+call    7 never executed
+    $$$$$:  195-block  3
+        -:  196:
+       1*:  197:    EXPECT_EQ(employee.getName(), longName);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  197-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  197-block  1
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:  197-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  197-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  197-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  197-block  5
+call   20 never executed
+call   21 never executed
+        1:  197-block  6
+call   22 returned 1
+    $$$$$:  197-block  7
+call   23 never executed
+    $$$$$:  197-block  8
+    $$$$$:  197-block  9
+call   24 never executed
+    $$$$$:  197-block 10
+    $$$$$:  197-block 11
+call   25 never executed
+    $$$$$:  197-block 12
+    $$$$$:  197-block 13
+call   26 never executed
+        1:  198:}
+call    0 returned 1
+call    1 returned 1
+    $$$$$:  198-block  0
+call    2 never executed
+    $$$$$:  198-block  1
+call    3 never executed
+------------------
+        -:  199:
+        4:  200:TEST_F(PeopleTest, EmployeeWithZeroCapacityVenue) {
+        2:  201:    Employee employee("Test", 30, Enums::EmployeePosition::TICKET_SELLER);
+        1:  202:    PlanetariumVenue venue("Closed Venue", 0);
+        -:  203:
+       1*:  204:    EXPECT_EQ(employee.getName(), "Test");
+       1*:  205:    EXPECT_EQ(venue.getName(), "Closed Venue");
+        1:  206:}
+------------------
+_ZN45PeopleTest_EmployeeWithZeroCapacityVenue_TestC1Ev:
+function _ZN45PeopleTest_EmployeeWithZeroCapacityVenue_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  200:TEST_F(PeopleTest, EmployeeWithZeroCapacityVenue) {
+        1:  200-block  0
+call    0 returned 1
+------------------
+_ZN45PeopleTest_EmployeeWithZeroCapacityVenue_TestD0Ev:
+function _ZN45PeopleTest_EmployeeWithZeroCapacityVenue_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  200:TEST_F(PeopleTest, EmployeeWithZeroCapacityVenue) {
+        1:  200-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN45PeopleTest_EmployeeWithZeroCapacityVenue_TestD1Ev:
+function _ZN45PeopleTest_EmployeeWithZeroCapacityVenue_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  200:TEST_F(PeopleTest, EmployeeWithZeroCapacityVenue) {
+        1:  200-block  0
+call    0 returned 1
+------------------
+_ZN45PeopleTest_EmployeeWithZeroCapacityVenue_Test8TestBodyEv:
+function _ZN45PeopleTest_EmployeeWithZeroCapacityVenue_Test8TestBodyEv called 1 returned 100% blocks executed 34%
+        1:  200:TEST_F(PeopleTest, EmployeeWithZeroCapacityVenue) {
+        1:  200-block  0
+        2:  201:    Employee employee("Test", 30, Enums::EmployeePosition::TICKET_SELLER);
+        1:  201-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  201-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  201-block  2
+call    6 returned 1
+    $$$$$:  201-block  3
+call    7 never executed
+    $$$$$:  201-block  4
+    $$$$$:  201-block  5
+        1:  202:    PlanetariumVenue venue("Closed Venue", 0);
+        1:  202-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  202-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  202-block  2
+call    6 returned 1
+    $$$$$:  202-block  3
+call    7 never executed
+    $$$$$:  202-block  4
+    $$$$$:  202-block  5
+        -:  203:
+       1*:  204:    EXPECT_EQ(employee.getName(), "Test");
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  204-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  204-block  1
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:  204-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  204-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  204-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  204-block  5
+call   20 never executed
+call   21 never executed
+        1:  204-block  6
+call   22 returned 1
+    $$$$$:  204-block  7
+call   23 never executed
+    $$$$$:  204-block  8
+    $$$$$:  204-block  9
+call   24 never executed
+    $$$$$:  204-block 10
+    $$$$$:  204-block 11
+call   25 never executed
+    $$$$$:  204-block 12
+    $$$$$:  204-block 13
+call   26 never executed
+       1*:  205:    EXPECT_EQ(venue.getName(), "Closed Venue");
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  205-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  205-block  1
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:  205-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  205-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  205-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  205-block  5
+call   20 never executed
+call   21 never executed
+        1:  205-block  6
+call   22 returned 1
+    $$$$$:  205-block  7
+call   23 never executed
+    $$$$$:  205-block  8
+    $$$$$:  205-block  9
+call   24 never executed
+    $$$$$:  205-block 10
+    $$$$$:  205-block 11
+call   25 never executed
+    $$$$$:  205-block 12
+    $$$$$:  205-block 13
+call   26 never executed
+        1:  206:}
+call    0 returned 1
+call    1 returned 1
+    $$$$$:  206-block  0
+call    2 never executed
+    $$$$$:  206-block  1
+call    3 never executed
+------------------
+        -:  207:
+        4:  208:TEST_F(PeopleTest, VisitorIsHuman) {
+        1:  209:    Visitor visitor("Test", 20, Enums::DiscountCategory::NONE);
+        1:  210:    Human* humanPtr = &visitor;
+        -:  211:
+       1*:  212:    EXPECT_EQ(humanPtr->getName(), "Test");
+       1*:  213:    EXPECT_EQ(humanPtr->getAge(), 20);
+        1:  214:}
+------------------
+_ZN30PeopleTest_VisitorIsHuman_TestC1Ev:
+function _ZN30PeopleTest_VisitorIsHuman_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  208:TEST_F(PeopleTest, VisitorIsHuman) {
+        1:  208-block  0
+call    0 returned 1
+------------------
+_ZN30PeopleTest_VisitorIsHuman_TestD0Ev:
+function _ZN30PeopleTest_VisitorIsHuman_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  208:TEST_F(PeopleTest, VisitorIsHuman) {
+        1:  208-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN30PeopleTest_VisitorIsHuman_TestD1Ev:
+function _ZN30PeopleTest_VisitorIsHuman_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  208:TEST_F(PeopleTest, VisitorIsHuman) {
+        1:  208-block  0
+call    0 returned 1
+------------------
+_ZN30PeopleTest_VisitorIsHuman_Test8TestBodyEv:
+function _ZN30PeopleTest_VisitorIsHuman_Test8TestBodyEv called 1 returned 100% blocks executed 31%
+        1:  208:TEST_F(PeopleTest, VisitorIsHuman) {
+        1:  208-block  0
+        1:  209:    Visitor visitor("Test", 20, Enums::DiscountCategory::NONE);
+        1:  209-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  209-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  209-block  2
+call    6 returned 1
+    $$$$$:  209-block  3
+call    7 never executed
+    $$$$$:  209-block  4
+    $$$$$:  209-block  5
+        1:  210:    Human* humanPtr = &visitor;
+        -:  211:
+       1*:  212:    EXPECT_EQ(humanPtr->getName(), "Test");
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  212-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  212-block  1
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:  212-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  212-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  212-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  212-block  5
+call   20 never executed
+call   21 never executed
+        1:  212-block  6
+call   22 returned 1
+    $$$$$:  212-block  7
+call   23 never executed
+    $$$$$:  212-block  8
+    $$$$$:  212-block  9
+call   24 never executed
+    $$$$$:  212-block 10
+    $$$$$:  212-block 11
+call   25 never executed
+    $$$$$:  212-block 12
+    $$$$$:  212-block 13
+call   26 never executed
+       1*:  213:    EXPECT_EQ(humanPtr->getAge(), 20);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  213-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  213-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  213-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  213-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  213-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  213-block  5
+call   19 never executed
+call   20 never executed
+        1:  213-block  6
+call   21 returned 1
+    $$$$$:  213-block  7
+    $$$$$:  213-block  8
+    $$$$$:  213-block  9
+call   22 never executed
+    $$$$$:  213-block 10
+    $$$$$:  213-block 11
+call   23 never executed
+    $$$$$:  213-block 12
+    $$$$$:  213-block 13
+call   24 never executed
+        1:  214:}
+call    0 returned 1
+    $$$$$:  214-block  0
+call    1 never executed
+------------------
+        -:  215:
+        4:  216:TEST_F(PeopleTest, EmployeeIsHuman) {
+        1:  217:    Employee employee("Test", 30, Enums::EmployeePosition::TECHNICIAN);
+        1:  218:    Human* humanPtr = &employee;
+        -:  219:
+       1*:  220:    EXPECT_EQ(humanPtr->getName(), "Test");
+       1*:  221:    EXPECT_EQ(humanPtr->getAge(), 30);
+        1:  222:}
+------------------
+_ZN31PeopleTest_EmployeeIsHuman_TestC1Ev:
+function _ZN31PeopleTest_EmployeeIsHuman_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  216:TEST_F(PeopleTest, EmployeeIsHuman) {
+        1:  216-block  0
+call    0 returned 1
+------------------
+_ZN31PeopleTest_EmployeeIsHuman_TestD0Ev:
+function _ZN31PeopleTest_EmployeeIsHuman_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  216:TEST_F(PeopleTest, EmployeeIsHuman) {
+        1:  216-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN31PeopleTest_EmployeeIsHuman_TestD1Ev:
+function _ZN31PeopleTest_EmployeeIsHuman_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  216:TEST_F(PeopleTest, EmployeeIsHuman) {
+        1:  216-block  0
+call    0 returned 1
+------------------
+_ZN31PeopleTest_EmployeeIsHuman_Test8TestBodyEv:
+function _ZN31PeopleTest_EmployeeIsHuman_Test8TestBodyEv called 1 returned 100% blocks executed 31%
+        1:  216:TEST_F(PeopleTest, EmployeeIsHuman) {
+        1:  216-block  0
+        1:  217:    Employee employee("Test", 30, Enums::EmployeePosition::TECHNICIAN);
+        1:  217-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  217-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  217-block  2
+call    6 returned 1
+    $$$$$:  217-block  3
+call    7 never executed
+    $$$$$:  217-block  4
+    $$$$$:  217-block  5
+        1:  218:    Human* humanPtr = &employee;
+        -:  219:
+       1*:  220:    EXPECT_EQ(humanPtr->getName(), "Test");
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  220-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  220-block  1
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:  220-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  220-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  220-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  220-block  5
+call   20 never executed
+call   21 never executed
+        1:  220-block  6
+call   22 returned 1
+    $$$$$:  220-block  7
+call   23 never executed
+    $$$$$:  220-block  8
+    $$$$$:  220-block  9
+call   24 never executed
+    $$$$$:  220-block 10
+    $$$$$:  220-block 11
+call   25 never executed
+    $$$$$:  220-block 12
+    $$$$$:  220-block 13
+call   26 never executed
+       1*:  221:    EXPECT_EQ(humanPtr->getAge(), 30);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  221-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  221-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  221-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  221-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  221-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  221-block  5
+call   19 never executed
+call   20 never executed
+        1:  221-block  6
+call   21 returned 1
+    $$$$$:  221-block  7
+    $$$$$:  221-block  8
+    $$$$$:  221-block  9
+call   22 never executed
+    $$$$$:  221-block 10
+    $$$$$:  221-block 11
+call   23 never executed
+    $$$$$:  221-block 12
+    $$$$$:  221-block 13
+call   24 never executed
+        1:  222:}
+call    0 returned 1
+    $$$$$:  222-block  0
+call    1 never executed
+------------------
+        -:  223:
+        4:  224:TEST_F(PeopleTest, TicketWithNullVenueInVisitor) {
+        1:  225:    Visitor visitor("Test", 25, Enums::DiscountCategory::NONE);
+        -:  226:
+       4*:  227:    EXPECT_THROW(Ticket ticket(nullptr, "Test", 50.0), std::invalid_argument);
+        1:  228:}
+------------------
+_ZN44PeopleTest_TicketWithNullVenueInVisitor_TestC1Ev:
+function _ZN44PeopleTest_TicketWithNullVenueInVisitor_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  224:TEST_F(PeopleTest, TicketWithNullVenueInVisitor) {
+        1:  224-block  0
+call    0 returned 1
+------------------
+_ZN44PeopleTest_TicketWithNullVenueInVisitor_TestD0Ev:
+function _ZN44PeopleTest_TicketWithNullVenueInVisitor_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  224:TEST_F(PeopleTest, TicketWithNullVenueInVisitor) {
+        1:  224-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN44PeopleTest_TicketWithNullVenueInVisitor_TestD1Ev:
+function _ZN44PeopleTest_TicketWithNullVenueInVisitor_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  224:TEST_F(PeopleTest, TicketWithNullVenueInVisitor) {
+        1:  224-block  0
+call    0 returned 1
+------------------
+_ZN44PeopleTest_TicketWithNullVenueInVisitor_Test8TestBodyEv:
+function _ZN44PeopleTest_TicketWithNullVenueInVisitor_Test8TestBodyEv called 1 returned 100% blocks executed 37%
+        1:  224:TEST_F(PeopleTest, TicketWithNullVenueInVisitor) {
+        1:  224-block  0
+        1:  225:    Visitor visitor("Test", 25, Enums::DiscountCategory::NONE);
+        1:  225-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  225-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  225-block  2
+call    6 returned 1
+    $$$$$:  225-block  3
+call    7 never executed
+    $$$$$:  225-block  4
+    $$$$$:  225-block  5
+        -:  226:
+       4*:  227:    EXPECT_THROW(Ticket ticket(nullptr, "Test", 50.0), std::invalid_argument);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:  227-block  0
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:  227-block  1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:  227-block  2
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:  227-block  3
+call   12 returned 1
+branch 13 taken 0 (fallthrough)
+branch 14 taken 1 (throw)
+    %%%%%:  227-block  4
+call   15 never executed
+call   16 never executed
+        1:  227-block  5
+branch 17 taken 0 (fallthrough)
+branch 18 taken 1
+    %%%%%:  227-block  6
+call   19 never executed
+branch 20 never executed (fallthrough)
+branch 21 never executed (throw)
+    %%%%%:  227-block  7
+    %%%%%:  227-block  8
+call   22 never executed
+branch 23 never executed (fallthrough)
+branch 24 never executed (throw)
+    %%%%%:  227-block  9
+call   25 never executed
+call   26 never executed
+branch 27 never executed (fallthrough)
+branch 28 never executed (throw)
+    %%%%%:  227-block 10
+call   29 never executed
+branch 30 never executed (fallthrough)
+branch 31 never executed (throw)
+    %%%%%:  227-block 11
+call   32 never executed
+call   33 never executed
+        1:  227-block 12
+call   34 returned 1
+        1:  227-block 13
+call   35 returned 1
+        1:  227-block 14
+        1:  227-block 15
+        1:  227-block 16
+branch 36 taken 1
+branch 37 taken 0
+branch 38 taken 0
+        1:  227-block 17
+call   39 returned 1
+call   40 returned 1
+    $$$$$:  227-block 18
+call   41 never executed
+call   42 never executed
+branch 43 never executed (fallthrough)
+branch 44 never executed (throw)
+    $$$$$:  227-block 19
+call   45 never executed
+branch 46 never executed (fallthrough)
+branch 47 never executed (throw)
+    $$$$$:  227-block 20
+call   48 never executed
+branch 49 never executed (fallthrough)
+branch 50 never executed (throw)
+    $$$$$:  227-block 21
+call   51 never executed
+call   52 never executed
+branch 53 never executed (fallthrough)
+branch 54 never executed (throw)
+    $$$$$:  227-block 22
+call   55 never executed
+call   56 never executed
+branch 57 never executed (fallthrough)
+branch 58 never executed (throw)
+    $$$$$:  227-block 23
+call   59 never executed
+branch 60 never executed (fallthrough)
+branch 61 never executed (throw)
+    $$$$$:  227-block 24
+    $$$$$:  227-block 25
+call   62 never executed
+    $$$$$:  227-block 26
+call   63 never executed
+call   64 never executed
+branch 65 never executed (fallthrough)
+branch 66 never executed (throw)
+    $$$$$:  227-block 27
+    $$$$$:  227-block 28
+call   67 never executed
+branch 68 never executed (fallthrough)
+branch 69 never executed (throw)
+    $$$$$:  227-block 29
+call   70 never executed
+    $$$$$:  227-block 30
+    $$$$$:  227-block 31
+call   71 never executed
+    $$$$$:  227-block 32
+call   72 never executed
+    $$$$$:  227-block 33
+call   73 never executed
+    $$$$$:  227-block 34
+    $$$$$:  227-block 35
+call   74 never executed
+    $$$$$:  227-block 36
+    $$$$$:  227-block 37
+call   75 never executed
+        1:  228:}
+call    0 returned 1
+    $$$$$:  228-block  0
+call    1 never executed
+------------------
+        -:  229:
+        4:  230:TEST_F(PeopleTest, TicketWithEmptyVenueName) {
+        2:  231:    Visitor visitor("Test", 25, Enums::DiscountCategory::NONE);
+        2:  232:    PlanetariumVenue venue("", 50);
+        2:  233:    Ticket ticket(&venue, "Test", 50.0);
+        1:  234:    PlanetariumVenue emptyVenue("", 30);
+        -:  235:
+        1:  236:    visitor.buyTicket(&ticket);
+       1*:  237:    EXPECT_TRUE(visitor.canVisitVenue(&emptyVenue));
+        1:  238:}
+------------------
+_ZN40PeopleTest_TicketWithEmptyVenueName_TestC1Ev:
+function _ZN40PeopleTest_TicketWithEmptyVenueName_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  230:TEST_F(PeopleTest, TicketWithEmptyVenueName) {
+        1:  230-block  0
+call    0 returned 1
+------------------
+_ZN40PeopleTest_TicketWithEmptyVenueName_TestD0Ev:
+function _ZN40PeopleTest_TicketWithEmptyVenueName_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  230:TEST_F(PeopleTest, TicketWithEmptyVenueName) {
+        1:  230-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN40PeopleTest_TicketWithEmptyVenueName_TestD1Ev:
+function _ZN40PeopleTest_TicketWithEmptyVenueName_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  230:TEST_F(PeopleTest, TicketWithEmptyVenueName) {
+        1:  230-block  0
+call    0 returned 1
+------------------
+_ZN40PeopleTest_TicketWithEmptyVenueName_Test8TestBodyEv:
+function _ZN40PeopleTest_TicketWithEmptyVenueName_Test8TestBodyEv called 1 returned 100% blocks executed 40%
+        1:  230:TEST_F(PeopleTest, TicketWithEmptyVenueName) {
+        1:  230-block  0
+        2:  231:    Visitor visitor("Test", 25, Enums::DiscountCategory::NONE);
+        1:  231-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  231-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  231-block  2
+call    6 returned 1
+    $$$$$:  231-block  3
+call    7 never executed
+    $$$$$:  231-block  4
+    $$$$$:  231-block  5
+        2:  232:    PlanetariumVenue venue("", 50);
+        1:  232-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  232-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  232-block  2
+call    6 returned 1
+    $$$$$:  232-block  3
+call    7 never executed
+    $$$$$:  232-block  4
+    $$$$$:  232-block  5
+        2:  233:    Ticket ticket(&venue, "Test", 50.0);
+        1:  233-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  233-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  233-block  2
+call    6 returned 1
+    $$$$$:  233-block  3
+call    7 never executed
+    $$$$$:  233-block  4
+    $$$$$:  233-block  5
+        1:  234:    PlanetariumVenue emptyVenue("", 30);
+        1:  234-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  234-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  234-block  2
+call    6 returned 1
+    $$$$$:  234-block  3
+call    7 never executed
+    $$$$$:  234-block  4
+    $$$$$:  234-block  5
+        -:  235:
+        1:  236:    visitor.buyTicket(&ticket);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:  237:    EXPECT_TRUE(visitor.canVisitVenue(&emptyVenue));
+        1:  237-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  237-block  1
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  237-block  2
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  237-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  237-block  4
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  237-block  5
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  237-block  6
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  237-block  7
+call   23 returned 1
+    $$$$$:  237-block  8
+    $$$$$:  237-block  9
+call   24 never executed
+    $$$$$:  237-block 10
+call   25 never executed
+    $$$$$:  237-block 11
+    $$$$$:  237-block 12
+    $$$$$:  237-block 13
+call   26 never executed
+    $$$$$:  237-block 14
+    $$$$$:  237-block 15
+call   27 never executed
+        1:  238:}
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+call    3 returned 1
+    $$$$$:  238-block  0
+call    4 never executed
+    $$$$$:  238-block  1
+call    5 never executed
+    $$$$$:  238-block  2
+call    6 never executed
+    $$$$$:  238-block  3
+call    7 never executed
+------------------
+        -:  239:
+        4:  240:TEST_F(PeopleTest, VenueWithDifferentCapacities) {
+        2:  241:    Visitor visitor("Test", 30, Enums::DiscountCategory::NONE);
+        2:  242:    PlanetariumVenue venue1("Star Theater", 250);
+        2:  243:    PlanetariumVenue venue2("Star Theater", 500);
+        -:  244:
+        1:  245:    Ticket ticket(&venue1, "Test", 75.0);
+        1:  246:    visitor.buyTicket(&ticket);
+        -:  247:
+       1*:  248:    EXPECT_TRUE(visitor.canVisitVenue(&venue1));
+       1*:  249:    EXPECT_TRUE(visitor.canVisitVenue(&venue2));
+        1:  250:}
+------------------
+_ZN44PeopleTest_VenueWithDifferentCapacities_TestC1Ev:
+function _ZN44PeopleTest_VenueWithDifferentCapacities_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  240:TEST_F(PeopleTest, VenueWithDifferentCapacities) {
+        1:  240-block  0
+call    0 returned 1
+------------------
+_ZN44PeopleTest_VenueWithDifferentCapacities_TestD0Ev:
+function _ZN44PeopleTest_VenueWithDifferentCapacities_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  240:TEST_F(PeopleTest, VenueWithDifferentCapacities) {
+        1:  240-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN44PeopleTest_VenueWithDifferentCapacities_TestD1Ev:
+function _ZN44PeopleTest_VenueWithDifferentCapacities_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  240:TEST_F(PeopleTest, VenueWithDifferentCapacities) {
+        1:  240-block  0
+call    0 returned 1
+------------------
+_ZN44PeopleTest_VenueWithDifferentCapacities_Test8TestBodyEv:
+function _ZN44PeopleTest_VenueWithDifferentCapacities_Test8TestBodyEv called 1 returned 100% blocks executed 35%
+        1:  240:TEST_F(PeopleTest, VenueWithDifferentCapacities) {
+        1:  240-block  0
+        2:  241:    Visitor visitor("Test", 30, Enums::DiscountCategory::NONE);
+        1:  241-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  241-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  241-block  2
+call    6 returned 1
+    $$$$$:  241-block  3
+call    7 never executed
+    $$$$$:  241-block  4
+    $$$$$:  241-block  5
+        2:  242:    PlanetariumVenue venue1("Star Theater", 250);
+        1:  242-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  242-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  242-block  2
+call    6 returned 1
+    $$$$$:  242-block  3
+call    7 never executed
+    $$$$$:  242-block  4
+    $$$$$:  242-block  5
+        2:  243:    PlanetariumVenue venue2("Star Theater", 500);
+        1:  243-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  243-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  243-block  2
+call    6 returned 1
+    $$$$$:  243-block  3
+call    7 never executed
+    $$$$$:  243-block  4
+    $$$$$:  243-block  5
+        -:  244:
+        1:  245:    Ticket ticket(&venue1, "Test", 75.0);
+        1:  245-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  245-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  245-block  2
+call    6 returned 1
+    $$$$$:  245-block  3
+call    7 never executed
+    $$$$$:  245-block  4
+    $$$$$:  245-block  5
+        1:  246:    visitor.buyTicket(&ticket);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  247:
+       1*:  248:    EXPECT_TRUE(visitor.canVisitVenue(&venue1));
+        1:  248-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  248-block  1
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  248-block  2
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  248-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  248-block  4
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  248-block  5
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  248-block  6
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  248-block  7
+call   23 returned 1
+    $$$$$:  248-block  8
+    $$$$$:  248-block  9
+call   24 never executed
+    $$$$$:  248-block 10
+call   25 never executed
+    $$$$$:  248-block 11
+    $$$$$:  248-block 12
+    $$$$$:  248-block 13
+call   26 never executed
+    $$$$$:  248-block 14
+    $$$$$:  248-block 15
+call   27 never executed
+       1*:  249:    EXPECT_TRUE(visitor.canVisitVenue(&venue2));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  249-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  249-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  249-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  249-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  249-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  249-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  249-block  6
+call   23 returned 1
+    $$$$$:  249-block  7
+    $$$$$:  249-block  8
+call   24 never executed
+    $$$$$:  249-block  9
+call   25 never executed
+    $$$$$:  249-block 10
+    $$$$$:  249-block 11
+    $$$$$:  249-block 12
+call   26 never executed
+    $$$$$:  249-block 13
+    $$$$$:  249-block 14
+call   27 never executed
+        1:  250:}
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+call    3 returned 1
+    $$$$$:  250-block  0
+call    4 never executed
+    $$$$$:  250-block  1
+call    5 never executed
+    $$$$$:  250-block  2
+call    6 never executed
+    $$$$$:  250-block  3
+call    7 never executed
+------------------
+        -:  251:
+        4:  252:TEST_F(PeopleTest, MultipleVisitorsSameTicket) {
+        2:  253:    Visitor visitor1("Alice", 25, Enums::DiscountCategory::STUDENT);
+        2:  254:    Visitor visitor2("Bob", 30, Enums::DiscountCategory::NONE);
+        2:  255:    PlanetariumVenue venue("Main Hall", 200);
+        1:  256:    Ticket ticket(&venue, "Alice", 40.0);
+        -:  257:
+        1:  258:    visitor1.buyTicket(&ticket);
+        1:  259:    visitor2.buyTicket(&ticket);
+        -:  260:
+       1*:  261:    EXPECT_TRUE(visitor1.canVisitVenue(&venue));
+       1*:  262:    EXPECT_TRUE(visitor2.canVisitVenue(&venue));
+        1:  263:}
+------------------
+_ZN42PeopleTest_MultipleVisitorsSameTicket_TestC1Ev:
+function _ZN42PeopleTest_MultipleVisitorsSameTicket_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  252:TEST_F(PeopleTest, MultipleVisitorsSameTicket) {
+        1:  252-block  0
+call    0 returned 1
+------------------
+_ZN42PeopleTest_MultipleVisitorsSameTicket_TestD0Ev:
+function _ZN42PeopleTest_MultipleVisitorsSameTicket_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  252:TEST_F(PeopleTest, MultipleVisitorsSameTicket) {
+        1:  252-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN42PeopleTest_MultipleVisitorsSameTicket_TestD1Ev:
+function _ZN42PeopleTest_MultipleVisitorsSameTicket_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  252:TEST_F(PeopleTest, MultipleVisitorsSameTicket) {
+        1:  252-block  0
+call    0 returned 1
+------------------
+_ZN42PeopleTest_MultipleVisitorsSameTicket_Test8TestBodyEv:
+function _ZN42PeopleTest_MultipleVisitorsSameTicket_Test8TestBodyEv called 1 returned 100% blocks executed 36%
+        1:  252:TEST_F(PeopleTest, MultipleVisitorsSameTicket) {
+        1:  252-block  0
+        2:  253:    Visitor visitor1("Alice", 25, Enums::DiscountCategory::STUDENT);
+        1:  253-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  253-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  253-block  2
+call    6 returned 1
+    $$$$$:  253-block  3
+call    7 never executed
+    $$$$$:  253-block  4
+    $$$$$:  253-block  5
+        2:  254:    Visitor visitor2("Bob", 30, Enums::DiscountCategory::NONE);
+        1:  254-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  254-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  254-block  2
+call    6 returned 1
+    $$$$$:  254-block  3
+call    7 never executed
+    $$$$$:  254-block  4
+    $$$$$:  254-block  5
+        2:  255:    PlanetariumVenue venue("Main Hall", 200);
+        1:  255-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  255-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  255-block  2
+call    6 returned 1
+    $$$$$:  255-block  3
+call    7 never executed
+    $$$$$:  255-block  4
+    $$$$$:  255-block  5
+        1:  256:    Ticket ticket(&venue, "Alice", 40.0);
+        1:  256-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  256-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  256-block  2
+call    6 returned 1
+    $$$$$:  256-block  3
+call    7 never executed
+    $$$$$:  256-block  4
+    $$$$$:  256-block  5
+        -:  257:
+        1:  258:    visitor1.buyTicket(&ticket);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  259:    visitor2.buyTicket(&ticket);
+        1:  259-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  260:
+       1*:  261:    EXPECT_TRUE(visitor1.canVisitVenue(&venue));
+        1:  261-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  261-block  1
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  261-block  2
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  261-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  261-block  4
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  261-block  5
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  261-block  6
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  261-block  7
+call   23 returned 1
+    $$$$$:  261-block  8
+    $$$$$:  261-block  9
+call   24 never executed
+    $$$$$:  261-block 10
+call   25 never executed
+    $$$$$:  261-block 11
+    $$$$$:  261-block 12
+    $$$$$:  261-block 13
+call   26 never executed
+    $$$$$:  261-block 14
+    $$$$$:  261-block 15
+call   27 never executed
+       1*:  262:    EXPECT_TRUE(visitor2.canVisitVenue(&venue));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  262-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  262-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  262-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  262-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  262-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  262-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  262-block  6
+call   23 returned 1
+    $$$$$:  262-block  7
+    $$$$$:  262-block  8
+call   24 never executed
+    $$$$$:  262-block  9
+call   25 never executed
+    $$$$$:  262-block 10
+    $$$$$:  262-block 11
+    $$$$$:  262-block 12
+call   26 never executed
+    $$$$$:  262-block 13
+    $$$$$:  262-block 14
+call   27 never executed
+        1:  263:}
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+call    3 returned 1
+    $$$$$:  263-block  0
+call    4 never executed
+    $$$$$:  263-block  1
+call    5 never executed
+    $$$$$:  263-block  2
+call    6 never executed
+    $$$$$:  263-block  3
+call    7 never executed
+------------------

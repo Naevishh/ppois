@@ -1,5 +1,6 @@
 #include "AstronomicalObject.h"
 #include <cmath>
+#include <stdexcept>
 #include "../Validation/TimeValidator.h"
 
 AstronomicalObject::AstronomicalObject(const std::string& name_, double magnitude_, double absMagnitude_,

@@ -1,0 +1,111 @@
+        -:    0:Source:C:/Users/aleks/CLionProjects/PlanetariumProjectCopy/Inventory/InteractiveWhiteboard.cpp
+        -:    0:Graph:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Inventory\CMakeFiles\Inventory.dir\InteractiveWhiteboard.cpp.gcno
+        -:    0:Data:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Inventory\CMakeFiles\Inventory.dir\InteractiveWhiteboard.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include <stdexcept>
+        -:    2:#include "InteractiveWhiteboard.h"
+        -:    3:
+function _ZN21InteractiveWhiteboard4ToolC2Ev called 21 returned 100% blocks executed 100%
+       21:    4:InteractiveWhiteboard::Tool::Tool() :
+       21:    5:        color(Enums::ToolColor::BLACK), type(Enums::ToolType::PEN), width(5) {}
+        -:    6:
+function _ZN21InteractiveWhiteboardC2ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEdd called 21 returned 100% blocks executed 100%
+       21:    7:InteractiveWhiteboard::InteractiveWhiteboard(const std::string& name, double width_, double length_)
+       21:    8:        : Screen(name, width_, length_), currentTool(), multiTouch(false) {}
+       21:    8-block  0
+call    0 returned 21
+call    1 returned 21
+call    2 returned 21
+        -:    9:
+function _ZN21InteractiveWhiteboard18readyForProjectionEv called 3 returned 100% blocks executed 100%
+        3:   10:void InteractiveWhiteboard::readyForProjection() {
+        3:   11:    if (active()) {
+        3:   11-block  0
+call    0 returned 3
+branch  1 taken 1 (fallthrough)
+branch  2 taken 2
+        1:   12:        clearScreen();
+        1:   12-block  0
+call    0 returned 1
+        1:   13:        turnOff();
+call    0 returned 1
+        -:   14:    }
+        3:   15:}
+        -:   16:
+function _ZN21InteractiveWhiteboard12setBasicToolEv called 0 returned 0% blocks executed 0%
+    #####:   17:void InteractiveWhiteboard::setBasicTool() {
+    #####:   18:    selectTool(Enums::ToolType::PEN);
+    %%%%%:   18-block  0
+call    0 never executed
+    #####:   19:    setPenColor(Enums::ToolColor::BLACK);
+call    0 never executed
+    #####:   20:    setPenWidth(5);
+call    0 never executed
+    #####:   21:}
+        -:   22:
+function _ZN21InteractiveWhiteboard15readyForLectureEv called 6 returned 100% blocks executed 57%
+        6:   23:void InteractiveWhiteboard::readyForLecture() {
+        6:   24:    if (!active()) turnOn();
+        6:   24-block  0
+call    0 returned 6
+branch  1 taken 6 (fallthrough)
+branch  2 taken 0
+        6:   24-block  1
+call    3 returned 6
+        -:   25:    else {
+    #####:   26:        clearScreen();
+    %%%%%:   26-block  0
+call    0 never executed
+    #####:   27:        setBasicTool();
+call    0 never executed
+    #####:   28:        multiTouch = false;
+        -:   29:    }
+        6:   30:}
+        -:   31:
+function _ZN21InteractiveWhiteboard16enableMultiTouchEv called 1 returned 100% blocks executed 100%
+        1:   32:void InteractiveWhiteboard::enableMultiTouch() {
+        1:   33:    multiTouch = true;
+        1:   34:}
+        -:   35:
+function _ZN21InteractiveWhiteboard11clearScreenEv called 2 returned 100% blocks executed 100%
+        2:   36:void InteractiveWhiteboard::clearScreen() {
+        2:   37:    content = "";
+        2:   37-block  0
+call    0 returned 2
+        2:   38:}
+        -:   39:
+function _ZN21InteractiveWhiteboard10selectToolEN5Enums8ToolTypeE called 1 returned 100% blocks executed 100%
+        1:   40:void InteractiveWhiteboard::selectTool(Enums::ToolType type_) {
+        1:   41:    currentTool.type = type_;
+        1:   42:}
+        -:   43:
+function _ZN21InteractiveWhiteboard11setPenColorEN5Enums9ToolColorE called 1 returned 100% blocks executed 100%
+        1:   44:void InteractiveWhiteboard::setPenColor(Enums::ToolColor color_) {
+        1:   45:    currentTool.color = color_;
+        1:   46:}
+        -:   47:
+function _ZN21InteractiveWhiteboard11setPenWidthEi called 3 returned 33% blocks executed 88%
+        3:   48:void InteractiveWhiteboard::setPenWidth(int width_) {
+        3:   49:    if(width_<0 || width_>30) throw std::invalid_argument("Invalid width!");
+        3:   49-block  0
+branch  0 taken 2 (fallthrough)
+branch  1 taken 1
+        2:   49-block  1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 1
+        2:   49-block  2
+call    4 returned 2
+call    5 returned 2
+branch  6 taken 2 (fallthrough)
+branch  7 taken 0 (throw)
+        2:   49-block  3
+call    8 returned 0
+    $$$$$:   49-block  4
+call    9 never executed
+        1:   50:    currentTool.width = width_;
+        1:   51:}
+        1:   51-block  0
+        -:   52:
+function _ZNK21InteractiveWhiteboard7getToolEv called 3 returned 100% blocks executed 100%
+        3:   53:InteractiveWhiteboard::Tool InteractiveWhiteboard::getTool()const{ return currentTool;}
+        3:   53-block  0

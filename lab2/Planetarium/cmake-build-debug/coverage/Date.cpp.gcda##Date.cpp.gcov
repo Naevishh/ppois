@@ -1,0 +1,216 @@
+        -:    0:Source:C:/Users/aleks/CLionProjects/PlanetariumProjectCopy/Utils/Date.cpp
+        -:    0:Graph:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Utils\CMakeFiles\Utils.dir\Date.cpp.gcno
+        -:    0:Data:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Utils\CMakeFiles\Utils.dir\Date.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "Date.h"
+        -:    2:#include "../Validation/TimeValidator.h"
+        -:    3:#include <ctime>
+        -:    4:
+function _ZN4DateC2Eiii called 309 returned 99% blocks executed 89%
+      309:    5:Date::Date(int year_, int month_, int day_) : weather_() {
+      309:    5-block  0
+call    0 returned 309
+      309:    6:    if (!TimeValidator::isValidDate(day_, month_, year_))
+call    0 returned 309
+branch  1 taken 3 (fallthrough)
+branch  2 taken 306
+        3:    7:        throw std::invalid_argument("Invalid time!");
+        3:    7-block  0
+call    0 returned 3
+call    1 returned 3
+branch  2 taken 3 (fallthrough)
+branch  3 taken 0 (throw)
+        3:    7-block  1
+call    4 returned 0
+    $$$$$:    7-block  2
+call    5 never executed
+      306:    8:    year=year_;
+      306:    9:    month=month_;
+      306:   10:    day=day_;
+      306:   11:}
+      306:   11-block  0
+        -:   12:
+function _ZNK4Date7getDateB5cxx11Ev called 13 returned 100% blocks executed 50%
+       13:   13:std::string Date::getDate() const {
+       13:   14:    return (toString(day) + "." + toString(month) + "." + toString(year));
+       13:   14-block  0
+call    0 returned 13
+branch  1 taken 13 (fallthrough)
+branch  2 taken 0 (throw)
+       13:   14-block  1
+call    3 returned 13
+branch  4 taken 13 (fallthrough)
+branch  5 taken 0 (throw)
+       13:   14-block  2
+call    6 returned 13
+branch  7 taken 13 (fallthrough)
+branch  8 taken 0 (throw)
+       13:   14-block  3
+call    9 returned 13
+branch 10 taken 13 (fallthrough)
+branch 11 taken 0 (throw)
+       13:   14-block  4
+call   12 returned 13
+branch 13 taken 13 (fallthrough)
+branch 14 taken 0 (throw)
+       13:   14-block  5
+call   15 returned 13
+branch 16 taken 13 (fallthrough)
+branch 17 taken 0 (throw)
+       13:   14-block  6
+call   18 returned 13
+branch 19 taken 13 (fallthrough)
+branch 20 taken 0 (throw)
+       13:   14-block  7
+       13:   14-block  8
+call   21 returned 13
+call   22 returned 13
+call   23 returned 13
+call   24 returned 13
+call   25 returned 13
+call   26 returned 13
+       13:   14-block  9
+    $$$$$:   14-block 10
+call   27 never executed
+    $$$$$:   14-block 11
+call   28 never executed
+    $$$$$:   14-block 12
+call   29 never executed
+    $$$$$:   14-block 13
+call   30 never executed
+    $$$$$:   14-block 14
+    $$$$$:   14-block 15
+    $$$$$:   14-block 16
+call   31 never executed
+    $$$$$:   14-block 17
+    $$$$$:   14-block 18
+    $$$$$:   14-block 19
+    $$$$$:   14-block 20
+call   32 never executed
+        -:   15:}
+        -:   16:
+function _ZN4Date8toStringB5cxx11Ei called 39 returned 100% blocks executed 82%
+       39:   17:std::string Date::toString(int int_) {
+       39:   18:    if (int_ < 10) return ('0' + std::to_string(int_));
+       39:   18-block  0
+branch  0 taken 4 (fallthrough)
+branch  1 taken 35
+        4:   18-block  1
+call    2 returned 4
+call    3 returned 4
+branch  4 taken 4 (fallthrough)
+branch  5 taken 0 (throw)
+        4:   18-block  2
+        4:   18-block  3
+call    6 returned 4
+    $$$$$:   18-block  4
+call    7 never executed
+       35:   19:    else return std::to_string(int_);
+       35:   19-block  0
+call    0 returned 35
+        -:   20:}
+        -:   21:
+function _ZNK4Date10getWeatherEv called 3 returned 100% blocks executed 100%
+        3:   22:Enums::WeatherCondition Date::getWeather() const {
+        3:   23:    return weather_.getWeatherCondition();
+        3:   23-block  0
+call    0 returned 3
+        -:   24:}
+        -:   25:
+function _ZNK4DateeqERKS_ called 2 returned 100% blocks executed 100%
+        2:   26:bool Date::operator==(const Date& date) const {
+        2:   27:    return year == date.year && month == date.month && day == date.day;
+        2:   27-block  0
+branch  0 taken 2 (fallthrough)
+branch  1 taken 0
+        2:   27-block  1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 1
+        1:   27-block  2
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0
+        1:   27-block  3
+        1:   27-block  4
+        2:   27-block  5
+        -:   28:}
+        -:   29:
+function _ZNK4DateltERKS_ called 51 returned 100% blocks executed 90%
+       51:   30:bool Date::operator<(const Date& date) const {
+       51:   31:    if (year < date.year) return true;
+       51:   31-block  0
+branch  0 taken 26 (fallthrough)
+branch  1 taken 25
+       26:   31-block  1
+       25:   32:    else if (year == date.year) {
+       25:   32-block  0
+branch  0 taken 4 (fallthrough)
+branch  1 taken 21
+        4:   33:        if (month < date.month) return true;
+        4:   33-block  0
+branch  0 taken 2 (fallthrough)
+branch  1 taken 2
+        2:   33-block  1
+       2*:   34:        else if (month == date.month) return day < date.day;
+        2:   34-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 2
+    %%%%%:   34-block  1
+        2:   35:        else return false;
+        2:   35-block  0
+        -:   36:    }
+       21:   37:    else return false;
+       21:   37-block  0
+        -:   38:}
+        -:   39:
+function _ZNK4DategtERKS_ called 26 returned 100% blocks executed 100%
+       26:   40:bool Date::operator>(const Date& date) const {
+       26:   41:    return date < *this;
+       26:   41-block  0
+call    0 returned 26
+        -:   42:}
+        -:   43:
+function _ZNK4DateplEi called 158 returned 100% blocks executed 100%
+      158:   44:Date Date::operator+(int years) const {
+      158:   45:    Date result = *this;
+      158:   46:    result.year += years;
+      158:   47:    return result;
+      158:   47-block  0
+        -:   48:}
+        -:   49:
+function _ZN4Date11currentDateEv called 268 returned 100% blocks executed 100%
+      268:   50:Date Date::currentDate() {
+      268:   51:    time_t currentDate_ = time(nullptr);
+      268:   51-block  0
+call    0 returned 268
+branch  1 taken 268 (fallthrough)
+branch  2 taken 0 (throw)
+      268:   52:    struct tm *now = localtime(&currentDate_);
+      268:   52-block  0
+call    0 returned 268
+branch  1 taken 268 (fallthrough)
+branch  2 taken 0 (throw)
+      536:   53:    return {now->tm_year + 1900, now->tm_mon + 1, now->tm_mday};
+      268:   53-block  0
+call    0 returned 268
+branch  1 taken 268 (fallthrough)
+branch  2 taken 0 (throw)
+      268:   53-block  1
+        -:   54:}
+        -:   55:
+function _ZN4Date7setYearEi called 5 returned 100% blocks executed 100%
+        5:   56:void Date::setYear(int year_) {
+        5:   57:    year = year_;
+        5:   58:}
+        -:   59:
+function _ZN4Date8setMonthEi called 5 returned 100% blocks executed 100%
+        5:   60:void Date::setMonth(int month_) {
+        5:   61:    month = month_;
+        5:   62:}
+        -:   63:
+function _ZN4Date6setDayEi called 5 returned 100% blocks executed 100%
+        5:   64:void Date::setDay(int day_) {
+        5:   65:    day = day_;
+        5:   66:}
+        -:   67:
+function _ZN4Date10setWeatherERK7Weather called 2 returned 100% blocks executed 100%
+        2:   68:void Date::setWeather(const Weather& weather) {weather_=weather;}

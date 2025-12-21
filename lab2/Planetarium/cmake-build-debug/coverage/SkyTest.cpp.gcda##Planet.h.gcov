@@ -1,0 +1,53 @@
+        -:    0:Source:C:/Users/aleks/CLionProjects/PlanetariumProjectCopy/Sky/Planet.h
+        -:    0:Graph:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Tests\CMakeFiles\Tests.dir\SkyTest.cpp.gcno
+        -:    0:Data:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Tests\CMakeFiles\Tests.dir\SkyTest.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#ifndef PLANETARIUMPROJECT_PLANET_H
+        -:    2:#define PLANETARIUMPROJECT_PLANET_H
+        -:    3:
+        -:    4:#include <string>
+        -:    5:#include "AstronomicalObject.h"
+        -:    6:#include "Star.h"
+        -:    7:#include "Moon.h"
+        -:    8:#include <cmath>
+        -:    9:#include <memory>
+        -:   10:#include <utility>
+        -:   11:
+        -:   12:class Planet : public AstronomicalObject {
+        -:   13:private:
+        -:   14:    Enums::PlanetType type;
+        -:   15:    std::shared_ptr<Star> hostStar;
+        -:   16:    double orbitalPeriod;
+        -:   17:    double semiMajorAxis;
+        -:   18:    double semiMinorAxis;
+        -:   19:    std::vector<Moon> moons;
+        -:   20:    double mass;
+        -:   21:
+        -:   22:public:
+function _ZN6PlanetC1ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEddddN5Enums10PlanetTypeEdddd called 11 returned 100% blocks executed 100%
+       11:   23:    Planet(const std::string& name_,  double magnitude_, double absMagnitude_, double azimuth_,
+        -:   24:           double altitude_, Enums::PlanetType type_, double orbitalPeriod_, double semiMajorAxis_,
+       11:   25:           double semiMinorAxis_, double mass_) :
+        -:   26:           AstronomicalObject(name_, magnitude_, absMagnitude_, azimuth_, altitude_,
+       11:   27:                              Enums::ObjectType::PLANET), type(type_), hostStar(nullptr),
+call    0 returned 11
+       11:   28:                              orbitalPeriod(orbitalPeriod_), semiMajorAxis(semiMajorAxis_),
+       22:   29:                              semiMinorAxis(semiMinorAxis_), mass(mass_){}
+       11:   29-block  0
+call    0 returned 11
+call    1 returned 11
+        -:   30:
+        -:   31:    double getEccentricity() const;
+        -:   32:    double getDistanceToHostStar(double trueAnomaly) const;
+        -:   33:
+        -:   34:    void addMoon(const Moon& moon);
+        -:   35:    int getMoonCount() const;
+        -:   36:
+        -:   37:    void setHostStar(std::shared_ptr<Star> star);
+        -:   38:
+        -:   39:    double calculateOrbitLength() const;
+        -:   40:
+        -:   41:    Enums::PlanetType getPlanetType() const;
+        -:   42:};
+        -:   43:
+        -:   44:#endif //PLANETARIUMPROJECT_PLANET_H

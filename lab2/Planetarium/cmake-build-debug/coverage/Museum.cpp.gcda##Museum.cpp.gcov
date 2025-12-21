@@ -1,0 +1,230 @@
+        -:    0:Source:C:/Users/aleks/CLionProjects/PlanetariumProjectCopy/Facade/Museum.cpp
+        -:    0:Graph:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Facade\CMakeFiles\Facade.dir\Museum.cpp.gcno
+        -:    0:Data:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Facade\CMakeFiles\Facade.dir\Museum.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "Museum.h"
+        -:    2:#include "../Validation/StringValidator.h"
+        -:    3:#include <stdexcept>
+        -:    4:
+function _ZN6MuseumC2ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiiN5Enums5ThemeE called 13 returned 100% blocks executed 78%
+       13:    5:Museum::Museum(std::string name_, int capacity_, int exhibitsNumber_, Enums::Theme theme_) :
+       13:    6:        PlanetariumVenue(std::move(name_), capacity_),
+       13:    7:        exhibitsNumber(exhibitsNumber_), theme(theme_) {}
+       13:    7-block  0
+call    0 returned 13
+call    1 returned 13
+call    2 returned 13
+branch  3 taken 13 (fallthrough)
+branch  4 taken 0 (throw)
+       13:    7-block  1
+call    5 returned 13
+call    6 returned 13
+    $$$$$:    7-block  2
+call    7 never executed
+        -:    8:
+function _ZN6Museum11findExhibitERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 1 returned 100% blocks executed 81%
+        1:    9:Exhibit* Museum::findExhibit(const std::string& name) {
+       1*:   10:    for (const auto& exhibit : exhibits) {
+        1:   10-block  0
+call    0 returned 1
+call    1 returned 1
+        1:   10-block  1
+call    2 returned 1
+    %%%%%:   10-block  2
+call    3 never executed
+        1:   10-block  3
+call    4 returned 1
+branch  5 taken 1
+branch  6 taken 0 (fallthrough)
+        1:   11:        if (exhibit->getName() == name) return exhibit;
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   11-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0
+        1:   11-block  1
+        1:   11-block  2
+    $$$$$:   11-block  3
+        -:   12:    }
+    #####:   13:    return nullptr;
+    %%%%%:   13-block  0
+        -:   14:}
+        -:   15:
+function _ZN6Museum16getAverageRatingEv called 1 returned 100% blocks executed 100%
+        1:   16:double Museum::getAverageRating() {
+        1:   17:    double total = 0;
+        3:   18:    for (const auto& exhibit : exhibits) {
+        1:   18-block  0
+call    0 returned 1
+call    1 returned 1
+        2:   18-block  1
+call    2 returned 2
+        3:   18-block  2
+call    3 returned 3
+branch  4 taken 2
+branch  5 taken 1 (fallthrough)
+        2:   19:        total += exhibit->getRating();
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:   19-block  0
+call    3 returned 2
+        -:   20:    }
+        1:   21:    return total / exhibits.size();
+        1:   21-block  0
+call    0 returned 1
+        1:   21-block  1
+        -:   22:}
+        -:   23:
+function _ZN6Museum22findMostPopularExhibitEv called 1 returned 100% blocks executed 94%
+        1:   24:Exhibit* Museum::findMostPopularExhibit() {
+        1:   25:    size_t index = -1;
+        1:   26:    double maxRating = 0;
+        3:   27:    for (size_t i = 0; i < exhibits.size(); i++) {
+        1:   27-block  0
+        2:   27-block  1
+        3:   27-block  2
+call    0 returned 3
+branch  1 taken 2
+branch  2 taken 1 (fallthrough)
+        2:   28:        if (exhibits[i]->getRating() > maxRating) {
+        2:   28-block  0
+call    0 returned 2
+call    1 returned 2
+branch  2 taken 2 (fallthrough)
+branch  3 taken 0
+        2:   29:            maxRating = exhibits[i]->getRating();
+        2:   29-block  0
+call    0 returned 2
+call    1 returned 2
+        2:   30:            index = i;
+        -:   31:        }
+        -:   32:    }
+       1*:   33:    return (index == -1) ? nullptr : exhibits[index];
+        1:   33-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 0
+        1:   33-block  1
+call    2 returned 1
+    %%%%%:   33-block  2
+        1:   33-block  3
+        -:   34:}
+        -:   35:
+function _ZN6Museum11rateExhibitEP7Exhibiti called 3 returned 33% blocks executed 89%
+        3:   36:void Museum::rateExhibit(Exhibit* ratedExhibit, int rating) {
+        3:   37:    if(rating<0 || rating>10) throw std::invalid_argument("Invalid rating!");
+        3:   37-block  0
+branch  0 taken 2 (fallthrough)
+branch  1 taken 1
+        2:   37-block  1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 1
+        2:   37-block  2
+call    4 returned 2
+call    5 returned 2
+branch  6 taken 2 (fallthrough)
+branch  7 taken 0 (throw)
+        2:   37-block  3
+call    8 returned 0
+    $$$$$:   37-block  4
+call    9 never executed
+        1:   38:    ratedExhibit->updateRating(rating);
+        1:   38-block  0
+call    0 returned 1
+        -:   39:
+        1:   40:}
+        -:   41:
+function _ZN6Museum11viewExhibitB5cxx11EP7Exhibit called 2 returned 100% blocks executed 100%
+        2:   42:std::string Museum::viewExhibit(Exhibit* exhibit) {
+        2:   43:    exhibit->view();
+        2:   43-block  0
+call    0 returned 2
+        2:   44:    return exhibit->getInfo();
+call    0 returned 2
+        -:   45:}
+        -:   46:
+function _ZN6Museum19interactWithExhibitERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 2 returned 50% blocks executed 35%
+        2:   47:std::string Museum::interactWithExhibit(const std::string& name) {
+        2:   48:    if (!StringValidator::validate(name)) throw std::invalid_argument("Invalid name!");
+        2:   48-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:   48-block  1
+branch  3 taken 1 (fallthrough)
+branch  4 taken 1
+        1:   48-block  2
+call    5 returned 1
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:   48-block  3
+call    9 returned 1
+    $$$$$:   48-block  4
+call   10 never executed
+        1:   49:    Exhibit* exhibit = findExhibit(name);
+        1:   49-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   50:    std::string viewed = viewExhibit(exhibit);
+        1:   50-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   51:    try {
+        1:   52:        exhibit->touchExhibit();
+        1:   52-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+    =====:   53:    } catch (const std::exception& exception) {
+    $$$$$:   53-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    $$$$$:   53-block  1
+call    2 never executed
+    =====:   54:        std::string message = exception.what();
+    $$$$$:   54-block  0
+call    0 never executed
+call    1 never executed
+branch  2 never executed (fallthrough)
+branch  3 never executed (throw)
+    $$$$$:   54-block  1
+    =====:   55:        return "Error: " + message;
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    =====:   56:    }
+    $$$$$:   56-block  0
+call    0 never executed
+call    1 never executed
+    $$$$$:   56-block  1
+call    2 never executed
+    $$$$$:   56-block  2
+call    3 never executed
+        1:   57:    return viewed;
+        1:   57-block  0
+call    0 returned 1
+        1:   58:}
+        1:   58-block  0
+call    0 returned 1
+    $$$$$:   58-block  1
+call    1 never executed
+        -:   59:
+function _ZN6Museum10addExhibitEP7Exhibit called 5 returned 100% blocks executed 100%
+        5:   60:void Museum::addExhibit(Exhibit* exhibit) {
+        5:   61:    exhibits.push_back(exhibit);
+        5:   61-block  0
+call    0 returned 5
+        5:   62:}
+        -:   63:
+function _ZN6Museum11getExhibitsEv called 0 returned 0% blocks executed 0%
+    #####:   64:std::vector<Exhibit*> Museum::getExhibits() {
+    #####:   65:    return exhibits;
+    %%%%%:   65-block  0
+call    0 never executed
+        -:   66:}

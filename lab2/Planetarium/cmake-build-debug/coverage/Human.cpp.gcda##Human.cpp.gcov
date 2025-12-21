@@ -1,0 +1,24 @@
+        -:    0:Source:C:/Users/aleks/CLionProjects/PlanetariumProjectCopy/People/Human.cpp
+        -:    0:Graph:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\People\CMakeFiles\People.dir\Human.cpp.gcno
+        -:    0:Data:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\People\CMakeFiles\People.dir\Human.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "Human.h"
+        -:    2:
+function _ZN5HumanC2ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi called 77 returned 100% blocks executed 100%
+       77:    3:Human::Human(std::string name_, int age_) : name(std::move(name_)), age(age_) {}
+       77:    3-block  0
+call    0 returned 77
+call    1 returned 77
+        -:    4:
+function _ZNK5Human7getNameB5cxx11Ev called 14 returned 100% blocks executed 100%
+       14:    5:std::string Human::getName() const {
+       14:    6:    return name;
+       14:    6-block  0
+call    0 returned 14
+        -:    7:}
+        -:    8:
+function _ZNK5Human6getAgeEv called 24 returned 100% blocks executed 100%
+       24:    9:int Human::getAge() const {
+       24:   10:    return age;
+       24:   10-block  0
+        -:   11:}

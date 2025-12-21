@@ -1,3 +1,4 @@
+#include <stdexcept>
 #include "PlanetariumFacade.h"
 #include "../Validation/StringValidator.h"
 

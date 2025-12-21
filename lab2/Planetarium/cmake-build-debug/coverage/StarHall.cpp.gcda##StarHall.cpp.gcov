@@ -1,0 +1,177 @@
+        -:    0:Source:C:/Users/aleks/CLionProjects/PlanetariumProjectCopy/Facade/StarHall.cpp
+        -:    0:Graph:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Facade\CMakeFiles\Facade.dir\StarHall.cpp.gcno
+        -:    0:Data:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Facade\CMakeFiles\Facade.dir\StarHall.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "StarHall.h"
+        -:    2:#include <stdexcept>
+        -:    3:#include "../Exceptions/CantUseDevice.h"
+        -:    4:
+function _ZN8StarHallC2ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiP20PlanetariumProjectorP11AudioSystemP7SeatingP16DomeShapedScreen called 21 returned 100% blocks executed 71%
+       21:    5:StarHall::StarHall(const std::string& name, int capacity,
+        -:    6:                   PlanetariumProjector* projector, AudioSystem* sound,
+       21:    7:                   Seating* hallSeats, DomeShapedScreen* screen) :
+       21:    8:        PlanetariumVenue(name, capacity), domeProjector(projector),
+       21:    9:        surroundSound(sound), seats(hallSeats), domeScreen(screen) {}
+       21:    9-block  0
+call    0 returned 21
+branch  1 taken 21 (fallthrough)
+branch  2 taken 0 (throw)
+       21:    9-block  1
+call    3 returned 21
+branch  4 taken 21 (fallthrough)
+branch  5 taken 0 (throw)
+       21:    9-block  2
+call    6 returned 21
+    $$$$$:    9-block  3
+call    7 never executed
+        -:   10:
+function _ZN8StarHall18setupForProjectionERK4Date called 6 returned 100% blocks executed 38%
+        6:   11:void StarHall::setupForProjection(const Date& date) {
+       6*:   12:    if (!domeProjector->canBeUsed(date) || !domeScreen->canBeUsed(date))
+        6:   12-block  0
+call    0 returned 6
+branch  1 taken 6 (fallthrough)
+branch  2 taken 0
+        6:   12-block  1
+call    3 returned 6
+branch  4 taken 0 (fallthrough)
+branch  5 taken 6
+    %%%%%:   12-block  2
+        6:   12-block  3
+        6:   12-block  4
+branch  6 taken 0 (fallthrough)
+branch  7 taken 6
+    #####:   13:        throw CantUseDevice("Projection devices are unsafe to use.");
+    %%%%%:   13-block  0
+call    0 never executed
+    %%%%%:   13-block  1
+call    1 never executed
+branch  2 never executed (fallthrough)
+branch  3 never executed (throw)
+    %%%%%:   13-block  2
+call    4 never executed
+branch  5 never executed (fallthrough)
+branch  6 never executed (throw)
+    %%%%%:   13-block  3
+call    7 never executed
+call    8 never executed
+    $$$$$:   13-block  4
+call    9 never executed
+    $$$$$:   13-block  5
+    $$$$$:   13-block  6
+    $$$$$:   13-block  7
+call   10 never executed
+        -:   14:
+        6:   15:    domeProjector->project(domeScreen);
+        6:   15-block  0
+call    0 returned 6
+        6:   16:    surroundSound->setUpSystem();
+call    0 returned 6
+        6:   17:}
+        -:   18:
+function _ZN8StarHall11watchObjectB5cxx11ERK4DateP18AstronomicalObject called 1 returned 100% blocks executed 48%
+        1:   19:std::string StarHall::watchObject(const Date& date, AstronomicalObject* objectToWatch) {
+        -:   20:    try {
+        1:   21:        setupForProjection(date);
+        1:   21-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   22:        domeProjector->projectObject(domeScreen, objectToWatch);
+        1:   22-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1 (throw)
+        1:   23:    } catch (const std::exception &exception) {
+        1:   23-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+        1:   23-block  1
+call    2 returned 1
+        1:   24:        std::string message = exception.what();
+        1:   24-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+    $$$$$:   24-block  1
+        1:   25:        return "Error: " + message;
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   26:    }
+        1:   26-block  0
+call    0 returned 1
+call    1 returned 1
+    $$$$$:   26-block  1
+call    2 never executed
+    $$$$$:   26-block  2
+call    3 never executed
+    #####:   27:    return objectToWatch->getName() + " is being projected";
+    %%%%%:   27-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:   27-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:   27-block  2
+    %%%%%:   27-block  3
+call    6 never executed
+    $$$$$:   27-block  4
+call    7 never executed
+        -:   28:}
+        -:   29:
+function _ZN8StarHall9watchShowB5cxx11ERK4DateRKN5Enums22BuiltInPlanetariumShowE called 4 returned 100% blocks executed 29%
+        4:   30:std::string StarHall::watchShow(const Date& date, const Enums::BuiltInPlanetariumShow& showToWatch) {
+        -:   31:    try {
+        4:   32:        setupForProjection(date);
+        4:   32-block  0
+call    0 returned 4
+branch  1 taken 4 (fallthrough)
+branch  2 taken 0 (throw)
+        4:   33:        domeProjector->projectShow(domeScreen, showToWatch);
+        4:   33-block  0
+call    0 returned 4
+branch  1 taken 4 (fallthrough)
+branch  2 taken 0 (throw)
+    =====:   34:    } catch (const std::exception &exception) {
+    $$$$$:   34-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    $$$$$:   34-block  1
+call    2 never executed
+    =====:   35:        std::string message = exception.what();
+    $$$$$:   35-block  0
+call    0 never executed
+call    1 never executed
+branch  2 never executed (fallthrough)
+branch  3 never executed (throw)
+    $$$$$:   35-block  1
+    =====:   36:        return "Error: " + message;
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    =====:   37:    }
+    $$$$$:   37-block  0
+call    0 never executed
+call    1 never executed
+    $$$$$:   37-block  1
+call    2 never executed
+    $$$$$:   37-block  2
+call    3 never executed
+        8:   38:    return "The show is going on.";
+        4:   38-block  0
+call    0 returned 4
+branch  1 taken 4 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   39:}
+        -:   40:
+function _ZNK8StarHall12getProjectorEv called 0 returned 0% blocks executed 0%
+    #####:   41:PlanetariumProjector* StarHall::getProjector() const {return domeProjector; }
+    %%%%%:   41-block  0
+        -:   42:
+function _ZNK8StarHall9getScreenEv called 0 returned 0% blocks executed 0%
+    #####:   43:DomeShapedScreen* StarHall::getScreen() const {return domeScreen;}
+    %%%%%:   43-block  0

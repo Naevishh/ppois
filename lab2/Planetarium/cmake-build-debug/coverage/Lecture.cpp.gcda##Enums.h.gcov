@@ -1,0 +1,362 @@
+        -:    0:Source:C:/Users/aleks/CLionProjects/PlanetariumProjectCopy/Utils/Enums.h
+        -:    0:Graph:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Events\CMakeFiles\Events.dir\Lecture.cpp.gcno
+        -:    0:Data:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Events\CMakeFiles\Events.dir\Lecture.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#ifndef PLANETARIUMPROJECT_ENUMS_H
+        -:    2:#define PLANETARIUMPROJECT_ENUMS_H
+        -:    3:
+        -:    4:#include <string>
+        -:    5:
+        -:    6:class Enums{
+        -:    7:public:
+        -:    8:    enum class WeatherCondition{
+        -:    9:        SUNNY,
+        -:   10:        CLOUDY,
+        -:   11:        PARTLY_CLOUDY,
+        -:   12:        RAINY,
+        -:   13:        STORMY,
+        -:   14:        SNOWY,
+        -:   15:        FOGGY,
+        -:   16:        WINDY,
+        -:   17:        HAZY
+        -:   18:    };
+        -:   19:
+        -:   20:    enum class ObjectType {
+        -:   21:        STAR,
+        -:   22:        PLANET,
+        -:   23:        MOON,
+        -:   24:        GALAXY,
+        -:   25:        NEBULA,
+        -:   26:        STAR_CLUSTER,
+        -:   27:        ASTEROID,
+        -:   28:        COMET,
+        -:   29:        QUASAR,
+        -:   30:        BLACK_HOLE,
+        -:   31:        CONSTELLATION
+        -:   32:    };
+        -:   33:
+        -:   34:    enum class SpectralClass{ O, B, A, F, G, K, M };
+        -:   35:
+        -:   36:    enum PlanetType{
+        -:   37:        TERRESTRIAL,
+        -:   38:        GAS_GIANT,
+        -:   39:        ICE_GIANT,
+        -:   40:        DWARF,
+        -:   41:        SUPER_EARTH,
+        -:   42:        NEPTUNIAN,
+        -:   43:        PROTOPLANET,
+        -:   44:        EXOPLANET,
+        -:   45:        HYCEAN,
+        -:   46:        CHTHONIAN
+        -:   47:    };
+        -:   48:
+        -:   49:    enum class TelescopeType { REFRACTOR, REFLECTOR, CATADIOPTRIC };
+        -:   50:
+        -:   51:    enum class StandardResolution {
+        -:   52:        FULL_HD,
+        -:   53:        QHD,
+        -:   54:        UHD_4K,
+        -:   55:        UHD_8K,
+        -:   56:        FULHDOME_2K,
+        -:   57:        FULHDOME_4K
+        -:   58:    };
+        -:   59:
+        -:   60:    enum class DiscountCategory {
+        -:   61:        NONE,
+        -:   62:        STUDENT,
+        -:   63:        PUPIL,
+        -:   64:        SENIOR,
+        -:   65:        DISABLED,
+        -:   66:        VETERAN,
+        -:   67:        EMPLOYEE
+        -:   68:    };
+        -:   69:
+        -:   70:    enum class AudioEffectType {
+        -:   71:        NONE,
+        -:   72:        EQUALIZER,
+        -:   73:        REVERB,
+        -:   74:        DELAY,
+        -:   75:        CHORUS,
+        -:   76:        FLANGER,
+        -:   77:        DISTORTION,
+        -:   78:        COMPRESSOR,
+        -:   79:        BASS_BOOST,
+        -:   80:        SURROUND
+        -:   81:    };
+        -:   82:
+        -:   83:    enum class BuiltInPlanetariumShow{
+        -:   84:        CALIBRATION_GRID,
+        -:   85:        TEST_PATTERN,
+        -:   86:        STARFIELD_DEMO,
+        -:   87:        SOLAR_SYSTEM_DEMO,
+        -:   88:        CONSTELLATION_DEMO,
+        -:   89:        DAY_NIGHT_CYCLE,
+        -:   90:        MILKY_WAY_PREVIEW,
+        -:   91:        PLANETARY_MOTION,
+        -:   92:        ZENITH_DEMONSTRATION,
+        -:   93:    };
+        -:   94:
+        -:   95:    enum class ToolColor {
+        -:   96:        BLACK,
+        -:   97:        WHITE,
+        -:   98:        RED,
+        -:   99:        GREEN,
+        -:  100:        BLUE,
+        -:  101:        YELLOW,
+        -:  102:        PURPLE,
+        -:  103:        ORANGE,
+        -:  104:        GRAY,
+        -:  105:        TRANSPARENT
+        -:  106:    };
+        -:  107:
+        -:  108:    enum class ToolType {
+        -:  109:        PEN,
+        -:  110:        HIGHLIGHTER,
+        -:  111:        ERASER,
+        -:  112:        LINE,
+        -:  113:        RECTANGLE,
+        -:  114:        CIRCLE,
+        -:  115:        ARROW,
+        -:  116:        TEXT,
+        -:  117:        SELECT,
+        -:  118:        IMAGE,
+        -:  119:        STICKER
+        -:  120:    };
+        -:  121:
+        -:  122:    enum class EmployeePosition{
+        -:  123:        DIRECTOR,
+        -:  124:        MANAGER,
+        -:  125:        DEPUTY_DIRECTOR,
+        -:  126:        ASTRONOMER,
+        -:  127:        LECTURER,
+        -:  128:        PRESENTER,
+        -:  129:        TOUR_GUIDE,
+        -:  130:        EDUCATION_COORDINATOR,
+        -:  131:        TECHNICIAN,
+        -:  132:        PROJECTIONIST,
+        -:  133:        TICKET_SELLER,
+        -:  134:        CASHIER,
+        -:  135:        SECURITY_GUARD,
+        -:  136:        CLEANER,
+        -:  137:        VOLUNTEER
+        -:  138:    };
+        -:  139:
+        -:  140:    enum class ProjectionTechnology{ DLP, LCD, LCOS };
+        -:  141:
+        -:  142:    enum class LightSource{ LED, LASER, LAMP_LIFE };
+        -:  143:
+        -:  144:    enum class ConnectionType {
+        -:  145:        USB,
+        -:  146:        USB_C,
+        -:  147:        HDMI,
+        -:  148:        AUX_3_5MM,
+        -:  149:        BLUETOOTH,
+        -:  150:        OPTICAL,
+        -:  151:        RCA,
+        -:  152:        XLR,
+        -:  153:        TRS,
+        -:  154:        WIFI
+        -:  155:    };
+        -:  156:
+        -:  157:    enum class Theme{
+        -:  158:        ASTRONOMY,
+        -:  159:        SOLAR_SYSTEM,
+        -:  160:        EXOPLANETS,
+        -:  161:        STARS_FORMATION,
+        -:  162:        GALAXIES_COSMOLOGY,
+        -:  163:        ASTRONOMY_HISTORY,
+        -:  164:        SPACE_EXPLORATION,
+        -:  165:        SPACE_EXPLORATION_HISTORY,
+        -:  166:        ANCIENT_ASTRONOMY,
+        -:  167:        ROCKET_SCIENCE,
+        -:  168:        SPACE_TELESCOPES,
+        -:  169:        PLANETARY_SCIENCE,
+        -:  170:        ASTROPHYSICS,
+        -:  171:        ASTROBIOLOGY,
+        -:  172:        SPACE_MISSIONS,
+        -:  173:        FUTURE_SPACE_EXPLORATION,
+        -:  174:        SPACE_COLONIZATION
+        -:  175:    };
+        -:  176:
+function _ZN5Enums13themeToStringB5cxx11ENS_5ThemeE called 3 returned 100% blocks executed 9%
+        3:  177:    static std::string themeToString(Theme theme) {
+        3:  178:        switch (theme) {
+        3:  178-block  0
+branch  0 taken 0
+branch  1 taken 0
+branch  2 taken 0
+branch  3 taken 0
+branch  4 taken 2
+branch  5 taken 0
+branch  6 taken 1
+branch  7 taken 0
+branch  8 taken 0
+branch  9 taken 0
+branch 10 taken 0
+branch 11 taken 0
+branch 12 taken 0
+branch 13 taken 0
+branch 14 taken 0
+branch 15 taken 0
+branch 16 taken 0
+    #####:  179:            case Theme::ASTRONOMY: return "Astronomy";
+    %%%%%:  179-block  0
+    %%%%%:  179-block  1
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    $$$$$:  179-block  2
+call    3 never executed
+    #####:  180:            case Theme::SOLAR_SYSTEM: return "Solar System";
+    %%%%%:  180-block  0
+    %%%%%:  180-block  1
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    $$$$$:  180-block  2
+call    3 never executed
+    #####:  181:            case Theme::EXOPLANETS: return "Exoplanets";
+    %%%%%:  181-block  0
+    %%%%%:  181-block  1
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    $$$$$:  181-block  2
+call    3 never executed
+    #####:  182:            case Theme::STARS_FORMATION: return "Stars Formation";
+    %%%%%:  182-block  0
+    %%%%%:  182-block  1
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    $$$$$:  182-block  2
+call    3 never executed
+        6:  183:            case Theme::GALAXIES_COSMOLOGY: return "Galaxies and Cosmology";
+        2:  183-block  0
+        2:  183-block  1
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:  183-block  2
+call    3 never executed
+    #####:  184:            case Theme::ASTRONOMY_HISTORY: return "Astronomy History";
+    %%%%%:  184-block  0
+    %%%%%:  184-block  1
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    $$$$$:  184-block  2
+call    3 never executed
+        3:  185:            case Theme::SPACE_EXPLORATION_HISTORY: return "Space Exploration History";
+        1:  185-block  0
+        1:  185-block  1
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:  185-block  2
+call    3 never executed
+    #####:  186:            case Theme::ANCIENT_ASTRONOMY: return "Ancient Astronomy";
+    %%%%%:  186-block  0
+    %%%%%:  186-block  1
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    $$$$$:  186-block  2
+call    3 never executed
+    #####:  187:            case Theme::ROCKET_SCIENCE: return "Rocket Science";
+    %%%%%:  187-block  0
+    %%%%%:  187-block  1
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    $$$$$:  187-block  2
+call    3 never executed
+    #####:  188:            case Theme::SPACE_TELESCOPES: return "Space Telescopes";
+    %%%%%:  188-block  0
+    %%%%%:  188-block  1
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    $$$$$:  188-block  2
+call    3 never executed
+    #####:  189:            case Theme::PLANETARY_SCIENCE: return "Planetary Science";
+    %%%%%:  189-block  0
+    %%%%%:  189-block  1
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    $$$$$:  189-block  2
+call    3 never executed
+    #####:  190:            case Theme::ASTROPHYSICS: return "Astrophysics";
+    %%%%%:  190-block  0
+    %%%%%:  190-block  1
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    $$$$$:  190-block  2
+call    3 never executed
+    #####:  191:            case Theme::ASTROBIOLOGY: return "Astrobiology";
+    %%%%%:  191-block  0
+    %%%%%:  191-block  1
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    $$$$$:  191-block  2
+call    3 never executed
+    #####:  192:            case Theme::SPACE_MISSIONS: return "Space Missions";
+    %%%%%:  192-block  0
+    %%%%%:  192-block  1
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    $$$$$:  192-block  2
+call    3 never executed
+    #####:  193:            case Theme::FUTURE_SPACE_EXPLORATION: return "Future Space Exploration";
+    %%%%%:  193-block  0
+    %%%%%:  193-block  1
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    $$$$$:  193-block  2
+call    3 never executed
+    #####:  194:            case Theme::SPACE_COLONIZATION: return "Space Colonization";
+    %%%%%:  194-block  0
+    %%%%%:  194-block  1
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    $$$$$:  194-block  2
+call    3 never executed
+    #####:  195:            default: return "Unknown";
+    %%%%%:  195-block  0
+    %%%%%:  195-block  1
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+        -:  196:        }
+        -:  197:    }
+        -:  198:
+        -:  199:    enum class LectureMaterial {
+        -:  200:        PRESENTATION_SLIDES,
+        -:  201:        HANDOUTS,
+        -:  202:        VIDEO_CLIPS,
+        -:  203:        ANIMATIONS,
+        -:  204:        MODELS,
+        -:  205:        POSTERS,
+        -:  206:        WORKBOOKS,
+        -:  207:        QUIZ_CARDS,
+        -:  208:        STAR_MAPS,
+        -:  209:        GLOBE_MODEL,
+        -:  210:        ASTRONOMICAL_PHOTOS,
+        -:  211:    };
+        -:  212:
+        -:  213:    enum class ActivityTheme{
+        -:  214:        HISTORY,
+        -:  215:        SCIENCE,
+        -:  216:        EDUCATION,
+        -:  217:        ENTERTAINMENT,
+        -:  218:        NONE
+        -:  219:    };
+        -:  220:};
+        -:  221:
+        -:  222:#endif //PLANETARIUMPROJECT_ENUMS_H

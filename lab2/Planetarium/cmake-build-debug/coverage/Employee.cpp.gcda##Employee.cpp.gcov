@@ -1,0 +1,27 @@
+        -:    0:Source:C:/Users/aleks/CLionProjects/PlanetariumProjectCopy/People/Employee.cpp
+        -:    0:Graph:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\People\CMakeFiles\People.dir\Employee.cpp.gcno
+        -:    0:Data:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\People\CMakeFiles\People.dir\Employee.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "Employee.h"
+        -:    2:
+        -:    3:#include <utility>
+        -:    4:
+function _ZN8EmployeeC2ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiN5Enums16EmployeePositionE called 35 returned 100% blocks executed 75%
+       35:    5:Employee::Employee(std::string name, int age, Enums::EmployeePosition position_) : Human(std::move(name), age),
+       35:    6:                                                                                   position(position_) {}
+       35:    6-block  0
+call    0 returned 35
+call    1 returned 35
+call    2 returned 35
+branch  3 taken 35 (fallthrough)
+branch  4 taken 0 (throw)
+       35:    6-block  1
+call    5 returned 35
+    $$$$$:    6-block  2
+call    6 never executed
+        -:    7:
+function _ZNK8Employee11getPositionEv called 20 returned 100% blocks executed 100%
+       20:    8:Enums::EmployeePosition Employee::getPosition() const {
+       20:    9:    return position;
+       20:    9-block  0
+        -:   10:}

@@ -1,0 +1,19 @@
+        -:    0:Source:C:/Users/aleks/CLionProjects/PlanetariumProjectCopy/Exceptions/DegreeRangeError.cpp
+        -:    0:Graph:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Exceptions\CMakeFiles\Exceptions.dir\DegreeRangeError.cpp.gcno
+        -:    0:Data:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Exceptions\CMakeFiles\Exceptions.dir\DegreeRangeError.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "DegreeRangeError.h"
+        -:    2:
+function _ZN16DegreeRangeErrorC2ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 6 returned 100% blocks executed 100%
+        6:    3:DegreeRangeError::DegreeRangeError(std::string message_) : message(std::move(message_)) {}
+        6:    3-block  0
+call    0 returned 6
+call    1 returned 6
+call    2 returned 6
+        -:    4:
+function _ZNK16DegreeRangeError4whatEv called 0 returned 0% blocks executed 0%
+    #####:    5:const char* DegreeRangeError::what() const noexcept {
+    #####:    6:    return message.c_str();
+    %%%%%:    6-block  0
+call    0 never executed
+        -:    7:}

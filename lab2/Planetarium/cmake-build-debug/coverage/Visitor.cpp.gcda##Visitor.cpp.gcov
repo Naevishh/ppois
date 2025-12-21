@@ -1,0 +1,72 @@
+        -:    0:Source:C:/Users/aleks/CLionProjects/PlanetariumProjectCopy/People/Visitor.cpp
+        -:    0:Graph:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\People\CMakeFiles\People.dir\Visitor.cpp.gcno
+        -:    0:Data:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\People\CMakeFiles\People.dir\Visitor.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "Visitor.h"
+        -:    2:
+function _ZN7VisitorC2ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiN5Enums16DiscountCategoryE called 37 returned 100% blocks executed 78%
+       37:    3:Visitor::Visitor(std::string name_, int age_, Enums::DiscountCategory category_) :
+       37:    4:        Human(std::move(name_), age_), category(category_) {}
+       37:    4-block  0
+call    0 returned 37
+call    1 returned 37
+call    2 returned 37
+branch  3 taken 37 (fallthrough)
+branch  4 taken 0 (throw)
+       37:    4-block  1
+call    5 returned 37
+call    6 returned 37
+    $$$$$:    4-block  2
+call    7 never executed
+        -:    5:
+function _ZN7Visitor9buyTicketEP6Ticket called 12 returned 100% blocks executed 100%
+       12:    6:void Visitor::buyTicket(Ticket* ticket) {
+       12:    7:    tickets.push_back(ticket);
+       12:    7-block  0
+call    0 returned 12
+       12:    8:}
+        -:    9:
+function _ZNK7Visitor11getCategoryEv called 18 returned 100% blocks executed 100%
+       18:   10:Enums::DiscountCategory Visitor::getCategory() const {
+       18:   11:    return category;
+       18:   11-block  0
+        -:   12:}
+        -:   13:
+function _ZN7Visitor13canVisitVenueEP16PlanetariumVenue called 18 returned 100% blocks executed 81%
+       18:   14:bool Visitor::canVisitVenue(PlanetariumVenue* venue) {
+       26:   15:    for (const auto& ticket : tickets) {
+       18:   15-block  0
+call    0 returned 18
+call    1 returned 18
+       20:   15-block  1
+call    2 returned 20
+        8:   15-block  2
+call    3 returned 8
+       26:   15-block  3
+call    4 returned 26
+branch  5 taken 20
+branch  6 taken 6 (fallthrough)
+       20:   16:        if (ticket->getVenueName() == venue->getName()) return true;
+call    0 returned 20
+branch  1 taken 20 (fallthrough)
+branch  2 taken 0 (throw)
+       20:   16-block  0
+call    3 returned 20
+branch  4 taken 20 (fallthrough)
+branch  5 taken 0 (throw)
+       20:   16-block  1
+call    6 returned 20
+call    7 returned 20
+call    8 returned 20
+branch  9 taken 12 (fallthrough)
+branch 10 taken 8
+       12:   16-block  2
+       12:   16-block  3
+    $$$$$:   16-block  4
+    $$$$$:   16-block  5
+call   11 never executed
+    $$$$$:   16-block  6
+        -:   17:    }
+        6:   18:    return false;
+        6:   18-block  0
+        -:   19:}

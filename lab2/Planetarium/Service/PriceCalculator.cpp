@@ -1,3 +1,4 @@
+#include <stdexcept>
 #include "PriceCalculator.h"
 #include "../Utils/Enums.h"
 

@@ -1,0 +1,176 @@
+        -:    0:Source:C:/Users/aleks/CLionProjects/PlanetariumProjectCopy/Events/Activity.cpp
+        -:    0:Graph:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Events\CMakeFiles\Events.dir\Activity.cpp.gcno
+        -:    0:Data:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Events\CMakeFiles\Events.dir\Activity.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include <stdexcept>
+        -:    2:#include "Activity.h"
+        -:    3:#include "../Validation/StringValidator.h"
+        -:    4:#include "../Facade/PlanetariumVenue.h"
+        -:    5:
+function _ZN8ActivityC2ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEdN5Enums13ActivityThemeEP16PlanetariumVenue called 31 returned 100% blocks executed 100%
+       31:    6:Activity::Activity(const std::string& name_, double duration_, Enums::ActivityTheme theme_, PlanetariumVenue* activityPlace_):
+       31:    7:        name(name_), duration(duration_), host(nullptr), theme(theme_), activityPlace(activityPlace_) {}
+       31:    7-block  0
+call    0 returned 31
+call    1 returned 31
+call    2 returned 31
+        -:    8:
+function _ZN8Activity20addQualifiedPositionEN5Enums16EmployeePositionE called 5 returned 100% blocks executed 100%
+        5:    9:void Activity::addQualifiedPosition(Enums::EmployeePosition position) {
+        5:   10:    ableToHold.push_back(position);
+        5:   10-block  0
+call    0 returned 5
+        5:   11:}
+        -:   12:
+function _ZN8Activity8setRulesERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 8 returned 88% blocks executed 89%
+        8:   13:void Activity::setRules(const std::string &rules_) {
+        8:   14:    if (!StringValidator::validate(rules_)) throw std::invalid_argument("Invalid argument!");
+        8:   14-block  0
+call    0 returned 8
+branch  1 taken 1 (fallthrough)
+branch  2 taken 7
+        1:   14-block  1
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:   14-block  2
+call    7 returned 0
+    $$$$$:   14-block  3
+call    8 never executed
+        7:   15:    rules = rules_;
+        7:   15-block  0
+call    0 returned 7
+        7:   16:}
+        -:   17:
+function _ZN8Activity11canBeHeldByERK8Employee called 5 returned 100% blocks executed 100%
+        5:   18:bool Activity::canBeHeldBy(const Employee& employee) {
+        7:   19:    for(const auto& position : ableToHold) {
+        5:   19-block  0
+call    0 returned 5
+call    1 returned 5
+        5:   19-block  1
+call    2 returned 5
+        2:   19-block  2
+call    3 returned 2
+        7:   19-block  3
+call    4 returned 7
+branch  5 taken 5
+branch  6 taken 2 (fallthrough)
+        5:   20:        if(employee.getPosition() == position) return true;
+call    0 returned 5
+branch  1 taken 5 (fallthrough)
+branch  2 taken 0 (throw)
+        5:   20-block  0
+branch  3 taken 3 (fallthrough)
+branch  4 taken 2
+        3:   20-block  1
+        3:   20-block  2
+        -:   21:    }
+        2:   22:    return false;
+        2:   22-block  0
+        -:   23:}
+        -:   24:
+function _ZN8Activity11appointHostEP8Employee called 3 returned 100% blocks executed 100%
+        3:   25:void Activity::appointHost(Employee* employee) {
+        3:   26:    if (canBeHeldBy(*employee)) host = employee;
+        3:   26-block  0
+call    0 returned 3
+branch  1 taken 2 (fallthrough)
+branch  2 taken 1
+        2:   26-block  1
+        3:   27:    activityPlace->chooseCurator(this);
+        3:   27-block  0
+call    0 returned 3
+        3:   28:}
+        -:   29:
+function _ZN8Activity7setHostEP8Employee called 0 returned 0% blocks executed 0%
+    #####:   30:void Activity::setHost(Employee* employee) {
+    #####:   31:    host = employee;
+    #####:   32:}
+        -:   33:
+function _ZN8Activity10isPossibleEv called 0 returned 0% blocks executed 0%
+    #####:   34:bool Activity::isPossible() {
+    #####:   35:    return activityPlace->IsOpen();
+    %%%%%:   35-block  0
+call    0 never executed
+        -:   36:}
+        -:   37:
+function _ZNK8Activity7getNameB5cxx11Ev called 10 returned 100% blocks executed 100%
+       10:   38:std::string Activity::getName() const {
+       10:   39:    return name;
+       10:   39-block  0
+call    0 returned 10
+        -:   40:}
+        -:   41:
+function _ZNK8Activity11getDurationEv called 4 returned 100% blocks executed 100%
+        4:   42:double Activity::getDuration() const {
+        4:   43:    return duration;
+        4:   43-block  0
+        -:   44:}
+        -:   45:
+function _ZNK8Activity7getHostEv called 2 returned 100% blocks executed 100%
+        2:   46:Employee* Activity::getHost() const {
+        2:   47:    return host;
+        2:   47-block  0
+        -:   48:}
+        -:   49:
+function _ZNK8Activity13getAbleToHoldEv called 1 returned 100% blocks executed 100%
+        1:   50:std::vector<Enums::EmployeePosition> Activity::getAbleToHold() const {
+        1:   51:    return ableToHold;
+        1:   51-block  0
+call    0 returned 1
+        -:   52:}
+        -:   53:
+function _ZNK8Activity8getThemeEv called 1 returned 100% blocks executed 100%
+        1:   54:Enums::ActivityTheme Activity::getTheme() const {
+        1:   55:    return theme;
+        1:   55-block  0
+        -:   56:}
+        -:   57:
+function _ZNK8Activity16getActivityPlaceEv called 1 returned 100% blocks executed 100%
+        1:   58:PlanetariumVenue* Activity::getActivityPlace() const {
+        1:   59:    return activityPlace;
+        1:   59-block  0
+        -:   60:}
+        -:   61:
+function _ZN8Activity4holdB5cxx11ERK4Date called 1 returned 100% blocks executed 58%
+        1:   62:std::string Activity::hold(const Date& date) {
+        1:   63:    return name + " is being held on " + date.getDate() + ".";
+        1:   63-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   63-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   63-block  2
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:   63-block  3
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:   63-block  4
+        1:   63-block  5
+call   12 returned 1
+call   13 returned 1
+call   14 returned 1
+        1:   63-block  6
+    $$$$$:   63-block  7
+call   15 never executed
+    $$$$$:   63-block  8
+call   16 never executed
+    $$$$$:   63-block  9
+    $$$$$:   63-block 10
+call   17 never executed
+    $$$$$:   63-block 11
+        -:   64:}
+        -:   65:
+function _ZNK8Activity8getPlaceEv called 0 returned 0% blocks executed 0%
+    #####:   66:PlanetariumVenue* Activity::getPlace() const {
+    #####:   67:    return activityPlace;
+    %%%%%:   67-block  0
+        -:   68:}

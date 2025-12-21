@@ -1,0 +1,374 @@
+        -:    0:Source:C:/Users/aleks/CLionProjects/PlanetariumProjectCopy/Service/TicketOffice.cpp
+        -:    0:Graph:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Service\CMakeFiles\Service.dir\TicketOffice.cpp.gcno
+        -:    0:Data:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Service\CMakeFiles\Service.dir\TicketOffice.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "TicketOffice.h"
+        -:    2:#include "Ticket.h"
+        -:    3:#include <stdexcept>
+        -:    4:#include "../Exceptions/VenueClosedException.h"
+        -:    5:#include "../Exceptions/NonWorkingHoursException.h"
+        -:    6:#include "../Exceptions/CapacityExceededException.h"
+        -:    7:
+function _ZN12TicketOfficeC2Ev called 4 returned 100% blocks executed 62%
+        4:    8:TicketOffice::TicketOffice() : totalRevenue(0), calculator(5, 10) {}
+        4:    8-block  0
+call    0 returned 4
+call    1 returned 4
+call    2 returned 4
+branch  3 taken 4 (fallthrough)
+branch  4 taken 0 (throw)
+        4:    8-block  1
+    $$$$$:    8-block  2
+call    5 never executed
+    $$$$$:    8-block  3
+call    6 never executed
+        -:    9:
+function _ZN12TicketOfficeC2Eii called 5 returned 100% blocks executed 62%
+        5:   10:TicketOffice::TicketOffice(int maxFreeAge, int maxDiscountAge) :
+        5:   11:        totalRevenue(0), calculator(maxFreeAge, maxDiscountAge) {}
+        5:   11-block  0
+call    0 returned 5
+call    1 returned 5
+call    2 returned 5
+branch  3 taken 5 (fallthrough)
+branch  4 taken 0 (throw)
+        5:   11-block  1
+    $$$$$:   11-block  2
+call    5 never executed
+    $$$$$:   11-block  3
+call    6 never executed
+        -:   12:
+function _ZN12TicketOffice8getPriceEP16PlanetariumVenueRK7Visitor called 4 returned 100% blocks executed 100%
+        4:   13:double TicketOffice::getPrice(PlanetariumVenue* venue, const Visitor& visitor) {
+        4:   14:    return calculator.calculatePrice(venue->getTicketPrice(), visitor);
+        4:   14-block  0
+call    0 returned 4
+call    1 returned 4
+        -:   15:}
+        -:   16:
+        -:   17:/*Ticket* TicketOffice::sellTicket(PlanetariumVenue* venue, Visitor& visitor) {
+        -:   18:    checkVenue(venue);
+        -:   19:    if (!venue->IsOpen()) throw VenueClosedException(venue->getName() + " is closed.");
+        -:   20:    double price = getPrice(venue, visitor);
+        -:   21:    Ticket* newTicket = new Ticket(venue, visitor.getName(), price);
+        -:   22:    soldTickets.push_back(newTicket);
+        -:   23:    totalRevenue += price;
+        -:   24:    return newTicket;
+        -:   25:}*/
+        -:   26:
+function _ZN12TicketOffice10sellTicketEP16PlanetariumVenueR7VisitorRK6MyTime called 4 returned 75% blocks executed 36%
+        4:   27:Ticket* TicketOffice::sellTicket(PlanetariumVenue* venue, Visitor& visitor, const MyTime& currentTime) {
+        4:   28:    checkVenue(venue, currentTime);
+        4:   28-block  0
+call    0 returned 4
+branch  1 taken 3 (fallthrough)
+branch  2 taken 1 (throw)
+       3*:   29:    if (!venue->IsOpen()) throw VenueClosedException(venue->getName() + " is closed.");
+        3:   29-block  0
+call    0 returned 3
+branch  1 taken 3 (fallthrough)
+branch  2 taken 0 (throw)
+        3:   29-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 3
+    %%%%%:   29-block  2
+call    5 never executed
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:   29-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   29-block  4
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:   29-block  5
+call   15 never executed
+call   16 never executed
+call   17 never executed
+    $$$$$:   29-block  6
+call   18 never executed
+    $$$$$:   29-block  7
+call   19 never executed
+    $$$$$:   29-block  8
+    $$$$$:   29-block  9
+    $$$$$:   29-block 10
+call   20 never executed
+        3:   30:    double price = getPrice(venue, visitor);
+        3:   30-block  0
+call    0 returned 3
+branch  1 taken 3 (fallthrough)
+branch  2 taken 0 (throw)
+        3:   31:    Ticket* newTicket = new Ticket(venue, visitor.getName(), price);
+        3:   31-block  0
+call    0 returned 3
+branch  1 taken 3 (fallthrough)
+branch  2 taken 0 (throw)
+        3:   31-block  1
+call    3 returned 3
+branch  4 taken 3 (fallthrough)
+branch  5 taken 0 (throw)
+        3:   31-block  2
+call    6 returned 3
+branch  7 taken 3 (fallthrough)
+branch  8 taken 0 (throw)
+        3:   31-block  3
+call    9 returned 3
+    $$$$$:   31-block  4
+call   10 never executed
+    $$$$$:   31-block  5
+    $$$$$:   31-block  6
+branch 11 never executed (fallthrough)
+branch 12 never executed
+    $$$$$:   31-block  7
+call   13 never executed
+        3:   32:    soldTickets.push_back(newTicket);
+call    0 returned 3
+branch  1 taken 3 (fallthrough)
+branch  2 taken 0 (throw)
+        3:   33:    totalRevenue += price;
+        3:   34:    return newTicket;
+        3:   34-block  0
+        3:   34-block  1
+        -:   35:}
+        -:   36:
+        -:   37:/*void TicketOffice::checkVenue(PlanetariumVenue* venue) {
+        -:   38:    if (!venue->IsOpen())
+        -:   39:        throw VenueClosedException("Помещение закрыто по техническим причинам.");
+        -:   40:
+        -:   41:    MyTime currentTime = MyTime();
+        -:   42:    MyTime openTime = venue->getOpeningTime();
+        -:   43:    MyTime closeTime = venue->getClosingTime();
+        -:   44:
+        -:   45:    bool isOpeningAfterClosing = openTime > closeTime;
+        -:   46:
+        -:   47:    bool inWorkingHours;
+        -:   48:    if (isOpeningAfterClosing) {
+        -:   49:        inWorkingHours = (currentTime >= openTime) || (currentTime <= closeTime);
+        -:   50:    } else {
+        -:   51:        inWorkingHours = (currentTime >= openTime) && (currentTime <= closeTime);
+        -:   52:    }
+        -:   53:
+        -:   54:    if (!inWorkingHours) {
+        -:   55:        throw NonWorkingHoursException("Нерабочее время!");
+        -:   56:    }
+        -:   57:
+        -:   58:    if (venue->getCurrentVisitors() + 1 > venue->getCapacity()) {
+        -:   59:        throw CapacityExceededException("Все билеты проданы.");
+        -:   60:    }
+        -:   61:}*/
+        -:   62:
+function _ZN12TicketOffice10checkVenueEP16PlanetariumVenueRK6MyTime called 5 returned 60% blocks executed 46%
+        5:   63:void TicketOffice::checkVenue(PlanetariumVenue* venue, const MyTime& currentTime) {
+        5:   64:    if (!venue->IsOpen())
+        5:   64-block  0
+call    0 returned 5
+branch  1 taken 5 (fallthrough)
+branch  2 taken 0 (throw)
+        5:   64-block  1
+branch  3 taken 1 (fallthrough)
+branch  4 taken 4
+        3:   65:        throw VenueClosedException("Помещение закрыто по техническим причинам.");
+        1:   65-block  0
+call    0 returned 1
+        1:   65-block  1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   65-block  2
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:   65-block  3
+call    7 returned 1
+call    8 returned 1
+    $$$$$:   65-block  4
+call    9 never executed
+    $$$$$:   65-block  5
+    $$$$$:   65-block  6
+    $$$$$:   65-block  7
+call   10 never executed
+        -:   66:
+        4:   67:    MyTime openTime = venue->getOpeningTime();
+        4:   67-block  0
+call    0 returned 4
+branch  1 taken 4 (fallthrough)
+branch  2 taken 0 (throw)
+        4:   68:    MyTime closeTime = venue->getClosingTime();
+        4:   68-block  0
+call    0 returned 4
+branch  1 taken 4 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   69:
+        4:   70:    bool isOpeningAfterClosing = openTime > closeTime;
+        4:   70-block  0
+call    0 returned 4
+branch  1 taken 4 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   71:
+        -:   72:    bool inWorkingHours;
+        4:   73:    if (isOpeningAfterClosing) {
+        4:   73-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 4
+    #####:   74:        inWorkingHours = (currentTime >= openTime) || (currentTime <= closeTime);
+    %%%%%:   74-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:   74-block  1
+branch  3 never executed (fallthrough)
+branch  4 never executed
+    %%%%%:   74-block  2
+call    5 never executed
+branch  6 never executed (fallthrough)
+branch  7 never executed (throw)
+    %%%%%:   74-block  3
+branch  8 never executed (fallthrough)
+branch  9 never executed
+    %%%%%:   74-block  4
+    %%%%%:   74-block  5
+    %%%%%:   74-block  6
+        -:   75:    } else {
+       4*:   76:        inWorkingHours = (currentTime >= openTime) && (currentTime <= closeTime);
+        4:   76-block  0
+call    0 returned 4
+branch  1 taken 4 (fallthrough)
+branch  2 taken 0 (throw)
+        4:   76-block  1
+branch  3 taken 4 (fallthrough)
+branch  4 taken 0
+        4:   76-block  2
+call    5 returned 4
+branch  6 taken 4 (fallthrough)
+branch  7 taken 0 (throw)
+        4:   76-block  3
+branch  8 taken 4 (fallthrough)
+branch  9 taken 0
+        4:   76-block  4
+    %%%%%:   76-block  5
+        4:   76-block  6
+        -:   77:    }
+        -:   78:
+        4:   79:    if (!inWorkingHours) {
+        4:   79-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 4
+    #####:   80:        throw NonWorkingHoursException("Нерабочее время!");
+    %%%%%:   80-block  0
+call    0 never executed
+    %%%%%:   80-block  1
+call    1 never executed
+branch  2 never executed (fallthrough)
+branch  3 never executed (throw)
+    %%%%%:   80-block  2
+call    4 never executed
+branch  5 never executed (fallthrough)
+branch  6 never executed (throw)
+    %%%%%:   80-block  3
+call    7 never executed
+call    8 never executed
+    $$$$$:   80-block  4
+call    9 never executed
+    $$$$$:   80-block  5
+    $$$$$:   80-block  6
+    $$$$$:   80-block  7
+call   10 never executed
+        -:   81:    }
+        -:   82:
+        4:   83:    if (venue->getCurrentVisitors() + 1 > venue->getCapacity()) {
+        4:   83-block  0
+call    0 returned 4
+branch  1 taken 4 (fallthrough)
+branch  2 taken 0 (throw)
+        4:   83-block  1
+call    3 returned 4
+branch  4 taken 4 (fallthrough)
+branch  5 taken 0 (throw)
+        4:   83-block  2
+branch  6 taken 1 (fallthrough)
+branch  7 taken 3
+        3:   84:        throw CapacityExceededException("Все билеты проданы.");
+        1:   84-block  0
+call    0 returned 1
+        1:   84-block  1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   84-block  2
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:   84-block  3
+call    7 returned 1
+call    8 returned 1
+    $$$$$:   84-block  4
+call    9 never executed
+    $$$$$:   84-block  5
+    $$$$$:   84-block  6
+    $$$$$:   84-block  7
+call   10 never executed
+        -:   85:    }
+        3:   86:}
+        3:   86-block  0
+        -:   87:
+function _ZN12TicketOffice8addVenueEP16PlanetariumVenue called 4 returned 100% blocks executed 100%
+        4:   88:void TicketOffice::addVenue(PlanetariumVenue* venue) {
+        4:   89:    availableVenues.push_back(venue);
+        4:   89-block  0
+call    0 returned 4
+        4:   90:}
+        -:   91:
+function _ZNK12TicketOffice11printReportB5cxx11Ev called 0 returned 0% blocks executed 0%
+    #####:   92:std::string TicketOffice::printReport() const {
+    #####:   93:    return "Total revenue: " + std::to_string(totalRevenue) + "\n" +
+    %%%%%:   93-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:   93-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:   93-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:   93-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   93-block  4
+call   12 never executed
+call   13 never executed
+call   14 never executed
+call   15 never executed
+    $$$$$:   93-block  5
+call   16 never executed
+    $$$$$:   93-block  6
+call   17 never executed
+    $$$$$:   93-block  7
+call   18 never executed
+    $$$$$:   93-block  8
+call   19 never executed
+    $$$$$:   93-block  9
+    $$$$$:   93-block 10
+    $$$$$:   93-block 11
+    $$$$$:   93-block 12
+    #####:   94:           "Tickets sold: " + std::to_string(soldTickets.size());
+    %%%%%:   94-block  0
+call    0 never executed
+call    1 never executed
+branch  2 never executed (fallthrough)
+branch  3 never executed (throw)
+    %%%%%:   94-block  1
+call    4 never executed
+branch  5 never executed (fallthrough)
+branch  6 never executed (throw)
+call    7 never executed
+    %%%%%:   94-block  2
+    $$$$$:   94-block  3
+call    8 never executed
+        -:   95:}

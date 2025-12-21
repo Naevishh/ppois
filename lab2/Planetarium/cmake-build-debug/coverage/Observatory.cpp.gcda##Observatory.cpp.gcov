@@ -1,0 +1,233 @@
+        -:    0:Source:C:/Users/aleks/CLionProjects/PlanetariumProjectCopy/Facade/Observatory.cpp
+        -:    0:Graph:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Facade\CMakeFiles\Facade.dir\Observatory.cpp.gcno
+        -:    0:Data:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Facade\CMakeFiles\Facade.dir\Observatory.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "Observatory.h"
+        -:    2:#include <stdexcept>
+        -:    3:#include "../Exceptions/BadWeather.h"
+        -:    4:#include "../Exceptions/ObjectIsNotVisible.h"
+        -:    5:#include "../Exceptions/DeviceCapabilityException.h"
+        -:    6:#include "../Exceptions/CantUseDevice.h"
+        -:    7:
+        -:    8:
+        -:    9:
+function _ZN11ObservatoryC2ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiP9Telescope called 7 returned 100% blocks executed 71%
+        7:   10:Observatory::Observatory(const std::string& name_, int capacity_, Telescope* telescope_) :
+        7:   11:        PlanetariumVenue(name_, capacity_), telescope(telescope_), isDomeOpen(false),
+        7:   12:        domeRotationAngle(0) {}
+        7:   12-block  0
+call    0 returned 7
+branch  1 taken 7 (fallthrough)
+branch  2 taken 0 (throw)
+        7:   12-block  1
+call    3 returned 7
+branch  4 taken 7 (fallthrough)
+branch  5 taken 0 (throw)
+        7:   12-block  2
+call    6 returned 7
+    $$$$$:   12-block  3
+call    7 never executed
+        -:   13:
+function _ZN11Observatory22checkWeatherConditionsERK4Date called 2 returned 100% blocks executed 100%
+        2:   14:bool Observatory::checkWeatherConditions(const Date& date) {
+        2:   15:    return date.getWeather() == Enums::WeatherCondition::SUNNY;
+        2:   15-block  0
+call    0 returned 2
+        -:   16:}
+        -:   17:
+function _ZN11Observatory8openDomeEv called 2 returned 100% blocks executed 100%
+        2:   18:void Observatory::openDome() {
+        2:   19:    isDomeOpen = true;
+        2:   20:}
+        -:   21:
+function _ZN11Observatory17setDomeToPositionERK11SkyPosition called 2 returned 100% blocks executed 100%
+        2:   22:void Observatory::setDomeToPosition(const SkyPosition& position) {
+        2:   23:    domeRotationAngle = position.getAzimuth();
+        2:   23-block  0
+call    0 returned 2
+        2:   24:}
+        -:   25:
+function _ZN11Observatory10rotateDomeEd called 1 returned 100% blocks executed 100%
+        1:   26:void Observatory::rotateDome(double angle) {
+        1:   27:    domeRotationAngle += angle;
+        1:   28:}
+        -:   29:
+function _ZN11Observatory13observeObjectB5cxx11ERK18AstronomicalObjectRK4DateRK6MyTime called 2 returned 50% blocks executed 29%
+        2:   30:std::string Observatory::observeObject(const AstronomicalObject& object, const Date& date, const MyTime& time) {
+        2:   31:    if (!checkWeatherConditions(date))
+        2:   31-block  0
+call    0 returned 2
+branch  1 taken 1 (fallthrough)
+branch  2 taken 1
+        3:   32:        throw BadWeather("Unsuitable weather for observation.");
+        1:   32-block  0
+call    0 returned 1
+        1:   32-block  1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   32-block  2
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:   32-block  3
+call    7 returned 1
+call    8 returned 0
+    $$$$$:   32-block  4
+call    9 never executed
+    $$$$$:   32-block  5
+    $$$$$:   32-block  6
+    $$$$$:   32-block  7
+call   10 never executed
+       1*:   33:    if (!telescope->canBeUsed(date)) throw CantUseDevice(telescope->getName() + " is unsafe to use.");
+        1:   33-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   33-block  1
+call    3 never executed
+call    4 never executed
+branch  5 never executed (fallthrough)
+branch  6 never executed (throw)
+    %%%%%:   33-block  2
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   33-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   33-block  4
+call   13 never executed
+call   14 never executed
+call   15 never executed
+    $$$$$:   33-block  5
+call   16 never executed
+    $$$$$:   33-block  6
+call   17 never executed
+    $$$$$:   33-block  7
+    $$$$$:   33-block  8
+    $$$$$:   33-block  9
+call   18 never executed
+        1:   34:    if (!telescope->active()) telescope->turnOn();
+        1:   34-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0
+        1:   34-block  1
+call    3 returned 1
+        1:   35:    openDome();
+        1:   35-block  0
+call    0 returned 1
+        1:   36:    if (!object.isVisibleAtTime(time))
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    #####:   37:        throw ObjectIsNotVisible(object.getName() + " cannot be seen now.");
+    %%%%%:   37-block  0
+call    0 never executed
+call    1 never executed
+branch  2 never executed (fallthrough)
+branch  3 never executed (throw)
+    %%%%%:   37-block  1
+call    4 never executed
+branch  5 never executed (fallthrough)
+branch  6 never executed (throw)
+    %%%%%:   37-block  2
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   37-block  3
+call   10 never executed
+call   11 never executed
+call   12 never executed
+    $$$$$:   37-block  4
+call   13 never executed
+    $$$$$:   37-block  5
+call   14 never executed
+    $$$$$:   37-block  6
+    $$$$$:   37-block  7
+    $$$$$:   37-block  8
+call   15 never executed
+        1:   38:    setDomeToPosition(object.getPosition());
+        1:   38-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   38-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+    $$$$$:   38-block  2
+call    6 never executed
+        1:   39:    if (!telescope->canObserve(object))
+        1:   39-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    #####:   40:        throw DeviceCapabilityException(object.getName() + " is too faint or small for telescope '" + telescope->getName() + "'.");
+    %%%%%:   40-block  0
+call    0 never executed
+call    1 never executed
+branch  2 never executed (fallthrough)
+branch  3 never executed (throw)
+    %%%%%:   40-block  1
+call    4 never executed
+branch  5 never executed (fallthrough)
+branch  6 never executed (throw)
+    %%%%%:   40-block  2
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   40-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   40-block  4
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   40-block  5
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   40-block  6
+call   19 never executed
+call   20 never executed
+call   21 never executed
+call   22 never executed
+call   23 never executed
+call   24 never executed
+    $$$$$:   40-block  7
+call   25 never executed
+    $$$$$:   40-block  8
+call   26 never executed
+    $$$$$:   40-block  9
+call   27 never executed
+    $$$$$:   40-block 10
+call   28 never executed
+    $$$$$:   40-block 11
+    $$$$$:   40-block 12
+    $$$$$:   40-block 13
+call   29 never executed
+    $$$$$:   40-block 14
+    $$$$$:   40-block 15
+    $$$$$:   40-block 16
+    $$$$$:   40-block 17
+call   30 never executed
+        1:   41:    return object.getName() + " is being observed.";
+        1:   41-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   41-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   41-block  2
+        1:   41-block  3
+call    6 returned 1
+        1:   41-block  4
+    $$$$$:   41-block  5
+call    7 never executed
+        -:   42:}

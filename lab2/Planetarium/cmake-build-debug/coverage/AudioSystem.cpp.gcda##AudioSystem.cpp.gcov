@@ -1,0 +1,204 @@
+        -:    0:Source:C:/Users/aleks/CLionProjects/PlanetariumProjectCopy/Inventory/AudioSystem.cpp
+        -:    0:Graph:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Inventory\CMakeFiles\Inventory.dir\AudioSystem.cpp.gcno
+        -:    0:Data:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Inventory\CMakeFiles\Inventory.dir\AudioSystem.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "AudioSystem.h"
+        -:    2:#include <algorithm>
+        -:    3:
+function _ZN11AudioSystemC2Ev called 24 returned 100% blocks executed 50%
+       24:    4:AudioSystem::AudioSystem() : remoteControl(mics, speakers) {}
+       24:    4-block  0
+call    0 returned 24
+call    1 returned 24
+call    2 returned 24
+branch  3 taken 24 (fallthrough)
+branch  4 taken 0 (throw)
+       24:    4-block  1
+call    5 returned 24
+branch  6 taken 24 (fallthrough)
+branch  7 taken 0 (throw)
+       24:    4-block  2
+call    8 returned 24
+branch  9 taken 24 (fallthrough)
+branch 10 taken 0 (throw)
+       24:    4-block  3
+call   11 returned 24
+call   12 returned 24
+    $$$$$:    4-block  4
+call   13 never executed
+    $$$$$:    4-block  5
+    $$$$$:    4-block  6
+call   14 never executed
+    $$$$$:    4-block  7
+    $$$$$:    4-block  8
+call   15 never executed
+    $$$$$:    4-block  9
+call   16 never executed
+        -:    5:
+function _ZN11AudioSystem12devicesCountEv called 3 returned 100% blocks executed 100%
+        3:    6:int AudioSystem::devicesCount() {
+        3:    7:    return mics.size() + speakers.size();
+        3:    7-block  0
+call    0 returned 3
+call    1 returned 3
+        -:    8:}
+        -:    9:
+function _ZN11AudioSystem21totalPowerConsumptionEv called 1 returned 100% blocks executed 100%
+        1:   10:double AudioSystem::totalPowerConsumption() {
+        1:   11:    double totalPower = 0;
+        3:   12:    for (const auto& speaker: speakers) {
+        1:   12-block  0
+call    0 returned 1
+call    1 returned 1
+        2:   12-block  1
+call    2 returned 2
+        3:   12-block  2
+call    3 returned 3
+branch  4 taken 2
+branch  5 taken 1 (fallthrough)
+        2:   13:        totalPower += speaker->getPower();
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:   13-block  0
+call    3 returned 2
+        -:   14:    }
+        1:   15:    return totalPower;
+        1:   15-block  0
+        1:   15-block  1
+        -:   16:}
+        -:   17:
+function _ZN11AudioSystem13addMicrophoneEP10Microphone called 1 returned 100% blocks executed 100%
+        1:   18:void AudioSystem::addMicrophone(Microphone* mic) {
+        1:   19:    mics.push_back(mic);
+        1:   19-block  0
+call    0 returned 1
+        1:   20:    remoteControl.addMicrophone(mic);
+call    0 returned 1
+        1:   21:}
+        -:   22:
+function _ZN11AudioSystem10addSpeakerEP7Speaker called 4 returned 100% blocks executed 100%
+        4:   23:void AudioSystem::addSpeaker(Speaker* speaker) {
+        4:   24:    speakers.push_back(speaker);
+        4:   24-block  0
+call    0 returned 4
+        4:   25:    remoteControl.addSpeaker(speaker);
+call    0 returned 4
+        4:   26:}
+        -:   27:
+function _ZN11AudioSystem16removeMicrophoneEP10Microphone called 1 returned 100% blocks executed 86%
+        1:   28:bool AudioSystem::removeMicrophone(Microphone* mic) {
+        1:   29:    auto it = std::find(mics.begin(), mics.end(), mic);
+        1:   29-block  0
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+branch  3 taken 1 (fallthrough)
+branch  4 taken 0 (throw)
+        1:   30:    if (it != mics.end()) {
+        1:   30-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:   31:        mics.erase(it);
+        1:   31-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+    $$$$$:   31-block  1
+        1:   32:        return true;
+        1:   32-block  0
+        -:   33:    }
+    #####:   34:    return false;
+    %%%%%:   34-block  0
+        -:   35:}
+        -:   36:
+function _ZN11AudioSystem13removeSpeakerEP7Speaker called 1 returned 100% blocks executed 86%
+        1:   37:bool AudioSystem::removeSpeaker(Speaker* speaker) {
+        1:   38:    auto it = std::find(speakers.begin(), speakers.end(), speaker);
+        1:   38-block  0
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+branch  3 taken 1 (fallthrough)
+branch  4 taken 0 (throw)
+        1:   39:    if (it != speakers.end()) {
+        1:   39-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:   40:        speakers.erase(it);
+        1:   40-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+    $$$$$:   40-block  1
+        1:   41:        return true;
+        1:   41-block  0
+        -:   42:    }
+    #####:   43:    return false;
+    %%%%%:   43-block  0
+        -:   44:}
+        -:   45:
+function _ZN11AudioSystem9canBeUsedERK4Date called 0 returned 0% blocks executed 0%
+    #####:   46:bool AudioSystem::canBeUsed(const Date& date) {
+    #####:   47:    for (const auto &mic: mics) {
+    %%%%%:   47-block  0
+call    0 never executed
+call    1 never executed
+    %%%%%:   47-block  1
+call    2 never executed
+    %%%%%:   47-block  2
+call    3 never executed
+    %%%%%:   47-block  3
+call    4 never executed
+branch  5 never executed
+branch  6 never executed (fallthrough)
+    #####:   48:        if (!mic->canBeUsed(date)) return false;
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:   48-block  0
+branch  3 never executed (fallthrough)
+branch  4 never executed
+    %%%%%:   48-block  1
+    %%%%%:   48-block  2
+        -:   49:    }
+    #####:   50:    for (const auto &speaker: speakers) {
+    %%%%%:   50-block  0
+call    0 never executed
+call    1 never executed
+    %%%%%:   50-block  1
+call    2 never executed
+    %%%%%:   50-block  2
+call    3 never executed
+    %%%%%:   50-block  3
+call    4 never executed
+branch  5 never executed
+branch  6 never executed (fallthrough)
+    #####:   51:        if (!speaker->canBeUsed(date)) return false;
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:   51-block  0
+branch  3 never executed (fallthrough)
+branch  4 never executed
+    %%%%%:   51-block  1
+    %%%%%:   51-block  2
+        -:   52:    }
+    #####:   53:    return true;
+    %%%%%:   53-block  0
+        -:   54:}
+        -:   55:
+function _ZN11AudioSystem11setUpSystemEv called 7 returned 100% blocks executed 100%
+        7:   56:void AudioSystem::setUpSystem() {
+        7:   57:    remoteControl.TurnAllOn();
+        7:   57-block  0
+call    0 returned 7
+        7:   58:    remoteControl.changeAllVolume(+10, true);
+call    0 returned 7
+        7:   59:}

@@ -1,0 +1,215 @@
+        -:    0:Source:C:/Users/aleks/CLionProjects/PlanetariumProjectCopy/Inventory/PlanetariumProjector.cpp
+        -:    0:Graph:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Inventory\CMakeFiles\Inventory.dir\PlanetariumProjector.cpp.gcno
+        -:    0:Data:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Inventory\CMakeFiles\Inventory.dir\PlanetariumProjector.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "PlanetariumProjector.h"
+        -:    2:#include <stdexcept>
+        -:    3:#include "../Exceptions/IncompatibleDevices.h"
+        -:    4:#include "../Exceptions/DeviceCapabilityException.h"
+        -:    5:
+function _ZN20PlanetariumProjectorC2ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEddd called 25 returned 100% blocks executed 80%
+       25:    6:PlanetariumProjector::PlanetariumProjector(const std::string& name, double brightness_, double throwRatio_, double fov_) :
+       25:    7:        Projector(name, brightness_, throwRatio_, fov_) {}
+       25:    7-block  0
+call    0 returned 25
+branch  1 taken 25 (fallthrough)
+branch  2 taken 0 (throw)
+       25:    7-block  1
+call    3 returned 25
+branch  4 taken 25 (fallthrough)
+branch  5 taken 0 (throw)
+       25:    7-block  2
+call    6 returned 25
+call    7 returned 25
+call    8 returned 25
+call    9 returned 25
+    $$$$$:    7-block  3
+call   10 never executed
+        -:    8:
+function _ZN20PlanetariumProjector17setProjectionSizeEd called 11 returned 100% blocks executed 60%
+       11:    9:void PlanetariumProjector::setProjectionSize(double screenRadius) {
+      11*:   10:    if(screenRadius<0 || screenRadius>15) throw std::invalid_argument("Invalid radius!");
+       11:   10-block  0
+branch  0 taken 11 (fallthrough)
+branch  1 taken 0
+       11:   10-block  1
+branch  2 taken 0 (fallthrough)
+branch  3 taken 11
+    %%%%%:   10-block  2
+call    4 never executed
+call    5 never executed
+branch  6 never executed (fallthrough)
+branch  7 never executed (throw)
+    %%%%%:   10-block  3
+call    8 never executed
+    $$$$$:   10-block  4
+call    9 never executed
+       11:   11:    setThrowDistance(screenRadius / sin((getFov()*M_PI/180) / 2));
+       11:   11-block  0
+call    0 returned 11
+call    1 returned 11
+       11:   12:}
+        -:   13:
+function _ZN20PlanetariumProjector9addObjectEP18AstronomicalObject called 1 returned 100% blocks executed 100%
+        1:   14:void PlanetariumProjector::addObject(AstronomicalObject* object){
+        1:   15:    objects.push_back(object);
+        1:   15-block  0
+call    0 returned 1
+        1:   16:}
+        -:   17:
+function _ZN20PlanetariumProjector13projectObjectEP16DomeShapedScreenP18AstronomicalObject called 3 returned 0% blocks executed 39%
+        3:   18:void PlanetariumProjector::projectObject(DomeShapedScreen* screen, AstronomicalObject* object) {
+        3:   19:    if (!screen->isProjectorCompatible(*this))
+        3:   19-block  0
+call    0 returned 3
+branch  1 taken 1 (fallthrough)
+branch  2 taken 2
+        1:   20:        throw IncompatibleDevices(getName() + " is not compatible with the screen.");
+        1:   20-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   20-block  1
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:   20-block  2
+call    7 returned 1
+branch  8 taken 1 (fallthrough)
+branch  9 taken 0 (throw)
+        1:   20-block  3
+call   10 returned 1
+call   11 returned 1
+call   12 returned 0
+    $$$$$:   20-block  4
+call   13 never executed
+    $$$$$:   20-block  5
+call   14 never executed
+    $$$$$:   20-block  6
+    $$$$$:   20-block  7
+    $$$$$:   20-block  8
+call   15 never executed
+        2:   21:    bool hasObject = false;
+       2*:   22:    for (const auto& obj : objects) {
+        2:   22-block  0
+call    0 returned 2
+call    1 returned 2
+    %%%%%:   22-block  1
+call    2 never executed
+    %%%%%:   22-block  2
+call    3 never executed
+        2:   22-block  3
+call    4 returned 2
+branch  5 taken 0
+branch  6 taken 2 (fallthrough)
+    #####:   23:        if (obj->getName() == object->getName()) {
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:   23-block  0
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:   23-block  1
+call    6 never executed
+call    7 never executed
+call    8 never executed
+branch  9 never executed (fallthrough)
+branch 10 never executed
+    $$$$$:   23-block  2
+    $$$$$:   23-block  3
+call   11 never executed
+    $$$$$:   23-block  4
+    #####:   24:            hasObject = true;
+    #####:   25:            break;
+    %%%%%:   25-block  0
+        -:   26:        }
+        -:   27:    }
+        2:   28:    if (!hasObject) throw DeviceCapabilityException("Planetarium projector doesn't have " + object->getName() + ".");
+        2:   28-block  0
+branch  0 taken 2 (fallthrough)
+branch  1 taken 0
+        2:   28-block  1
+call    2 returned 2
+call    3 returned 2
+branch  4 taken 2 (fallthrough)
+branch  5 taken 0 (throw)
+        2:   28-block  2
+call    6 returned 2
+branch  7 taken 2 (fallthrough)
+branch  8 taken 0 (throw)
+        2:   28-block  3
+call    9 returned 2
+branch 10 taken 2 (fallthrough)
+branch 11 taken 0 (throw)
+        2:   28-block  4
+call   12 returned 2
+branch 13 taken 2 (fallthrough)
+branch 14 taken 0 (throw)
+        2:   28-block  5
+call   15 returned 2
+call   16 returned 2
+call   17 returned 2
+call   18 returned 0
+    $$$$$:   28-block  6
+call   19 never executed
+    $$$$$:   28-block  7
+call   20 never executed
+    $$$$$:   28-block  8
+call   21 never executed
+    $$$$$:   28-block  9
+    $$$$$:   28-block 10
+    $$$$$:   28-block 11
+    $$$$$:   28-block 12
+call   22 never executed
+    #####:   29:    project(screen);
+    %%%%%:   29-block  0
+call    0 never executed
+    #####:   30:    currentObjectName = object->getName();
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:   30-block  0
+call    3 never executed
+call    4 never executed
+    #####:   31:}
+        -:   32:
+function _ZN20PlanetariumProjector11projectShowEP16DomeShapedScreenRKN5Enums22BuiltInPlanetariumShowE called 5 returned 80% blocks executed 63%
+        5:   33:void PlanetariumProjector::projectShow(DomeShapedScreen* screen, const Enums::BuiltInPlanetariumShow& show) {
+        5:   34:    if (!screen->isProjectorCompatible(*this))
+        5:   34-block  0
+call    0 returned 5
+branch  1 taken 1 (fallthrough)
+branch  2 taken 4
+        1:   35:        throw IncompatibleDevices(getName() + " is not compatible with the screen.");
+        1:   35-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   35-block  1
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:   35-block  2
+call    7 returned 1
+branch  8 taken 1 (fallthrough)
+branch  9 taken 0 (throw)
+        1:   35-block  3
+call   10 returned 1
+call   11 returned 1
+call   12 returned 0
+    $$$$$:   35-block  4
+call   13 never executed
+    $$$$$:   35-block  5
+call   14 never executed
+    $$$$$:   35-block  6
+    $$$$$:   35-block  7
+    $$$$$:   35-block  8
+call   15 never executed
+        4:   36:    project(screen);
+        4:   36-block  0
+call    0 returned 4
+        4:   37:    currentShow = show;
+        4:   38:}

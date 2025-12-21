@@ -1,0 +1,37 @@
+        -:    0:Source:C:/Users/aleks/CLionProjects/PlanetariumProjectCopy/Inventory/DomeShapedScreen.cpp
+        -:    0:Graph:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Inventory\CMakeFiles\Inventory.dir\DomeShapedScreen.cpp.gcno
+        -:    0:Data:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Inventory\CMakeFiles\Inventory.dir\DomeShapedScreen.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "DomeShapedScreen.h"
+        -:    2:
+function _ZN16DomeShapedScreenC2ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEdd called 27 returned 100% blocks executed 100%
+       27:    3:DomeShapedScreen::DomeShapedScreen(const std::string& name, double diameter_, double height_) :
+        -:    4:        Screen(name, 3.14 * diameter_, 3.14 * diameter_),
+       27:    5:        diameter(diameter_), height(height_) {}
+       27:    5-block  0
+call    0 returned 27
+        -:    6:
+function _ZNK16DomeShapedScreen11getDiameterEv called 1 returned 100% blocks executed 100%
+        1:    7:double DomeShapedScreen::getDiameter() const {
+        1:    8:    return diameter;
+        1:    8-block  0
+        -:    9:}
+        -:   10:
+function _ZNK16DomeShapedScreen9getHeightEv called 1 returned 100% blocks executed 100%
+        1:   11:double DomeShapedScreen::getHeight() const {
+        1:   12:    return height;
+        1:   12-block  0
+        -:   13:}
+        -:   14:
+function _ZNK16DomeShapedScreen13calculateAreaEv called 1 returned 100% blocks executed 100%
+        1:   15:double DomeShapedScreen::calculateArea() const {
+        1:   16:return 3.14 * diameter * diameter;
+        1:   16-block  0
+        -:   17:}
+        -:   18:
+function _ZNK16DomeShapedScreen21isProjectorCompatibleERK9Projector called 10 returned 100% blocks executed 100%
+       10:   19:bool DomeShapedScreen::isProjectorCompatible(const Projector& projector) const {
+       10:   20:    return projector.getThrowRatio() > 2;
+       10:   20-block  0
+call    0 returned 10
+        -:   21:}

@@ -1,0 +1,126 @@
+        -:    0:Source:C:/Users/aleks/CLionProjects/PlanetariumProjectCopy/Events/Stargazing.cpp
+        -:    0:Graph:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Events\CMakeFiles\Events.dir\Stargazing.cpp.gcno
+        -:    0:Data:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Events\CMakeFiles\Events.dir\Stargazing.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "Stargazing.h"
+        -:    2:
+function _ZN10StargazingC2ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEdN5Enums13ActivityThemeEP8StarHall called 4 returned 100% blocks executed 100%
+        4:    3:Stargazing::Stargazing(const std::string& name, double duration, Enums::ActivityTheme theme, StarHall* hall_) :
+        4:    4:        Activity(name, duration, theme, hall_), hall(hall_) {}
+        4:    4-block  0
+call    0 returned 4
+call    1 returned 4
+call    2 returned 4
+        -:    5:
+function _ZN10Stargazing7addShowEN5Enums22BuiltInPlanetariumShowE called 3 returned 100% blocks executed 100%
+        3:    6:void Stargazing::addShow(Enums::BuiltInPlanetariumShow show) {
+        3:    7:    if (includeShow) {
+        3:    7-block  0
+branch  0 taken 3 (fallthrough)
+branch  1 taken 0
+        3:    8:        shows.push_back(show);
+        3:    8-block  0
+call    0 returned 3
+        -:    9:    }
+        3:   10:}
+        -:   11:
+function _ZN10Stargazing16addObjectToWatchEP18AstronomicalObject called 0 returned 0% blocks executed 0%
+    #####:   12:void Stargazing::addObjectToWatch(AstronomicalObject* object) {
+    #####:   13:    objectsToWatch.push_back(object);
+    %%%%%:   13-block  0
+call    0 never executed
+    #####:   14:}
+        -:   15:
+function _ZN10Stargazing4holdB5cxx11ERK4Date called 3 returned 100% blocks executed 55%
+        3:   16:std::string Stargazing::hold(const Date& date) {
+       3*:   17:    for (const auto &object: objectsToWatch) {
+        3:   17-block  0
+call    0 returned 3
+call    1 returned 3
+    %%%%%:   17-block  1
+call    2 never executed
+        3:   17-block  2
+call    3 returned 3
+branch  4 taken 0
+branch  5 taken 3 (fallthrough)
+    #####:   18:        hall->watchObject(date, object);
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:   18-block  0
+call    3 never executed
+call    4 never executed
+    $$$$$:   18-block  1
+        -:   19:    }
+        6:   20:    for (const auto &show: shows) {
+        3:   20-block  0
+call    0 returned 3
+call    1 returned 3
+        3:   20-block  1
+call    2 returned 3
+        6:   20-block  2
+call    3 returned 6
+branch  4 taken 3
+branch  5 taken 3 (fallthrough)
+        3:   21:        hall->watchShow(date, show);
+call    0 returned 3
+branch  1 taken 3 (fallthrough)
+branch  2 taken 0 (throw)
+        3:   21-block  0
+call    3 returned 3
+call    4 returned 3
+    $$$$$:   21-block  1
+        -:   22:    }
+        3:   23:    return "Stargazing '" + getName() + "' is held on " + date.getDate() + ".";
+        3:   23-block  0
+call    0 returned 3
+branch  1 taken 3 (fallthrough)
+branch  2 taken 0 (throw)
+        3:   23-block  1
+call    3 returned 3
+branch  4 taken 3 (fallthrough)
+branch  5 taken 0 (throw)
+        3:   23-block  2
+call    6 returned 3
+branch  7 taken 3 (fallthrough)
+branch  8 taken 0 (throw)
+        3:   23-block  3
+call    9 returned 3
+branch 10 taken 3 (fallthrough)
+branch 11 taken 0 (throw)
+        3:   23-block  4
+call   12 returned 3
+branch 13 taken 3 (fallthrough)
+branch 14 taken 0 (throw)
+        3:   23-block  5
+call   15 returned 3
+branch 16 taken 3 (fallthrough)
+branch 17 taken 0 (throw)
+        3:   23-block  6
+        3:   23-block  7
+call   18 returned 3
+call   19 returned 3
+call   20 returned 3
+call   21 returned 3
+call   22 returned 3
+        3:   23-block  8
+    $$$$$:   23-block  9
+call   23 never executed
+    $$$$$:   23-block 10
+call   24 never executed
+    $$$$$:   23-block 11
+call   25 never executed
+    $$$$$:   23-block 12
+call   26 never executed
+    $$$$$:   23-block 13
+    $$$$$:   23-block 14
+    $$$$$:   23-block 15
+    $$$$$:   23-block 16
+call   27 never executed
+    $$$$$:   23-block 17
+        -:   24:}
+        -:   25:
+function _ZN10Stargazing10enableShowEv called 1 returned 100% blocks executed 100%
+        1:   26:void Stargazing::enableShow() {
+        1:   27:    includeShow = true;
+        1:   28:}

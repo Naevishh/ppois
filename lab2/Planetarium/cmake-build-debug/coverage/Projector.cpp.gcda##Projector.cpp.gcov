@@ -1,0 +1,121 @@
+        -:    0:Source:C:/Users/aleks/CLionProjects/PlanetariumProjectCopy/Inventory/Projector.cpp
+        -:    0:Graph:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Inventory\CMakeFiles\Inventory.dir\Projector.cpp.gcno
+        -:    0:Data:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Inventory\CMakeFiles\Inventory.dir\Projector.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include <stdexcept>
+        -:    2:#include "Projector.h"
+        -:    3:
+function _ZN9ProjectorC2ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEddd called 45 returned 100% blocks executed 75%
+       45:    4:Projector::Projector(std::string name_, double brightness_, double throwRatio_, double fov_) :
+       90:    5:        Device(std::move(name_)), brightness(brightness_), throwDistance(10),
+       45:    6:        throwRatio(throwRatio_), fov(fov_) {}
+       45:    6-block  0
+call    0 returned 45
+call    1 returned 45
+call    2 returned 45
+branch  3 taken 45 (fallthrough)
+branch  4 taken 0 (throw)
+       45:    6-block  1
+call    5 returned 45
+    $$$$$:    6-block  2
+call    6 never executed
+        -:    7:
+function _ZN9Projector16adjustBrightnessEi called 1 returned 100% blocks executed 100%
+        1:    8:void Projector::adjustBrightness(int level) {
+        1:    9:    brightness += level;
+        1:   10:}
+        -:   11:
+function _ZN9Projector17setProjectionSizeEd called 6 returned 67% blocks executed 88%
+        6:   12:void Projector::setProjectionSize(double screenSize) {
+        6:   13:    if(screenSize<0 || screenSize>15) throw std::invalid_argument("Invalid size!");
+        6:   13-block  0
+branch  0 taken 5 (fallthrough)
+branch  1 taken 1
+        5:   13-block  1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 4
+        2:   13-block  2
+call    4 returned 2
+call    5 returned 2
+branch  6 taken 2 (fallthrough)
+branch  7 taken 0 (throw)
+        2:   13-block  3
+call    8 returned 0
+    $$$$$:   13-block  4
+call    9 never executed
+        4:   14:    throwDistance = throwRatio * screenSize;
+        4:   15:}
+        4:   15-block  0
+        -:   16:
+function _ZN9Projector7projectEP6Screen called 13 returned 100% blocks executed 100%
+       13:   17:void Projector::project(Screen* screen) {
+       13:   18:    if (!active()) turnOn();
+       13:   18-block  0
+call    0 returned 13
+branch  1 taken 8 (fallthrough)
+branch  2 taken 5
+        8:   18-block  1
+call    3 returned 8
+       13:   19:    setProjectionSize(screen->getLength());
+       13:   19-block  0
+call    0 returned 13
+call    1 returned 13
+       13:   20:}
+        -:   21:
+function _ZN9Projector16setThrowDistanceEd called 11 returned 100% blocks executed 43%
+       11:   22:void Projector::setThrowDistance(double throwDistance_) {
+      11*:   23:    if(throwDistance_<0) throw std::invalid_argument("Invalid distance!");
+       11:   23-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 11
+    %%%%%:   23-block  1
+call    2 never executed
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:   23-block  2
+call    6 never executed
+    $$$$$:   23-block  3
+call    7 never executed
+       11:   24:    throwDistance = throwDistance_;
+       11:   25:}
+       11:   25-block  0
+        -:   26:
+function _ZN9Projector13setTechnologyEN5Enums20ProjectionTechnologyE called 1 returned 100% blocks executed 100%
+        1:   27:void Projector::setTechnology(Enums::ProjectionTechnology tech) {
+        1:   28:    technology = tech;
+        1:   29:}
+        -:   30:
+function _ZN9Projector13setResolutionEN5Enums18StandardResolutionE called 1 returned 100% blocks executed 100%
+        1:   31:void Projector::setResolution(Enums::StandardResolution res) {
+        1:   32:    resolution = res;
+        1:   33:}
+        -:   34:
+function _ZN9Projector7setLampEN5Enums11LightSourceE called 1 returned 100% blocks executed 100%
+        1:   35:void Projector::setLamp(Enums::LightSource light) {
+        1:   36:    lamp = light;
+        1:   37:}
+        -:   38:
+function _ZNK9Projector13getBrightnessEv called 2 returned 100% blocks executed 100%
+        2:   39:double Projector::getBrightness() const {
+        2:   40:    return brightness;
+        2:   40-block  0
+        -:   41:}
+        -:   42:
+function _ZNK9Projector16getThrowDistanceEv called 3 returned 100% blocks executed 100%
+        3:   43:double Projector::getThrowDistance() const {
+        3:   44:    return throwDistance;
+        3:   44-block  0
+        -:   45:}
+        -:   46:
+function _ZNK9Projector13getThrowRatioEv called 11 returned 100% blocks executed 100%
+       11:   47:double Projector::getThrowRatio() const {
+       11:   48:    return throwRatio;
+       11:   48-block  0
+        -:   49:}
+        -:   50:
+function _ZNK9Projector6getFovEv called 12 returned 100% blocks executed 100%
+       12:   51:double Projector::getFov() const {
+       12:   52:    return fov;
+       12:   52-block  0
+        -:   53:}

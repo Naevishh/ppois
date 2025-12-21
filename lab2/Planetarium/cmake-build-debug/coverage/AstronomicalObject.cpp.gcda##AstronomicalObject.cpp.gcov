@@ -1,0 +1,175 @@
+        -:    0:Source:C:/Users/aleks/CLionProjects/PlanetariumProjectCopy/Sky/AstronomicalObject.cpp
+        -:    0:Graph:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Sky\CMakeFiles\Sky.dir\AstronomicalObject.cpp.gcno
+        -:    0:Data:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Sky\CMakeFiles\Sky.dir\AstronomicalObject.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "AstronomicalObject.h"
+        -:    2:#include <cmath>
+        -:    3:#include "../Validation/TimeValidator.h"
+        -:    4:
+function _ZN18AstronomicalObjectC2ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEddddN5Enums10ObjectTypeE called 36 returned 100% blocks executed 86%
+       36:    5:AstronomicalObject::AstronomicalObject(const std::string& name_, double magnitude_, double absMagnitude_,
+       36:    6:                                       double azimuth_, double altitude_, Enums::ObjectType type_) :
+       36:    7:        name(name_), magnitude(magnitude_), absoluteMagnitude(absMagnitude_),
+       36:    7-block  0
+call    0 returned 36
+       36:    8:        position(azimuth_, altitude_), type(type_) {}
+call    0 returned 36
+branch  1 taken 36 (fallthrough)
+branch  2 taken 0 (throw)
+       36:    8-block  0
+call    3 returned 36
+branch  4 taken 36 (fallthrough)
+branch  5 taken 0 (throw)
+       36:    8-block  1
+call    6 returned 36
+branch  7 taken 36 (fallthrough)
+branch  8 taken 0 (throw)
+       36:    8-block  2
+    $$$$$:    8-block  3
+call    9 never executed
+        -:    9:
+function _ZNK18AstronomicalObject20getAbsoluteMagnitudeEv called 1 returned 100% blocks executed 100%
+        1:   10:double AstronomicalObject::getAbsoluteMagnitude() const {
+        1:   11:    return absoluteMagnitude;
+        1:   11-block  0
+        -:   12:}
+        -:   13:
+function _ZNK18AstronomicalObject7getTypeEv called 3 returned 100% blocks executed 100%
+        3:   14:Enums::ObjectType AstronomicalObject::getType() const {
+        3:   15:    return type;
+        3:   15-block  0
+        -:   16:}
+        -:   17:
+function _ZNK18AstronomicalObject7getNameB5cxx11Ev called 9 returned 100% blocks executed 100%
+        9:   18:std::string AstronomicalObject::getName() const {
+        9:   19:    return name;
+        9:   19-block  0
+call    0 returned 9
+        -:   20:}
+        -:   21:
+function _ZNK18AstronomicalObject11getPositionEv called 1 returned 100% blocks executed 100%
+        1:   22:SkyPosition AstronomicalObject::getPosition() const {
+        1:   23:    return position;
+        1:   23-block  0
+        -:   24:}
+        -:   25:
+function _ZNK18AstronomicalObject12getMagnitudeEv called 4 returned 100% blocks executed 100%
+        4:   26:double AstronomicalObject::getMagnitude() const {
+        4:   27:    return magnitude;
+        4:   27-block  0
+        -:   28:}
+        -:   29:
+function _ZNK18AstronomicalObject11getDiameterEv called 2 returned 100% blocks executed 100%
+        2:   30:double AstronomicalObject::getDiameter() const {
+        2:   31:    return diameter;
+        2:   31-block  0
+        -:   32:}
+        -:   33:
+function _ZN18AstronomicalObject11setDiameterEd called 3 returned 100% blocks executed 100%
+        3:   34:void AstronomicalObject::setDiameter(double diameter_){
+        3:   35:    diameter=diameter_;
+        3:   36:}
+        -:   37:
+function _ZNK18AstronomicalObject19isVisibleToNakedEyeEv called 2 returned 100% blocks executed 100%
+        2:   38:bool AstronomicalObject::isVisibleToNakedEye() const {
+        2:   39:    return magnitude < 6;
+        2:   39-block  0
+        -:   40:}
+        -:   41:
+function _ZNK18AstronomicalObject17calculateDistanceEv called 2 returned 100% blocks executed 100%
+        2:   42:double AstronomicalObject::calculateDistance() const {
+        2:   43:    return pow(10, (absoluteMagnitude - magnitude + 5) / 5);
+        2:   43-block  0
+        -:   44:}
+        -:   45:
+function _ZNK18AstronomicalObject24calculateAngularDiameterEv called 1 returned 100% blocks executed 100%
+        1:   46:double AstronomicalObject::calculateAngularDiameter() const {
+        1:   47:    return atan((diameter / 2) / calculateDistance()) * 60;
+        1:   47-block  0
+call    0 returned 1
+        -:   48:}
+        -:   49:
+function _ZN18AstronomicalObject11setRiseTimeEiii called 5 returned 80% blocks executed 80%
+        5:   50:void AstronomicalObject::setRiseTime(int hours, int minutes, int seconds) {
+        5:   51:    if (!TimeValidator::isValidTime(hours, minutes, seconds))
+        5:   51-block  0
+call    0 returned 5
+branch  1 taken 1 (fallthrough)
+branch  2 taken 4
+        1:   52:        throw std::invalid_argument("Invalid time!");
+        1:   52-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   52-block  1
+call    4 returned 0
+    $$$$$:   52-block  2
+call    5 never executed
+        4:   53:    riseTime = MyTime(hours, minutes, seconds);
+        4:   53-block  0
+call    0 returned 4
+branch  1 taken 4 (fallthrough)
+branch  2 taken 0 (throw)
+        4:   54:}
+        4:   54-block  0
+        -:   55:
+function _ZN18AstronomicalObject10setSetTimeEiii called 5 returned 80% blocks executed 80%
+        5:   56:void AstronomicalObject::setSetTime(int hours, int minutes, int seconds) {
+        5:   57:    if (!TimeValidator::isValidTime(hours, minutes, seconds))
+        5:   57-block  0
+call    0 returned 5
+branch  1 taken 1 (fallthrough)
+branch  2 taken 4
+        1:   58:        throw std::invalid_argument("Invalid time!");
+        1:   58-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   58-block  1
+call    4 returned 0
+    $$$$$:   58-block  2
+call    5 never executed
+        4:   59:    setTime = MyTime(hours, minutes, seconds);
+        4:   59-block  0
+call    0 returned 4
+branch  1 taken 4 (fallthrough)
+branch  2 taken 0 (throw)
+        4:   60:}
+        4:   60-block  0
+        -:   61:
+function _ZNK18AstronomicalObject15isVisibleAtTimeERK6MyTime called 8 returned 100% blocks executed 100%
+        8:   62:bool AstronomicalObject::isVisibleAtTime(const MyTime& time) const {
+        8:   63:    if (riseTime < setTime) {
+        8:   63-block  0
+call    0 returned 8
+branch  1 taken 4 (fallthrough)
+branch  2 taken 4
+        4:   64:        return time >= riseTime && time <= setTime;
+        4:   64-block  0
+call    0 returned 4
+branch  1 taken 3 (fallthrough)
+branch  2 taken 1
+        3:   64-block  1
+call    3 returned 3
+branch  4 taken 3 (fallthrough)
+branch  5 taken 0
+        3:   64-block  2
+        1:   64-block  3
+        4:   64-block  4
+        -:   65:    } else {
+        4:   66:        return time >= riseTime || time <= setTime;
+        4:   66-block  0
+call    0 returned 4
+branch  1 taken 2 (fallthrough)
+branch  2 taken 2
+        2:   66-block  1
+call    3 returned 2
+branch  4 taken 1 (fallthrough)
+branch  5 taken 1
+        3:   66-block  2
+        1:   66-block  3
+        4:   66-block  4
+        -:   67:    }
+        -:   68:}

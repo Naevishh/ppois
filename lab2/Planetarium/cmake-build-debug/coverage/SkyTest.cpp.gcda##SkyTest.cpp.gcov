@@ -1,0 +1,4633 @@
+        -:    0:Source:C:/Users/aleks/CLionProjects/PlanetariumProjectCopy/Tests/SkyTest.cpp
+        -:    0:Graph:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Tests\CMakeFiles\Tests.dir\SkyTest.cpp.gcno
+        -:    0:Data:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Tests\CMakeFiles\Tests.dir\SkyTest.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include <gtest/gtest.h>
+        -:    2:#include "SkyPosition.h"
+        -:    3:#include "DegreeRangeError.h"
+        -:    4:#include "Enums.h"
+        -:    5:#include "MyTime.h"
+        -:    6:#include "AstronomicalObject.h"
+        -:    7:#include "Star.h"
+        -:    8:#include "Planet.h"
+        -:    9:
+        -:   10:class SkyTest : public ::testing::Test{
+function _ZN7SkyTest5SetUpEv called 26 returned 100% blocks executed 100%
+       26:   11:    void SetUp() override{
+        -:   12:
+       26:   13:    }
+function _ZN7SkyTest8TearDownEv called 26 returned 100% blocks executed 100%
+       26:   14:    void TearDown() override{
+        -:   15:
+       26:   16:    }
+        -:   17:};
+        -:   18:
+        4:   19:TEST_F(SkyTest, ConstructorAndGetters) {
+        1:   20:    SkyPosition pos(45.0, 30.0);
+       1*:   21:    EXPECT_DOUBLE_EQ(pos.getAzimuth(), 45.0);
+       1*:   22:    EXPECT_DOUBLE_EQ(pos.getAltitude(), 30.0);
+        1:   23:}
+------------------
+_ZN34SkyTest_ConstructorAndGetters_TestC1Ev:
+function _ZN34SkyTest_ConstructorAndGetters_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   19:TEST_F(SkyTest, ConstructorAndGetters) {
+        1:   19-block  0
+call    0 returned 1
+------------------
+_ZN34SkyTest_ConstructorAndGetters_TestD0Ev:
+function _ZN34SkyTest_ConstructorAndGetters_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   19:TEST_F(SkyTest, ConstructorAndGetters) {
+        1:   19-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN34SkyTest_ConstructorAndGetters_TestD1Ev:
+function _ZN34SkyTest_ConstructorAndGetters_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   19:TEST_F(SkyTest, ConstructorAndGetters) {
+        1:   19-block  0
+call    0 returned 1
+------------------
+_ZN34SkyTest_ConstructorAndGetters_Test8TestBodyEv:
+function _ZN34SkyTest_ConstructorAndGetters_Test8TestBodyEv called 1 returned 100% blocks executed 29%
+        1:   19:TEST_F(SkyTest, ConstructorAndGetters) {
+        1:   20:    SkyPosition pos(45.0, 30.0);
+        1:   20-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:   21:    EXPECT_DOUBLE_EQ(pos.getAzimuth(), 45.0);
+        1:   21-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   21-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   21-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   21-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   21-block  4
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   21-block  5
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   21-block  6
+call   19 never executed
+call   20 never executed
+        1:   21-block  7
+call   21 returned 1
+    $$$$$:   21-block  8
+call   22 never executed
+    $$$$$:   21-block  9
+    $$$$$:   21-block 10
+call   23 never executed
+    $$$$$:   21-block 11
+    $$$$$:   21-block 12
+call   24 never executed
+       1*:   22:    EXPECT_DOUBLE_EQ(pos.getAltitude(), 30.0);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   22-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   22-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   22-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   22-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   22-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   22-block  5
+call   19 never executed
+call   20 never executed
+        1:   22-block  6
+call   21 returned 1
+    $$$$$:   22-block  7
+call   22 never executed
+    $$$$$:   22-block  8
+    $$$$$:   22-block  9
+call   23 never executed
+    $$$$$:   22-block 10
+    $$$$$:   22-block 11
+call   24 never executed
+        1:   23:}
+------------------
+        -:   24:
+        4:   25:TEST_F(SkyTest, SettersValid) {
+        1:   26:    SkyPosition pos(0, 0);
+        1:   27:    pos.setAzimuth(180.0);
+        1:   28:    pos.setAltitude(45.0);
+       1*:   29:    EXPECT_DOUBLE_EQ(pos.getAzimuth(), 180.0);
+       1*:   30:    EXPECT_DOUBLE_EQ(pos.getAltitude(), 45.0);
+        1:   31:}
+------------------
+_ZN25SkyTest_SettersValid_TestC1Ev:
+function _ZN25SkyTest_SettersValid_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   25:TEST_F(SkyTest, SettersValid) {
+        1:   25-block  0
+call    0 returned 1
+------------------
+_ZN25SkyTest_SettersValid_TestD0Ev:
+function _ZN25SkyTest_SettersValid_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   25:TEST_F(SkyTest, SettersValid) {
+        1:   25-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN25SkyTest_SettersValid_TestD1Ev:
+function _ZN25SkyTest_SettersValid_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   25:TEST_F(SkyTest, SettersValid) {
+        1:   25-block  0
+call    0 returned 1
+------------------
+_ZN25SkyTest_SettersValid_Test8TestBodyEv:
+function _ZN25SkyTest_SettersValid_Test8TestBodyEv called 1 returned 100% blocks executed 32%
+        1:   25:TEST_F(SkyTest, SettersValid) {
+        1:   26:    SkyPosition pos(0, 0);
+        1:   26-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   27:    pos.setAzimuth(180.0);
+        1:   27-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   28:    pos.setAltitude(45.0);
+        1:   28-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:   29:    EXPECT_DOUBLE_EQ(pos.getAzimuth(), 180.0);
+        1:   29-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   29-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   29-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   29-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   29-block  4
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   29-block  5
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   29-block  6
+call   19 never executed
+call   20 never executed
+        1:   29-block  7
+call   21 returned 1
+    $$$$$:   29-block  8
+call   22 never executed
+    $$$$$:   29-block  9
+    $$$$$:   29-block 10
+call   23 never executed
+    $$$$$:   29-block 11
+    $$$$$:   29-block 12
+call   24 never executed
+       1*:   30:    EXPECT_DOUBLE_EQ(pos.getAltitude(), 45.0);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   30-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   30-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   30-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   30-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   30-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   30-block  5
+call   19 never executed
+call   20 never executed
+        1:   30-block  6
+call   21 returned 1
+    $$$$$:   30-block  7
+call   22 never executed
+    $$$$$:   30-block  8
+    $$$$$:   30-block  9
+call   23 never executed
+    $$$$$:   30-block 10
+    $$$$$:   30-block 11
+call   24 never executed
+        1:   31:}
+------------------
+        -:   32:
+        4:   33:TEST_F(SkyTest, SettersInvalid) {
+        1:   34:    SkyPosition pos(0, 0);
+       1*:   35:    EXPECT_THROW(pos.setAzimuth(400.0), DegreeRangeError);
+       1*:   36:    EXPECT_THROW(pos.setAltitude(100.0), DegreeRangeError);
+        1:   37:}
+------------------
+_ZN27SkyTest_SettersInvalid_TestC1Ev:
+function _ZN27SkyTest_SettersInvalid_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   33:TEST_F(SkyTest, SettersInvalid) {
+        1:   33-block  0
+call    0 returned 1
+------------------
+_ZN27SkyTest_SettersInvalid_TestD0Ev:
+function _ZN27SkyTest_SettersInvalid_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   33:TEST_F(SkyTest, SettersInvalid) {
+        1:   33-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN27SkyTest_SettersInvalid_TestD1Ev:
+function _ZN27SkyTest_SettersInvalid_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   33:TEST_F(SkyTest, SettersInvalid) {
+        1:   33-block  0
+call    0 returned 1
+------------------
+_ZN27SkyTest_SettersInvalid_Test8TestBodyEv:
+function _ZN27SkyTest_SettersInvalid_Test8TestBodyEv called 1 returned 100% blocks executed 24%
+        1:   33:TEST_F(SkyTest, SettersInvalid) {
+        1:   34:    SkyPosition pos(0, 0);
+        1:   34-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:   35:    EXPECT_THROW(pos.setAzimuth(400.0), DegreeRangeError);
+        1:   35-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:   35-block  1
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:   35-block  2
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:   35-block  3
+call    9 returned 1
+branch 10 taken 0 (fallthrough)
+branch 11 taken 1 (throw)
+        1:   35-block  4
+branch 12 taken 0 (fallthrough)
+branch 13 taken 1
+    %%%%%:   35-block  5
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   35-block  6
+    %%%%%:   35-block  7
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   35-block  8
+call   20 never executed
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:   35-block  9
+call   24 never executed
+branch 25 never executed (fallthrough)
+branch 26 never executed (throw)
+    %%%%%:   35-block 10
+call   27 never executed
+call   28 never executed
+        1:   35-block 11
+call   29 returned 1
+        1:   35-block 12
+branch 30 taken 1
+branch 31 taken 0
+branch 32 taken 0
+        1:   35-block 13
+call   33 returned 1
+call   34 returned 1
+branch 35 taken 1 (fallthrough)
+branch 36 taken 0 (throw)
+    $$$$$:   35-block 14
+call   37 never executed
+call   38 never executed
+branch 39 never executed (fallthrough)
+branch 40 never executed (throw)
+    $$$$$:   35-block 15
+call   41 never executed
+branch 42 never executed (fallthrough)
+branch 43 never executed (throw)
+    $$$$$:   35-block 16
+call   44 never executed
+branch 45 never executed (fallthrough)
+branch 46 never executed (throw)
+    $$$$$:   35-block 17
+call   47 never executed
+call   48 never executed
+branch 49 never executed (fallthrough)
+branch 50 never executed (throw)
+    $$$$$:   35-block 18
+call   51 never executed
+call   52 never executed
+branch 53 never executed (fallthrough)
+branch 54 never executed (throw)
+    $$$$$:   35-block 19
+call   55 never executed
+branch 56 never executed (fallthrough)
+branch 57 never executed (throw)
+    $$$$$:   35-block 20
+    $$$$$:   35-block 21
+call   58 never executed
+    $$$$$:   35-block 22
+call   59 never executed
+call   60 never executed
+branch 61 never executed (fallthrough)
+branch 62 never executed (throw)
+    $$$$$:   35-block 23
+    $$$$$:   35-block 24
+call   63 never executed
+branch 64 never executed (fallthrough)
+branch 65 never executed (throw)
+    $$$$$:   35-block 25
+call   66 never executed
+    $$$$$:   35-block 26
+    $$$$$:   35-block 27
+call   67 never executed
+    $$$$$:   35-block 28
+call   68 never executed
+    $$$$$:   35-block 29
+call   69 never executed
+    $$$$$:   35-block 30
+    $$$$$:   35-block 31
+call   70 never executed
+    $$$$$:   35-block 32
+    $$$$$:   35-block 33
+call   71 never executed
+       1*:   36:    EXPECT_THROW(pos.setAltitude(100.0), DegreeRangeError);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:   36-block  0
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:   36-block  1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:   36-block  2
+call    9 returned 1
+branch 10 taken 0 (fallthrough)
+branch 11 taken 1 (throw)
+        1:   36-block  3
+branch 12 taken 0 (fallthrough)
+branch 13 taken 1
+    %%%%%:   36-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   36-block  5
+    %%%%%:   36-block  6
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   36-block  7
+call   20 never executed
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:   36-block  8
+call   24 never executed
+branch 25 never executed (fallthrough)
+branch 26 never executed (throw)
+    %%%%%:   36-block  9
+call   27 never executed
+call   28 never executed
+        1:   36-block 10
+call   29 returned 1
+        1:   36-block 11
+branch 30 taken 1
+branch 31 taken 0
+branch 32 taken 0
+        1:   36-block 12
+call   33 returned 1
+call   34 returned 1
+branch 35 taken 1 (fallthrough)
+branch 36 taken 0 (throw)
+    $$$$$:   36-block 13
+call   37 never executed
+call   38 never executed
+branch 39 never executed (fallthrough)
+branch 40 never executed (throw)
+    $$$$$:   36-block 14
+call   41 never executed
+branch 42 never executed (fallthrough)
+branch 43 never executed (throw)
+    $$$$$:   36-block 15
+call   44 never executed
+branch 45 never executed (fallthrough)
+branch 46 never executed (throw)
+    $$$$$:   36-block 16
+call   47 never executed
+call   48 never executed
+branch 49 never executed (fallthrough)
+branch 50 never executed (throw)
+    $$$$$:   36-block 17
+call   51 never executed
+call   52 never executed
+branch 53 never executed (fallthrough)
+branch 54 never executed (throw)
+    $$$$$:   36-block 18
+call   55 never executed
+branch 56 never executed (fallthrough)
+branch 57 never executed (throw)
+    $$$$$:   36-block 19
+    $$$$$:   36-block 20
+call   58 never executed
+    $$$$$:   36-block 21
+call   59 never executed
+call   60 never executed
+branch 61 never executed (fallthrough)
+branch 62 never executed (throw)
+    $$$$$:   36-block 22
+    $$$$$:   36-block 23
+call   63 never executed
+branch 64 never executed (fallthrough)
+branch 65 never executed (throw)
+    $$$$$:   36-block 24
+call   66 never executed
+    $$$$$:   36-block 25
+    $$$$$:   36-block 26
+call   67 never executed
+    $$$$$:   36-block 27
+call   68 never executed
+    $$$$$:   36-block 28
+call   69 never executed
+    $$$$$:   36-block 29
+    $$$$$:   36-block 30
+call   70 never executed
+    $$$$$:   36-block 31
+    $$$$$:   36-block 32
+call   71 never executed
+        1:   37:}
+------------------
+        -:   38:
+        4:   39:TEST_F(SkyTest, IsAboveHorizon) {
+        1:   40:    SkyPosition pos1(0, 10.0);
+        1:   41:    SkyPosition pos2(0, -10.0);
+       1*:   42:    EXPECT_TRUE(pos1.isAboveHorizon());
+       1*:   43:    EXPECT_FALSE(pos2.isAboveHorizon());
+        1:   44:}
+------------------
+_ZN27SkyTest_IsAboveHorizon_TestC1Ev:
+function _ZN27SkyTest_IsAboveHorizon_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   39:TEST_F(SkyTest, IsAboveHorizon) {
+        1:   39-block  0
+call    0 returned 1
+------------------
+_ZN27SkyTest_IsAboveHorizon_TestD0Ev:
+function _ZN27SkyTest_IsAboveHorizon_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   39:TEST_F(SkyTest, IsAboveHorizon) {
+        1:   39-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN27SkyTest_IsAboveHorizon_TestD1Ev:
+function _ZN27SkyTest_IsAboveHorizon_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   39:TEST_F(SkyTest, IsAboveHorizon) {
+        1:   39-block  0
+call    0 returned 1
+------------------
+_ZN27SkyTest_IsAboveHorizon_Test8TestBodyEv:
+function _ZN27SkyTest_IsAboveHorizon_Test8TestBodyEv called 1 returned 100% blocks executed 24%
+        1:   39:TEST_F(SkyTest, IsAboveHorizon) {
+        1:   40:    SkyPosition pos1(0, 10.0);
+        1:   40-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   41:    SkyPosition pos2(0, -10.0);
+        1:   41-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:   42:    EXPECT_TRUE(pos1.isAboveHorizon());
+        1:   42-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   42-block  1
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   42-block  2
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   42-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   42-block  4
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   42-block  5
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   42-block  6
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:   42-block  7
+call   23 returned 1
+    $$$$$:   42-block  8
+    $$$$$:   42-block  9
+call   24 never executed
+    $$$$$:   42-block 10
+call   25 never executed
+    $$$$$:   42-block 11
+    $$$$$:   42-block 12
+    $$$$$:   42-block 13
+call   26 never executed
+    $$$$$:   42-block 14
+    $$$$$:   42-block 15
+call   27 never executed
+       1*:   43:    EXPECT_FALSE(pos2.isAboveHorizon());
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   43-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   43-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   43-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   43-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   43-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   43-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:   43-block  6
+call   23 returned 1
+    $$$$$:   43-block  7
+    $$$$$:   43-block  8
+call   24 never executed
+    $$$$$:   43-block  9
+call   25 never executed
+    $$$$$:   43-block 10
+    $$$$$:   43-block 11
+    $$$$$:   43-block 12
+call   26 never executed
+    $$$$$:   43-block 13
+    $$$$$:   43-block 14
+call   27 never executed
+        1:   44:}
+------------------
+        -:   45:
+        4:   46:TEST_F(SkyTest, ToString) {
+        1:   47:    SkyPosition pos(123.456, -45.678);
+        1:   48:    std::string result = pos.toString();
+       1*:   49:    EXPECT_TRUE(result.find("123.456") != std::string::npos);
+       1*:   50:    EXPECT_TRUE(result.find("-45.678") != std::string::npos);
+        1:   51:}
+------------------
+_ZN21SkyTest_ToString_TestC1Ev:
+function _ZN21SkyTest_ToString_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   46:TEST_F(SkyTest, ToString) {
+        1:   46-block  0
+call    0 returned 1
+------------------
+_ZN21SkyTest_ToString_TestD0Ev:
+function _ZN21SkyTest_ToString_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   46:TEST_F(SkyTest, ToString) {
+        1:   46-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN21SkyTest_ToString_TestD1Ev:
+function _ZN21SkyTest_ToString_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   46:TEST_F(SkyTest, ToString) {
+        1:   46-block  0
+call    0 returned 1
+------------------
+_ZN21SkyTest_ToString_Test8TestBodyEv:
+function _ZN21SkyTest_ToString_Test8TestBodyEv called 1 returned 100% blocks executed 25%
+        1:   46:TEST_F(SkyTest, ToString) {
+        1:   47:    SkyPosition pos(123.456, -45.678);
+        1:   47-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   48:    std::string result = pos.toString();
+        1:   48-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:   49:    EXPECT_TRUE(result.find("123.456") != std::string::npos);
+        1:   49-block  0
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   49-block  1
+call    5 never executed
+branch  6 never executed (fallthrough)
+branch  7 never executed (throw)
+    %%%%%:   49-block  2
+call    8 never executed
+branch  9 never executed (fallthrough)
+branch 10 never executed (throw)
+    %%%%%:   49-block  3
+call   11 never executed
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:   49-block  4
+call   15 never executed
+branch 16 never executed (fallthrough)
+branch 17 never executed (throw)
+    %%%%%:   49-block  5
+call   18 never executed
+call   19 never executed
+call   20 never executed
+        1:   49-block  6
+call   21 returned 1
+    $$$$$:   49-block  7
+call   22 never executed
+    $$$$$:   49-block  8
+call   23 never executed
+    $$$$$:   49-block  9
+    $$$$$:   49-block 10
+    $$$$$:   49-block 11
+call   24 never executed
+    $$$$$:   49-block 12
+    $$$$$:   49-block 13
+call   25 never executed
+       1*:   50:    EXPECT_TRUE(result.find("-45.678") != std::string::npos);
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   50-block  0
+call    5 never executed
+branch  6 never executed (fallthrough)
+branch  7 never executed (throw)
+    %%%%%:   50-block  1
+call    8 never executed
+branch  9 never executed (fallthrough)
+branch 10 never executed (throw)
+    %%%%%:   50-block  2
+call   11 never executed
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:   50-block  3
+call   15 never executed
+branch 16 never executed (fallthrough)
+branch 17 never executed (throw)
+    %%%%%:   50-block  4
+call   18 never executed
+call   19 never executed
+call   20 never executed
+        1:   50-block  5
+call   21 returned 1
+    $$$$$:   50-block  6
+call   22 never executed
+    $$$$$:   50-block  7
+call   23 never executed
+    $$$$$:   50-block  8
+    $$$$$:   50-block  9
+    $$$$$:   50-block 10
+call   24 never executed
+    $$$$$:   50-block 11
+    $$$$$:   50-block 12
+call   25 never executed
+        1:   51:}
+call    0 returned 1
+    $$$$$:   51-block  0
+call    1 never executed
+------------------
+        -:   52:
+        4:   53:TEST_F(SkyTest, ConstructorAndGettersObject) {
+        1:   54:    AstronomicalObject obj("Test", 5.0, 2.0, 90.0, 45.0, Enums::ObjectType::STAR);
+       1*:   55:    EXPECT_EQ(obj.getName(), "Test");
+       1*:   56:    EXPECT_DOUBLE_EQ(obj.getMagnitude(), 5.0);
+       1*:   57:    EXPECT_DOUBLE_EQ(obj.getAbsoluteMagnitude(), 2.0);
+       1*:   58:    EXPECT_EQ(obj.getType(), Enums::ObjectType::STAR);
+        1:   59:}
+------------------
+_ZN40SkyTest_ConstructorAndGettersObject_TestC1Ev:
+function _ZN40SkyTest_ConstructorAndGettersObject_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   53:TEST_F(SkyTest, ConstructorAndGettersObject) {
+        1:   53-block  0
+call    0 returned 1
+------------------
+_ZN40SkyTest_ConstructorAndGettersObject_TestD0Ev:
+function _ZN40SkyTest_ConstructorAndGettersObject_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   53:TEST_F(SkyTest, ConstructorAndGettersObject) {
+        1:   53-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN40SkyTest_ConstructorAndGettersObject_TestD1Ev:
+function _ZN40SkyTest_ConstructorAndGettersObject_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   53:TEST_F(SkyTest, ConstructorAndGettersObject) {
+        1:   53-block  0
+call    0 returned 1
+------------------
+_ZN40SkyTest_ConstructorAndGettersObject_Test8TestBodyEv:
+function _ZN40SkyTest_ConstructorAndGettersObject_Test8TestBodyEv called 1 returned 100% blocks executed 28%
+        1:   53:TEST_F(SkyTest, ConstructorAndGettersObject) {
+        1:   53-block  0
+        1:   54:    AstronomicalObject obj("Test", 5.0, 2.0, 90.0, 45.0, Enums::ObjectType::STAR);
+        1:   54-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   54-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   54-block  2
+call    6 returned 1
+    $$$$$:   54-block  3
+call    7 never executed
+    $$$$$:   54-block  4
+    $$$$$:   54-block  5
+       1*:   55:    EXPECT_EQ(obj.getName(), "Test");
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   55-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   55-block  1
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:   55-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   55-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   55-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   55-block  5
+call   20 never executed
+call   21 never executed
+        1:   55-block  6
+call   22 returned 1
+    $$$$$:   55-block  7
+call   23 never executed
+    $$$$$:   55-block  8
+    $$$$$:   55-block  9
+call   24 never executed
+    $$$$$:   55-block 10
+    $$$$$:   55-block 11
+call   25 never executed
+    $$$$$:   55-block 12
+    $$$$$:   55-block 13
+call   26 never executed
+       1*:   56:    EXPECT_DOUBLE_EQ(obj.getMagnitude(), 5.0);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   56-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   56-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   56-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   56-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   56-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   56-block  5
+call   19 never executed
+call   20 never executed
+        1:   56-block  6
+call   21 returned 1
+    $$$$$:   56-block  7
+call   22 never executed
+    $$$$$:   56-block  8
+    $$$$$:   56-block  9
+call   23 never executed
+    $$$$$:   56-block 10
+    $$$$$:   56-block 11
+call   24 never executed
+       1*:   57:    EXPECT_DOUBLE_EQ(obj.getAbsoluteMagnitude(), 2.0);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   57-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   57-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   57-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   57-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   57-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   57-block  5
+call   19 never executed
+call   20 never executed
+        1:   57-block  6
+call   21 returned 1
+    $$$$$:   57-block  7
+call   22 never executed
+    $$$$$:   57-block  8
+    $$$$$:   57-block  9
+call   23 never executed
+    $$$$$:   57-block 10
+    $$$$$:   57-block 11
+call   24 never executed
+       1*:   58:    EXPECT_EQ(obj.getType(), Enums::ObjectType::STAR);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   58-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   58-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   58-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   58-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   58-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   58-block  5
+call   19 never executed
+call   20 never executed
+        1:   58-block  6
+call   21 returned 1
+    $$$$$:   58-block  7
+    $$$$$:   58-block  8
+    $$$$$:   58-block  9
+call   22 never executed
+    $$$$$:   58-block 10
+    $$$$$:   58-block 11
+call   23 never executed
+    $$$$$:   58-block 12
+    $$$$$:   58-block 13
+call   24 never executed
+        1:   59:}
+call    0 returned 1
+    $$$$$:   59-block  0
+call    1 never executed
+------------------
+        -:   60:
+        4:   61:TEST_F(SkyTest, Visibility) {
+        2:   62:    AstronomicalObject visible("Visible", 4.0, 1.0, 0, 0, Enums::ObjectType::STAR);
+        1:   63:    AstronomicalObject invisible("Invisible", 7.0, 1.0, 0, 0, Enums::ObjectType::STAR);
+       1*:   64:    EXPECT_TRUE(visible.isVisibleToNakedEye());
+       1*:   65:    EXPECT_FALSE(invisible.isVisibleToNakedEye());
+        1:   66:}
+------------------
+_ZN23SkyTest_Visibility_TestC1Ev:
+function _ZN23SkyTest_Visibility_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   61:TEST_F(SkyTest, Visibility) {
+        1:   61-block  0
+call    0 returned 1
+------------------
+_ZN23SkyTest_Visibility_TestD0Ev:
+function _ZN23SkyTest_Visibility_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   61:TEST_F(SkyTest, Visibility) {
+        1:   61-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN23SkyTest_Visibility_TestD1Ev:
+function _ZN23SkyTest_Visibility_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   61:TEST_F(SkyTest, Visibility) {
+        1:   61-block  0
+call    0 returned 1
+------------------
+_ZN23SkyTest_Visibility_Test8TestBodyEv:
+function _ZN23SkyTest_Visibility_Test8TestBodyEv called 1 returned 100% blocks executed 30%
+        1:   61:TEST_F(SkyTest, Visibility) {
+        1:   61-block  0
+        2:   62:    AstronomicalObject visible("Visible", 4.0, 1.0, 0, 0, Enums::ObjectType::STAR);
+        1:   62-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   62-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   62-block  2
+call    6 returned 1
+    $$$$$:   62-block  3
+call    7 never executed
+    $$$$$:   62-block  4
+    $$$$$:   62-block  5
+        1:   63:    AstronomicalObject invisible("Invisible", 7.0, 1.0, 0, 0, Enums::ObjectType::STAR);
+        1:   63-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   63-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   63-block  2
+call    6 returned 1
+    $$$$$:   63-block  3
+call    7 never executed
+    $$$$$:   63-block  4
+    $$$$$:   63-block  5
+       1*:   64:    EXPECT_TRUE(visible.isVisibleToNakedEye());
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   64-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   64-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   64-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   64-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   64-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   64-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:   64-block  6
+call   23 returned 1
+    $$$$$:   64-block  7
+    $$$$$:   64-block  8
+call   24 never executed
+    $$$$$:   64-block  9
+call   25 never executed
+    $$$$$:   64-block 10
+    $$$$$:   64-block 11
+    $$$$$:   64-block 12
+call   26 never executed
+    $$$$$:   64-block 13
+    $$$$$:   64-block 14
+call   27 never executed
+       1*:   65:    EXPECT_FALSE(invisible.isVisibleToNakedEye());
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   65-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   65-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   65-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   65-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   65-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   65-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:   65-block  6
+call   23 returned 1
+    $$$$$:   65-block  7
+    $$$$$:   65-block  8
+call   24 never executed
+    $$$$$:   65-block  9
+call   25 never executed
+    $$$$$:   65-block 10
+    $$$$$:   65-block 11
+    $$$$$:   65-block 12
+call   26 never executed
+    $$$$$:   65-block 13
+    $$$$$:   65-block 14
+call   27 never executed
+        1:   66:}
+call    0 returned 1
+call    1 returned 1
+    $$$$$:   66-block  0
+call    2 never executed
+    $$$$$:   66-block  1
+call    3 never executed
+------------------
+        -:   67:
+        4:   68:TEST_F(SkyTest, CalculateDistance) {
+        1:   69:    AstronomicalObject obj("Test", 10.0, 5.0, 0, 0, Enums::ObjectType::STAR);
+        1:   70:    double distance = obj.calculateDistance();
+       1*:   71:    EXPECT_DOUBLE_EQ(distance, 1);
+        1:   72:}
+------------------
+_ZN30SkyTest_CalculateDistance_TestC1Ev:
+function _ZN30SkyTest_CalculateDistance_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   68:TEST_F(SkyTest, CalculateDistance) {
+        1:   68-block  0
+call    0 returned 1
+------------------
+_ZN30SkyTest_CalculateDistance_TestD0Ev:
+function _ZN30SkyTest_CalculateDistance_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   68:TEST_F(SkyTest, CalculateDistance) {
+        1:   68-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN30SkyTest_CalculateDistance_TestD1Ev:
+function _ZN30SkyTest_CalculateDistance_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   68:TEST_F(SkyTest, CalculateDistance) {
+        1:   68-block  0
+call    0 returned 1
+------------------
+_ZN30SkyTest_CalculateDistance_Test8TestBodyEv:
+function _ZN30SkyTest_CalculateDistance_Test8TestBodyEv called 1 returned 100% blocks executed 37%
+        1:   68:TEST_F(SkyTest, CalculateDistance) {
+        1:   68-block  0
+        1:   69:    AstronomicalObject obj("Test", 10.0, 5.0, 0, 0, Enums::ObjectType::STAR);
+        1:   69-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   69-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   69-block  2
+call    6 returned 1
+    $$$$$:   69-block  3
+call    7 never executed
+    $$$$$:   69-block  4
+    $$$$$:   69-block  5
+        1:   70:    double distance = obj.calculateDistance();
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:   71:    EXPECT_DOUBLE_EQ(distance, 1);
+        1:   71-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   71-block  1
+call    3 returned 1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:   71-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:   71-block  3
+call    9 never executed
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   71-block  4
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   71-block  5
+call   16 never executed
+call   17 never executed
+        1:   71-block  6
+call   18 returned 1
+    $$$$$:   71-block  7
+call   19 never executed
+    $$$$$:   71-block  8
+    $$$$$:   71-block  9
+call   20 never executed
+    $$$$$:   71-block 10
+    $$$$$:   71-block 11
+call   21 never executed
+        1:   72:}
+call    0 returned 1
+    $$$$$:   72-block  0
+call    1 never executed
+------------------
+        -:   73:
+        4:   74:TEST_F(SkyTest, TimeVisibility) {
+        1:   75:    AstronomicalObject obj("Test", 5.0, 2.0, 0, 0, Enums::ObjectType::STAR);
+        1:   76:    obj.setRiseTime(6, 0, 0);
+        1:   77:    obj.setSetTime(18, 0, 0);
+        -:   78:
+       1*:   79:    EXPECT_TRUE(obj.isVisibleAtTime(MyTime(12, 0, 0)));
+       1*:   80:    EXPECT_FALSE(obj.isVisibleAtTime(MyTime(3, 0, 0)));
+       1*:   81:    EXPECT_TRUE(obj.isVisibleAtTime(MyTime(6, 0, 0)));
+       1*:   82:    EXPECT_TRUE(obj.isVisibleAtTime(MyTime(18, 0, 0)));
+        1:   83:}
+------------------
+_ZN27SkyTest_TimeVisibility_TestC1Ev:
+function _ZN27SkyTest_TimeVisibility_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   74:TEST_F(SkyTest, TimeVisibility) {
+        1:   74-block  0
+call    0 returned 1
+------------------
+_ZN27SkyTest_TimeVisibility_TestD0Ev:
+function _ZN27SkyTest_TimeVisibility_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   74:TEST_F(SkyTest, TimeVisibility) {
+        1:   74-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN27SkyTest_TimeVisibility_TestD1Ev:
+function _ZN27SkyTest_TimeVisibility_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   74:TEST_F(SkyTest, TimeVisibility) {
+        1:   74-block  0
+call    0 returned 1
+------------------
+_ZN27SkyTest_TimeVisibility_Test8TestBodyEv:
+function _ZN27SkyTest_TimeVisibility_Test8TestBodyEv called 1 returned 100% blocks executed 26%
+        1:   74:TEST_F(SkyTest, TimeVisibility) {
+        1:   74-block  0
+        1:   75:    AstronomicalObject obj("Test", 5.0, 2.0, 0, 0, Enums::ObjectType::STAR);
+        1:   75-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   75-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   75-block  2
+call    6 returned 1
+    $$$$$:   75-block  3
+call    7 never executed
+    $$$$$:   75-block  4
+    $$$$$:   75-block  5
+        1:   76:    obj.setRiseTime(6, 0, 0);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   77:    obj.setSetTime(18, 0, 0);
+        1:   77-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   78:
+       1*:   79:    EXPECT_TRUE(obj.isVisibleAtTime(MyTime(12, 0, 0)));
+        1:   79-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   79-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   79-block  2
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:   79-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   79-block  4
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   79-block  5
+call   16 never executed
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   79-block  6
+call   20 never executed
+branch 21 never executed (fallthrough)
+branch 22 never executed (throw)
+    %%%%%:   79-block  7
+call   23 never executed
+call   24 never executed
+call   25 never executed
+        1:   79-block  8
+call   26 returned 1
+    $$$$$:   79-block  9
+    $$$$$:   79-block 10
+    $$$$$:   79-block 11
+call   27 never executed
+    $$$$$:   79-block 12
+call   28 never executed
+    $$$$$:   79-block 13
+    $$$$$:   79-block 14
+    $$$$$:   79-block 15
+call   29 never executed
+    $$$$$:   79-block 16
+    $$$$$:   79-block 17
+call   30 never executed
+       1*:   80:    EXPECT_FALSE(obj.isVisibleAtTime(MyTime(3, 0, 0)));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   80-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   80-block  1
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:   80-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   80-block  3
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   80-block  4
+call   16 never executed
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   80-block  5
+call   20 never executed
+branch 21 never executed (fallthrough)
+branch 22 never executed (throw)
+    %%%%%:   80-block  6
+call   23 never executed
+call   24 never executed
+call   25 never executed
+        1:   80-block  7
+call   26 returned 1
+    $$$$$:   80-block  8
+    $$$$$:   80-block  9
+    $$$$$:   80-block 10
+call   27 never executed
+    $$$$$:   80-block 11
+call   28 never executed
+    $$$$$:   80-block 12
+    $$$$$:   80-block 13
+    $$$$$:   80-block 14
+call   29 never executed
+    $$$$$:   80-block 15
+    $$$$$:   80-block 16
+call   30 never executed
+       1*:   81:    EXPECT_TRUE(obj.isVisibleAtTime(MyTime(6, 0, 0)));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   81-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   81-block  1
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:   81-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   81-block  3
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   81-block  4
+call   16 never executed
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   81-block  5
+call   20 never executed
+branch 21 never executed (fallthrough)
+branch 22 never executed (throw)
+    %%%%%:   81-block  6
+call   23 never executed
+call   24 never executed
+call   25 never executed
+        1:   81-block  7
+call   26 returned 1
+    $$$$$:   81-block  8
+    $$$$$:   81-block  9
+    $$$$$:   81-block 10
+call   27 never executed
+    $$$$$:   81-block 11
+call   28 never executed
+    $$$$$:   81-block 12
+    $$$$$:   81-block 13
+    $$$$$:   81-block 14
+call   29 never executed
+    $$$$$:   81-block 15
+    $$$$$:   81-block 16
+call   30 never executed
+       1*:   82:    EXPECT_TRUE(obj.isVisibleAtTime(MyTime(18, 0, 0)));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   82-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   82-block  1
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:   82-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   82-block  3
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   82-block  4
+call   16 never executed
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   82-block  5
+call   20 never executed
+branch 21 never executed (fallthrough)
+branch 22 never executed (throw)
+    %%%%%:   82-block  6
+call   23 never executed
+call   24 never executed
+call   25 never executed
+        1:   82-block  7
+call   26 returned 1
+    $$$$$:   82-block  8
+    $$$$$:   82-block  9
+    $$$$$:   82-block 10
+call   27 never executed
+    $$$$$:   82-block 11
+call   28 never executed
+    $$$$$:   82-block 12
+    $$$$$:   82-block 13
+    $$$$$:   82-block 14
+call   29 never executed
+    $$$$$:   82-block 15
+    $$$$$:   82-block 16
+call   30 never executed
+        1:   83:}
+call    0 returned 1
+    $$$$$:   83-block  0
+call    1 never executed
+------------------
+        -:   84:
+        4:   85:TEST_F(SkyTest, TimeValidation) {
+        1:   86:    AstronomicalObject obj("Test", 5.0, 2.0, 0, 0, Enums::ObjectType::STAR);
+       1*:   87:    EXPECT_THROW(obj.setRiseTime(25, 0, 0), std::invalid_argument);
+       1*:   88:    EXPECT_THROW(obj.setSetTime(12, 70, 0), std::invalid_argument);
+        1:   89:}
+------------------
+_ZN27SkyTest_TimeValidation_TestC1Ev:
+function _ZN27SkyTest_TimeValidation_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   85:TEST_F(SkyTest, TimeValidation) {
+        1:   85-block  0
+call    0 returned 1
+------------------
+_ZN27SkyTest_TimeValidation_TestD0Ev:
+function _ZN27SkyTest_TimeValidation_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   85:TEST_F(SkyTest, TimeValidation) {
+        1:   85-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN27SkyTest_TimeValidation_TestD1Ev:
+function _ZN27SkyTest_TimeValidation_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   85:TEST_F(SkyTest, TimeValidation) {
+        1:   85-block  0
+call    0 returned 1
+------------------
+_ZN27SkyTest_TimeValidation_Test8TestBodyEv:
+function _ZN27SkyTest_TimeValidation_Test8TestBodyEv called 1 returned 100% blocks executed 26%
+        1:   85:TEST_F(SkyTest, TimeValidation) {
+        1:   85-block  0
+        1:   86:    AstronomicalObject obj("Test", 5.0, 2.0, 0, 0, Enums::ObjectType::STAR);
+        1:   86-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   86-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   86-block  2
+call    6 returned 1
+    $$$$$:   86-block  3
+call    7 never executed
+    $$$$$:   86-block  4
+    $$$$$:   86-block  5
+       1*:   87:    EXPECT_THROW(obj.setRiseTime(25, 0, 0), std::invalid_argument);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:   87-block  0
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:   87-block  1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:   87-block  2
+call    9 returned 1
+branch 10 taken 0 (fallthrough)
+branch 11 taken 1 (throw)
+        1:   87-block  3
+branch 12 taken 0 (fallthrough)
+branch 13 taken 1
+    %%%%%:   87-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   87-block  5
+    %%%%%:   87-block  6
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   87-block  7
+call   20 never executed
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:   87-block  8
+call   24 never executed
+branch 25 never executed (fallthrough)
+branch 26 never executed (throw)
+    %%%%%:   87-block  9
+call   27 never executed
+call   28 never executed
+        1:   87-block 10
+call   29 returned 1
+        1:   87-block 11
+branch 30 taken 1
+branch 31 taken 0
+branch 32 taken 0
+        1:   87-block 12
+call   33 returned 1
+call   34 returned 1
+    $$$$$:   87-block 13
+call   35 never executed
+call   36 never executed
+branch 37 never executed (fallthrough)
+branch 38 never executed (throw)
+    $$$$$:   87-block 14
+call   39 never executed
+branch 40 never executed (fallthrough)
+branch 41 never executed (throw)
+    $$$$$:   87-block 15
+call   42 never executed
+branch 43 never executed (fallthrough)
+branch 44 never executed (throw)
+    $$$$$:   87-block 16
+call   45 never executed
+call   46 never executed
+branch 47 never executed (fallthrough)
+branch 48 never executed (throw)
+    $$$$$:   87-block 17
+call   49 never executed
+call   50 never executed
+branch 51 never executed (fallthrough)
+branch 52 never executed (throw)
+    $$$$$:   87-block 18
+call   53 never executed
+branch 54 never executed (fallthrough)
+branch 55 never executed (throw)
+    $$$$$:   87-block 19
+    $$$$$:   87-block 20
+call   56 never executed
+    $$$$$:   87-block 21
+call   57 never executed
+call   58 never executed
+branch 59 never executed (fallthrough)
+branch 60 never executed (throw)
+    $$$$$:   87-block 22
+    $$$$$:   87-block 23
+call   61 never executed
+branch 62 never executed (fallthrough)
+branch 63 never executed (throw)
+    $$$$$:   87-block 24
+call   64 never executed
+    $$$$$:   87-block 25
+    $$$$$:   87-block 26
+call   65 never executed
+    $$$$$:   87-block 27
+call   66 never executed
+    $$$$$:   87-block 28
+call   67 never executed
+    $$$$$:   87-block 29
+    $$$$$:   87-block 30
+call   68 never executed
+    $$$$$:   87-block 31
+    $$$$$:   87-block 32
+call   69 never executed
+       1*:   88:    EXPECT_THROW(obj.setSetTime(12, 70, 0), std::invalid_argument);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:   88-block  0
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:   88-block  1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:   88-block  2
+call    9 returned 1
+branch 10 taken 0 (fallthrough)
+branch 11 taken 1 (throw)
+        1:   88-block  3
+branch 12 taken 0 (fallthrough)
+branch 13 taken 1
+    %%%%%:   88-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   88-block  5
+    %%%%%:   88-block  6
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   88-block  7
+call   20 never executed
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:   88-block  8
+call   24 never executed
+branch 25 never executed (fallthrough)
+branch 26 never executed (throw)
+    %%%%%:   88-block  9
+call   27 never executed
+call   28 never executed
+        1:   88-block 10
+call   29 returned 1
+        1:   88-block 11
+branch 30 taken 1
+branch 31 taken 0
+branch 32 taken 0
+        1:   88-block 12
+call   33 returned 1
+call   34 returned 1
+    $$$$$:   88-block 13
+call   35 never executed
+call   36 never executed
+branch 37 never executed (fallthrough)
+branch 38 never executed (throw)
+    $$$$$:   88-block 14
+call   39 never executed
+branch 40 never executed (fallthrough)
+branch 41 never executed (throw)
+    $$$$$:   88-block 15
+call   42 never executed
+branch 43 never executed (fallthrough)
+branch 44 never executed (throw)
+    $$$$$:   88-block 16
+call   45 never executed
+call   46 never executed
+branch 47 never executed (fallthrough)
+branch 48 never executed (throw)
+    $$$$$:   88-block 17
+call   49 never executed
+call   50 never executed
+branch 51 never executed (fallthrough)
+branch 52 never executed (throw)
+    $$$$$:   88-block 18
+call   53 never executed
+branch 54 never executed (fallthrough)
+branch 55 never executed (throw)
+    $$$$$:   88-block 19
+    $$$$$:   88-block 20
+call   56 never executed
+    $$$$$:   88-block 21
+call   57 never executed
+call   58 never executed
+branch 59 never executed (fallthrough)
+branch 60 never executed (throw)
+    $$$$$:   88-block 22
+    $$$$$:   88-block 23
+call   61 never executed
+branch 62 never executed (fallthrough)
+branch 63 never executed (throw)
+    $$$$$:   88-block 24
+call   64 never executed
+    $$$$$:   88-block 25
+    $$$$$:   88-block 26
+call   65 never executed
+    $$$$$:   88-block 27
+call   66 never executed
+    $$$$$:   88-block 28
+call   67 never executed
+    $$$$$:   88-block 29
+    $$$$$:   88-block 30
+call   68 never executed
+    $$$$$:   88-block 31
+    $$$$$:   88-block 32
+call   69 never executed
+        1:   89:}
+call    0 returned 1
+    $$$$$:   89-block  0
+call    1 never executed
+------------------
+        -:   90:
+        4:   91:TEST_F(SkyTest, ConstructorAndGettersStar) {
+        1:   92:    Star star("Sun", -26.74, 4.83, 180.0, 45.0, Enums::SpectralClass::G, false, 1.0);
+       1*:   93:    EXPECT_EQ(star.getName(), "Sun");
+       1*:   94:    EXPECT_EQ(star.getSpectralClass(), Enums::SpectralClass::G);
+       1*:   95:    EXPECT_FALSE(star.getIsMultiple());
+       1*:   96:    EXPECT_DOUBLE_EQ(star.getMass(), 1.0);
+        1:   97:}
+------------------
+_ZN38SkyTest_ConstructorAndGettersStar_TestC1Ev:
+function _ZN38SkyTest_ConstructorAndGettersStar_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   91:TEST_F(SkyTest, ConstructorAndGettersStar) {
+        1:   91-block  0
+call    0 returned 1
+------------------
+_ZN38SkyTest_ConstructorAndGettersStar_TestD0Ev:
+function _ZN38SkyTest_ConstructorAndGettersStar_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   91:TEST_F(SkyTest, ConstructorAndGettersStar) {
+        1:   91-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN38SkyTest_ConstructorAndGettersStar_TestD1Ev:
+function _ZN38SkyTest_ConstructorAndGettersStar_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   91:TEST_F(SkyTest, ConstructorAndGettersStar) {
+        1:   91-block  0
+call    0 returned 1
+------------------
+_ZN38SkyTest_ConstructorAndGettersStar_Test8TestBodyEv:
+function _ZN38SkyTest_ConstructorAndGettersStar_Test8TestBodyEv called 1 returned 100% blocks executed 27%
+        1:   91:TEST_F(SkyTest, ConstructorAndGettersStar) {
+        1:   91-block  0
+        1:   92:    Star star("Sun", -26.74, 4.83, 180.0, 45.0, Enums::SpectralClass::G, false, 1.0);
+        1:   92-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   92-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   92-block  2
+call    6 returned 1
+    $$$$$:   92-block  3
+call    7 never executed
+    $$$$$:   92-block  4
+    $$$$$:   92-block  5
+       1*:   93:    EXPECT_EQ(star.getName(), "Sun");
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   93-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   93-block  1
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:   93-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   93-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   93-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   93-block  5
+call   20 never executed
+call   21 never executed
+        1:   93-block  6
+call   22 returned 1
+    $$$$$:   93-block  7
+call   23 never executed
+    $$$$$:   93-block  8
+    $$$$$:   93-block  9
+call   24 never executed
+    $$$$$:   93-block 10
+    $$$$$:   93-block 11
+call   25 never executed
+    $$$$$:   93-block 12
+    $$$$$:   93-block 13
+call   26 never executed
+       1*:   94:    EXPECT_EQ(star.getSpectralClass(), Enums::SpectralClass::G);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   94-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   94-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   94-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   94-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   94-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   94-block  5
+call   19 never executed
+call   20 never executed
+        1:   94-block  6
+call   21 returned 1
+    $$$$$:   94-block  7
+    $$$$$:   94-block  8
+    $$$$$:   94-block  9
+call   22 never executed
+    $$$$$:   94-block 10
+    $$$$$:   94-block 11
+call   23 never executed
+    $$$$$:   94-block 12
+    $$$$$:   94-block 13
+call   24 never executed
+       1*:   95:    EXPECT_FALSE(star.getIsMultiple());
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   95-block  0
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   95-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   95-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   95-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   95-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   95-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:   95-block  6
+call   23 returned 1
+    $$$$$:   95-block  7
+    $$$$$:   95-block  8
+call   24 never executed
+    $$$$$:   95-block  9
+call   25 never executed
+    $$$$$:   95-block 10
+    $$$$$:   95-block 11
+    $$$$$:   95-block 12
+call   26 never executed
+    $$$$$:   95-block 13
+    $$$$$:   95-block 14
+call   27 never executed
+       1*:   96:    EXPECT_DOUBLE_EQ(star.getMass(), 1.0);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   96-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   96-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   96-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   96-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   96-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   96-block  5
+call   19 never executed
+call   20 never executed
+        1:   96-block  6
+call   21 returned 1
+    $$$$$:   96-block  7
+call   22 never executed
+    $$$$$:   96-block  8
+    $$$$$:   96-block  9
+call   23 never executed
+    $$$$$:   96-block 10
+    $$$$$:   96-block 11
+call   24 never executed
+        1:   97:}
+call    0 returned 1
+    $$$$$:   97-block  0
+call    1 never executed
+------------------
+        -:   98:
+        4:   99:TEST_F(SkyTest, Constellation) {
+        2:  100:    Star star("Vega", 0.03, 0.58, 0, 0, Enums::SpectralClass::A, false, 2.1);
+        1:  101:    star.addConstellation("Lyra");
+       1*:  102:    EXPECT_EQ(star.getConstellation(), "Lyra");
+        1:  103:}
+------------------
+_ZN26SkyTest_Constellation_TestC1Ev:
+function _ZN26SkyTest_Constellation_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   99:TEST_F(SkyTest, Constellation) {
+        1:   99-block  0
+call    0 returned 1
+------------------
+_ZN26SkyTest_Constellation_TestD0Ev:
+function _ZN26SkyTest_Constellation_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   99:TEST_F(SkyTest, Constellation) {
+        1:   99-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN26SkyTest_Constellation_TestD1Ev:
+function _ZN26SkyTest_Constellation_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   99:TEST_F(SkyTest, Constellation) {
+        1:   99-block  0
+call    0 returned 1
+------------------
+_ZN26SkyTest_Constellation_Test8TestBodyEv:
+function _ZN26SkyTest_Constellation_Test8TestBodyEv called 1 returned 100% blocks executed 39%
+        1:   99:TEST_F(SkyTest, Constellation) {
+        1:   99-block  0
+        2:  100:    Star star("Vega", 0.03, 0.58, 0, 0, Enums::SpectralClass::A, false, 2.1);
+        1:  100-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  100-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  100-block  2
+call    6 returned 1
+    $$$$$:  100-block  3
+call    7 never executed
+    $$$$$:  100-block  4
+    $$$$$:  100-block  5
+        1:  101:    star.addConstellation("Lyra");
+        1:  101-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  101-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  101-block  2
+call    6 returned 1
+    $$$$$:  101-block  3
+call    7 never executed
+    $$$$$:  101-block  4
+    $$$$$:  101-block  5
+       1*:  102:    EXPECT_EQ(star.getConstellation(), "Lyra");
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  102-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  102-block  1
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:  102-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  102-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  102-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  102-block  5
+call   20 never executed
+call   21 never executed
+        1:  102-block  6
+call   22 returned 1
+    $$$$$:  102-block  7
+call   23 never executed
+    $$$$$:  102-block  8
+    $$$$$:  102-block  9
+call   24 never executed
+    $$$$$:  102-block 10
+    $$$$$:  102-block 11
+call   25 never executed
+    $$$$$:  102-block 12
+    $$$$$:  102-block 13
+call   26 never executed
+        1:  103:}
+call    0 returned 1
+    $$$$$:  103-block  0
+call    1 never executed
+------------------
+        -:  104:
+        4:  105:TEST_F(SkyTest, InvalidConstellation) {
+        1:  106:    Star star("Test", 0.0, 0.0, 0, 0, Enums::SpectralClass::A, false, 1.0);
+       3*:  107:    EXPECT_THROW(star.addConstellation(""), std::invalid_argument);
+        1:  108:}
+------------------
+_ZN33SkyTest_InvalidConstellation_TestC1Ev:
+function _ZN33SkyTest_InvalidConstellation_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  105:TEST_F(SkyTest, InvalidConstellation) {
+        1:  105-block  0
+call    0 returned 1
+------------------
+_ZN33SkyTest_InvalidConstellation_TestD0Ev:
+function _ZN33SkyTest_InvalidConstellation_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  105:TEST_F(SkyTest, InvalidConstellation) {
+        1:  105-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN33SkyTest_InvalidConstellation_TestD1Ev:
+function _ZN33SkyTest_InvalidConstellation_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  105:TEST_F(SkyTest, InvalidConstellation) {
+        1:  105-block  0
+call    0 returned 1
+------------------
+_ZN33SkyTest_InvalidConstellation_Test8TestBodyEv:
+function _ZN33SkyTest_InvalidConstellation_Test8TestBodyEv called 1 returned 100% blocks executed 36%
+        1:  105:TEST_F(SkyTest, InvalidConstellation) {
+        1:  105-block  0
+        1:  106:    Star star("Test", 0.0, 0.0, 0, 0, Enums::SpectralClass::A, false, 1.0);
+        1:  106-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  106-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  106-block  2
+call    6 returned 1
+    $$$$$:  106-block  3
+call    7 never executed
+    $$$$$:  106-block  4
+    $$$$$:  106-block  5
+       3*:  107:    EXPECT_THROW(star.addConstellation(""), std::invalid_argument);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:  107-block  0
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:  107-block  1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:  107-block  2
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:  107-block  3
+call   12 returned 1
+branch 13 taken 0 (fallthrough)
+branch 14 taken 1 (throw)
+    %%%%%:  107-block  4
+call   15 never executed
+        1:  107-block  5
+branch 16 taken 0 (fallthrough)
+branch 17 taken 1
+    %%%%%:  107-block  6
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:  107-block  7
+    %%%%%:  107-block  8
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:  107-block  9
+call   24 never executed
+call   25 never executed
+branch 26 never executed (fallthrough)
+branch 27 never executed (throw)
+    %%%%%:  107-block 10
+call   28 never executed
+branch 29 never executed (fallthrough)
+branch 30 never executed (throw)
+    %%%%%:  107-block 11
+call   31 never executed
+call   32 never executed
+        1:  107-block 12
+call   33 returned 1
+        1:  107-block 13
+call   34 returned 1
+        1:  107-block 14
+        1:  107-block 15
+        1:  107-block 16
+branch 35 taken 1
+branch 36 taken 0
+branch 37 taken 0
+        1:  107-block 17
+call   38 returned 1
+call   39 returned 1
+    $$$$$:  107-block 18
+call   40 never executed
+call   41 never executed
+branch 42 never executed (fallthrough)
+branch 43 never executed (throw)
+    $$$$$:  107-block 19
+call   44 never executed
+branch 45 never executed (fallthrough)
+branch 46 never executed (throw)
+    $$$$$:  107-block 20
+call   47 never executed
+branch 48 never executed (fallthrough)
+branch 49 never executed (throw)
+    $$$$$:  107-block 21
+call   50 never executed
+call   51 never executed
+branch 52 never executed (fallthrough)
+branch 53 never executed (throw)
+    $$$$$:  107-block 22
+call   54 never executed
+call   55 never executed
+branch 56 never executed (fallthrough)
+branch 57 never executed (throw)
+    $$$$$:  107-block 23
+call   58 never executed
+branch 59 never executed (fallthrough)
+branch 60 never executed (throw)
+    $$$$$:  107-block 24
+    $$$$$:  107-block 25
+call   61 never executed
+    $$$$$:  107-block 26
+call   62 never executed
+call   63 never executed
+branch 64 never executed (fallthrough)
+branch 65 never executed (throw)
+    $$$$$:  107-block 27
+    $$$$$:  107-block 28
+call   66 never executed
+branch 67 never executed (fallthrough)
+branch 68 never executed (throw)
+    $$$$$:  107-block 29
+call   69 never executed
+    $$$$$:  107-block 30
+    $$$$$:  107-block 31
+call   70 never executed
+    $$$$$:  107-block 32
+call   71 never executed
+    $$$$$:  107-block 33
+call   72 never executed
+    $$$$$:  107-block 34
+    $$$$$:  107-block 35
+call   73 never executed
+    $$$$$:  107-block 36
+    $$$$$:  107-block 37
+call   74 never executed
+        1:  108:}
+call    0 returned 1
+    $$$$$:  108-block  0
+call    1 never executed
+------------------
+        -:  109:
+        4:  110:TEST_F(SkyTest, ConstructorAndEccentricity) {
+        -:  111:    Planet planet("Earth", -3.86, -3.99, 0, 0, Enums::PlanetType::TERRESTRIAL,
+        1:  112:                  365.25, 1.0, 0.99, 5.97e24);
+       1*:  113:    EXPECT_EQ(planet.getName(), "Earth");
+       1*:  114:    EXPECT_EQ(planet.getPlanetType(), Enums::PlanetType::TERRESTRIAL);
+        1:  115:    double e = planet.getEccentricity();
+       1*:  116:    EXPECT_GT(e, 0.0);
+       1*:  117:    EXPECT_LT(e, 1.0);
+        1:  118:}
+------------------
+_ZN39SkyTest_ConstructorAndEccentricity_TestC1Ev:
+function _ZN39SkyTest_ConstructorAndEccentricity_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  110:TEST_F(SkyTest, ConstructorAndEccentricity) {
+        1:  110-block  0
+call    0 returned 1
+------------------
+_ZN39SkyTest_ConstructorAndEccentricity_TestD0Ev:
+function _ZN39SkyTest_ConstructorAndEccentricity_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  110:TEST_F(SkyTest, ConstructorAndEccentricity) {
+        1:  110-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN39SkyTest_ConstructorAndEccentricity_TestD1Ev:
+function _ZN39SkyTest_ConstructorAndEccentricity_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  110:TEST_F(SkyTest, ConstructorAndEccentricity) {
+        1:  110-block  0
+call    0 returned 1
+------------------
+_ZN39SkyTest_ConstructorAndEccentricity_Test8TestBodyEv:
+function _ZN39SkyTest_ConstructorAndEccentricity_Test8TestBodyEv called 1 returned 100% blocks executed 27%
+        1:  110:TEST_F(SkyTest, ConstructorAndEccentricity) {
+        1:  110-block  0
+        -:  111:    Planet planet("Earth", -3.86, -3.99, 0, 0, Enums::PlanetType::TERRESTRIAL,
+        1:  112:                  365.25, 1.0, 0.99, 5.97e24);
+        1:  112-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  112-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  112-block  2
+call    6 returned 1
+    $$$$$:  112-block  3
+call    7 never executed
+    $$$$$:  112-block  4
+    $$$$$:  112-block  5
+       1*:  113:    EXPECT_EQ(planet.getName(), "Earth");
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  113-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  113-block  1
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:  113-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  113-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  113-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  113-block  5
+call   20 never executed
+call   21 never executed
+        1:  113-block  6
+call   22 returned 1
+    $$$$$:  113-block  7
+call   23 never executed
+    $$$$$:  113-block  8
+    $$$$$:  113-block  9
+call   24 never executed
+    $$$$$:  113-block 10
+    $$$$$:  113-block 11
+call   25 never executed
+    $$$$$:  113-block 12
+    $$$$$:  113-block 13
+call   26 never executed
+       1*:  114:    EXPECT_EQ(planet.getPlanetType(), Enums::PlanetType::TERRESTRIAL);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  114-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  114-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  114-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  114-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  114-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  114-block  5
+call   19 never executed
+call   20 never executed
+        1:  114-block  6
+call   21 returned 1
+    $$$$$:  114-block  7
+    $$$$$:  114-block  8
+    $$$$$:  114-block  9
+call   22 never executed
+    $$$$$:  114-block 10
+    $$$$$:  114-block 11
+call   23 never executed
+    $$$$$:  114-block 12
+    $$$$$:  114-block 13
+call   24 never executed
+        1:  115:    double e = planet.getEccentricity();
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:  116:    EXPECT_GT(e, 0.0);
+        1:  116-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  116-block  1
+call    3 returned 1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:  116-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  116-block  3
+call    9 never executed
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  116-block  4
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  116-block  5
+call   16 never executed
+call   17 never executed
+        1:  116-block  6
+call   18 returned 1
+    $$$$$:  116-block  7
+    $$$$$:  116-block  8
+call   19 never executed
+    $$$$$:  116-block  9
+    $$$$$:  116-block 10
+call   20 never executed
+    $$$$$:  116-block 11
+    $$$$$:  116-block 12
+call   21 never executed
+       1*:  117:    EXPECT_LT(e, 1.0);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  117-block  0
+call    3 returned 1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:  117-block  1
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  117-block  2
+call    9 never executed
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  117-block  3
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  117-block  4
+call   16 never executed
+call   17 never executed
+        1:  117-block  5
+call   18 returned 1
+    $$$$$:  117-block  6
+    $$$$$:  117-block  7
+call   19 never executed
+    $$$$$:  117-block  8
+    $$$$$:  117-block  9
+call   20 never executed
+    $$$$$:  117-block 10
+    $$$$$:  117-block 11
+call   21 never executed
+        1:  118:}
+call    0 returned 1
+    $$$$$:  118-block  0
+call    1 never executed
+------------------
+        -:  119:
+        4:  120:TEST_F(SkyTest, DistanceToStar) {
+        -:  121:    Planet planet("Test", 0.0, 0.0, 0, 0, Enums::PlanetType::TERRESTRIAL,
+        1:  122:                  365.25, 1.0, 0.995, 1.0);
+        1:  123:    double dist = planet.getDistanceToHostStar(0.0);
+       1*:  124:    EXPECT_GT(dist, 0.0);
+        1:  125:}
+------------------
+_ZN27SkyTest_DistanceToStar_TestC1Ev:
+function _ZN27SkyTest_DistanceToStar_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  120:TEST_F(SkyTest, DistanceToStar) {
+        1:  120-block  0
+call    0 returned 1
+------------------
+_ZN27SkyTest_DistanceToStar_TestD0Ev:
+function _ZN27SkyTest_DistanceToStar_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  120:TEST_F(SkyTest, DistanceToStar) {
+        1:  120-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN27SkyTest_DistanceToStar_TestD1Ev:
+function _ZN27SkyTest_DistanceToStar_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  120:TEST_F(SkyTest, DistanceToStar) {
+        1:  120-block  0
+call    0 returned 1
+------------------
+_ZN27SkyTest_DistanceToStar_Test8TestBodyEv:
+function _ZN27SkyTest_DistanceToStar_Test8TestBodyEv called 1 returned 100% blocks executed 36%
+        1:  120:TEST_F(SkyTest, DistanceToStar) {
+        1:  120-block  0
+        -:  121:    Planet planet("Test", 0.0, 0.0, 0, 0, Enums::PlanetType::TERRESTRIAL,
+        1:  122:                  365.25, 1.0, 0.995, 1.0);
+        1:  122-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  122-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  122-block  2
+call    6 returned 1
+    $$$$$:  122-block  3
+call    7 never executed
+    $$$$$:  122-block  4
+    $$$$$:  122-block  5
+        1:  123:    double dist = planet.getDistanceToHostStar(0.0);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:  124:    EXPECT_GT(dist, 0.0);
+        1:  124-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  124-block  1
+call    3 returned 1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:  124-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  124-block  3
+call    9 never executed
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  124-block  4
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  124-block  5
+call   16 never executed
+call   17 never executed
+        1:  124-block  6
+call   18 returned 1
+    $$$$$:  124-block  7
+    $$$$$:  124-block  8
+call   19 never executed
+    $$$$$:  124-block  9
+    $$$$$:  124-block 10
+call   20 never executed
+    $$$$$:  124-block 11
+    $$$$$:  124-block 12
+call   21 never executed
+        1:  125:}
+call    0 returned 1
+    $$$$$:  125-block  0
+call    1 never executed
+------------------
+        -:  126:
+        4:  127:TEST_F(SkyTest, InvalidTrueAnomaly) {
+        -:  128:    Planet planet("Test", 0.0, 0.0, 0, 0, Enums::PlanetType::TERRESTRIAL,
+        1:  129:                  365.25, 1.0, 1.0, 1.0);
+       1*:  130:    EXPECT_THROW(planet.getDistanceToHostStar(400.0), DegreeRangeError);
+       1*:  131:    EXPECT_THROW(planet.getDistanceToHostStar(-10.0), DegreeRangeError);
+        1:  132:}
+------------------
+_ZN31SkyTest_InvalidTrueAnomaly_TestC1Ev:
+function _ZN31SkyTest_InvalidTrueAnomaly_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  127:TEST_F(SkyTest, InvalidTrueAnomaly) {
+        1:  127-block  0
+call    0 returned 1
+------------------
+_ZN31SkyTest_InvalidTrueAnomaly_TestD0Ev:
+function _ZN31SkyTest_InvalidTrueAnomaly_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  127:TEST_F(SkyTest, InvalidTrueAnomaly) {
+        1:  127-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN31SkyTest_InvalidTrueAnomaly_TestD1Ev:
+function _ZN31SkyTest_InvalidTrueAnomaly_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  127:TEST_F(SkyTest, InvalidTrueAnomaly) {
+        1:  127-block  0
+call    0 returned 1
+------------------
+_ZN31SkyTest_InvalidTrueAnomaly_Test8TestBodyEv:
+function _ZN31SkyTest_InvalidTrueAnomaly_Test8TestBodyEv called 1 returned 100% blocks executed 26%
+        1:  127:TEST_F(SkyTest, InvalidTrueAnomaly) {
+        1:  127-block  0
+        -:  128:    Planet planet("Test", 0.0, 0.0, 0, 0, Enums::PlanetType::TERRESTRIAL,
+        1:  129:                  365.25, 1.0, 1.0, 1.0);
+        1:  129-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  129-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  129-block  2
+call    6 returned 1
+    $$$$$:  129-block  3
+call    7 never executed
+    $$$$$:  129-block  4
+    $$$$$:  129-block  5
+       1*:  130:    EXPECT_THROW(planet.getDistanceToHostStar(400.0), DegreeRangeError);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:  130-block  0
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:  130-block  1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:  130-block  2
+call    9 returned 1
+branch 10 taken 0 (fallthrough)
+branch 11 taken 1 (throw)
+        1:  130-block  3
+branch 12 taken 0 (fallthrough)
+branch 13 taken 1
+    %%%%%:  130-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  130-block  5
+    %%%%%:  130-block  6
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  130-block  7
+call   20 never executed
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:  130-block  8
+call   24 never executed
+branch 25 never executed (fallthrough)
+branch 26 never executed (throw)
+    %%%%%:  130-block  9
+call   27 never executed
+call   28 never executed
+        1:  130-block 10
+call   29 returned 1
+        1:  130-block 11
+branch 30 taken 1
+branch 31 taken 0
+branch 32 taken 0
+        1:  130-block 12
+call   33 returned 1
+call   34 returned 1
+branch 35 taken 1 (fallthrough)
+branch 36 taken 0 (throw)
+    $$$$$:  130-block 13
+call   37 never executed
+call   38 never executed
+branch 39 never executed (fallthrough)
+branch 40 never executed (throw)
+    $$$$$:  130-block 14
+call   41 never executed
+branch 42 never executed (fallthrough)
+branch 43 never executed (throw)
+    $$$$$:  130-block 15
+call   44 never executed
+branch 45 never executed (fallthrough)
+branch 46 never executed (throw)
+    $$$$$:  130-block 16
+call   47 never executed
+call   48 never executed
+branch 49 never executed (fallthrough)
+branch 50 never executed (throw)
+    $$$$$:  130-block 17
+call   51 never executed
+call   52 never executed
+branch 53 never executed (fallthrough)
+branch 54 never executed (throw)
+    $$$$$:  130-block 18
+call   55 never executed
+branch 56 never executed (fallthrough)
+branch 57 never executed (throw)
+    $$$$$:  130-block 19
+    $$$$$:  130-block 20
+call   58 never executed
+    $$$$$:  130-block 21
+call   59 never executed
+call   60 never executed
+branch 61 never executed (fallthrough)
+branch 62 never executed (throw)
+    $$$$$:  130-block 22
+    $$$$$:  130-block 23
+call   63 never executed
+branch 64 never executed (fallthrough)
+branch 65 never executed (throw)
+    $$$$$:  130-block 24
+call   66 never executed
+    $$$$$:  130-block 25
+    $$$$$:  130-block 26
+call   67 never executed
+    $$$$$:  130-block 27
+call   68 never executed
+    $$$$$:  130-block 28
+call   69 never executed
+    $$$$$:  130-block 29
+    $$$$$:  130-block 30
+call   70 never executed
+    $$$$$:  130-block 31
+    $$$$$:  130-block 32
+call   71 never executed
+       1*:  131:    EXPECT_THROW(planet.getDistanceToHostStar(-10.0), DegreeRangeError);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:  131-block  0
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:  131-block  1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:  131-block  2
+call    9 returned 1
+branch 10 taken 0 (fallthrough)
+branch 11 taken 1 (throw)
+        1:  131-block  3
+branch 12 taken 0 (fallthrough)
+branch 13 taken 1
+    %%%%%:  131-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  131-block  5
+    %%%%%:  131-block  6
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  131-block  7
+call   20 never executed
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:  131-block  8
+call   24 never executed
+branch 25 never executed (fallthrough)
+branch 26 never executed (throw)
+    %%%%%:  131-block  9
+call   27 never executed
+call   28 never executed
+        1:  131-block 10
+call   29 returned 1
+        1:  131-block 11
+branch 30 taken 1
+branch 31 taken 0
+branch 32 taken 0
+        1:  131-block 12
+call   33 returned 1
+call   34 returned 1
+branch 35 taken 1 (fallthrough)
+branch 36 taken 0 (throw)
+    $$$$$:  131-block 13
+call   37 never executed
+call   38 never executed
+branch 39 never executed (fallthrough)
+branch 40 never executed (throw)
+    $$$$$:  131-block 14
+call   41 never executed
+branch 42 never executed (fallthrough)
+branch 43 never executed (throw)
+    $$$$$:  131-block 15
+call   44 never executed
+branch 45 never executed (fallthrough)
+branch 46 never executed (throw)
+    $$$$$:  131-block 16
+call   47 never executed
+call   48 never executed
+branch 49 never executed (fallthrough)
+branch 50 never executed (throw)
+    $$$$$:  131-block 17
+call   51 never executed
+call   52 never executed
+branch 53 never executed (fallthrough)
+branch 54 never executed (throw)
+    $$$$$:  131-block 18
+call   55 never executed
+branch 56 never executed (fallthrough)
+branch 57 never executed (throw)
+    $$$$$:  131-block 19
+    $$$$$:  131-block 20
+call   58 never executed
+    $$$$$:  131-block 21
+call   59 never executed
+call   60 never executed
+branch 61 never executed (fallthrough)
+branch 62 never executed (throw)
+    $$$$$:  131-block 22
+    $$$$$:  131-block 23
+call   63 never executed
+branch 64 never executed (fallthrough)
+branch 65 never executed (throw)
+    $$$$$:  131-block 24
+call   66 never executed
+    $$$$$:  131-block 25
+    $$$$$:  131-block 26
+call   67 never executed
+    $$$$$:  131-block 27
+call   68 never executed
+    $$$$$:  131-block 28
+call   69 never executed
+    $$$$$:  131-block 29
+    $$$$$:  131-block 30
+call   70 never executed
+    $$$$$:  131-block 31
+    $$$$$:  131-block 32
+call   71 never executed
+        1:  132:}
+call    0 returned 1
+    $$$$$:  132-block  0
+call    1 never executed
+------------------
+        -:  133:
+        4:  134:TEST_F(SkyTest, Moons) {
+        -:  135:    Planet planet("Jupiter", -2.94, -9.4, 0, 0, Enums::PlanetType::GAS_GIANT,
+        1:  136:                  4332.59, 5.20, 5.20, 1.898e27);
+       1*:  137:    EXPECT_EQ(planet.getMoonCount(), 0);
+        -:  138:
+        2:  139:    Moon moon("Io", 5.0, 5.0, 0, 0, &planet, 1.77, 8.93e22);
+        1:  140:    planet.addMoon(moon);
+       1*:  141:    EXPECT_EQ(planet.getMoonCount(), 1);
+        1:  142:}
+------------------
+_ZN18SkyTest_Moons_TestC1Ev:
+function _ZN18SkyTest_Moons_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  134:TEST_F(SkyTest, Moons) {
+        1:  134-block  0
+call    0 returned 1
+------------------
+_ZN18SkyTest_Moons_TestD0Ev:
+function _ZN18SkyTest_Moons_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  134:TEST_F(SkyTest, Moons) {
+        1:  134-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN18SkyTest_Moons_TestD1Ev:
+function _ZN18SkyTest_Moons_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  134:TEST_F(SkyTest, Moons) {
+        1:  134-block  0
+call    0 returned 1
+------------------
+_ZN18SkyTest_Moons_Test8TestBodyEv:
+function _ZN18SkyTest_Moons_Test8TestBodyEv called 1 returned 100% blocks executed 34%
+        1:  134:TEST_F(SkyTest, Moons) {
+        1:  134-block  0
+        -:  135:    Planet planet("Jupiter", -2.94, -9.4, 0, 0, Enums::PlanetType::GAS_GIANT,
+        1:  136:                  4332.59, 5.20, 5.20, 1.898e27);
+        1:  136-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  136-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  136-block  2
+call    6 returned 1
+    $$$$$:  136-block  3
+call    7 never executed
+    $$$$$:  136-block  4
+    $$$$$:  136-block  5
+       1*:  137:    EXPECT_EQ(planet.getMoonCount(), 0);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  137-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  137-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  137-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  137-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  137-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  137-block  5
+call   19 never executed
+call   20 never executed
+        1:  137-block  6
+call   21 returned 1
+    $$$$$:  137-block  7
+    $$$$$:  137-block  8
+    $$$$$:  137-block  9
+call   22 never executed
+    $$$$$:  137-block 10
+    $$$$$:  137-block 11
+call   23 never executed
+    $$$$$:  137-block 12
+    $$$$$:  137-block 13
+call   24 never executed
+        -:  138:
+        2:  139:    Moon moon("Io", 5.0, 5.0, 0, 0, &planet, 1.77, 8.93e22);
+        1:  139-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  139-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  139-block  2
+call    6 returned 1
+call    7 returned 1
+    $$$$$:  139-block  3
+call    8 never executed
+    $$$$$:  139-block  4
+    $$$$$:  139-block  5
+    $$$$$:  139-block  6
+call    9 never executed
+        1:  140:    planet.addMoon(moon);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:  141:    EXPECT_EQ(planet.getMoonCount(), 1);
+        1:  141-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  141-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  141-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  141-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  141-block  4
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  141-block  5
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  141-block  6
+call   19 never executed
+call   20 never executed
+        1:  141-block  7
+call   21 returned 1
+    $$$$$:  141-block  8
+    $$$$$:  141-block  9
+    $$$$$:  141-block 10
+call   22 never executed
+    $$$$$:  141-block 11
+    $$$$$:  141-block 12
+call   23 never executed
+    $$$$$:  141-block 13
+    $$$$$:  141-block 14
+call   24 never executed
+        1:  142:}
+call    0 returned 1
+    $$$$$:  142-block  0
+call    1 never executed
+------------------
+        -:  143:
+        4:  144:TEST_F(SkyTest, HostStar) {
+        1:  145:    auto star = std::make_shared<Star>("Sun", -26.74, 4.83, 0, 0, Enums::SpectralClass::G, false, 1.0);
+        -:  146:    Planet planet("Earth", -3.86, -3.99, 0, 0, Enums::PlanetType::TERRESTRIAL,
+        1:  147:                  365.25, 1.0, 0.99, 5.97e24);
+        1:  148:    planet.setHostStar(star);
+        1:  149:}
+------------------
+_ZN21SkyTest_HostStar_TestC1Ev:
+function _ZN21SkyTest_HostStar_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  144:TEST_F(SkyTest, HostStar) {
+        1:  144-block  0
+call    0 returned 1
+------------------
+_ZN21SkyTest_HostStar_TestD0Ev:
+function _ZN21SkyTest_HostStar_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  144:TEST_F(SkyTest, HostStar) {
+        1:  144-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN21SkyTest_HostStar_TestD1Ev:
+function _ZN21SkyTest_HostStar_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  144:TEST_F(SkyTest, HostStar) {
+        1:  144-block  0
+call    0 returned 1
+------------------
+_ZN21SkyTest_HostStar_Test8TestBodyEv:
+function _ZN21SkyTest_HostStar_Test8TestBodyEv called 1 returned 100% blocks executed 41%
+        1:  144:TEST_F(SkyTest, HostStar) {
+        1:  145:    auto star = std::make_shared<Star>("Sun", -26.74, 4.83, 0, 0, Enums::SpectralClass::G, false, 1.0);
+        1:  145-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  145-block  1
+    $$$$$:  145-block  2
+    $$$$$:  145-block  3
+    $$$$$:  145-block  4
+    $$$$$:  145-block  5
+    $$$$$:  145-block  6
+    $$$$$:  145-block  7
+    $$$$$:  145-block  8
+        -:  146:    Planet planet("Earth", -3.86, -3.99, 0, 0, Enums::PlanetType::TERRESTRIAL,
+        1:  147:                  365.25, 1.0, 0.99, 5.97e24);
+        1:  147-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  147-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  147-block  2
+call    6 returned 1
+    $$$$$:  147-block  3
+call    7 never executed
+    $$$$$:  147-block  4
+    $$$$$:  147-block  5
+        1:  148:    planet.setHostStar(star);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:  148-block  0
+call    4 returned 1
+    $$$$$:  148-block  1
+call    5 never executed
+    $$$$$:  148-block  2
+        1:  149:}
+call    0 returned 1
+call    1 returned 1
+    $$$$$:  149-block  0
+call    2 never executed
+    $$$$$:  149-block  1
+call    3 never executed
+------------------
+        -:  150:
+        4:  151:TEST_F(SkyTest, OrbitLength) {
+        -:  152:    Planet planet("Test", 0.0, 0.0, 0, 0, Enums::PlanetType::TERRESTRIAL,
+        1:  153:                  365.25, 1.0, 0.99, 1.0);
+        1:  154:    double length = planet.calculateOrbitLength();
+       1*:  155:    EXPECT_GT(length, 0.0);
+        1:  156:}
+------------------
+_ZN24SkyTest_OrbitLength_TestC1Ev:
+function _ZN24SkyTest_OrbitLength_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  151:TEST_F(SkyTest, OrbitLength) {
+        1:  151-block  0
+call    0 returned 1
+------------------
+_ZN24SkyTest_OrbitLength_TestD0Ev:
+function _ZN24SkyTest_OrbitLength_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  151:TEST_F(SkyTest, OrbitLength) {
+        1:  151-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN24SkyTest_OrbitLength_TestD1Ev:
+function _ZN24SkyTest_OrbitLength_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  151:TEST_F(SkyTest, OrbitLength) {
+        1:  151-block  0
+call    0 returned 1
+------------------
+_ZN24SkyTest_OrbitLength_Test8TestBodyEv:
+function _ZN24SkyTest_OrbitLength_Test8TestBodyEv called 1 returned 100% blocks executed 36%
+        1:  151:TEST_F(SkyTest, OrbitLength) {
+        1:  151-block  0
+        -:  152:    Planet planet("Test", 0.0, 0.0, 0, 0, Enums::PlanetType::TERRESTRIAL,
+        1:  153:                  365.25, 1.0, 0.99, 1.0);
+        1:  153-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  153-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  153-block  2
+call    6 returned 1
+    $$$$$:  153-block  3
+call    7 never executed
+    $$$$$:  153-block  4
+    $$$$$:  153-block  5
+        1:  154:    double length = planet.calculateOrbitLength();
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:  155:    EXPECT_GT(length, 0.0);
+        1:  155-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  155-block  1
+call    3 returned 1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:  155-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  155-block  3
+call    9 never executed
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  155-block  4
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  155-block  5
+call   16 never executed
+call   17 never executed
+        1:  155-block  6
+call   18 returned 1
+    $$$$$:  155-block  7
+    $$$$$:  155-block  8
+call   19 never executed
+    $$$$$:  155-block  9
+    $$$$$:  155-block 10
+call   20 never executed
+    $$$$$:  155-block 11
+    $$$$$:  155-block 12
+call   21 never executed
+        1:  156:}
+call    0 returned 1
+    $$$$$:  156-block  0
+call    1 never executed
+------------------
+        -:  157:
+        4:  158:TEST_F(SkyTest, ConstructorAndGettersMoon) {
+        2:  159:    Planet host("Earth", 0.0, 0.0, 0, 0, Enums::PlanetType::TERRESTRIAL, 365.25, 1.0, 1.0, 1.0);
+        1:  160:    Moon moon("Luna", -12.74, 0.21, 0, 0, &host, 27.32, 7.34e22);
+        1:  161:    moon.setDiameter(3474.0);
+       1*:  162:    EXPECT_EQ(moon.getName(), "Luna");
+       1*:  163:    EXPECT_EQ(moon.getHostPlanetName(), "Earth");
+       1*:  164:    EXPECT_DOUBLE_EQ(moon.getOrbitalPeriod(), 27.32);
+       1*:  165:    EXPECT_DOUBLE_EQ(moon.getMass(), 7.34e22);
+       1*:  166:    EXPECT_DOUBLE_EQ(moon.getDistanceToPlanet(0.5),398088.5496895971);
+        1:  167:}
+------------------
+_ZN38SkyTest_ConstructorAndGettersMoon_TestC1Ev:
+function _ZN38SkyTest_ConstructorAndGettersMoon_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  158:TEST_F(SkyTest, ConstructorAndGettersMoon) {
+        1:  158-block  0
+call    0 returned 1
+------------------
+_ZN38SkyTest_ConstructorAndGettersMoon_TestD0Ev:
+function _ZN38SkyTest_ConstructorAndGettersMoon_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  158:TEST_F(SkyTest, ConstructorAndGettersMoon) {
+        1:  158-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN38SkyTest_ConstructorAndGettersMoon_TestD1Ev:
+function _ZN38SkyTest_ConstructorAndGettersMoon_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  158:TEST_F(SkyTest, ConstructorAndGettersMoon) {
+        1:  158-block  0
+call    0 returned 1
+------------------
+_ZN38SkyTest_ConstructorAndGettersMoon_Test8TestBodyEv:
+function _ZN38SkyTest_ConstructorAndGettersMoon_Test8TestBodyEv called 1 returned 100% blocks executed 30%
+        1:  158:TEST_F(SkyTest, ConstructorAndGettersMoon) {
+        1:  158-block  0
+        2:  159:    Planet host("Earth", 0.0, 0.0, 0, 0, Enums::PlanetType::TERRESTRIAL, 365.25, 1.0, 1.0, 1.0);
+        1:  159-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  159-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  159-block  2
+call    6 returned 1
+    $$$$$:  159-block  3
+call    7 never executed
+    $$$$$:  159-block  4
+    $$$$$:  159-block  5
+        1:  160:    Moon moon("Luna", -12.74, 0.21, 0, 0, &host, 27.32, 7.34e22);
+        1:  160-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  160-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  160-block  2
+call    6 returned 1
+    $$$$$:  160-block  3
+call    7 never executed
+    $$$$$:  160-block  4
+    $$$$$:  160-block  5
+        1:  161:    moon.setDiameter(3474.0);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:  162:    EXPECT_EQ(moon.getName(), "Luna");
+        1:  162-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  162-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  162-block  2
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:  162-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  162-block  4
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  162-block  5
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  162-block  6
+call   20 never executed
+call   21 never executed
+        1:  162-block  7
+call   22 returned 1
+    $$$$$:  162-block  8
+call   23 never executed
+    $$$$$:  162-block  9
+    $$$$$:  162-block 10
+call   24 never executed
+    $$$$$:  162-block 11
+    $$$$$:  162-block 12
+call   25 never executed
+    $$$$$:  162-block 13
+    $$$$$:  162-block 14
+call   26 never executed
+       1*:  163:    EXPECT_EQ(moon.getHostPlanetName(), "Earth");
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  163-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  163-block  1
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:  163-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  163-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  163-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  163-block  5
+call   20 never executed
+call   21 never executed
+        1:  163-block  6
+call   22 returned 1
+    $$$$$:  163-block  7
+call   23 never executed
+    $$$$$:  163-block  8
+    $$$$$:  163-block  9
+call   24 never executed
+    $$$$$:  163-block 10
+    $$$$$:  163-block 11
+call   25 never executed
+    $$$$$:  163-block 12
+    $$$$$:  163-block 13
+call   26 never executed
+       1*:  164:    EXPECT_DOUBLE_EQ(moon.getOrbitalPeriod(), 27.32);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  164-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  164-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  164-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  164-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  164-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  164-block  5
+call   19 never executed
+call   20 never executed
+        1:  164-block  6
+call   21 returned 1
+    $$$$$:  164-block  7
+call   22 never executed
+    $$$$$:  164-block  8
+    $$$$$:  164-block  9
+call   23 never executed
+    $$$$$:  164-block 10
+    $$$$$:  164-block 11
+call   24 never executed
+       1*:  165:    EXPECT_DOUBLE_EQ(moon.getMass(), 7.34e22);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  165-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  165-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  165-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  165-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  165-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  165-block  5
+call   19 never executed
+call   20 never executed
+        1:  165-block  6
+call   21 returned 1
+    $$$$$:  165-block  7
+call   22 never executed
+    $$$$$:  165-block  8
+    $$$$$:  165-block  9
+call   23 never executed
+    $$$$$:  165-block 10
+    $$$$$:  165-block 11
+call   24 never executed
+       1*:  166:    EXPECT_DOUBLE_EQ(moon.getDistanceToPlanet(0.5),398088.5496895971);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  166-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  166-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  166-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  166-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  166-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  166-block  5
+call   19 never executed
+call   20 never executed
+        1:  166-block  6
+call   21 returned 1
+    $$$$$:  166-block  7
+call   22 never executed
+    $$$$$:  166-block  8
+    $$$$$:  166-block  9
+call   23 never executed
+    $$$$$:  166-block 10
+    $$$$$:  166-block 11
+call   24 never executed
+        1:  167:}
+call    0 returned 1
+call    1 returned 1
+    $$$$$:  167-block  0
+call    2 never executed
+    $$$$$:  167-block  1
+call    3 never executed
+------------------
+        -:  168:
+        4:  169:TEST_F(SkyTest, AngularVelocity) {
+        2:  170:    Planet host("Earth", 0.0, 0.0, 0, 0, Enums::PlanetType::TERRESTRIAL, 365.25, 1.0, 1.0, 1.0);
+        1:  171:    Moon moon("Test", 0.0, 0.0, 0, 0, &host, 27.32, 1.0);
+        1:  172:    double velocity = moon.getAngularVelocity();
+       1*:  173:    EXPECT_GT(velocity, 0.0);
+        1:  174:}
+------------------
+_ZN28SkyTest_AngularVelocity_TestC1Ev:
+function _ZN28SkyTest_AngularVelocity_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  169:TEST_F(SkyTest, AngularVelocity) {
+        1:  169-block  0
+call    0 returned 1
+------------------
+_ZN28SkyTest_AngularVelocity_TestD0Ev:
+function _ZN28SkyTest_AngularVelocity_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  169:TEST_F(SkyTest, AngularVelocity) {
+        1:  169-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN28SkyTest_AngularVelocity_TestD1Ev:
+function _ZN28SkyTest_AngularVelocity_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  169:TEST_F(SkyTest, AngularVelocity) {
+        1:  169-block  0
+call    0 returned 1
+------------------
+_ZN28SkyTest_AngularVelocity_Test8TestBodyEv:
+function _ZN28SkyTest_AngularVelocity_Test8TestBodyEv called 1 returned 100% blocks executed 39%
+        1:  169:TEST_F(SkyTest, AngularVelocity) {
+        1:  169-block  0
+        2:  170:    Planet host("Earth", 0.0, 0.0, 0, 0, Enums::PlanetType::TERRESTRIAL, 365.25, 1.0, 1.0, 1.0);
+        1:  170-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  170-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  170-block  2
+call    6 returned 1
+    $$$$$:  170-block  3
+call    7 never executed
+    $$$$$:  170-block  4
+    $$$$$:  170-block  5
+        1:  171:    Moon moon("Test", 0.0, 0.0, 0, 0, &host, 27.32, 1.0);
+        1:  171-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  171-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  171-block  2
+call    6 returned 1
+    $$$$$:  171-block  3
+call    7 never executed
+    $$$$$:  171-block  4
+    $$$$$:  171-block  5
+        1:  172:    double velocity = moon.getAngularVelocity();
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:  173:    EXPECT_GT(velocity, 0.0);
+        1:  173-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  173-block  1
+call    3 returned 1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:  173-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  173-block  3
+call    9 never executed
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  173-block  4
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  173-block  5
+call   16 never executed
+call   17 never executed
+        1:  173-block  6
+call   18 returned 1
+    $$$$$:  173-block  7
+    $$$$$:  173-block  8
+call   19 never executed
+    $$$$$:  173-block  9
+    $$$$$:  173-block 10
+call   20 never executed
+    $$$$$:  173-block 11
+    $$$$$:  173-block 12
+call   21 never executed
+        1:  174:}
+call    0 returned 1
+call    1 returned 1
+    $$$$$:  174-block  0
+call    2 never executed
+    $$$$$:  174-block  1
+call    3 never executed
+------------------
+        -:  175:
+        4:  176:TEST_F(SkyTest, SurfaceGravity) {
+        2:  177:    Planet host("Earth", 0.0, 0.0, 0, 0, Enums::PlanetType::TERRESTRIAL, 365.25, 1.0, 1.0, 1.0);
+        1:  178:    Moon moon("Test", 0.0, 0.0, 0, 0, &host, 27.32, 1.0);
+        1:  179:    double gravity = moon.calculateSurfaceGravity();
+       1*:  180:    EXPECT_GT(gravity, 0.0);
+        1:  181:}
+------------------
+_ZN27SkyTest_SurfaceGravity_TestC1Ev:
+function _ZN27SkyTest_SurfaceGravity_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  176:TEST_F(SkyTest, SurfaceGravity) {
+        1:  176-block  0
+call    0 returned 1
+------------------
+_ZN27SkyTest_SurfaceGravity_TestD0Ev:
+function _ZN27SkyTest_SurfaceGravity_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  176:TEST_F(SkyTest, SurfaceGravity) {
+        1:  176-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN27SkyTest_SurfaceGravity_TestD1Ev:
+function _ZN27SkyTest_SurfaceGravity_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  176:TEST_F(SkyTest, SurfaceGravity) {
+        1:  176-block  0
+call    0 returned 1
+------------------
+_ZN27SkyTest_SurfaceGravity_Test8TestBodyEv:
+function _ZN27SkyTest_SurfaceGravity_Test8TestBodyEv called 1 returned 100% blocks executed 39%
+        1:  176:TEST_F(SkyTest, SurfaceGravity) {
+        1:  176-block  0
+        2:  177:    Planet host("Earth", 0.0, 0.0, 0, 0, Enums::PlanetType::TERRESTRIAL, 365.25, 1.0, 1.0, 1.0);
+        1:  177-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  177-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  177-block  2
+call    6 returned 1
+    $$$$$:  177-block  3
+call    7 never executed
+    $$$$$:  177-block  4
+    $$$$$:  177-block  5
+        1:  178:    Moon moon("Test", 0.0, 0.0, 0, 0, &host, 27.32, 1.0);
+        1:  178-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  178-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  178-block  2
+call    6 returned 1
+    $$$$$:  178-block  3
+call    7 never executed
+    $$$$$:  178-block  4
+    $$$$$:  178-block  5
+        1:  179:    double gravity = moon.calculateSurfaceGravity();
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:  180:    EXPECT_GT(gravity, 0.0);
+        1:  180-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  180-block  1
+call    3 returned 1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:  180-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  180-block  3
+call    9 never executed
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  180-block  4
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  180-block  5
+call   16 never executed
+call   17 never executed
+        1:  180-block  6
+call   18 returned 1
+    $$$$$:  180-block  7
+    $$$$$:  180-block  8
+call   19 never executed
+    $$$$$:  180-block  9
+    $$$$$:  180-block 10
+call   20 never executed
+    $$$$$:  180-block 11
+    $$$$$:  180-block 12
+call   21 never executed
+        1:  181:}
+call    0 returned 1
+call    1 returned 1
+    $$$$$:  181-block  0
+call    2 never executed
+    $$$$$:  181-block  1
+call    3 never executed
+------------------
+        -:  182:
+        4:  183:TEST_F(SkyTest, InvalidDistanceToPlanet) {
+        2:  184:    Planet host("Earth", 0.0, 0.0, 0, 0, Enums::PlanetType::TERRESTRIAL, 365.25, 1.0, 1.0, 1.0);
+        1:  185:    Moon moon("Test", 0.0, 0.0, 0, 0, &host, 27.32, 1.0);
+       1*:  186:    EXPECT_THROW(moon.getDistanceToPlanet(-10.0), std::invalid_argument);
+        1:  187:}
+------------------
+_ZN36SkyTest_InvalidDistanceToPlanet_TestC1Ev:
+function _ZN36SkyTest_InvalidDistanceToPlanet_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  183:TEST_F(SkyTest, InvalidDistanceToPlanet) {
+        1:  183-block  0
+call    0 returned 1
+------------------
+_ZN36SkyTest_InvalidDistanceToPlanet_TestD0Ev:
+function _ZN36SkyTest_InvalidDistanceToPlanet_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  183:TEST_F(SkyTest, InvalidDistanceToPlanet) {
+        1:  183-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN36SkyTest_InvalidDistanceToPlanet_TestD1Ev:
+function _ZN36SkyTest_InvalidDistanceToPlanet_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  183:TEST_F(SkyTest, InvalidDistanceToPlanet) {
+        1:  183-block  0
+call    0 returned 1
+------------------
+_ZN36SkyTest_InvalidDistanceToPlanet_Test8TestBodyEv:
+function _ZN36SkyTest_InvalidDistanceToPlanet_Test8TestBodyEv called 1 returned 100% blocks executed 33%
+        1:  183:TEST_F(SkyTest, InvalidDistanceToPlanet) {
+        1:  183-block  0
+        2:  184:    Planet host("Earth", 0.0, 0.0, 0, 0, Enums::PlanetType::TERRESTRIAL, 365.25, 1.0, 1.0, 1.0);
+        1:  184-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  184-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  184-block  2
+call    6 returned 1
+    $$$$$:  184-block  3
+call    7 never executed
+    $$$$$:  184-block  4
+    $$$$$:  184-block  5
+        1:  185:    Moon moon("Test", 0.0, 0.0, 0, 0, &host, 27.32, 1.0);
+        1:  185-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  185-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  185-block  2
+call    6 returned 1
+    $$$$$:  185-block  3
+call    7 never executed
+    $$$$$:  185-block  4
+    $$$$$:  185-block  5
+       1*:  186:    EXPECT_THROW(moon.getDistanceToPlanet(-10.0), std::invalid_argument);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:  186-block  0
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:  186-block  1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:  186-block  2
+call    9 returned 1
+branch 10 taken 0 (fallthrough)
+branch 11 taken 1 (throw)
+        1:  186-block  3
+branch 12 taken 0 (fallthrough)
+branch 13 taken 1
+    %%%%%:  186-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  186-block  5
+    %%%%%:  186-block  6
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  186-block  7
+call   20 never executed
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:  186-block  8
+call   24 never executed
+branch 25 never executed (fallthrough)
+branch 26 never executed (throw)
+    %%%%%:  186-block  9
+call   27 never executed
+call   28 never executed
+        1:  186-block 10
+call   29 returned 1
+        1:  186-block 11
+branch 30 taken 1
+branch 31 taken 0
+branch 32 taken 0
+        1:  186-block 12
+call   33 returned 1
+call   34 returned 1
+    $$$$$:  186-block 13
+call   35 never executed
+call   36 never executed
+branch 37 never executed (fallthrough)
+branch 38 never executed (throw)
+    $$$$$:  186-block 14
+call   39 never executed
+branch 40 never executed (fallthrough)
+branch 41 never executed (throw)
+    $$$$$:  186-block 15
+call   42 never executed
+branch 43 never executed (fallthrough)
+branch 44 never executed (throw)
+    $$$$$:  186-block 16
+call   45 never executed
+call   46 never executed
+branch 47 never executed (fallthrough)
+branch 48 never executed (throw)
+    $$$$$:  186-block 17
+call   49 never executed
+call   50 never executed
+branch 51 never executed (fallthrough)
+branch 52 never executed (throw)
+    $$$$$:  186-block 18
+call   53 never executed
+branch 54 never executed (fallthrough)
+branch 55 never executed (throw)
+    $$$$$:  186-block 19
+    $$$$$:  186-block 20
+call   56 never executed
+    $$$$$:  186-block 21
+call   57 never executed
+call   58 never executed
+branch 59 never executed (fallthrough)
+branch 60 never executed (throw)
+    $$$$$:  186-block 22
+    $$$$$:  186-block 23
+call   61 never executed
+branch 62 never executed (fallthrough)
+branch 63 never executed (throw)
+    $$$$$:  186-block 24
+call   64 never executed
+    $$$$$:  186-block 25
+    $$$$$:  186-block 26
+call   65 never executed
+    $$$$$:  186-block 27
+call   66 never executed
+    $$$$$:  186-block 28
+call   67 never executed
+    $$$$$:  186-block 29
+    $$$$$:  186-block 30
+call   68 never executed
+    $$$$$:  186-block 31
+    $$$$$:  186-block 32
+call   69 never executed
+        1:  187:}
+call    0 returned 1
+call    1 returned 1
+    $$$$$:  187-block  0
+call    2 never executed
+    $$$$$:  187-block  1
+call    3 never executed
+------------------
+        -:  188:
+        4:  189:TEST_F(SkyTest, StarPlanetMoon) {
+        1:  190:    auto sun = std::make_shared<Star>("Sun", -26.74, 4.83, 0, 0, Enums::SpectralClass::G, false, 1.0);
+        3:  191:    sun->addConstellation("None");
+        -:  192:
+        -:  193:    Planet earth("Earth", -3.86, -3.99, 0, 0, Enums::PlanetType::TERRESTRIAL,
+        1:  194:                 365.25, 1.0, 0.99, 5.97e24);
+        1:  195:    earth.setHostStar(sun);
+        -:  196:
+        1:  197:    Moon moon("Moon", -12.74, 0.21, 0, 0, &earth, 27.32, 7.34e22);
+        1:  198:    earth.addMoon(moon);
+        -:  199:
+       1*:  200:    EXPECT_EQ(earth.getMoonCount(), 1);
+       1*:  201:    EXPECT_EQ(moon.getHostPlanetName(), "Earth");
+        1:  202:}
+------------------
+_ZN27SkyTest_StarPlanetMoon_TestC1Ev:
+function _ZN27SkyTest_StarPlanetMoon_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  189:TEST_F(SkyTest, StarPlanetMoon) {
+        1:  189-block  0
+call    0 returned 1
+------------------
+_ZN27SkyTest_StarPlanetMoon_TestD0Ev:
+function _ZN27SkyTest_StarPlanetMoon_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  189:TEST_F(SkyTest, StarPlanetMoon) {
+        1:  189-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN27SkyTest_StarPlanetMoon_TestD1Ev:
+function _ZN27SkyTest_StarPlanetMoon_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  189:TEST_F(SkyTest, StarPlanetMoon) {
+        1:  189-block  0
+call    0 returned 1
+------------------
+_ZN27SkyTest_StarPlanetMoon_Test8TestBodyEv:
+function _ZN27SkyTest_StarPlanetMoon_Test8TestBodyEv called 1 returned 100% blocks executed 36%
+        1:  189:TEST_F(SkyTest, StarPlanetMoon) {
+        1:  190:    auto sun = std::make_shared<Star>("Sun", -26.74, 4.83, 0, 0, Enums::SpectralClass::G, false, 1.0);
+        1:  190-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:  190-block  1
+    $$$$$:  190-block  2
+    $$$$$:  190-block  3
+    $$$$$:  190-block  4
+    $$$$$:  190-block  5
+    $$$$$:  190-block  6
+    $$$$$:  190-block  7
+        3:  191:    sun->addConstellation("None");
+        1:  191-block  0
+call    0 returned 1
+        1:  191-block  1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:  191-block  2
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:  191-block  3
+call    7 returned 1
+    $$$$$:  191-block  4
+call    8 never executed
+    $$$$$:  191-block  5
+    $$$$$:  191-block  6
+        -:  192:
+        -:  193:    Planet earth("Earth", -3.86, -3.99, 0, 0, Enums::PlanetType::TERRESTRIAL,
+        1:  194:                 365.25, 1.0, 0.99, 5.97e24);
+        1:  194-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  194-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  194-block  2
+call    6 returned 1
+    $$$$$:  194-block  3
+call    7 never executed
+    $$$$$:  194-block  4
+    $$$$$:  194-block  5
+        1:  195:    earth.setHostStar(sun);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:  195-block  0
+call    4 returned 1
+    $$$$$:  195-block  1
+call    5 never executed
+    $$$$$:  195-block  2
+        -:  196:
+        1:  197:    Moon moon("Moon", -12.74, 0.21, 0, 0, &earth, 27.32, 7.34e22);
+        1:  197-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  197-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  197-block  2
+call    6 returned 1
+    $$$$$:  197-block  3
+call    7 never executed
+    $$$$$:  197-block  4
+    $$$$$:  197-block  5
+        1:  198:    earth.addMoon(moon);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  199:
+       1*:  200:    EXPECT_EQ(earth.getMoonCount(), 1);
+        1:  200-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  200-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  200-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  200-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  200-block  4
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  200-block  5
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  200-block  6
+call   19 never executed
+call   20 never executed
+        1:  200-block  7
+call   21 returned 1
+    $$$$$:  200-block  8
+    $$$$$:  200-block  9
+    $$$$$:  200-block 10
+call   22 never executed
+    $$$$$:  200-block 11
+    $$$$$:  200-block 12
+call   23 never executed
+    $$$$$:  200-block 13
+    $$$$$:  200-block 14
+call   24 never executed
+       1*:  201:    EXPECT_EQ(moon.getHostPlanetName(), "Earth");
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  201-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  201-block  1
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:  201-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  201-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  201-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  201-block  5
+call   20 never executed
+call   21 never executed
+        1:  201-block  6
+call   22 returned 1
+    $$$$$:  201-block  7
+call   23 never executed
+    $$$$$:  201-block  8
+    $$$$$:  201-block  9
+call   24 never executed
+    $$$$$:  201-block 10
+    $$$$$:  201-block 11
+call   25 never executed
+    $$$$$:  201-block 12
+    $$$$$:  201-block 13
+call   26 never executed
+        1:  202:}
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+    $$$$$:  202-block  0
+call    3 never executed
+    $$$$$:  202-block  1
+call    4 never executed
+    $$$$$:  202-block  2
+call    5 never executed
+------------------
+        -:  203:
+        4:  204:TEST_F(SkyTest, BoundaryValues) {
+        1:  205:    SkyPosition pos(360.0, 90.0);
+       1*:  206:    EXPECT_DOUBLE_EQ(pos.getAzimuth(), 360.0);
+       1*:  207:    EXPECT_DOUBLE_EQ(pos.getAltitude(), 90.0);
+        -:  208:
+        1:  209:    pos.setAzimuth(0.0);
+        1:  210:    pos.setAltitude(-90.0);
+       1*:  211:    EXPECT_DOUBLE_EQ(pos.getAzimuth(), 0.0);
+       1*:  212:    EXPECT_DOUBLE_EQ(pos.getAltitude(), -90.0);
+        -:  213:
+       1*:  214:    EXPECT_THROW(pos.setAzimuth(360.1), DegreeRangeError);
+       1*:  215:    EXPECT_THROW(pos.setAltitude(90.1), DegreeRangeError);
+        1:  216:}
+------------------
+_ZN27SkyTest_BoundaryValues_TestC1Ev:
+function _ZN27SkyTest_BoundaryValues_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  204:TEST_F(SkyTest, BoundaryValues) {
+        1:  204-block  0
+call    0 returned 1
+------------------
+_ZN27SkyTest_BoundaryValues_TestD0Ev:
+function _ZN27SkyTest_BoundaryValues_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  204:TEST_F(SkyTest, BoundaryValues) {
+        1:  204-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN27SkyTest_BoundaryValues_TestD1Ev:
+function _ZN27SkyTest_BoundaryValues_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  204:TEST_F(SkyTest, BoundaryValues) {
+        1:  204-block  0
+call    0 returned 1
+------------------
+_ZN27SkyTest_BoundaryValues_Test8TestBodyEv:
+function _ZN27SkyTest_BoundaryValues_Test8TestBodyEv called 1 returned 100% blocks executed 25%
+        1:  204:TEST_F(SkyTest, BoundaryValues) {
+        1:  205:    SkyPosition pos(360.0, 90.0);
+        1:  205-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:  206:    EXPECT_DOUBLE_EQ(pos.getAzimuth(), 360.0);
+        1:  206-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  206-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  206-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  206-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  206-block  4
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  206-block  5
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  206-block  6
+call   19 never executed
+call   20 never executed
+        1:  206-block  7
+call   21 returned 1
+    $$$$$:  206-block  8
+call   22 never executed
+    $$$$$:  206-block  9
+    $$$$$:  206-block 10
+call   23 never executed
+    $$$$$:  206-block 11
+    $$$$$:  206-block 12
+call   24 never executed
+       1*:  207:    EXPECT_DOUBLE_EQ(pos.getAltitude(), 90.0);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  207-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  207-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  207-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  207-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  207-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  207-block  5
+call   19 never executed
+call   20 never executed
+        1:  207-block  6
+call   21 returned 1
+    $$$$$:  207-block  7
+call   22 never executed
+    $$$$$:  207-block  8
+    $$$$$:  207-block  9
+call   23 never executed
+    $$$$$:  207-block 10
+    $$$$$:  207-block 11
+call   24 never executed
+        -:  208:
+        1:  209:    pos.setAzimuth(0.0);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  210:    pos.setAltitude(-90.0);
+        1:  210-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:  211:    EXPECT_DOUBLE_EQ(pos.getAzimuth(), 0.0);
+        1:  211-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  211-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  211-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  211-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  211-block  4
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  211-block  5
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  211-block  6
+call   19 never executed
+call   20 never executed
+        1:  211-block  7
+call   21 returned 1
+    $$$$$:  211-block  8
+call   22 never executed
+    $$$$$:  211-block  9
+    $$$$$:  211-block 10
+call   23 never executed
+    $$$$$:  211-block 11
+    $$$$$:  211-block 12
+call   24 never executed
+       1*:  212:    EXPECT_DOUBLE_EQ(pos.getAltitude(), -90.0);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  212-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  212-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  212-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  212-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  212-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  212-block  5
+call   19 never executed
+call   20 never executed
+        1:  212-block  6
+call   21 returned 1
+    $$$$$:  212-block  7
+call   22 never executed
+    $$$$$:  212-block  8
+    $$$$$:  212-block  9
+call   23 never executed
+    $$$$$:  212-block 10
+    $$$$$:  212-block 11
+call   24 never executed
+        -:  213:
+       1*:  214:    EXPECT_THROW(pos.setAzimuth(360.1), DegreeRangeError);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:  214-block  0
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:  214-block  1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:  214-block  2
+call    9 returned 1
+branch 10 taken 0 (fallthrough)
+branch 11 taken 1 (throw)
+        1:  214-block  3
+branch 12 taken 0 (fallthrough)
+branch 13 taken 1
+    %%%%%:  214-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  214-block  5
+    %%%%%:  214-block  6
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  214-block  7
+call   20 never executed
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:  214-block  8
+call   24 never executed
+branch 25 never executed (fallthrough)
+branch 26 never executed (throw)
+    %%%%%:  214-block  9
+call   27 never executed
+call   28 never executed
+        1:  214-block 10
+call   29 returned 1
+        1:  214-block 11
+branch 30 taken 1
+branch 31 taken 0
+branch 32 taken 0
+        1:  214-block 12
+call   33 returned 1
+call   34 returned 1
+branch 35 taken 1 (fallthrough)
+branch 36 taken 0 (throw)
+    $$$$$:  214-block 13
+call   37 never executed
+call   38 never executed
+branch 39 never executed (fallthrough)
+branch 40 never executed (throw)
+    $$$$$:  214-block 14
+call   41 never executed
+branch 42 never executed (fallthrough)
+branch 43 never executed (throw)
+    $$$$$:  214-block 15
+call   44 never executed
+branch 45 never executed (fallthrough)
+branch 46 never executed (throw)
+    $$$$$:  214-block 16
+call   47 never executed
+call   48 never executed
+branch 49 never executed (fallthrough)
+branch 50 never executed (throw)
+    $$$$$:  214-block 17
+call   51 never executed
+call   52 never executed
+branch 53 never executed (fallthrough)
+branch 54 never executed (throw)
+    $$$$$:  214-block 18
+call   55 never executed
+branch 56 never executed (fallthrough)
+branch 57 never executed (throw)
+    $$$$$:  214-block 19
+    $$$$$:  214-block 20
+call   58 never executed
+    $$$$$:  214-block 21
+call   59 never executed
+call   60 never executed
+branch 61 never executed (fallthrough)
+branch 62 never executed (throw)
+    $$$$$:  214-block 22
+    $$$$$:  214-block 23
+call   63 never executed
+branch 64 never executed (fallthrough)
+branch 65 never executed (throw)
+    $$$$$:  214-block 24
+call   66 never executed
+    $$$$$:  214-block 25
+    $$$$$:  214-block 26
+call   67 never executed
+    $$$$$:  214-block 27
+call   68 never executed
+    $$$$$:  214-block 28
+call   69 never executed
+    $$$$$:  214-block 29
+    $$$$$:  214-block 30
+call   70 never executed
+    $$$$$:  214-block 31
+    $$$$$:  214-block 32
+call   71 never executed
+       1*:  215:    EXPECT_THROW(pos.setAltitude(90.1), DegreeRangeError);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:  215-block  0
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:  215-block  1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:  215-block  2
+call    9 returned 1
+branch 10 taken 0 (fallthrough)
+branch 11 taken 1 (throw)
+        1:  215-block  3
+branch 12 taken 0 (fallthrough)
+branch 13 taken 1
+    %%%%%:  215-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  215-block  5
+    %%%%%:  215-block  6
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  215-block  7
+call   20 never executed
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:  215-block  8
+call   24 never executed
+branch 25 never executed (fallthrough)
+branch 26 never executed (throw)
+    %%%%%:  215-block  9
+call   27 never executed
+call   28 never executed
+        1:  215-block 10
+call   29 returned 1
+        1:  215-block 11
+branch 30 taken 1
+branch 31 taken 0
+branch 32 taken 0
+        1:  215-block 12
+call   33 returned 1
+call   34 returned 1
+branch 35 taken 1 (fallthrough)
+branch 36 taken 0 (throw)
+    $$$$$:  215-block 13
+call   37 never executed
+call   38 never executed
+branch 39 never executed (fallthrough)
+branch 40 never executed (throw)
+    $$$$$:  215-block 14
+call   41 never executed
+branch 42 never executed (fallthrough)
+branch 43 never executed (throw)
+    $$$$$:  215-block 15
+call   44 never executed
+branch 45 never executed (fallthrough)
+branch 46 never executed (throw)
+    $$$$$:  215-block 16
+call   47 never executed
+call   48 never executed
+branch 49 never executed (fallthrough)
+branch 50 never executed (throw)
+    $$$$$:  215-block 17
+call   51 never executed
+call   52 never executed
+branch 53 never executed (fallthrough)
+branch 54 never executed (throw)
+    $$$$$:  215-block 18
+call   55 never executed
+branch 56 never executed (fallthrough)
+branch 57 never executed (throw)
+    $$$$$:  215-block 19
+    $$$$$:  215-block 20
+call   58 never executed
+    $$$$$:  215-block 21
+call   59 never executed
+call   60 never executed
+branch 61 never executed (fallthrough)
+branch 62 never executed (throw)
+    $$$$$:  215-block 22
+    $$$$$:  215-block 23
+call   63 never executed
+branch 64 never executed (fallthrough)
+branch 65 never executed (throw)
+    $$$$$:  215-block 24
+call   66 never executed
+    $$$$$:  215-block 25
+    $$$$$:  215-block 26
+call   67 never executed
+    $$$$$:  215-block 27
+call   68 never executed
+    $$$$$:  215-block 28
+call   69 never executed
+    $$$$$:  215-block 29
+    $$$$$:  215-block 30
+call   70 never executed
+    $$$$$:  215-block 31
+    $$$$$:  215-block 32
+call   71 never executed
+        1:  216:}
+------------------
+        -:  217:
+        4:  218:TEST_F(SkyTest, TimeEdgeCases) {
+        1:  219:    AstronomicalObject obj("Test", 5.0, 2.0, 0, 0, Enums::ObjectType::STAR);
+        1:  220:    obj.setRiseTime(20, 0, 0);
+        1:  221:    obj.setSetTime(4, 0, 0);
+        -:  222:
+       1*:  223:    EXPECT_TRUE(obj.isVisibleAtTime(MyTime(22, 0, 0)));
+       1*:  224:    EXPECT_TRUE(obj.isVisibleAtTime(MyTime(2, 0, 0)));
+       1*:  225:    EXPECT_FALSE(obj.isVisibleAtTime(MyTime(12, 0, 0)));
+        1:  226:}
+------------------
+_ZN26SkyTest_TimeEdgeCases_TestC1Ev:
+function _ZN26SkyTest_TimeEdgeCases_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  218:TEST_F(SkyTest, TimeEdgeCases) {
+        1:  218-block  0
+call    0 returned 1
+------------------
+_ZN26SkyTest_TimeEdgeCases_TestD0Ev:
+function _ZN26SkyTest_TimeEdgeCases_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  218:TEST_F(SkyTest, TimeEdgeCases) {
+        1:  218-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN26SkyTest_TimeEdgeCases_TestD1Ev:
+function _ZN26SkyTest_TimeEdgeCases_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  218:TEST_F(SkyTest, TimeEdgeCases) {
+        1:  218-block  0
+call    0 returned 1
+------------------
+_ZN26SkyTest_TimeEdgeCases_Test8TestBodyEv:
+function _ZN26SkyTest_TimeEdgeCases_Test8TestBodyEv called 1 returned 100% blocks executed 27%
+        1:  218:TEST_F(SkyTest, TimeEdgeCases) {
+        1:  218-block  0
+        1:  219:    AstronomicalObject obj("Test", 5.0, 2.0, 0, 0, Enums::ObjectType::STAR);
+        1:  219-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  219-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  219-block  2
+call    6 returned 1
+    $$$$$:  219-block  3
+call    7 never executed
+    $$$$$:  219-block  4
+    $$$$$:  219-block  5
+        1:  220:    obj.setRiseTime(20, 0, 0);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  221:    obj.setSetTime(4, 0, 0);
+        1:  221-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  222:
+       1*:  223:    EXPECT_TRUE(obj.isVisibleAtTime(MyTime(22, 0, 0)));
+        1:  223-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  223-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  223-block  2
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:  223-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  223-block  4
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  223-block  5
+call   16 never executed
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  223-block  6
+call   20 never executed
+branch 21 never executed (fallthrough)
+branch 22 never executed (throw)
+    %%%%%:  223-block  7
+call   23 never executed
+call   24 never executed
+call   25 never executed
+        1:  223-block  8
+call   26 returned 1
+    $$$$$:  223-block  9
+    $$$$$:  223-block 10
+    $$$$$:  223-block 11
+call   27 never executed
+    $$$$$:  223-block 12
+call   28 never executed
+    $$$$$:  223-block 13
+    $$$$$:  223-block 14
+    $$$$$:  223-block 15
+call   29 never executed
+    $$$$$:  223-block 16
+    $$$$$:  223-block 17
+call   30 never executed
+       1*:  224:    EXPECT_TRUE(obj.isVisibleAtTime(MyTime(2, 0, 0)));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  224-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  224-block  1
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:  224-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  224-block  3
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  224-block  4
+call   16 never executed
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  224-block  5
+call   20 never executed
+branch 21 never executed (fallthrough)
+branch 22 never executed (throw)
+    %%%%%:  224-block  6
+call   23 never executed
+call   24 never executed
+call   25 never executed
+        1:  224-block  7
+call   26 returned 1
+    $$$$$:  224-block  8
+    $$$$$:  224-block  9
+    $$$$$:  224-block 10
+call   27 never executed
+    $$$$$:  224-block 11
+call   28 never executed
+    $$$$$:  224-block 12
+    $$$$$:  224-block 13
+    $$$$$:  224-block 14
+call   29 never executed
+    $$$$$:  224-block 15
+    $$$$$:  224-block 16
+call   30 never executed
+       1*:  225:    EXPECT_FALSE(obj.isVisibleAtTime(MyTime(12, 0, 0)));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  225-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  225-block  1
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:  225-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  225-block  3
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  225-block  4
+call   16 never executed
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  225-block  5
+call   20 never executed
+branch 21 never executed (fallthrough)
+branch 22 never executed (throw)
+    %%%%%:  225-block  6
+call   23 never executed
+call   24 never executed
+call   25 never executed
+        1:  225-block  7
+call   26 returned 1
+    $$$$$:  225-block  8
+    $$$$$:  225-block  9
+    $$$$$:  225-block 10
+call   27 never executed
+    $$$$$:  225-block 11
+call   28 never executed
+    $$$$$:  225-block 12
+    $$$$$:  225-block 13
+    $$$$$:  225-block 14
+call   29 never executed
+    $$$$$:  225-block 15
+    $$$$$:  225-block 16
+call   30 never executed
+        1:  226:}
+call    0 returned 1
+    $$$$$:  226-block  0
+call    1 never executed
+------------------

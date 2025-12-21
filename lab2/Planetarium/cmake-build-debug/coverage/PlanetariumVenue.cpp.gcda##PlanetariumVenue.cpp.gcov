@@ -1,0 +1,417 @@
+        -:    0:Source:C:/Users/aleks/CLionProjects/PlanetariumProjectCopy/Facade/PlanetariumVenue.cpp
+        -:    0:Graph:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Facade\CMakeFiles\Facade.dir\PlanetariumVenue.cpp.gcno
+        -:    0:Data:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Facade\CMakeFiles\Facade.dir\PlanetariumVenue.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "PlanetariumVenue.h"
+        -:    2:#include <stdexcept>
+        -:    3:#include <cstdlib>
+        -:    4:#include "../Events/Activity.h"
+        -:    5:#include "../Events/Event.h"
+        -:    6:#include "../People/Employee.h"
+        -:    7:#include "../Exceptions/VenueClosedException.h"
+        -:    8:#include "../Exceptions/CapacityExceededException.h"
+        -:    9:#include "../Exceptions/VenueIsEmpty.h"
+        -:   10:
+function _ZN16PlanetariumVenueC2ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi called 91 returned 100% blocks executed 67%
+       91:   11:PlanetariumVenue::PlanetariumVenue(std::string name_, int capacity_) :
+       91:   12:        name(std::move(name_)), capacity(capacity_), isOpen(false),
+       91:   12-block  0
+call    0 returned 91
+call    1 returned 91
+       91:   13:        currentVisitors(0), ticketPrice(30), schedule() {}
+call    0 returned 91
+call    1 returned 91
+branch  2 taken 91 (fallthrough)
+branch  3 taken 0 (throw)
+       91:   13-block  0
+    $$$$$:   13-block  1
+call    4 never executed
+    $$$$$:   13-block  2
+call    5 never executed
+        -:   14:
+function _ZN16PlanetariumVenue9openVenueEv called 11 returned 100% blocks executed 100%
+       11:   15:void PlanetariumVenue::openVenue() {
+       11:   16:    this->isOpen = true;
+       11:   17:}
+        -:   18:
+function _ZN16PlanetariumVenue10closeVenueEv called 1 returned 100% blocks executed 100%
+        1:   19:void PlanetariumVenue::closeVenue() {
+        1:   20:    this->isOpen = false;
+        1:   21:    this->currentVisitors = 0;
+        1:   22:}
+        -:   23:
+function _ZN16PlanetariumVenue13chooseCuratorEP8Activity called 3 returned 100% blocks executed 43%
+        3:   24:void PlanetariumVenue::chooseCurator(Activity* activity) {
+        3:   25:    if (!curators.empty()) {
+        3:   25-block  0
+call    0 returned 3
+branch  1 taken 0 (fallthrough)
+branch  2 taken 3
+    #####:   26:        int random_index = rand() % static_cast<int>(curators.size());
+    %%%%%:   26-block  0
+call    0 never executed
+call    1 never executed
+    #####:   27:        activity->setHost(curators[random_index]);
+call    0 never executed
+call    1 never executed
+        -:   28:    }
+        3:   29:}
+        -:   30:
+function _ZN16PlanetariumVenue9hostEventB5cxx11ERK5Event called 2 returned 50% blocks executed 37%
+        2:   31:std::string PlanetariumVenue::hostEvent(const Event& event) {
+        2:   32:    if (!isOpen) throw VenueClosedException("The" + name + " is closed!");
+        2:   32-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 1
+        1:   32-block  1
+call    2 returned 1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   32-block  2
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:   32-block  3
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:   32-block  4
+call   12 returned 1
+call   13 returned 1
+call   14 returned 0
+    $$$$$:   32-block  5
+call   15 never executed
+    $$$$$:   32-block  6
+call   16 never executed
+    $$$$$:   32-block  7
+    $$$$$:   32-block  8
+    $$$$$:   32-block  9
+call   17 never executed
+        -:   33:    try {
+        1:   34:        addVisitors(event.getVisitorsNumber());
+        1:   34-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   34-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        2:   35:        return ("An event is being held: \" " + event.getName() +
+        1:   35-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   35-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   35-block  2
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+call    9 returned 1
+call   10 returned 1
+call   11 returned 1
+    $$$$$:   35-block  3
+call   12 never executed
+    $$$$$:   35-block  4
+call   13 never executed
+    $$$$$:   35-block  5
+call   14 never executed
+    $$$$$:   35-block  6
+    $$$$$:   35-block  7
+    $$$$$:   35-block  8
+        3:   36:                " \". Organizer: " + event.getOrganizerName() + ".");
+        1:   36-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   36-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   36-block  2
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:   36-block  3
+        1:   36-block  4
+call    9 returned 1
+call   10 returned 1
+    $$$$$:   36-block  5
+call   11 never executed
+    $$$$$:   36-block  6
+call   12 never executed
+    $$$$$:   36-block  7
+    $$$$$:   36-block  8
+    =====:   37:    } catch (const std::exception &exception) {
+    $$$$$:   37-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    $$$$$:   37-block  1
+call    2 never executed
+    =====:   38:        std::string message = exception.what();
+    $$$$$:   38-block  0
+call    0 never executed
+call    1 never executed
+branch  2 never executed (fallthrough)
+branch  3 never executed (throw)
+    $$$$$:   38-block  1
+    =====:   39:        return "Error: " + message;
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    =====:   40:    }
+    $$$$$:   40-block  0
+call    0 never executed
+call    1 never executed
+    $$$$$:   40-block  1
+call    2 never executed
+    $$$$$:   40-block  2
+call    3 never executed
+        -:   41:}
+        -:   42:
+function _ZN16PlanetariumVenue11addVisitorsEi called 9 returned 78% blocks executed 67%
+        9:   43:void PlanetariumVenue::addVisitors(int visitorsNumber) {
+        9:   44:    if(visitorsNumber<0) throw std::invalid_argument("Invalid visitors number!");
+        9:   44-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 8
+        1:   44-block  1
+call    2 returned 1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   44-block  2
+call    6 returned 0
+    $$$$$:   44-block  3
+call    7 never executed
+        8:   45:    if (visitorsNumber + currentVisitors > capacity)
+        8:   45-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 7
+        1:   46:        throw CapacityExceededException(name + "  is full.");
+        1:   46-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   46-block  1
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:   46-block  2
+call    7 returned 1
+call    8 returned 0
+    $$$$$:   46-block  3
+call    9 never executed
+    $$$$$:   46-block  4
+    $$$$$:   46-block  5
+call   10 never executed
+        7:   47:    currentVisitors += visitorsNumber;
+        7:   48:}
+        7:   48-block  0
+        -:   49:
+function _ZN16PlanetariumVenue14removeVisitorsEi called 3 returned 33% blocks executed 48%
+        3:   50:void PlanetariumVenue::removeVisitors(int visitorsNumber) {
+       3*:   51:    if(visitorsNumber<0) throw std::invalid_argument("Invalid visitors number!");
+        3:   51-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 3
+    %%%%%:   51-block  1
+call    2 never executed
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:   51-block  2
+call    6 never executed
+    $$$$$:   51-block  3
+call    7 never executed
+        3:   52:    if (currentVisitors == 0) throw VenueIsEmpty(name + " has no visitors");
+        3:   52-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 2
+        1:   52-block  1
+call    2 returned 1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   52-block  2
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:   52-block  3
+call    9 returned 1
+call   10 returned 0
+    $$$$$:   52-block  4
+call   11 never executed
+    $$$$$:   52-block  5
+    $$$$$:   52-block  6
+call   12 never executed
+        2:   53:    if (currentVisitors < visitorsNumber)
+        2:   53-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 1
+        1:   54:        throw std::out_of_range(name + " has only " + std::to_string(currentVisitors) + " visitors");
+        1:   54-block  0
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+branch  3 taken 1 (fallthrough)
+branch  4 taken 0 (throw)
+        1:   54-block  1
+call    5 returned 1
+branch  6 taken 1 (fallthrough)
+branch  7 taken 0 (throw)
+        1:   54-block  2
+call    8 returned 1
+branch  9 taken 1 (fallthrough)
+branch 10 taken 0 (throw)
+        1:   54-block  3
+call   11 returned 1
+branch 12 taken 1 (fallthrough)
+branch 13 taken 0 (throw)
+        1:   54-block  4
+call   14 returned 1
+call   15 returned 1
+call   16 returned 1
+call   17 returned 1
+call   18 returned 0
+    $$$$$:   54-block  5
+call   19 never executed
+    $$$$$:   54-block  6
+call   20 never executed
+    $$$$$:   54-block  7
+call   21 never executed
+    $$$$$:   54-block  8
+    $$$$$:   54-block  9
+call   22 never executed
+    $$$$$:   54-block 10
+    $$$$$:   54-block 11
+    $$$$$:   54-block 12
+    $$$$$:   54-block 13
+call   23 never executed
+        1:   55:    currentVisitors-=visitorsNumber;
+        1:   56:}
+        1:   56-block  0
+        -:   57:
+function _ZN16PlanetariumVenue14setTicketPriceEd called 3 returned 67% blocks executed 86%
+        3:   58:void PlanetariumVenue::setTicketPrice(double price) {
+        3:   59:    if(price<0) throw std::invalid_argument("Invalid price!");
+        3:   59-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 2
+        1:   59-block  1
+call    2 returned 1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   59-block  2
+call    6 returned 0
+    $$$$$:   59-block  3
+call    7 never executed
+        2:   60:    ticketPrice = price;
+        2:   61:}
+        2:   61-block  0
+        -:   62:
+function _ZN16PlanetariumVenue10addCuratorEP8Employee called 0 returned 0% blocks executed 0%
+    #####:   63:void PlanetariumVenue::addCurator(Employee* curator) {
+    #####:   64:    if (curator == nullptr) {
+    %%%%%:   64-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:   65:        throw std::invalid_argument("Curator cannot be null.");
+    %%%%%:   65-block  0
+call    0 never executed
+call    1 never executed
+branch  2 never executed (fallthrough)
+branch  3 never executed (throw)
+    %%%%%:   65-block  1
+call    4 never executed
+    $$$$$:   65-block  2
+call    5 never executed
+        -:   66:    }
+    #####:   67:    curators.push_back(curator);
+    %%%%%:   67-block  0
+call    0 never executed
+    #####:   68:}
+        -:   69:
+function _ZN16PlanetariumVenue11setScheduleEiiiiii called 5 returned 100% blocks executed 100%
+        5:   70:void PlanetariumVenue::setSchedule(int openingHour, int openingMinutes, int workdayDuration, int lunchStartHour,
+        -:   71:                                   int lunchStartMinutes, int lunchDuration) {
+        5:   72:    schedule = Schedule(openingHour, openingMinutes, workdayDuration, lunchStartHour,
+        5:   72-block  0
+call    0 returned 5
+branch  1 taken 5 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   73:                        lunchStartMinutes, lunchDuration);
+        5:   74:}
+        5:   74-block  0
+        -:   75:
+function _ZNK16PlanetariumVenue7getNameB5cxx11Ev called 56 returned 100% blocks executed 100%
+       56:   76:std::string PlanetariumVenue::getName() const {
+       56:   77:    return name;
+       56:   77-block  0
+call    0 returned 56
+        -:   78:}
+        -:   79:
+function _ZNK16PlanetariumVenue11getCapacityEv called 9 returned 100% blocks executed 100%
+        9:   80:int PlanetariumVenue::getCapacity() const {
+        9:   81:    return capacity;
+        9:   81-block  0
+        -:   82:}
+        -:   83:
+function _ZNK16PlanetariumVenue11getCuratorsEv called 0 returned 0% blocks executed 0%
+    #####:   84:std::vector<Employee*> PlanetariumVenue::getCurators() const {
+    #####:   85:    return curators;
+    %%%%%:   85-block  0
+call    0 never executed
+        -:   86:}
+        -:   87:
+function _ZNK16PlanetariumVenue6IsOpenEv called 11 returned 100% blocks executed 100%
+       11:   88:bool PlanetariumVenue::IsOpen() const {
+       11:   89:    return isOpen;
+       11:   89-block  0
+        -:   90:}
+        -:   91:
+function _ZNK16PlanetariumVenue18getCurrentVisitorsEv called 9 returned 100% blocks executed 100%
+        9:   92:int PlanetariumVenue::getCurrentVisitors() const {
+        9:   93:    return currentVisitors;
+        9:   93-block  0
+        -:   94:}
+        -:   95:
+function _ZNK16PlanetariumVenue14getTicketPriceEv called 6 returned 100% blocks executed 100%
+        6:   96:double PlanetariumVenue::getTicketPrice() const {
+        6:   97:    return ticketPrice;
+        6:   97-block  0
+        -:   98:}
+        -:   99:
+function _ZNK16PlanetariumVenue14getOpeningTimeEv called 5 returned 100% blocks executed 100%
+        5:  100:MyTime PlanetariumVenue::getOpeningTime() const {
+        5:  101:    return schedule.getOpeningTime();
+        5:  101-block  0
+call    0 returned 5
+        -:  102:}
+        -:  103:
+function _ZNK16PlanetariumVenue14getClosingTimeEv called 5 returned 100% blocks executed 100%
+        5:  104:MyTime PlanetariumVenue::getClosingTime() const {
+        5:  105:    return schedule.getClosingTime();
+        5:  105-block  0
+call    0 returned 5
+        -:  106:}
+        -:  107:
+function _ZNK16PlanetariumVenue13getLunchStartEv called 1 returned 100% blocks executed 100%
+        1:  108:MyTime PlanetariumVenue::getLunchStart() const {
+        1:  109:    return schedule.getLunchStart();
+        1:  109-block  0
+call    0 returned 1
+        -:  110:}
+        -:  111:
+function _ZNK16PlanetariumVenue11getLunchEndEv called 1 returned 100% blocks executed 100%
+        1:  112:MyTime PlanetariumVenue::getLunchEnd() const {
+        1:  113:    return schedule.getLunchEnd();
+        1:  113-block  0
+call    0 returned 1
+        -:  114:}

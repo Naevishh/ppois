@@ -1,0 +1,56 @@
+        -:    0:Source:C:/Users/aleks/CLionProjects/PlanetariumProjectCopy/Inventory/Speaker.cpp
+        -:    0:Graph:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Inventory\CMakeFiles\Inventory.dir\Speaker.cpp.gcno
+        -:    0:Data:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Inventory\CMakeFiles\Inventory.dir\Speaker.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "Speaker.h"
+        -:    2:
+function _ZN7SpeakerC2ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 15 returned 100% blocks executed 100%
+       15:    3:Speaker::Speaker(const std::string& name) :
+       15:    4:        AudioDevice(name), volumeLevel(0), powerConsumption(600){}
+       15:    4-block  0
+call    0 returned 15
+        -:    5:
+function _ZN7Speaker9setVolumeEd called 8 returned 100% blocks executed 100%
+        8:    6:void Speaker::setVolume(double volume) {
+        8:    7:    if (volume < 0) volumeLevel = 0;
+        8:    7-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 7
+        1:    7-block  1
+        7:    8:    else if (volume > 30) volumeLevel = 30;
+        7:    8-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 6
+        1:    8-block  1
+        6:    9:    else volumeLevel = volume;
+        6:    9-block  0
+        8:   10:}
+        -:   11:
+function _ZN7Speaker13startPlaybackEd called 6 returned 100% blocks executed 100%
+        6:   12:void Speaker::startPlayback(double volumeLevel_) {
+        6:   13:    if (!active()) turnOn();
+        6:   13-block  0
+call    0 returned 6
+branch  1 taken 6 (fallthrough)
+branch  2 taken 0
+        6:   13-block  1
+call    3 returned 6
+        6:   14:    volumeLevel = volumeLevel_;
+        6:   15:}
+        -:   16:
+function _ZN7Speaker12stopPlaybackEv called 1 returned 100% blocks executed 100%
+        1:   17:void Speaker::stopPlayback() {
+        1:   18:    volumeLevel = 0;
+        1:   19:}
+        -:   20:
+function _ZNK7Speaker9getVolumeEv called 23 returned 100% blocks executed 100%
+       23:   21:double Speaker::getVolume() const {
+       23:   22:    return volumeLevel;
+       23:   22-block  0
+        -:   23:}
+        -:   24:
+function _ZNK7Speaker8getPowerEv called 3 returned 100% blocks executed 100%
+        3:   25:double Speaker::getPower() const {
+        3:   26:    return powerConsumption;
+        3:   26-block  0
+        -:   27:}

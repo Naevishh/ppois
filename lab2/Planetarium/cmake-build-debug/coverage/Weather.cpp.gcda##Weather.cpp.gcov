@@ -1,0 +1,64 @@
+        -:    0:Source:C:/Users/aleks/CLionProjects/PlanetariumProjectCopy/Utils/Weather.cpp
+        -:    0:Graph:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Utils\CMakeFiles\Utils.dir\Weather.cpp.gcno
+        -:    0:Data:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Utils\CMakeFiles\Utils.dir\Weather.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "Weather.h"
+        -:    2:
+function _ZN7WeatherC2Ev called 310 returned 100% blocks executed 100%
+      310:    3:Weather::Weather() : weather(getRandomWeather()) {}
+      310:    3-block  0
+call    0 returned 310
+function _ZN7WeatherC2ERKN5Enums16WeatherConditionE called 5 returned 100% blocks executed 100%
+        5:    4:Weather::Weather(const wCondition& condition) {
+        5:    5:    weather=condition;
+        5:    6:}
+        -:    7:
+function _ZN7Weather17getWeatherByIndexEy called 315 returned 100% blocks executed 76%
+      315:    8:wCondition Weather::getWeatherByIndex(size_t index) {
+        -:    9:    const std::vector<wCondition> weathers = {
+        -:   10:            wCondition::SUNNY,
+        -:   11:            wCondition::CLOUDY,
+        -:   12:            wCondition::PARTLY_CLOUDY,
+        -:   13:            wCondition::RAINY,
+        -:   14:            wCondition::STORMY,
+        -:   15:            wCondition::SNOWY,
+        -:   16:            wCondition::FOGGY,
+        -:   17:            wCondition::WINDY,
+        -:   18:            wCondition::HAZY
+      630:   19:    };
+      315:   19-block  0
+      315:   19-block  1
+call    0 returned 315
+branch  1 taken 315 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:   19-block  2
+    $$$$$:   19-block  3
+        -:   20:
+      315:   21:    if (index >= weathers.size()) {
+call    0 returned 315
+branch  1 taken 2 (fallthrough)
+branch  2 taken 313
+        2:   22:        return wCondition::SUNNY;
+        2:   22-block  0
+        -:   23:    }
+      313:   24:    return weathers[index];
+      313:   24-block  0
+call    0 returned 313
+      315:   25:}
+      315:   25-block  0
+call    0 returned 315
+        -:   26:
+function _ZN7Weather16getRandomWeatherEv called 310 returned 100% blocks executed 100%
+      310:   27:wCondition Weather::getRandomWeather() {
+      310:   28:    int random_index = rand() % 9;
+      310:   28-block  0
+call    0 returned 310
+      310:   29:    return getWeatherByIndex(random_index);
+call    0 returned 310
+        -:   30:}
+        -:   31:
+function _ZNK7Weather19getWeatherConditionEv called 7 returned 100% blocks executed 100%
+        7:   32:wCondition Weather::getWeatherCondition() const {
+        7:   33:    return weather;
+        7:   33-block  0
+        -:   34:}

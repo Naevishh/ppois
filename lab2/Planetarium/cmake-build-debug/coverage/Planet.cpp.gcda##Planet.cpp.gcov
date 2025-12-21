@@ -1,0 +1,79 @@
+        -:    0:Source:C:/Users/aleks/CLionProjects/PlanetariumProjectCopy/Sky/Planet.cpp
+        -:    0:Graph:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Sky\CMakeFiles\Sky.dir\Planet.cpp.gcno
+        -:    0:Data:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Sky\CMakeFiles\Sky.dir\Planet.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "Planet.h"
+        -:    2:#include "../Exceptions/DegreeRangeError.h"
+function _ZNK6Planet15getEccentricityEv called 2 returned 100% blocks executed 100%
+        2:    3:double Planet::getEccentricity() const{
+        2:    4:    double b=semiMinorAxis;
+        2:    5:    double a=semiMajorAxis;
+        2:    6:    return sqrt(1-b*b/(a*a));
+        2:    6-block  0
+        -:    7:}
+function _ZNK6Planet21getDistanceToHostStarEd called 3 returned 33% blocks executed 67%
+        3:    8:double Planet::getDistanceToHostStar(double trueAnomaly) const {
+        7:    9:    if (trueAnomaly>360 || trueAnomaly<0) throw DegreeRangeError("Истинная аномалия может быть от 0° до 360°");
+        3:    9-block  0
+branch  0 taken 2 (fallthrough)
+branch  1 taken 1
+        2:    9-block  1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 1
+        2:    9-block  2
+call    4 returned 2
+        2:    9-block  3
+call    5 returned 2
+branch  6 taken 2 (fallthrough)
+branch  7 taken 0 (throw)
+        2:    9-block  4
+call    8 returned 2
+branch  9 taken 2 (fallthrough)
+branch 10 taken 0 (throw)
+        2:    9-block  5
+call   11 returned 2
+call   12 returned 0
+    $$$$$:    9-block  6
+call   13 never executed
+    $$$$$:    9-block  7
+    $$$$$:    9-block  8
+    $$$$$:    9-block  9
+call   14 never executed
+        1:   10:    double e=getEccentricity();
+        1:   10-block  0
+call    0 returned 1
+        1:   11:    double a=semiMajorAxis;
+        1:   12:    return (a * (1 - e*e)) / (1 + e * cos(trueAnomaly));
+        1:   12-block  0
+        -:   13:}
+        -:   14:
+function _ZN6Planet7addMoonERK4Moon called 2 returned 100% blocks executed 100%
+        2:   15:void Planet::addMoon(const Moon& moon){ moons.push_back(moon); }
+        2:   15-block  0
+call    0 returned 2
+function _ZNK6Planet12getMoonCountEv called 3 returned 100% blocks executed 100%
+        3:   16:int Planet::getMoonCount() const { return moons.size(); }
+        3:   16-block  0
+call    0 returned 3
+        -:   17:
+function _ZN6Planet11setHostStarESt10shared_ptrI4StarE called 2 returned 100% blocks executed 100%
+        2:   18:void Planet::setHostStar(std::shared_ptr<Star> star) {
+        2:   19:    hostStar = std::move(star);
+        2:   19-block  0
+call    0 returned 2
+call    1 returned 2
+        2:   20:}
+        -:   21:
+function _ZNK6Planet20calculateOrbitLengthEv called 1 returned 100% blocks executed 100%
+        1:   22:double Planet::calculateOrbitLength() const {
+        1:   23:    double a=semiMajorAxis;
+        1:   24:    double b=semiMinorAxis;
+        1:   25:    return 2*3.14*sqrt((a*a+b*b)/2);
+        1:   25-block  0
+        -:   26:}
+        -:   27:
+function _ZNK6Planet13getPlanetTypeEv called 1 returned 100% blocks executed 100%
+        1:   28:Enums::PlanetType Planet::getPlanetType() const{
+        1:   29:    return type;
+        1:   29-block  0
+        -:   30:}

@@ -1,0 +1,86 @@
+        -:    0:Source:C:/Users/aleks/CLionProjects/PlanetariumProjectCopy/Service/Schedule.cpp
+        -:    0:Graph:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Service\CMakeFiles\Service.dir\Schedule.cpp.gcno
+        -:    0:Data:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Service\CMakeFiles\Service.dir\Schedule.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "Schedule.h"
+        -:    2:
+function _ZN8ScheduleC2Eiiiiii called 7 returned 100% blocks executed 94%
+        7:    3:Schedule::Schedule(int openingHour, int openingMinutes, int workdayDuration, int lunchStartHour,
+        7:    4:                   int lunchStartMinutes, int lunchDuration) :
+        7:    5:        openingTime(openingHour, openingMinutes, 0),
+        7:    5-block  0
+call    0 returned 7
+        7:    6:        lunchStart(lunchStartHour, lunchStartMinutes, 0) {
+call    0 returned 7
+call    1 returned 7
+call    2 returned 7
+        7:    7:    int closingHour = openingHour + workdayDuration;
+        7:    8:    if (closingHour >= 24) closingHour -= 24;
+branch  0 taken 1 (fallthrough)
+branch  1 taken 6
+        1:    8-block  0
+        7:    9:    closingTime = MyTime(closingHour, openingMinutes, 0);
+        7:    9-block  0
+call    0 returned 7
+branch  1 taken 7 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:    9-block  1
+call    3 never executed
+        -:   10:
+        7:   11:    int lunchEndMinutes = lunchStartMinutes + lunchDuration;
+        7:   12:    int lunchEndHour = lunchStartHour;
+       15:   13:    while (lunchEndMinutes >= 60) {
+        7:   13-block  0
+       15:   13-block  1
+branch  0 taken 8
+branch  1 taken 7 (fallthrough)
+        8:   14:        lunchEndMinutes -= 60;
+        8:   15:        lunchEndHour++;
+        8:   15-block  0
+        -:   16:    }
+        7:   17:    if (lunchEndHour >= 24) lunchEndHour -= 24;
+        7:   17-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 6
+        1:   17-block  1
+        7:   18:    lunchEnd = MyTime(lunchEndHour, lunchEndMinutes, 0);
+        7:   18-block  0
+call    0 returned 7
+branch  1 taken 7 (fallthrough)
+branch  2 taken 0 (throw)
+        7:   19:}
+        7:   19-block  0
+        -:   20:
+function _ZN8ScheduleC2Ev called 92 returned 100% blocks executed 100%
+       92:   21:Schedule::Schedule() :
+       92:   22:        openingTime(8, 0, 0), closingTime(20, 0, 0),
+       92:   22-block  0
+call    0 returned 92
+call    1 returned 92
+       92:   23:        lunchStart(12, 0, 0), lunchEnd(13, 0, 0) {}
+call    0 returned 92
+call    1 returned 92
+        -:   24:
+function _ZNK8Schedule14getOpeningTimeEv called 11 returned 100% blocks executed 100%
+       11:   25:MyTime Schedule::getOpeningTime() const {
+       11:   26:    return openingTime;
+       11:   26-block  0
+        -:   27:}
+        -:   28:
+function _ZNK8Schedule14getClosingTimeEv called 11 returned 100% blocks executed 100%
+       11:   29:MyTime Schedule::getClosingTime() const {
+       11:   30:    return closingTime;
+       11:   30-block  0
+        -:   31:}
+        -:   32:
+function _ZNK8Schedule13getLunchStartEv called 7 returned 100% blocks executed 100%
+        7:   33:MyTime Schedule::getLunchStart() const {
+        7:   34:    return lunchStart;
+        7:   34-block  0
+        -:   35:}
+        -:   36:
+function _ZNK8Schedule11getLunchEndEv called 7 returned 100% blocks executed 100%
+        7:   37:MyTime Schedule::getLunchEnd() const {
+        7:   38:    return lunchEnd;
+        7:   38-block  0
+        -:   39:}

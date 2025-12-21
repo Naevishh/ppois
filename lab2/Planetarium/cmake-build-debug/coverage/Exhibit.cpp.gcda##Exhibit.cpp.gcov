@@ -1,0 +1,128 @@
+        -:    0:Source:C:/Users/aleks/CLionProjects/PlanetariumProjectCopy/Inventory/Exhibit.cpp
+        -:    0:Graph:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Inventory\CMakeFiles\Inventory.dir\Exhibit.cpp.gcno
+        -:    0:Data:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Inventory\CMakeFiles\Inventory.dir\Exhibit.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "Exhibit.h"
+        -:    2:#include "../Exceptions/BreakingRules.h"
+        -:    3:#include "../Validation/StringValidator.h"
+        -:    4:#include <stdexcept>
+        -:    5:
+function _ZN7ExhibitC2ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb called 19 returned 100% blocks executed 100%
+       19:    6:Exhibit::Exhibit(std::string name_, bool handOn_) :
+       19:    7:        name(std::move(name_)), totalViews(0), visitorRating(0), handOn(handOn_) {}
+       19:    7-block  0
+call    0 returned 19
+call    1 returned 19
+call    2 returned 19
+call    3 returned 19
+        -:    8:
+function _ZNK7Exhibit7getNameB5cxx11Ev called 4 returned 100% blocks executed 100%
+        4:    9:std::string Exhibit::getName() const {
+        4:   10:    return name;
+        4:   10-block  0
+call    0 returned 4
+        -:   11:}
+        -:   12:
+function _ZNK7Exhibit7getInfoB5cxx11Ev called 4 returned 100% blocks executed 100%
+        4:   13:std::string Exhibit::getInfo() const {
+        4:   14:    return info;
+        4:   14-block  0
+call    0 returned 4
+        -:   15:}
+        -:   16:
+function _ZNK7Exhibit9getRatingEv called 10 returned 100% blocks executed 100%
+       10:   17:double Exhibit::getRating() const {
+       10:   18:    return visitorRating;
+       10:   18-block  0
+        -:   19:}
+        -:   20:
+function _ZNK7Exhibit13getTotalViewsEv called 3 returned 100% blocks executed 100%
+        3:   21:int Exhibit::getTotalViews() const {
+        3:   22:    return totalViews;
+        3:   22-block  0
+        -:   23:}
+        -:   24:
+function _ZN7Exhibit7addInfoENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 6 returned 83% blocks executed 90%
+        6:   25:void Exhibit::addInfo(std::string info_) {
+        6:   26:    if(!StringValidator::validate(info_)) throw std::invalid_argument("Invalid info!");
+        6:   26-block  0
+call    0 returned 6
+branch  1 taken 1 (fallthrough)
+branch  2 taken 5
+        1:   26-block  1
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:   26-block  2
+call    7 returned 0
+    $$$$$:   26-block  3
+call    8 never executed
+        5:   27:    info = std::move(info_);
+        5:   27-block  0
+call    0 returned 5
+call    1 returned 5
+        5:   28:}
+        -:   29:
+function _ZN7Exhibit4viewEv called 3 returned 100% blocks executed 100%
+        3:   30:void Exhibit::view() {
+        3:   31:    totalViews++;
+        3:   32:}
+        -:   33:
+function _ZN7Exhibit12updateRatingEi called 11 returned 82% blocks executed 90%
+       11:   34:void Exhibit::updateRating(int rating) {
+       11:   35:    if(rating<0 || rating>10) throw std::invalid_argument("Invalid rating!");
+       11:   35-block  0
+branch  0 taken 10 (fallthrough)
+branch  1 taken 1
+       10:   35-block  1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 9
+        2:   35-block  2
+call    4 returned 2
+call    5 returned 2
+branch  6 taken 2 (fallthrough)
+branch  7 taken 0 (throw)
+        2:   35-block  3
+call    8 returned 0
+    $$$$$:   35-block  4
+call    9 never executed
+        9:   36:    ratings.push_back(rating);
+        9:   36-block  0
+call    0 returned 9
+        9:   37:    totalViews++;
+        9:   38:    visitorRating = (visitorRating * (totalViews - 1) + rating) / ratings.size();
+call    0 returned 9
+        9:   39:}
+        -:   40:
+function _ZNK7Exhibit16isExhibitPopularEv called 0 returned 0% blocks executed 0%
+    #####:   41:bool Exhibit::isExhibitPopular() const {
+    #####:   42:    return visitorRating > 8;
+    %%%%%:   42-block  0
+        -:   43:}
+        -:   44:
+function _ZN7Exhibit12touchExhibitEv called 5 returned 60% blocks executed 67%
+        5:   45:void Exhibit::touchExhibit() {
+        5:   46:    if (!handOn) throw BreakingRules(name + " cannot be touched!");
+        5:   46-block  0
+branch  0 taken 2 (fallthrough)
+branch  1 taken 3
+        2:   46-block  1
+call    2 returned 2
+call    3 returned 2
+branch  4 taken 2 (fallthrough)
+branch  5 taken 0 (throw)
+        2:   46-block  2
+call    6 returned 2
+branch  7 taken 2 (fallthrough)
+branch  8 taken 0 (throw)
+        2:   46-block  3
+call    9 returned 2
+call   10 returned 0
+    $$$$$:   46-block  4
+call   11 never executed
+    $$$$$:   46-block  5
+    $$$$$:   46-block  6
+call   12 never executed
+        3:   47:}
+        3:   47-block  0

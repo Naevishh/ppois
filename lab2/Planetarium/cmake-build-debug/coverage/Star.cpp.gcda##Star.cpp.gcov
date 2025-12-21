@@ -1,0 +1,62 @@
+        -:    0:Source:C:/Users/aleks/CLionProjects/PlanetariumProjectCopy/Sky/Star.cpp
+        -:    0:Graph:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Sky\CMakeFiles\Sky.dir\Star.cpp.gcno
+        -:    0:Data:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Sky\CMakeFiles\Sky.dir\Star.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "Star.h"
+        -:    2:#include "../Validation/StringValidator.h"
+        -:    3:
+function _ZN4StarC2ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEddddN5Enums13SpectralClassEbd called 5 returned 100% blocks executed 100%
+        5:    4:Star::Star(const std::string& name_, double magnitude_, double absMagnitude_, double azimuth_, double altitude_,
+        5:    5:           Enums::SpectralClass spectralClass_, bool isMultiple_, double mass_) :
+        -:    6:        AstronomicalObject(name_, magnitude_, absMagnitude_, azimuth_, altitude_, Enums::ObjectType::STAR),
+        5:    7:        spectralClass(spectralClass_), isMultiple(isMultiple_), mass(mass_) {}
+        5:    7-block  0
+call    0 returned 5
+call    1 returned 5
+        -:    8:
+function _ZN4Star16addConstellationERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 3 returned 67% blocks executed 89%
+        3:    9:void Star::addConstellation(const std::string& constellation_) {
+        3:   10:    if (!StringValidator::validate(constellation_)) throw std::invalid_argument("Invalid constellation name!");
+        3:   10-block  0
+call    0 returned 3
+branch  1 taken 1 (fallthrough)
+branch  2 taken 2
+        1:   10-block  1
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:   10-block  2
+call    7 returned 0
+    $$$$$:   10-block  3
+call    8 never executed
+        -:   11:
+        2:   12:    constellation = constellation_;
+        2:   12-block  0
+call    0 returned 2
+        2:   13:}
+        -:   14:
+function _ZNK4Star16getSpectralClassEv called 1 returned 100% blocks executed 100%
+        1:   15:Enums::SpectralClass Star::getSpectralClass() const {
+        1:   16:    return spectralClass;
+        1:   16-block  0
+        -:   17:}
+        -:   18:
+function _ZNK4Star13getIsMultipleEv called 1 returned 100% blocks executed 100%
+        1:   19:bool Star::getIsMultiple() const {
+        1:   20:    return isMultiple;
+        1:   20-block  0
+        -:   21:}
+        -:   22:
+function _ZNK4Star7getMassEv called 1 returned 100% blocks executed 100%
+        1:   23:double Star::getMass() const {
+        1:   24:    return mass;
+        1:   24-block  0
+        -:   25:}
+        -:   26:
+function _ZNK4Star16getConstellationB5cxx11Ev called 1 returned 100% blocks executed 100%
+        1:   27:std::string Star::getConstellation() const {
+        1:   28:    return constellation;
+        1:   28-block  0
+call    0 returned 1
+        -:   29:}

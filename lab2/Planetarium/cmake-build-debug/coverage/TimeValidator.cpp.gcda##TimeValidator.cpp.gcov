@@ -1,0 +1,341 @@
+        -:    0:Source:C:/Users/aleks/CLionProjects/PlanetariumProjectCopy/Validation/TimeValidator.cpp
+        -:    0:Graph:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Validation\CMakeFiles\Validation.dir\TimeValidator.cpp.gcno
+        -:    0:Data:C:\Users\aleks\CLionProjects\PlanetariumProjectCopy\cmake-build-debug\Validation\CMakeFiles\Validation.dir\TimeValidator.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "TimeValidator.h"
+        -:    2:#include <ctime>
+        -:    3:
+function _ZN13TimeValidator14getCurrentYearEv called 325 returned 100% blocks executed 100%
+      325:    4:int TimeValidator::getCurrentYear() {
+      325:    5:    time_t current = time(nullptr);
+      325:    5-block  0
+call    0 returned 325
+branch  1 taken 325 (fallthrough)
+branch  2 taken 0 (throw)
+      325:    6:    struct tm* now = localtime(&current);
+      325:    6-block  0
+call    0 returned 325
+branch  1 taken 325 (fallthrough)
+branch  2 taken 0 (throw)
+      325:    7:    return now->tm_year + 1900;
+      325:    7-block  0
+      325:    7-block  1
+        -:    8:}
+        -:    9:
+function _ZN13TimeValidator10isLeapYearEi called 13 returned 100% blocks executed 100%
+       13:   10:bool TimeValidator::isLeapYear(int year) {
+       13:   11:    return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+       13:   11-block  0
+branch  0 taken 7 (fallthrough)
+branch  1 taken 6
+        7:   11-block  1
+branch  2 taken 2 (fallthrough)
+branch  3 taken 5
+        8:   11-block  2
+branch  4 taken 1 (fallthrough)
+branch  5 taken 7
+        6:   11-block  3
+        7:   11-block  4
+       13:   11-block  5
+        -:   12:}
+        -:   13:
+function _ZN13TimeValidator14getDaysInMonthEii called 324 returned 100% blocks executed 100%
+      324:   14:int TimeValidator::getDaysInMonth(int month, int year) {
+      324:   15:    switch (month) {
+      324:   15-block  0
+branch  0 taken 309
+branch  1 taken 4
+branch  2 taken 10
+branch  3 taken 1
+      309:   16:        case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+      309:   17:            return 31;
+      309:   17-block  0
+        4:   18:        case 4: case 6: case 9: case 11:
+        4:   19:            return 30;
+        4:   19-block  0
+       10:   20:        case 2:
+       10:   21:            if (year != -1 && isLeapYear(year)) return 29;
+       10:   21-block  0
+branch  0 taken 9 (fallthrough)
+branch  1 taken 1
+        9:   21-block  1
+call    2 returned 9
+branch  3 taken 4 (fallthrough)
+branch  4 taken 5
+        4:   21-block  2
+        6:   21-block  3
+       10:   21-block  4
+branch  5 taken 4 (fallthrough)
+branch  6 taken 6
+        4:   21-block  5
+        6:   22:            return 28;
+        6:   22-block  0
+        1:   23:        default:
+        1:   24:            return 0;
+        1:   24-block  0
+        -:   25:    }
+        -:   26:}
+        -:   27:
+function _ZN13TimeValidator11stringToIntERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 33 returned 100% blocks executed 100%
+       33:   28:int TimeValidator::stringToInt(const std::string& str) {
+        -:   29:    try {
+       33:   30:        return std::stoi(str);
+       33:   30-block  0
+call    0 returned 33
+branch  1 taken 25 (fallthrough)
+branch  2 taken 8 (throw)
+       25:   30-block  1
+        8:   31:    } catch (...) {
+        8:   31-block  0
+        8:   31-block  1
+call    0 returned 8
+        8:   32:        return -1;
+        8:   33:    }
+        -:   34:}
+        -:   35:
+function _ZN13TimeValidator11isValidHourERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 5 returned 100% blocks executed 100%
+        5:   36:bool TimeValidator::isValidHour(const std::string& hourStr) {
+        5:   37:    int hour = stringToInt(hourStr);
+        5:   37-block  0
+call    0 returned 5
+        5:   38:    return hour >= 0 && hour <= 23;
+branch  0 taken 3 (fallthrough)
+branch  1 taken 2
+        3:   38-block  0
+branch  2 taken 2 (fallthrough)
+branch  3 taken 1
+        2:   38-block  1
+        3:   38-block  2
+        5:   38-block  3
+        -:   39:}
+        -:   40:
+function _ZN13TimeValidator11isValidHourEi called 453 returned 100% blocks executed 100%
+      453:   41:bool TimeValidator::isValidHour(int hour) {
+      453:   42:    return hour >= 0 && hour <= 23;
+      453:   42-block  0
+branch  0 taken 452 (fallthrough)
+branch  1 taken 1
+      452:   42-block  1
+branch  2 taken 446 (fallthrough)
+branch  3 taken 6
+      446:   42-block  2
+        7:   42-block  3
+      453:   42-block  4
+        -:   43:}
+        -:   44:
+function _ZN13TimeValidator13isValidMinuteERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 5 returned 100% blocks executed 100%
+        5:   45:bool TimeValidator::isValidMinute(const std::string& minuteStr) {
+        5:   46:    int minute = stringToInt(minuteStr);
+        5:   46-block  0
+call    0 returned 5
+        5:   47:    return minute >= 0 && minute <= 59;
+branch  0 taken 3 (fallthrough)
+branch  1 taken 2
+        3:   47-block  0
+branch  2 taken 2 (fallthrough)
+branch  3 taken 1
+        2:   47-block  1
+        3:   47-block  2
+        5:   47-block  3
+        -:   48:}
+        -:   49:
+function _ZN13TimeValidator13isValidMinuteEi called 448 returned 100% blocks executed 100%
+      448:   50:bool TimeValidator::isValidMinute(int minute) {
+      448:   51:    return minute >= 0 && minute <= 59;
+      448:   51-block  0
+branch  0 taken 447 (fallthrough)
+branch  1 taken 1
+      447:   51-block  1
+branch  2 taken 442 (fallthrough)
+branch  3 taken 5
+      442:   51-block  2
+        6:   51-block  3
+      448:   51-block  4
+        -:   52:}
+        -:   53:
+function _ZN13TimeValidator13isValidSecondERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 5 returned 100% blocks executed 100%
+        5:   54:bool TimeValidator::isValidSecond(const std::string& secondStr) {
+        5:   55:    int second = stringToInt(secondStr);
+        5:   55-block  0
+call    0 returned 5
+        5:   56:    return second >= 0 && second <= 59;
+branch  0 taken 3 (fallthrough)
+branch  1 taken 2
+        3:   56-block  0
+branch  2 taken 2 (fallthrough)
+branch  3 taken 1
+        2:   56-block  1
+        3:   56-block  2
+        5:   56-block  3
+        -:   57:}
+        -:   58:
+function _ZN13TimeValidator13isValidSecondEi called 443 returned 100% blocks executed 100%
+      443:   59:bool TimeValidator::isValidSecond(int second) {
+      443:   60:    return second >= 0 && second <= 59;
+      443:   60-block  0
+branch  0 taken 442 (fallthrough)
+branch  1 taken 1
+      442:   60-block  1
+branch  2 taken 439 (fallthrough)
+branch  3 taken 3
+      439:   60-block  2
+        4:   60-block  3
+      443:   60-block  4
+        -:   61:}
+        -:   62:
+function _ZN13TimeValidator10isValidDayERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEii called 5 returned 100% blocks executed 100%
+        5:   63:bool TimeValidator::isValidDay(const std::string& dayStr, int month, int year) {
+        5:   64:    int day = stringToInt(dayStr);
+        5:   64-block  0
+call    0 returned 5
+        5:   65:    return isValidDay(day, month, year);
+call    0 returned 5
+        -:   66:}
+        -:   67:
+function _ZN13TimeValidator10isValidDayEiii called 325 returned 100% blocks executed 100%
+      325:   68:bool TimeValidator::isValidDay(int day, int month, int year) {
+      325:   69:    if (day < 1 || day > 31) return false;
+      325:   69-block  0
+branch  0 taken 323 (fallthrough)
+branch  1 taken 2
+      323:   69-block  1
+branch  2 taken 3 (fallthrough)
+branch  3 taken 320
+        5:   69-block  2
+      320:   70:    if (month != -1) {
+      320:   70-block  0
+branch  0 taken 319 (fallthrough)
+branch  1 taken 1
+      319:   71:        int maxDays = getDaysInMonth(month, year);
+      319:   71-block  0
+call    0 returned 319
+      319:   72:        return day <= maxDays;
+        -:   73:    }
+        1:   74:    return true;
+        1:   74-block  0
+        -:   75:}
+        -:   76:
+function _ZN13TimeValidator12isValidMonthERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 5 returned 100% blocks executed 100%
+        5:   77:bool TimeValidator::isValidMonth(const std::string& monthStr) {
+        5:   78:    int month = stringToInt(monthStr);
+        5:   78-block  0
+call    0 returned 5
+        5:   79:    return month >= 1 && month <= 12;
+branch  0 taken 3 (fallthrough)
+branch  1 taken 2
+        3:   79-block  0
+branch  2 taken 2 (fallthrough)
+branch  3 taken 1
+        2:   79-block  1
+        3:   79-block  2
+        5:   79-block  3
+        -:   80:}
+        -:   81:
+function _ZN13TimeValidator12isValidMonthEi called 321 returned 100% blocks executed 100%
+      321:   82:bool TimeValidator::isValidMonth(int month) {
+      321:   83:    return month >= 1 && month <= 12;
+      321:   83-block  0
+branch  0 taken 319 (fallthrough)
+branch  1 taken 2
+      319:   83-block  1
+branch  2 taken 316 (fallthrough)
+branch  3 taken 3
+      316:   83-block  2
+        5:   83-block  3
+      321:   83-block  4
+        -:   84:}
+        -:   85:
+function _ZN13TimeValidator11isValidYearERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEii called 4 returned 100% blocks executed 100%
+        4:   86:bool TimeValidator::isValidYear(const std::string& yearStr, int minYear, int maxYearsFuture) {
+        4:   87:    int year = stringToInt(yearStr);
+        4:   87-block  0
+call    0 returned 4
+        4:   88:    return isValidYear(year, minYear, maxYearsFuture);
+call    0 returned 4
+        -:   89:}
+        -:   90:
+function _ZN13TimeValidator11isValidYearEiii called 322 returned 100% blocks executed 100%
+      322:   91:bool TimeValidator::isValidYear(int year, int minYear, int maxYearsFuture) {
+      322:   92:    int currentYear = getCurrentYear();
+      322:   92-block  0
+call    0 returned 322
+      322:   93:    return year >= minYear && year <= (currentYear + maxYearsFuture);
+branch  0 taken 320 (fallthrough)
+branch  1 taken 2
+      320:   93-block  0
+branch  2 taken 317 (fallthrough)
+branch  3 taken 3
+      317:   93-block  1
+        5:   93-block  2
+      322:   93-block  3
+        -:   94:}
+        -:   95:
+function _ZN13TimeValidator11isValidTimeEiii called 449 returned 100% blocks executed 100%
+      449:   96:bool TimeValidator::isValidTime(int hour, int minute, int second) {
+      449:   97:    if (!isValidHour(hour) || !isValidMinute(minute)) return false;
+      449:   97-block  0
+call    0 returned 449
+branch  1 taken 444 (fallthrough)
+branch  2 taken 5
+      444:   97-block  1
+call    3 returned 444
+branch  4 taken 4 (fallthrough)
+branch  5 taken 440
+        9:   97-block  2
+      440:   97-block  3
+      449:   97-block  4
+branch  6 taken 9 (fallthrough)
+branch  7 taken 440
+        9:   97-block  5
+      440:   98:    if (second != -1 && !isValidSecond(second)) return false;
+      440:   98-block  0
+branch  0 taken 439 (fallthrough)
+branch  1 taken 1
+      439:   98-block  1
+call    2 returned 439
+branch  3 taken 2 (fallthrough)
+branch  4 taken 437
+        2:   98-block  2
+      438:   98-block  3
+      440:   98-block  4
+branch  5 taken 2 (fallthrough)
+branch  6 taken 438
+        2:   98-block  5
+      438:   99:    return true;
+      438:   99-block  0
+        -:  100:}
+        -:  101:
+function _ZN13TimeValidator11isValidDateEiii called 317 returned 100% blocks executed 88%
+      317:  102:bool TimeValidator::isValidDate(int day, int month, int year) {
+      317:  103:    if (!isValidMonth(month)) return false;
+      317:  103-block  0
+call    0 returned 317
+branch  1 taken 3 (fallthrough)
+branch  2 taken 314
+        3:  103-block  1
+     314*:  104:    if (!isValidYear(year)) return false;
+      314:  104-block  0
+call    0 returned 314
+branch  1 taken 0 (fallthrough)
+branch  2 taken 314
+    %%%%%:  104-block  1
+      314:  105:    return isValidDay(day, month, year);
+      314:  105-block  0
+call    0 returned 314
+        -:  106:}
+        -:  107:
+function _ZN13TimeValidator15isValidDateTimeEiiiiii called 3 returned 100% blocks executed 100%
+        3:  108:bool TimeValidator::isValidDateTime(int day, int month, int year, int hour, int minute, int second) {
+        3:  109:    return isValidDate(day, month, year) && isValidTime(hour, minute, second);
+        3:  109-block  0
+call    0 returned 3
+branch  1 taken 2 (fallthrough)
+branch  2 taken 1
+        2:  109-block  1
+call    3 returned 2
+branch  4 taken 1 (fallthrough)
+branch  5 taken 1
+        1:  109-block  2
+        2:  109-block  3
+        3:  109-block  4
+        -:  110:}
