@@ -91,12 +91,29 @@ public:
      */
     void setLamp(Enums::LightSource light);
 
-    // --- Геттеры ---
-
+    /**
+     * @brief Возвращает текущую яркость проектора.
+     * @return Яркость в люменах (или в условных единицах, принятых в системе).
+     */
     double getBrightness() const;
+    
+    /**
+     * @brief Возвращает текущее расстояние от проектора до экрана.
+     * @return Расстояние в метрах.
+     */
     double getThrowDistance() const;
+    
+    /**
+     * @brief Возвращает коэффициент throw (соотношение расстояния к размеру изображения).
+     * @return Безразмерное число (например, 1.5 означает: 1.5 м на 1 м ширины экрана).
+     */
     double getThrowRatio() const;
+    
+    /**
+     * @brief Возвращает угол поля зрения (Field of View) проектора.
+     * @return Угол в градусах.
+     */
     double getFov() const;
-};
+    };
 
 #endif // PLANETARIUMPROJECT_PROJECTOR_H
