@@ -1,5 +1,7 @@
 #include "Moon.h"
 #include "Planet.h"
+#include <stdexcept>
+#include <cmath>
 
 Moon::Moon(const std::string& name_,  double magnitude_, double absMagnitude_, double azimuth_,
      double altitude_, Planet* hostPlanet_, double period_, double mass_) :
