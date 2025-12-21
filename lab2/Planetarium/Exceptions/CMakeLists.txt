@@ -1,0 +1,30 @@
+project(Exceptions)
+
+add_library(Exceptions
+        BadWeather.cpp
+        BadWeather.h
+        BreakingRules.cpp
+        BreakingRules.h
+        CantUseDevice.cpp
+        CantUseDevice.h
+        CapacityExceededException.cpp
+        CapacityExceededException.h
+        DegreeRangeError.cpp
+        DegreeRangeError.h
+        DeviceCapabilityException.cpp
+        DeviceCapabilityException.h
+        DeviceSwitchedOff.cpp
+        DeviceSwitchedOff.h
+        IncompatibleDevices.cpp
+        IncompatibleDevices.h
+        NonWorkingHoursException.cpp
+        NonWorkingHoursException.h
+        ObjectIsNotVisible.cpp
+        ObjectIsNotVisible.h
+        VenueClosedException.cpp
+        VenueClosedException.h
+        VenueIsEmpty.cpp
+        VenueIsEmpty.h
+        PlanetariumException.h
+        PlanetariumException.cpp
+)

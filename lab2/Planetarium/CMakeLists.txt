@@ -1,0 +1,153 @@
+cmake_minimum_required(VERSION 3.27)
+project(PlanetariumProjectCopy)
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage")
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fprofile-arcs -ftest-coverage")
+
+set(CMAKE_CXX_STANDARD 17)
+
+add_executable(PlanetariumProjectCopy main.cpp
+        Events/Activity.cpp
+        Events/Activity.h
+        Events/Event.cpp
+        Events/Event.h
+        Events/Excursion.cpp
+        Events/Excursion.h
+        Events/Lecture.cpp
+        Events/Lecture.h
+        Events/Observation.cpp
+        Events/Observation.h
+        Events/Stargazing.cpp
+        Events/Stargazing.h
+        People/Employee.cpp
+        People/Employee.h
+        People/Human.cpp
+        People/Human.h
+        People/Visitor.cpp
+        People/Visitor.h
+        Utils/Date.cpp
+        Utils/Date.h
+        Utils/Enums.h
+        Utils/MyTime.cpp
+        Utils/MyTime.h
+        Utils/Weather.cpp
+        Utils/Weather.h
+        Validation/StringValidator.cpp
+        Validation/StringValidator.h
+        Validation/TimeValidator.cpp
+        Validation/TimeValidator.h
+        Facade/Auditorium.cpp
+        Facade/Auditorium.h
+        Facade/Museum.cpp
+        Facade/Museum.h
+        Facade/Observatory.cpp
+        Facade/Observatory.h
+        Facade/PlanetariumFacade.cpp
+        Facade/PlanetariumFacade.h
+        Facade/PlanetariumVenue.cpp
+        Facade/PlanetariumVenue.h
+        Facade/StarHall.cpp
+        Facade/StarHall.h
+        Inventory/AudioDevice.cpp
+        Inventory/AudioDevice.h
+        Inventory/AudioSystem.cpp
+        Inventory/AudioSystem.h
+        Inventory/Device.cpp
+        Inventory/Device.h
+        Inventory/DomeShapedScreen.cpp
+        Inventory/DomeShapedScreen.h
+        Inventory/Exhibit.cpp
+        Inventory/Exhibit.h
+        Inventory/InteractiveWhiteboard.cpp
+        Inventory/InteractiveWhiteboard.h
+        Inventory/Microphone.cpp
+        Inventory/Microphone.h
+        Inventory/PlanetariumProjector.cpp
+        Inventory/PlanetariumProjector.h
+        Inventory/Projector.cpp
+        Inventory/Projector.h
+        Inventory/RemoteControl.cpp
+        Inventory/RemoteControl.h
+        Inventory/Screen.cpp
+        Inventory/Screen.h
+        Inventory/Seating.cpp
+        Inventory/Seating.h
+        Inventory/Speaker.cpp
+        Inventory/Speaker.h
+        Inventory/Telescope.cpp
+        Inventory/Telescope.h
+        Service/PriceCalculator.cpp
+        Service/PriceCalculator.h
+        Service/Schedule.cpp
+        Service/Schedule.h
+        Service/Ticket.cpp
+        Service/Ticket.h
+        Service/TicketOffice.cpp
+        Service/TicketOffice.h
+        Exceptions/BadWeather.cpp
+        Exceptions/BadWeather.h
+        Exceptions/BreakingRules.cpp
+        Exceptions/BreakingRules.h
+        Exceptions/CantUseDevice.cpp
+        Exceptions/CantUseDevice.h
+        Exceptions/CapacityExceededException.cpp
+        Exceptions/CapacityExceededException.h
+        Exceptions/DegreeRangeError.cpp
+        Exceptions/DegreeRangeError.h
+        Exceptions/DeviceCapabilityException.cpp
+        Exceptions/DeviceCapabilityException.h
+        Exceptions/DeviceSwitchedOff.cpp
+        Exceptions/DeviceSwitchedOff.h
+        Exceptions/IncompatibleDevices.cpp
+        Exceptions/IncompatibleDevices.h
+        Exceptions/NonWorkingHoursException.cpp
+        Exceptions/NonWorkingHoursException.h
+        Exceptions/ObjectIsNotVisible.cpp
+        Exceptions/ObjectIsNotVisible.h
+        Exceptions/VenueClosedException.cpp
+        Exceptions/VenueClosedException.h
+        Exceptions/VenueIsEmpty.cpp
+        Exceptions/VenueIsEmpty.h
+        Exceptions/PlanetariumException.cpp
+        Exceptions/PlanetariumException.h
+        Sky/AstronomicalObject.cpp
+        Sky/AstronomicalObject.h
+        Sky/Moon.cpp
+        Sky/Moon.h
+        Sky/Planet.cpp
+        Sky/Planet.h
+        Sky/SkyPosition.cpp
+        Sky/SkyPosition.h
+        Sky/Star.cpp
+        Sky/Star.h
+)
+
+add_subdirectory(Tests)
+add_subdirectory(Events)
+add_subdirectory(Exceptions)
+add_subdirectory(Facade)
+add_subdirectory(Inventory)
+add_subdirectory(People)
+add_subdirectory(Service)
+add_subdirectory(Sky)
+add_subdirectory(Utils)
+add_subdirectory(Validation)
+
+target_link_libraries(PlanetariumProjectCopy
+        Exceptions
+        Events
+        Facade
+        Inventory
+        People
+        Service
+        Sky
+        Utils
+        Validation
+)
+
+add_subdirectory(googletest-main)
+enable_testing()
+include(GoogleTest)
+target_link_libraries(Tests GTest::gtest_main
+        GTest::gmock
+)

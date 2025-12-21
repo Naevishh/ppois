@@ -1,0 +1,32 @@
+project(Inventory)
+
+add_library(Inventory
+        AudioDevice.cpp
+        AudioDevice.h
+        AudioSystem.cpp
+        AudioSystem.h
+        Device.cpp
+        Device.h
+        DomeShapedScreen.cpp
+        DomeShapedScreen.h
+        Exhibit.cpp
+        Exhibit.h
+        InteractiveWhiteboard.cpp
+        InteractiveWhiteboard.h
+        Microphone.cpp
+        Microphone.h
+        PlanetariumProjector.cpp
+        PlanetariumProjector.h
+        Projector.cpp
+        Projector.h
+        RemoteControl.cpp
+        RemoteControl.h
+        Screen.cpp
+        Screen.h
+        Seating.cpp
+        Seating.h
+        Speaker.cpp
+        Speaker.h
+        Telescope.cpp
+        Telescope.h
+)
