@@ -86,6 +86,8 @@ Visitor 2 2 ->
 
 Weather 1 2 ->
 
+Exceptions (12):
+
 PlanetariumException 1 1 -> VenueIsEmpty, VenueClosedException, ObjectsNotVisible, 
 NonWorkingHoursException, IncompatibleDevices, DeviceswitchedOff, DeviceCapabilityException, DegreeRangeError, CapacityExceededException, CantUseDevice, BreakingRules, BadWeather
 
@@ -113,4 +115,4 @@ CantUseDevice 0 0 ->
 
 BreakingRules 0 0 ->
 
-Поля : 163  Поведения : 112  Ассоциации : 122  Классы : 57
+Поля : 163  Поведения : 112  Ассоциации : 122  Классы : 57  Исключения : 12
