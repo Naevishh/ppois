@@ -1,6 +1,7 @@
 #include <stdexcept>
 #include "PlanetariumFacade.h"
 #include "../Validation/StringValidator.h"
+include <stdexcept>
 
 PlanetariumFacade::PlanetariumFacade(PlanetariumProjector* projector, AudioSystem* system, Seating* seats,
                                      DomeShapedScreen* screen) {
