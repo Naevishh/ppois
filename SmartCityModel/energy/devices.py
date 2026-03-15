@@ -1,0 +1,80 @@
+from sensors import LightLevelSensor, MotionSensor, WaterMeter, ElectricityMeter
+from .lighting import SmartLightningSystem
+from core import Domain, SmartDevice
+
+
+class SmartThermostat(SmartDevice):
+    """Умный термостат для экономии на отоплении/кондиционировании"""
+
+    def __init__(self, device_id: str, motion_sensor: MotionSensor):
+        super().__init__(device_id, Domain.HOUSING)
+        self.motion_sensor = motion_sensor
+        self._target_temp = 22
+        self._current_temp = 20
+        self._is_heating = False
+
+    def optimize_climate(self):
+        """Энергосберегающая логика"""
+        # Если никого нет, снижаем активность отопления/кондиционирования
+        if not self.motion_sensor.movement:
+            self._target_temp = 18  # Экономный режим
+            self._is_heating = False
+        else:
+            self._target_temp = 22  # Комфортный режим
+            if self._current_temp < self._target_temp:
+                self._is_heating = True
+
+        return self._is_heating
+
+    def get_energy_consumption(self):
+        # Грубая оценка: если нагрев включен, потребление высокое
+        return 500 if self._is_heating else 10
+
+
+class SmartHome:
+    def __init__(self, address: tuple, water_meter: WaterMeter,
+                 electricity_meter: ElectricityMeter,
+                 thermostat: SmartThermostat,
+                 lightning_system: SmartLightningSystem):
+        self.address = address
+        self.water_meter = water_meter
+        self.electricity_meter = electricity_meter
+        self.thermostat = thermostat
+        self.lightning_system = lightning_system
+
+    def get_energy_consumption(self):
+        current_consumption = self.thermostat.get_energy_consumption() + self.lightning_system.get_energy_consumption()
+        self.electricity_meter.set_energy(current_consumption)
+        return current_consumption
+
+    def get_metrics(self):
+        return {
+            "water": self.water_meter.get_water_volume(),
+            "electricity": self.electricity_meter.get_energy()
+        }
+
+
+class SmartLight(SmartDevice):
+    def __init__(self, device_id: str, light_level_sensor: LightLevelSensor, motion_sensor: MotionSensor):
+        super().__init__(device_id, Domain.INFRASTRUCTURE)
+        self.light_level_sensor = light_level_sensor
+        self.motion_sensor = motion_sensor
+        self._light_level = 50
+        self._is_on = False
+
+        self.motion_sensor.set_callback(self.turn_on)
+
+    def turn_on(self):
+        """Метод, который вызовет сенсор при движении"""
+        self.set_level()
+
+    def set_level(self):
+        status = self.light_level_sensor.get_status()
+        if status >= 70:
+            self._is_on = False
+        else:
+            self._is_on = True
+            self._light_level = 100 - status
+
+    def get_energy_consumption_estimate(self):
+        return self._light_level * 0.95

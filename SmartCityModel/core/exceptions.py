@@ -1,0 +1,2 @@
+class HospitalException(Exception):
+    pass
