@@ -1,7 +1,9 @@
 import uuid
 
 from core import SmartDevice, TrafficLightColor, VehicleType, Direction, Domain
+from core.exceptions import TransportException
 from sensors import TrafficFlowSensor, AITrafficCamera, PedestrianCrossingSensor
+from urban_planning import District
 
 
 class SmartTrafficLight(SmartDevice):
@@ -109,16 +111,29 @@ class TrafficManager:
     Реализует сценарий 'Зеленая волна' для общественного транспорта.
     """
 
-    def __init__(self, tms, intersections: list[Intersection]):
+    def __init__(self, tms):
         """
         :param tms: Экземпляр TransportMonitoringSystem
         """
         self.tms = tms
-        self.intersections = {intersection.intersection_id: intersection for intersection in intersections}
+        self.intersections = {}
         # Маппинг: ID остановки TMS -> ID перекрестка TrafficSystem
         self.stop_intersection_map: dict[str, tuple] = {}
 
     PublicVehicleType = [VehicleType.BUS, VehicleType.TRAM, VehicleType.TROLLEYBUS]
+
+    def register_district(self, district: District):
+        """Регистрирует перекрёстки района для управления"""
+        for intersection in district.get_all_intersections():
+            self.intersections[intersection.intersection_id] = intersection
+
+    def get_all_sensors(self) -> list[TrafficFlowSensor]:
+        """Возвращает все сенсоры района"""
+        sensors = []
+        for inter in self.intersections.values():
+            for light in inter.lights.keys():
+                sensors.append(light.flow_sensor)
+        return sensors
 
     def register_intersection(self, intersection: Intersection):
         self.intersections[intersection.intersection_id] = intersection
@@ -128,6 +143,10 @@ class TrafficManager:
         Связывает физическую остановку с ближайшим перекрестком.
         Когда автобус на остановке, светофор перекрестка знает об этом.
         """
+        if not stop_id in self.tms.physical_stops.keys():
+            raise TransportException("Остановка не найдена")
+        elif not intersection_id in self.intersections:
+            raise TransportException("Перекресток не найден")
         if not self.intersections[intersection_id].is_intersection:
             stop_direction = Direction.SOUTH
         self.stop_intersection_map[stop_id] = (intersection_id, stop_direction)
@@ -142,7 +161,6 @@ class TrafficManager:
         # Проходим по всем маршрутам в TMS
         for route in self.tms.routes.values():
             for vehicle in route.get_vehicles():
-                # Интересуемся только активным транспортом
                 if not vehicle.vehicle_type in TrafficManager.PublicVehicleType:
                     continue
 
@@ -158,7 +176,8 @@ class TrafficManager:
                     if stop_id in self.stop_intersection_map:
                         stop_intersection = self.stop_intersection_map[stop_id]
 
-                        self._grant_green_wave(stop_intersection, vehicle)
+                        return self._grant_green_wave(stop_intersection, vehicle)
+        return None
 
     def _grant_green_wave(self, stop_intersection: tuple, vehicle):
         """

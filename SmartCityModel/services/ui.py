@@ -2,23 +2,20 @@ import uuid
 from typing import Optional
 
 from citizens import UserRepository, Human
+from city import SmartCity
 from ui import show_menu
 from . import EducationService, UtilitiesService, Hospital
 
 
 class PublicServiceUI:
-    def __init__(self):
+    def __init__(self, city: SmartCity):
+        self.city=city
         self.user_repo = UserRepository()  # Подключаем базу
         self.current_user_id: Optional[str] = None  # Храним только ID
-        self.hospital = Hospital("Поликлинника №1", ("Гришина", 3), "h_01")
-        self.educational_service = EducationService("Гимназия №1",
-                                                    ("Ленина", 45), "sch_01")
-        self.utility_services = UtilitiesService("Коммунальная служба №1",
-                                                 ("Пушкина", 24), "ut_01")
         self.available_actions = [
-            ("hospital", "Поликлинника №1"),
-            ("school", "Гимназия №1"),
-            ("utility_service", "Коммунальная служба №1"),
+            ("hospital", self.city.hospital.name),
+            ("school", self.city.educational_service.name),
+            ("utility_service", self.city.utility_services.name),
             ("exit", "Выйти")
         ]
 
@@ -65,10 +62,10 @@ class PublicServiceUI:
             person = self.user_repo.get_user(self.current_user_id)
             match key:
                 case "hospital":
-                    self.hospital.provide_service(get_user_input, print_func, person)
+                    self.city.hospital.provide_service(get_user_input, print_func, person)
                 case "school":
-                    self.educational_service.provide_service(get_user_input, print_func, person)
+                    self.city.educational_service.provide_service(get_user_input, print_func, person)
                 case "utility_service":
-                    self.utility_services.provide_service(get_user_input, print_func, person)
+                    self.city.utility_services.provide_service(get_user_input, print_func, person)
                 case "exit":
                     return

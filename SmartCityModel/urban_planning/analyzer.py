@@ -21,9 +21,6 @@ class UrbanPlanningDataAnalyzer:
 
     def __init__(self):
         self.districts: dict[str, District] = {}
-        self._env_system: Optional[EnvironmentMonitoringSystem] = None
-        self._transport_system: Optional[TransportMonitoringSystem] = None
-        self._utilities_service: Optional[UtilitiesService] = None
 
     def register_district(self, district: District):
         """Регистрация района для анализа"""
