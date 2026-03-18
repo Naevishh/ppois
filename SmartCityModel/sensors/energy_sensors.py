@@ -1,12 +1,17 @@
-from core import MeasurementType, Domain, Sensor, SmartDevice
+from core import MeasurementType, Domain, SmartDevice, SensorValueError
+from sensors import Sensor
 
 
 class LightLevelSensor(Sensor):
     def __init__(self):
-        super().__init__("light_", Domain.INFRASTRUCTURE, MeasurementType.LIGHT)
+        super().__init__("light_sensor_", Domain.INFRASTRUCTURE, MeasurementType.LIGHT)
         self._ambient_light_level = 50
 
     def set_light_level(self, level: int):
+        if level < 0:
+            raise SensorValueError("Уровень освещения не может быть отрицательным.")
+        elif level > 100:
+            raise SensorValueError("Уровень освещения слишком высокий.")
         self._ambient_light_level = level
 
     def get_status(self):
@@ -31,11 +36,15 @@ class MotionSensor(Sensor):
 
 
 class WaterMeter(SmartDevice):
-    def __init__(self, device_id: str):
-        super().__init__(device_id, Domain.HOUSING)
+    def __init__(self):
+        super().__init__("watermtr_", Domain.HOUSING)
         self._water_volume = 5000
 
     def set_water_volume(self, volume: int):
+        if volume < 0:
+            raise SensorValueError("Объем воды не может быть отрицательным.")
+        elif volume > 1000000:
+            raise SensorValueError("Объем воды слишком большой.")
         self._water_volume = volume
 
     def get_water_volume(self):
@@ -43,11 +52,15 @@ class WaterMeter(SmartDevice):
 
 
 class ElectricityMeter(SmartDevice):
-    def __init__(self, device_id: str):
-        super().__init__(device_id, Domain.HOUSING)
+    def __init__(self):
+        super().__init__("electrmtr_", Domain.HOUSING)
         self._energy = 5000
 
     def set_energy(self, energy: int):
+        if energy < 0:
+            raise SensorValueError("Энергия не может быть отрицательной.")
+        elif energy > 1000000:
+            raise SensorValueError("Значение энергии слишком высокое.")
         self._energy = energy
 
     def get_energy(self):

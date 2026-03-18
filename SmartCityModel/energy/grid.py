@@ -10,6 +10,7 @@ class CityEnergyGrid:
     def balance_energy(self):
         """Главный цикл оптимизации"""
         # 1. Считаем производство
+
         total_production = sum(g.produce_electricity() for g in self.generators)
 
         # 2. Считаем базовое потребление
@@ -19,11 +20,13 @@ class CityEnergyGrid:
 
         # 3. Распределяем излишки
         if surplus > 0:
+            result="Излишки распределены."
             for battery in self.storages:
                 surplus -= battery.store_energy(surplus)
                 if surplus <= 0:
                     break
         elif surplus < 0:
+            result = "Дефицит энергии. Разряжаем батареи."
             # Если не хватает, берем из батарей
             needed = abs(surplus)
             for battery in self.storages:
@@ -32,11 +35,20 @@ class CityEnergyGrid:
                     break
 
             if needed > 0:
-                print(f"Warning: Дефицит энергии {needed} Вт, подключение к внешней сети")
+                result= f"Warning: Дефицит энергии {needed} Вт, подключение к внешней сети."
+        else:
+            result= "Производство покрыло потребление."
+
+        return {
+            "production": total_production,
+            "consumption": total_consumption,
+            "surplus": surplus,
+            "result": result
+        }
 
     def optimize_all(self):
         """Вызывает оптимизацию на всех устройствах"""
         for system in self.consumers:
             if isinstance(system, SmartLightningSystem):
                 system.optimize_lightning()
-        self.balance_energy()
+        return self.balance_energy()

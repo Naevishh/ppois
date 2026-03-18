@@ -1,5 +1,6 @@
 from typing import Optional
 
+from core import ObjectNotFoundError, TransportException
 from . import TransportRoute, PublicTransportVehicle, BusStop, RouteStop
 
 
@@ -29,15 +30,26 @@ class TransportMonitoringSystem:
             return self.vehicles[vehicle_id].report_stop_passed(stop_index)
         return None
 
+    def get_in_vehicle(self, vehicle_id: str):
+        if not vehicle_id in self.vehicles.keys():
+            raise ObjectNotFoundError("Средство не найдено.")
+        vehicle=self.vehicles[vehicle_id]
+        try:
+            vehicle.update_passengers(vehicle.get_status()["passengers"]+1)
+            return f"Добавлен пассажир на {vehicle.device_id}"
+        except TransportException as e:
+            return f"Ошибка: {e}"
+
+
     def calculate_eta(self, vehicle: PublicTransportVehicle, stop: RouteStop, route: TransportRoute) -> Optional[float]:
-        if not vehicle.is_active:
-            return None
 
         current_idx = vehicle.get_last_stop_index
         target_idx = stop.index
 
-        if current_idx == -1 or current_idx >= target_idx:
+        if current_idx == -1 or current_idx > target_idx:
             return None
+        elif current_idx == target_idx:
+            return 0
 
         stops_remaining = target_idx - current_idx
         minutes_remaining = stops_remaining * route.avg_time_between_stops
@@ -69,7 +81,7 @@ class TransportMonitoringSystem:
             # 3. Проверяем транспорт на этом маршруте
             for vehicle in route.get_vehicles():
                 eta = self.calculate_eta(vehicle, route_stop, route)
-                if eta is not None and eta > 0:
+                if eta is not None and eta >= 0:
                     arrivals.append({
                         "vehicle_id": vehicle.device_id,
                         "type": vehicle.vehicle_type.value,
@@ -90,5 +102,5 @@ class TransportMonitoringSystem:
         return {
             "stop_id": stop_id,
             "stop_name": physical_stop.name,
-            "arrivals": arrivals[:3]
+            "arrivals": arrivals
         }

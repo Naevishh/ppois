@@ -1,3 +1,5 @@
+import uuid
+
 from sensors import LightLevelSensor, MotionSensor, WaterMeter, ElectricityMeter
 from .lighting import SmartLightningSystem
 from core import Domain, SmartDevice
@@ -6,8 +8,8 @@ from core import Domain, SmartDevice
 class SmartThermostat(SmartDevice):
     """Умный термостат для экономии на отоплении/кондиционировании"""
 
-    def __init__(self, device_id: str, motion_sensor: MotionSensor):
-        super().__init__(device_id, Domain.HOUSING)
+    def __init__(self, motion_sensor: MotionSensor):
+        super().__init__("therm_", Domain.HOUSING)
         self.motion_sensor = motion_sensor
         self._target_temp = 22
         self._current_temp = 20
@@ -55,8 +57,8 @@ class SmartHome:
 
 
 class SmartLight(SmartDevice):
-    def __init__(self, device_id: str, light_level_sensor: LightLevelSensor, motion_sensor: MotionSensor):
-        super().__init__(device_id, Domain.INFRASTRUCTURE)
+    def __init__(self, light_level_sensor: LightLevelSensor, motion_sensor: MotionSensor):
+        super().__init__("smrtlight_", Domain.INFRASTRUCTURE)
         self.light_level_sensor = light_level_sensor
         self.motion_sensor = motion_sensor
         self._light_level = 50

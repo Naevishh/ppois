@@ -1,4 +1,4 @@
-from core import SmartDevice, Domain
+from core import SmartDevice, Domain, SensorValueError
 
 
 class SolarPanel:
@@ -16,21 +16,23 @@ class WindTurbine:
         self._wind_speed = 0
 
     def set_wind_speed(self, wind_speed: int):
+        if wind_speed < 0:
+            raise SensorValueError("Скорость не может быть отрицательной.")
+        elif wind_speed > 25:
+            raise SensorValueError("Скорость слишком высокая.")
         self._wind_speed = wind_speed
 
     def produce_electricity(self):
         # Выработка энергии начинается с определённой скорости ветра
         if self._wind_speed < 3:
             return 0  # слишком слабый ветер
-        elif self._wind_speed > 25:
-            return 0  # слишком сильный ветер (опасно)
         else:
             return (self._wind_speed - 3) * 10  # например, 10 Вт на каждый м/с
 
 
 class BatteryStorage(SmartDevice):
-    def __init__(self, device_id: str, capacity: int):
-        super().__init__(device_id, Domain.INFRASTRUCTURE)
+    def __init__(self, capacity: int):
+        super().__init__("battery_", Domain.INFRASTRUCTURE)
         self.capacity = capacity  # Максимальная емкость в Вт*ч
         self.current_charge = 0  # Текущий заряд
         self._is_charging = False

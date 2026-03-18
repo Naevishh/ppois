@@ -3,3 +3,9 @@ class HospitalException(Exception):
 
 class TransportException(Exception):
     pass
+
+class SensorValueError(Exception):
+    pass
+
+class ObjectNotFoundError(Exception):
+    pass

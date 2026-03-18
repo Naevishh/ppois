@@ -1,18 +1,20 @@
 from datetime import datetime
 
-from core import SmartDevice, Domain, VehicleType
+from core import SmartDevice, Domain, VehicleType, TransportException
 
 
 class BusStop(SmartDevice):
     """Остановка общественного транспорта"""
 
-    def __init__(self, stop_id: str, name: str):
-        super().__init__(stop_id, Domain.TRANSPORTATION)
+    def __init__(self, name: str):
+        super().__init__("stop_", Domain.TRANSPORTATION)
         self.name = name
         self._waiting_passengers = 0
         self._display_message = ""
 
     def update_passengers(self, count: int):
+        if count < 0:
+            raise TransportException("Количество пассажиров не может быть отрицательным.")
         self._waiting_passengers = count
 
     def set_display(self, message: str):
@@ -22,7 +24,8 @@ class BusStop(SmartDevice):
         return {
             "stop_id": self.device_id,
             "name": self.name,
-            "display": self._display_message
+            "display": self._display_message,
+            "passengers": self._waiting_passengers
         }
 
 
@@ -37,14 +40,13 @@ class RouteStop:
 class PublicTransportVehicle(SmartDevice):
     """Транспортное средство общественного транспорта"""
 
-    def __init__(self, vehicle_id: str, vehicle_type: VehicleType, route_id: str):
-        super().__init__(vehicle_id, Domain.TRANSPORTATION)
+    def __init__(self, vehicle_type: VehicleType, route_id: str):
+        super().__init__(f"{vehicle_type.value}_", Domain.TRANSPORTATION)
         self.vehicle_type = vehicle_type
         self.route_id = route_id
 
         # храним индекс последней пройденной остановки
         self._last_passed_stop_index = -1
-        self._is_active = True
         self._last_update = datetime.now()
         self._passenger_count = 0
 
@@ -61,15 +63,11 @@ class PublicTransportVehicle(SmartDevice):
             return None
 
     def update_passengers(self, count: int):
+        if count < 0:
+            raise TransportException("Количество пассажиров не может быть отрицательным.")
+        elif count > 60:
+            raise TransportException("Количество пассажиров слишком большое.")
         self._passenger_count = count
-
-    @property
-    def is_active(self) -> bool:
-        return self._is_active
-
-    @is_active.setter
-    def is_active(self, is_active: bool):
-        self._is_active = is_active
 
     @property
     def get_last_stop_index(self):
@@ -81,7 +79,6 @@ class PublicTransportVehicle(SmartDevice):
             "type": self.vehicle_type.value,
             "route_id": self.route_id,
             "last_passed_stop_index": self._last_passed_stop_index,
-            "is_active": self._is_active,
             "passengers": self._passenger_count
         }
 
@@ -101,7 +98,7 @@ class TransportRoute:
             self._vehicles.append(vehicle)
 
     def get_vehicles(self) -> list[PublicTransportVehicle]:
-        return [v for v in self._vehicles if v.is_active]
+        return [v for v in self._vehicles]
 
     def get_status(self) -> dict:
         return {

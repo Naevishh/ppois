@@ -11,7 +11,7 @@ class SmartTrafficLight(SmartDevice):
                  flow_sensor: TrafficFlowSensor,
                  camera: AITrafficCamera,
                  pedestrian_sensor: PedestrianCrossingSensor = None):
-        super().__init__("tl_" + str(uuid.uuid4())[:6], Domain.TRANSPORTATION)
+        super().__init__("tl_", Domain.TRANSPORTATION)
         self.flow_sensor = flow_sensor
         self.camera = camera
         self._current_color = TrafficLightColor.RED
@@ -148,9 +148,17 @@ class TrafficManager:
         elif not intersection_id in self.intersections:
             raise TransportException("Перекресток не найден")
         if not self.intersections[intersection_id].is_intersection:
-            stop_direction = Direction.SOUTH
+            if not (intersection_id, Direction.SOUTH) in self.stop_intersection_map.values():
+                stop_direction = Direction.SOUTH
+            elif not (intersection_id, Direction.NORTH) in self.stop_intersection_map.values():
+                stop_direction = Direction.NORTH
+            else:
+                raise TransportException("Переход уже имеет остановки со всех сторон.")
+        else:
+            if (intersection_id, stop_direction) in self.stop_intersection_map.values():
+                raise TransportException("Перекресток уже имеет остановку с этой стороны.")
         self.stop_intersection_map[stop_id] = (intersection_id, stop_direction)
-        # print(f"Связана остановка {stop_id} с перекрестком {intersection_id}")
+        return f"Связана остановка {stop_id} с перекрестком {intersection_id}"
 
     def prioritize_public_transport(self):
         """

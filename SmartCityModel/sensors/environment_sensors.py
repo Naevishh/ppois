@@ -1,7 +1,7 @@
 import math
 
 from .base_sensor import Sensor
-from core import Domain, MeasurementType, AirQualityLevel, TemperatureLevel, HumidityLevel, NoiseLevel
+from core import Domain, MeasurementType, AirQualityLevel, TemperatureLevel, HumidityLevel, NoiseLevel, SensorValueError
 
 
 class AirQualitySensor(Sensor):
@@ -10,6 +10,10 @@ class AirQualitySensor(Sensor):
         self._concentration = 60
 
     def set_concentration(self, concentration: int):
+        if concentration < 0:
+            raise SensorValueError("Концентрация не может быть отрицательной.")
+        elif concentration > 500:
+            raise SensorValueError("Концентрация слишком высокая.")
         self._concentration = concentration
 
     def _calculate_quality_level(self) -> AirQualityLevel:
@@ -34,6 +38,10 @@ class TemperatureSensor(Sensor):
         self._temperature = 20
 
     def set_temperature(self, temperature: int):
+        if temperature < -50:
+            raise SensorValueError("Температура слишком низкая.")
+        elif temperature > 60:
+            raise SensorValueError("Температура слишком высокая.")
         self._temperature = temperature
 
     def _calculate_temperature_level(self) -> TemperatureLevel:
@@ -63,6 +71,11 @@ class HumiditySensor(Sensor):
 
     def set_vapor_concentration(self, concentration: float):
         """Устанавливает концентрацию водяного пара в г/м³"""
+        if concentration < 0:
+            raise SensorValueError("Концентрация пара не может быть отрицательной.")
+        elif concentration > 100:
+            raise SensorValueError("Концентрация пара слишком высокая.")
+
         self._vapor_concentration = concentration
         self._update_humidity()
 
@@ -129,6 +142,10 @@ class NoiseSensor(Sensor):
 
     def set_decibels(self, decibels: float):
         """Устанавливает уровень шума в децибелах"""
+        if decibels < 0:
+            raise SensorValueError("Уровень шума не может быть отрицательным.")
+        elif decibels > 150:
+            raise SensorValueError("Уровень шума слишком высокий.")
         self._decibels = decibels
 
     def _calculate_noise_level(self) -> NoiseLevel:

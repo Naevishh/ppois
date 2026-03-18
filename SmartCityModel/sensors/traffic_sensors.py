@@ -1,5 +1,5 @@
 from .base_sensor import Sensor
-from core import Domain, MeasurementType, VehicleType
+from core import Domain, MeasurementType, VehicleType, SensorValueError
 
 
 class AITrafficCamera(Sensor):
@@ -20,6 +20,10 @@ class TrafficFlowSensor(Sensor):
         self._vehicles_per_minute = 20
 
     def update_intensity(self, count: int):
+        if count < 0:
+            raise SensorValueError("Количество транспортных средств не может быть отрицательным.")
+        elif count > 200:
+            raise SensorValueError("Количество транспортных средств слишком высокое.")
         self._vehicles_per_minute = count
 
     def get_status(self) -> int:
@@ -32,6 +36,10 @@ class PedestrianCrossingSensor(Sensor):
         self._pedestrians_waiting = 5
 
     def detect_pedestrians(self, count: int):
+        if count < 0:
+            raise SensorValueError("Количество пешеходов не может быть отрицательным.")
+        elif count > 50:
+            raise SensorValueError("Количество пешеходов слишком высокое.")
         self._pedestrians_waiting = count
 
     def get_status(self) -> int:
