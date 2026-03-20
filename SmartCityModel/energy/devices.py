@@ -1,6 +1,6 @@
 import uuid
 
-from sensors import LightLevelSensor, MotionSensor, WaterMeter, ElectricityMeter
+from sensors import LightLevelSensor, MotionSensor, WaterMeter, ElectricityMeter, TemperatureSensor
 from .lighting import SmartLightningSystem
 from core import Domain, SmartDevice
 
@@ -8,25 +8,18 @@ from core import Domain, SmartDevice
 class SmartThermostat(SmartDevice):
     """Умный термостат для экономии на отоплении/кондиционировании"""
 
-    def __init__(self, motion_sensor: MotionSensor):
+    def __init__(self, temp_sensor: TemperatureSensor):
         super().__init__("therm_", Domain.HOUSING)
-        self.motion_sensor = motion_sensor
-        self._target_temp = 22
-        self._current_temp = 20
+        self.temp_sensor=temp_sensor
         self._is_heating = False
 
     def optimize_climate(self):
         """Энергосберегающая логика"""
         # Если никого нет, снижаем активность отопления/кондиционирования
-        if not self.motion_sensor.movement:
-            self._target_temp = 18  # Экономный режим
+        if self.temp_sensor.get_temperature() > 22:
             self._is_heating = False
         else:
-            self._target_temp = 22  # Комфортный режим
-            if self._current_temp < self._target_temp:
                 self._is_heating = True
-
-        return self._is_heating
 
     def get_energy_consumption(self):
         # Грубая оценка: если нагрев включен, потребление высокое

@@ -35,12 +35,62 @@ class SmartCity:
         dist2 = self._create_district("suburb_1")
         dist3 = self._create_district("suburb_2")
         dists = [dist1, dist2, dist3]
-        self.districts={dist.district_id: dist for dist in dists}
+        self.districts = {dist.district_id: dist for dist in dists}
         for dist in self.districts.values():
             self.traffic_manager.register_district(dist)
             self.analyzer.register_district(dist)
 
     def _create_district(self, dist_id: str):
+
+        light_sensor = [LightLevelSensor() for _ in range(13)]
+        self.light_sensors = {sens.sensor_id: sens for sens in light_sensor}
+
+        motion_sensor = [MotionSensor() for _ in range(12)]
+        self.motion_sensors = {sens.sensor_id: sens for sens in motion_sensor}
+
+        temp_sensors=[TemperatureSensor() for _ in range(2)]
+
+        # === Генераторы (generators) ===
+        solar_panel = SolarPanel(light_sensor[0])
+        wind_turbine = WindTurbine()
+        generators = [solar_panel, wind_turbine]
+
+        # === Хранилища (storages) ===
+        battery_1 = BatteryStorage(capacity=1000)
+        battery_2 = BatteryStorage(capacity=1500)
+        storages = [battery_1, battery_2]
+
+        # === Потребители (consumers) ===
+        # Умное освещение
+        smart_lights_1 = [SmartLight(light_sensor[i + 1], motion_sensor[i]) for i in range(4)]
+        lighting_system_1 = SmartLightningSystem(smart_lights_1)
+        smart_lights_2 = [SmartLight(light_sensor[i + 5], motion_sensor[i + 4]) for i in range(4)]
+        lighting_system_2 = SmartLightningSystem(smart_lights_2)
+        street_lights = [SmartLight(light_sensor[i + 9], motion_sensor[i + 8]) for i in range(4)]
+
+        # Умные дома
+        water_meter_1 = WaterMeter()
+        electricity_meter_1 = ElectricityMeter()
+        thermostat_1 = SmartThermostat(temp_sensors[0])
+        smart_home_1 = SmartHome(
+            ("Ленина", 10),
+            water_meter_1,
+            electricity_meter_1,
+            thermostat_1,
+            lighting_system_1
+        )
+
+        water_meter_2 = WaterMeter()
+        electricity_meter_2 = ElectricityMeter()
+        thermostat_2 = SmartThermostat(temp_sensors[1])
+        smart_home_2 = SmartHome(
+            ("Гагарина", 25),
+            water_meter_2,
+            electricity_meter_2,
+            thermostat_2,
+            lighting_system_2
+        )
+
         lights1 = [SmartTrafficLight(TrafficFlowSensor(), AITrafficCamera(), PedestrianCrossingSensor()) for _ in
                    range(4)]
         lights2 = [SmartTrafficLight(TrafficFlowSensor(), AITrafficCamera(), PedestrianCrossingSensor()) for _ in
@@ -59,7 +109,8 @@ class SmartCity:
         humid_sensors = [HumiditySensor(temp_sensors[i]) for i in range(2)]
         noise_sensors = [NoiseSensor() for _ in range(2)]
 
-        return District(dist_id, air_sensors, temp_sensors, humid_sensors, noise_sensors, traffic_sensors, inters)
+        return District(dist_id, air_sensors, temp_sensors, humid_sensors, noise_sensors, traffic_sensors, inters,
+                        [smart_home_1, smart_home_2], street_lights, storages, generators)
 
     def _init_services(self):
         self.hospital = Hospital("Поликлинника №1", ("Гришина", 3), "h_01")
@@ -99,7 +150,7 @@ class SmartCity:
         }
 
     def _init_traffic(self):
-        all_intersection_ids=[]
+        all_intersection_ids = []
         for dist in self.districts.values():
             for inter in dist.intersections:
                 all_intersection_ids.append(inter.intersection_id)
@@ -112,67 +163,23 @@ class SmartCity:
             )
 
     def _init_energy(self):
-        # === Сенсоры для энергии ===
-        light_sensor = [LightLevelSensor() for _ in range(13)]
-        self.light_sensors={sens.sensor_id: sens for sens in light_sensor}
-
-        motion_sensor = [MotionSensor() for _ in range(14)]
-        self.motion_sensors = {sens.sensor_id: sens for sens in motion_sensor}
-
-        # === Генераторы (generators) ===
-        solar_panel = SolarPanel(light_sensor[0])
-        wind_turbine = WindTurbine()
-        generators = [solar_panel, wind_turbine]
-
-        # === Хранилища (storages) ===
-        battery_1 = BatteryStorage(capacity=1000)
-        battery_2 = BatteryStorage(capacity=1500)
-        storages = [battery_1, battery_2]
-
-        # === Потребители (consumers) ===
-        # Умное освещение
-        smart_lights_1 = [SmartLight(light_sensor[i + 1], motion_sensor[i]) for i in range(4)]
-        lighting_system_1 = SmartLightningSystem(smart_lights_1)
-        smart_lights_2 = [SmartLight(light_sensor[i + 5], motion_sensor[i + 4]) for i in range(4)]
-        lighting_system_2 = SmartLightningSystem(smart_lights_2)
-        street_lights = [SmartLight(light_sensor[i + 9], motion_sensor[i + 8]) for i in range(4)]
-
-        # Умные дома
-        water_meter_1 = WaterMeter()
-        electricity_meter_1 = ElectricityMeter()
-        thermostat_1 = SmartThermostat(motion_sensor[12])
-        smart_home_1 = SmartHome(
-            ("Ленина", 10),
-            water_meter_1,
-            electricity_meter_1,
-            thermostat_1,
-            lighting_system_1
-        )
-
-        water_meter_2 = WaterMeter()
-        electricity_meter_2 = ElectricityMeter()
-        thermostat_2 = SmartThermostat(motion_sensor[13])
-        smart_home_2 = SmartHome(
-            ("Гагарина", 25),
-            water_meter_2,
-            electricity_meter_2,
-            thermostat_2,
-            lighting_system_2
-        )
-
-        consumers = [smart_home_1, smart_home_2] + street_lights
+        generators=[]
+        storages=[]
+        consumers=[]
+        for dist in self.districts.values():
+            generators.extend(dist.generators)
+            storages.append(dist.storages)
+            consumers.extend(dist.smart_homes+dist.lights)
 
         return CityEnergyGrid(generators, storages, consumers)
 
 
 class CityUI:
     def __init__(self):
-
         self.city = SmartCity()
         self.tms_ui = TransportSystemUI(self.city)
         self.traffic_ui = TrafficManagementUI(self.city)
-        self.env_ui=EnvironmentMonitoringUI(self.city)
-        self.urban_planning_ui=UrbanPlanningDataAnalysisUI(self.city)
+        self.env_ui = EnvironmentMonitoringUI(self.city)
+        self.urban_planning_ui = UrbanPlanningDataAnalysisUI(self.city)
 
     def general_menu(self):
-        

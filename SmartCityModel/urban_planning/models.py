@@ -2,19 +2,25 @@ import statistics
 from datetime import datetime, timedelta
 from typing import Optional
 
+from energy import SmartHome, BatteryStorage, SmartLight, SolarPanel, WindTurbine
+from energy.lighting import SmartLightningSystem
 from sensors import TrafficFlowSensor, AirQualitySensor, TemperatureSensor, HumiditySensor, NoiseSensor
 from transport import Intersection
 
 
 class District:
     def __init__(self, district_id: str, air_quality_sensors: list[AirQualitySensor], temperature_sensors: list[TemperatureSensor], humidity_sensors: list[HumiditySensor], noise_sensors: list[NoiseSensor],
-                 traffic_sensors: list[TrafficFlowSensor], intersections: list[Intersection]):
+                 traffic_sensors: list[TrafficFlowSensor], intersections: list[Intersection], smart_homes: list[SmartHome], lights: list[SmartLight], storages: list[BatteryStorage], generators: list):
         self.air_quality_sensors = air_quality_sensors
         self.temperature_sensors = temperature_sensors
         self.humidity_sensors = humidity_sensors
         self.noise_sensors = noise_sensors
         self.traffic_sensors = traffic_sensors
         self.intersections=intersections
+        self.smart_homes=smart_homes
+        self.lights=lights
+        self.storages=storages
+        self.generators=generators
         self.district_id = district_id
         self.metrics_readings: list[dict] = []
         self.last_updated: Optional[datetime] = None

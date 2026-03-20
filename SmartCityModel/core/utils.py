@@ -265,114 +265,27 @@ class NumberValidator:
                 print("Попробуйте еще раз.\n")
 
 
-# ==========================================
-# Пример использования и тестирования
-# ==========================================
+class SafeInput:
+    """Помощник для безопасного ввода с валидацией."""
 
-# ==========================================
-# Пример использования и тестирования
-# ==========================================
-if __name__ == "__main__":
-    # Создаем валидатор: от 1 до 50 символов
-    validator = StringValidator(min_length=1, max_length=50)
-
-    print("=== Тестирование валидатора ===")
-
-    # Сценарий 1: Интерактивный ввод (для преподавателя)
-    print("\n1. Попробуйте ввести значение (программа не примет невалидные данные):")
-    result = StringValidator.get_valid_input("Введите название (рус. буквы и точки): ", validator)
-    print(f"✅ Успешно принято: '{result}'")
-
-    # Сценарий 2: Автоматические тесты (попытка "сломать" программу)
-    print("\n2. Автоматические тесты на прочность:")
-
-    test_cases = [
-        ("Пустая строка", ""),
-        ("Только пробелы", "   "),
-        ("Только точки", "..."),
-        ("Есть цифры", "Привет123"),
-        ("Есть латиница", "HelloПривет"),
-        ("Есть спецсимволы", "Привет!"),
-        ("None (пустота)", None),
-        ("Число вместо строки", 12345),
-        ("Слишком длинная", "А" * 1000),
-        ("Валидная строка", "Анна.Каренина"),
-        ("Валидная с точкой", "Точка.В.Конце"),
-    ]
-
-    for name, test_value in test_cases:
-        try:
-            validator.validate(test_value)
-            print(f"✅ Тест '{name}': Пройден (значение: {test_value})")
-        except ValidationError as e:
-            print(f"⛔ Тест '{name}': Отклонен ({e})")
-        except Exception as e:
-            print(f"💥 Тест '{name}': Критическая ошибка ({e})")
-
-        # Создаем валидатор для целых чисел (от 1 до 1000)
-        int_validator = NumberValidator(min_value=1, max_value=1000, allow_negative=False)
-
-        # Создаем валидатор для дробных чисел (от 0.0 до 999.99)
-        float_validator = NumberValidator(
-            min_value=0.0,
-            max_value=999.99,
-            max_decimal_places=2,
-            allow_negative=False
-        )
-
-        print("=== Тестирование NumberValidator ===\n")
-
-        # Сценарий 1: Интерактивный ввод
-        print("1. Интерактивный ввод (попробуйте сломать):")
-        try:
-            user_int = NumberValidator.get_valid_int("Введите целое число (1-1000): ", int_validator)
-            print(f"✅ Принято целое: {user_int} (тип: {type(user_int).__name__})")
-
-            user_float = NumberValidator.get_valid_float("Введите дробное число (0-999.99): ", float_validator)
-            print(f"✅ Принято дробное: {user_float} (тип: {type(user_float).__name__})")
-        except Exception as e:
-            print(f"Произошла ошибка: {e}")
-
-        # Сценарий 2: Автоматические тесты
-        print("\n2. Автоматические тесты на прочность:")
-
-        test_cases = [
-            ("Пустая строка", ""),
-            ("Только пробелы", "   "),
-            ("None", None),
-            ("Буквы", "abc"),
-            ("Спецсимволы", "12@34"),
-            ("Слишком длинное", "1" * 100),
-            ("Отрицательное (запрещено)", "-5"),
-            ("Выход за максимум", "1001"),
-            ("Валидное целое", "42"),
-            ("Запятая вместо точки", "3,14"),
-            ("Много знаков после запятой", "3.14159265"),
-            ("Валидное дробное", "123.45"),
-            ("Булевый тип", True),
-        ]
-
-        print("\n--- Тесты для FLOAT ---")
-        for name, test_value in test_cases:
+    @staticmethod
+    def get_string(prompt, str_validator, get_input_func, print_func):
+        print_func(prompt)
+        while True:
             try:
-                result = float_validator.validate_float(test_value)
-                print(f"✅ Тест '{name}': Пройден ({test_value} -> {result})")
-            except NumberValidationError as e:
-                print(f"⛔ Тест '{name}': Отклонен ({e})")
+                raw = get_input_func()
+                return str_validator.validate(raw)
             except Exception as e:
-                print(f"💥 Тест '{name}': Критическая ошибка ({type(e).__name__}: {e})")
+                print_func(f"❌ Ошибка: {e}. Попробуйте снова.")
 
-        print("\n--- Тесты для INT ---")
-        int_test_cases = [
-            ("Валидное целое", "100"),
-            ("Дробное в int", "10.5"),
-            ("Отрицательное", "-10"),
-        ]
-        for name, test_value in int_test_cases:
+    @staticmethod
+    def get_int(prompt, int_validator, get_input_func, print_func):
+        print_func(prompt)
+        while True:
             try:
-                result = int_validator.validate_int(test_value)
-                print(f"✅ Тест '{name}': Пройден ({test_value} -> {result})")
-            except NumberValidationError as e:
-                print(f"⛔ Тест '{name}': Отклонен ({e})")
+                raw = get_input_func()
+                return int_validator.validate_int(raw)
             except Exception as e:
-                print(f"💥 Тест '{name}': Критическая ошибка ({type(e).__name__}: {e})")
+                print_func(f"❌ Ошибка: {e}. Попробуйте снова.")
+
+
