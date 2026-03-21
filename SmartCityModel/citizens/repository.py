@@ -5,12 +5,12 @@ from .models import Human
 
 
 class UserRepository:
-    def __init__(self, file_name: str = "users_db.json"):
+    def __init__(self, file_name: str = "users_db.json") -> None:
         self.file_name = file_name
         self._cache: dict[str, dict] = {}  # Кеш: {id: данные}
         self._load_from_file()
 
-    def _load_from_file(self):
+    def _load_from_file(self) -> None:
         try:
             with open(self.file_name, 'r', encoding='utf-8') as f:
                 users_list = json.load(f)
@@ -20,7 +20,7 @@ class UserRepository:
         except json.JSONDecodeError:
             self._cache = {}
 
-    def save_to_file(self):
+    def save_to_file(self) -> None:
         """Сохранение изменений обратно в файл"""
         with open(self.file_name, 'w', encoding='utf-8') as f:
             json.dump(list(self._cache.values()), f, ensure_ascii=False, indent=4)
@@ -34,7 +34,7 @@ class UserRepository:
             return Human(**data)
         return None
 
-    def add_user(self, human: Human):
+    def add_user(self, human: Human) -> None:
         """Регистрация нового пользователя"""
         self._cache[human.person_id] = {
             'name': human.name,

@@ -1,10 +1,6 @@
 from datetime import datetime
-from typing import Optional
 
 from core import PlanningMetricType
-from environment import EnvironmentMonitoringSystem
-from services import UtilitiesService
-from transport import TransportMonitoringSystem
 from . import District
 
 

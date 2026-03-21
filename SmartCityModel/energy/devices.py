@@ -39,7 +39,7 @@ class SmartHome:
 
     def get_energy_consumption(self):
         current_consumption = self.thermostat.get_energy_consumption() + self.lightning_system.get_energy_consumption()
-        self.electricity_meter.set_energy(current_consumption)
+        self.electricity_meter.set_value(current_consumption)
         return current_consumption
 
     def get_metrics(self):

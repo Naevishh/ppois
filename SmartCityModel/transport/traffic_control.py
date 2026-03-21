@@ -86,10 +86,13 @@ class Intersection:
 
         # 2. Находим направление с самым высоким приоритетом (Лидер)
         # Сортируем: кто важнее всех (скорая, потом плотный поток)
-        # requests.sort(key=lambda x: x['priority'], reverse=True
+        requests.sort(key=lambda x: x['priority'], reverse=True)
         leader_request = requests[0]
         warning = leader_request["reason"] == "INCIDENT"
-        leader_direction = leader_request['direction']
+        leader_direction=""
+        for light, direction in self.lights.items():
+            if leader_request["device_id"] == light.device_id:
+                leader_direction = direction
 
         # 3. Расставляем цвета
         for light, direction in self.lights.items():
@@ -159,7 +162,7 @@ class TrafficManager:
         self.stop_intersection_map[stop_id] = (intersection_id, stop_direction)
         return f"Связана остановка {stop_id} с перекрестком {intersection_id}"
 
-    def prioritize_public_transport(self):
+    def prioritize_public_transport(self, print_func):
         """
         Основная операция интеграции.
         1. Спрашиваем у TMS, где сейчас транспорт.
@@ -183,7 +186,7 @@ class TrafficManager:
                     if stop_id in self.stop_intersection_map:
                         stop_intersection = self.stop_intersection_map[stop_id]
 
-                        return self._grant_green_wave(stop_intersection, vehicle)
+                        print_func(self._grant_green_wave(stop_intersection, vehicle))
         return None
 
     def _grant_green_wave(self, stop_intersection: tuple, vehicle):

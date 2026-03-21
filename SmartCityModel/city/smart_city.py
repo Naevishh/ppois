@@ -12,6 +12,7 @@ from services import Hospital, EducationService, UtilitiesService
 from transport import TransportMonitoringSystem, BusStop, PublicTransportVehicle, TransportRoute, RouteStop, \
     Intersection, SmartTrafficLight, TrafficManager
 from transport.ui import TransportSystemUI, TrafficManagementUI
+from ui import show_menu
 from urban_planning import UrbanPlanningDataAnalyzer, District, UrbanPlanningDataAnalysisUI
 
 
@@ -21,7 +22,7 @@ class SmartCity:
 
         self.tms = TransportMonitoringSystem()
         self.analyzer = UrbanPlanningDataAnalyzer()
-        self.districts = dict[str, District]
+        self.districts: dict[str, District] = {}
         self.traffic_manager = TrafficManager(self.tms)
         self.monitoring_system = EnvironmentMonitoringSystem()
         self.energy_grid = self._init_energy()
@@ -184,4 +185,7 @@ class CityUI:
         self.urban_planning_ui = UrbanPlanningDataAnalysisUI(self.city)
         self.sensors_ui=SensorUI(self.city)
 
-    def general_menu(self):
+    def general_menu(self, get_user_input, print_func):
+        ops = [(1, "Система общественного транспорта"), (2, "Управление движением"), (3, "Мониторинг окружающей среды"),
+                    (4, "Сбор и анализ данных"), (5, "Сенсоры")]
+        key=show_menu(ops, get_user_input, print_func, "Выберите область:")

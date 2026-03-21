@@ -230,40 +230,6 @@ class NumberValidator:
 
         return float_value
 
-    @staticmethod
-    def get_valid_int(prompt: str, validator: 'NumberValidator') -> int:
-        """Запрос целого числа у пользователя с повторными попытками."""
-        while True:
-            try:
-                user_input = input(prompt)
-                return validator.validate_int(user_input)
-            except NumberValidationError as e:
-                print(f"❌ Ошибка: {e}")
-                print("Попробуйте еще раз.\n")
-            except KeyboardInterrupt:
-                print("\n\n⚠️ Ввод прерван пользователем.")
-                exit(0)
-            except Exception as e:
-                print(f"⚠️ Неожиданная ошибка: {e}")
-                print("Попробуйте еще раз.\n")
-
-    @staticmethod
-    def get_valid_float(prompt: str, validator: 'NumberValidator') -> float:
-        """Запрос дробного числа у пользователя с повторными попытками."""
-        while True:
-            try:
-                user_input = input(prompt)
-                return validator.validate_float(user_input)
-            except NumberValidationError as e:
-                print(f"❌ Ошибка: {e}")
-                print("Попробуйте еще раз.\n")
-            except KeyboardInterrupt:
-                print("\n\n⚠️ Ввод прерван пользователем.")
-                exit(0)
-            except Exception as e:
-                print(f"⚠️ Неожиданная ошибка: {e}")
-                print("Попробуйте еще раз.\n")
-
 
 class SafeInput:
     """Помощник для безопасного ввода с валидацией."""
@@ -317,3 +283,5 @@ PASSENGER_VALIDATOR = NumberValidator(min_value=0, max_value=1000, allow_negativ
 
 # Для оценок (1-10)
 GRADE_VALIDATOR = NumberValidator(min_value=0, max_value=10, allow_negative=False)
+
+SENSOR_VALUE_VALIDATOR=NumberValidator(min_value=-60, max_value=1000000, allow_negative=True)

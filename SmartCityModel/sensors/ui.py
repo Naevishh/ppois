@@ -1,5 +1,6 @@
 from city import SmartCity
 from core import SensorValueError, VehicleType
+from core.utils import SafeInput, SENSOR_VALUE_VALIDATOR, NumberValidator
 from sensors import AITrafficCamera
 from ui import show_menu
 
@@ -7,23 +8,30 @@ from ui import show_menu
 class SensorUI:
     def __init__(self, city: SmartCity):
         self.city = city
-        pass
+        self.value_validator=SENSOR_VALUE_VALIDATOR
+        self.camera_incident_validator = NumberValidator(min_value=1, max_value=2, allow_negative=False)
 
     def detect_camera_event(self, get_user_input, print_func, camera: AITrafficCamera):
         ops = [(vehicle.name, vehicle.value) for vehicle in VehicleType]
         v_type = show_menu(ops, get_user_input, get_user_input, "Выберите тип транспорта:")
         if v_type:
-            print_func("Случилась ли авария? Введите 'да', если случилась, если нет - нажмите пробел")
-            incident = get_user_input()
+            incident_ops=[(1, "да"), (2, "нет")]
+            incident = show_menu(incident_ops, get_user_input, print_func, "Случилась ли авария?")
             if incident:
                 incident = incident == 1
                 camera.detect_event(v_type, incident)
+                print_func("Средство зафиксировано.")
 
     def set_sensor_value(self, get_user_input, print_func, sensor, val_name):
-        print_func(f"Введите показания ({val_name}):")
-        value = get_user_input()
+        value = SafeInput.get_int(
+            f"Введите показания ({val_name}): ",
+            self.value_validator,
+            get_user_input,
+            print_func
+        )
         try:
             sensor.set_value(value)
+            print_func("Значение задано.")
         except SensorValueError as e:
             print_func(f"Ошибка: {e}")
 
@@ -41,12 +49,12 @@ class SensorUI:
 
             ops_dist = [(1, "Сенсоры умного дома"), (2, "Сенсоры фонарей"), (3, "Сенсоры генераторов"),
                         (4, "Сенсоры качества воздуха"), (5, "Сенсоры температуры"), (6, "Сенсоры влажности"),
-                        (7, "Сенсоры уровня шума"), (8, "Сенсоры транспорта"), (9, "Выход")]
+                        (7, "Сенсоры уровня шума"), (8, "Сенсоры транспорта")]
             key = show_menu(ops_dist, get_user_input, print_func, "Выберите объекты:")
 
             match key:
                 case 1:
-                    homes = [(i, home.device_id) for i, home in enumerate(dist.smart_homes)]
+                    homes = [(i, f"{home.address[0]}, {home.address[1]}") for i, home in enumerate(dist.smart_homes)]
                     home_index = show_menu(homes, get_user_input, print_func, "Выберите умный дом:")
                     if home_index == '':
                         break
@@ -61,10 +69,10 @@ class SensorUI:
                             self.set_sensor_value(get_user_input, print_func, home.thermostat.temp_sensor,
                                                   "температура")
                         case 3:
-                            lights = [(i, light.device_id) for i, light in enumerate(home.lightning_system.lights)]
+                            lights = [(i, light.device_id) for i, light in enumerate(home.lightning_system.smart_lights)]
                             l_key = show_menu(lights, get_user_input, print_func, "Выберите источник света")
                             if l_key != '':
-                                self.set_sensor_value(get_user_input, print_func, home.lights[l_key].light_level_sensor,
+                                self.set_sensor_value(get_user_input, print_func, home.lightning_system.smart_lights[l_key].light_level_sensor,
                                                       "уровень света")
                 case 2:
                     lights = [(i, light.device_id) for i, light in enumerate(dist.lights)]
@@ -76,10 +84,10 @@ class SensorUI:
                     generators = [(1, "Сенсор солнечной панели"), (2, "Скорость ветра")]
                     gen_key = show_menu(generators, get_user_input, print_func, "Выберите генератор")
                     if gen_key == 1:
-                        self.set_sensor_value(get_user_input, print_func, dist.generatiors[0].light_level_sensor,
+                        self.set_sensor_value(get_user_input, print_func, dist.generators[0].light_level_sensor,
                                               "уровень света")
                     elif gen_key == 2:
-                        self.set_sensor_value(get_user_input, print_func, dist.generatiors[1],
+                        self.set_sensor_value(get_user_input, print_func, dist.generators[1],
                                               "скорость ветра")
 
                 case 4:
@@ -98,7 +106,7 @@ class SensorUI:
                         lights = [(light.device_id, light.device_id) for light in inter_lights.keys()]
                         light = show_menu(lights, get_user_input, print_func, "Выберите светофор")
                         if light != '':
-                            light_ops = [(1, "AI-камера"), (2, "Сенсор транспортного потока"),
+                            light_ops = [(1, "AI-камера(приближающийся транспорт и состояние)"), (2, "Сенсор транспортного потока"),
                                          (3, "Сенсор присутствия пешеходов")]
                             light_key = show_menu(light_ops, get_user_input, print_func)
                             match light_key:
@@ -107,7 +115,7 @@ class SensorUI:
                                 case 2:
                                     self.set_sensor_value(get_user_input, print_func,
                                                           inter_lights[light_key].flow_sensor,
-                                                          "поток (транспорта в минуту)")
+                                                          "поток (транспорт в минуту)")
                                 case 3:
                                     self.set_sensor_value(get_user_input, print_func,
                                                           inter_lights[light_key].pedestrian_sensor,
