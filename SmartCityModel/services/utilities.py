@@ -1,8 +1,9 @@
 from citizens import Human
+from core.utils import SafeInput
 from energy import SmartHome
 from ui import show_menu
 from . import PublicService
-from core import Domain
+from core import Domain, StringValidator
 
 
 class SmartHomeRegistry:
@@ -16,6 +17,7 @@ class SmartHomeRegistry:
     def get_home(self, address: tuple) -> SmartHome | None:
         return self._homes.get(address)
 
+
 class UtilitiesService(PublicService):
     def __init__(self, name: str, address: tuple[str, int], service_id: str):
         super().__init__(name, address, service_id, Domain.HOUSING)
@@ -26,6 +28,7 @@ class UtilitiesService(PublicService):
             ("report_issue", "Сообщить о проблеме (ЖКХ)")
         ]
         self.registry = SmartHomeRegistry()
+        self.issue_validator = StringValidator(min_length=10, max_length=500)
 
     def auto_collect_metrics(self, address: tuple):
         """Симуляция автоматического сбора данных с IoT-датчиков"""
@@ -40,7 +43,7 @@ class UtilitiesService(PublicService):
         self.auto_collect_metrics(address)
         data = self.sensor_data.get(address)
         if data:
-            if len(address)<3:
+            if len(address) < 3:
                 print_func(f"Лицевой счет: Улица {address[0]}, дом {address[1]}")
             else:
                 print_func(f"Лицевой счет: Улица {address[0]}, дом {address[1]}, квартира {address[2]}")
@@ -64,6 +67,10 @@ class UtilitiesService(PublicService):
             case "view_metrics":
                 self.view_metrics(address, print_func)
             case "report_issue":
-                print_func("Опишите проблему (прорыв, свет, мусор):")
-                desc = get_user_input()
+                desc = SafeInput.get_string(
+                    "Опишите проблему (прорыв, свет, мусор) - минимум 10 символов: ",
+                    self.issue_validator,
+                    get_user_input,
+                    print_func
+                )
                 self.report_issue(desc, print_func)

@@ -1,6 +1,7 @@
 from citizens import Human
 from core import Domain
 from core import HospitalException
+from core.utils import NAME_VALIDATOR, SafeInput
 from ui import show_menu
 from .base import PublicService
 
@@ -18,6 +19,7 @@ class Hospital(PublicService):
             ("order_certificate", "Заказать справку"),
             ("call_ambulance", "Вызов скорой")
         ]
+        self.purpose_validator = NAME_VALIDATOR
 
     def order_ticket_to_doctor(self, doctor_name, patient):
         doctor = self.doctors[doctor_name]
@@ -62,9 +64,12 @@ class Hospital(PublicService):
             case "get_ticket":
                 self.order_ticket(get_user_input, print_func, patient)
             case "order_certificate":
-                print_func("Укажите цель справки(в школу, в университет, по месту работы и т.д.): ")
-                purpose = get_user_input()
+                purpose = SafeInput.get_string(
+                    "Укажите цель справки (в школу, в университет, по месту работы и т.д.): ",
+                    self.purpose_validator,
+                    get_user_input,
+                    print_func
+                )
                 self.order_certificate(purpose, patient, print_func)
             case "call_ambulance":
-                address = patient.address
-                self.call_ambulance(address, print_func)
+                self.call_ambulance(patient.address, print_func)

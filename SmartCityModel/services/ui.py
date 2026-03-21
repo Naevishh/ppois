@@ -3,6 +3,8 @@ from typing import Optional
 
 from citizens import UserRepository, Human
 from city import SmartCity
+from core.utils import NAME_VALIDATOR, AGE_VALIDATOR, ADDRESS_VALIDATOR, HOUSE_NUMBER_VALIDATOR, SafeInput, \
+    NumberValidationError
 from ui import show_menu
 from . import EducationService, UtilitiesService, Hospital
 
@@ -18,29 +20,65 @@ class PublicServiceUI:
             ("utility_service", self.city.utility_services.name),
             ("exit", "Выйти")
         ]
+        self.name_validator = NAME_VALIDATOR
+        self.age_validator = AGE_VALIDATOR
+        self.address_validator = ADDRESS_VALIDATOR
+        self.house_validator = HOUSE_NUMBER_VALIDATOR
 
     def register(self, get_user_input, print_func):
-        print_func(f"Введите имя:")
-        name = get_user_input()
-        print_func("Введите фамилию:")
-        surname = get_user_input()
-        print_func("Введите возраст:")
-        age = get_user_input()
-        print_func("Введите улицу:")
-        street = get_user_input()
-        print_func("Введите номер дома:")
-        house = get_user_input()
+        name = SafeInput.get_string(
+            "Введите имя: ",
+            self.name_validator,
+            get_user_input,
+            print_func
+        )
+        # ВАЛИДАЦИЯ: Фамилия
+        surname = SafeInput.get_string(
+            "Введите фамилию: ",
+            self.name_validator,
+            get_user_input,
+            print_func
+        )
+        # ВАЛИДАЦИЯ: Возраст
+        age = SafeInput.get_int(
+            "Введите возраст: ",
+            self.age_validator,
+            get_user_input,
+            print_func
+        )
+        street = SafeInput.get_string(
+            "Введите улицу: ",
+            self.address_validator,
+            get_user_input,
+            print_func
+        )
+        # ВАЛИДАЦИЯ: Номер дома
+        house = SafeInput.get_int(
+            "Введите номер дома: ",
+            self.house_validator,
+            get_user_input,
+            print_func
+        )
+        # ВАЛИДАЦИЯ: Квартира (опционально)
         print_func("Введите номер квартиры/комнаты (если нет, нажмите Enter):")
-        apart = get_user_input()
+        apart_raw = get_user_input()
+        apart = None
+        if apart_raw.strip():
+            try:
+                apart = self.house_validator.validate_int(apart_raw)
+            except NumberValidationError:
+                print_func("Некорректный номер квартиры, игнорируется.")
+
         address = (street, house, apart) if apart else (street, house)
         person_id = str(uuid.uuid4())[:6]
         new_user = Human(name, surname, age, address, person_id)
         self.user_repo.add_user(new_user)
+        print_func(f"Пользователь зарегистрирован! Ваш ID: {person_id}")
         return person_id
 
     def login(self, get_user_input, print_func):
         print_func("Введите ваш ID для авторизации:")
-        pid = get_user_input()
+        pid = get_user_input().strip()
 
         if self.user_repo.authenticate(pid):
             self.current_user_id = pid

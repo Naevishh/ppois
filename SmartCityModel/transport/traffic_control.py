@@ -60,8 +60,7 @@ class SmartTrafficLight(SmartDevice):
 
 
 class Intersection:
-    def __init__(self, intersection_id: str, lights: list[
-        SmartTrafficLight]):  # def __init__(self, intersection_id: str, lights: list[SmartTrafficLight], conflict_map: dict)
+    def __init__(self, intersection_id: str, lights: list[SmartTrafficLight]):  # def __init__(self, intersection_id: str, lights: list[SmartTrafficLight], conflict_map: dict)
         if len(lights) == 2:
             self.conflict_map = {}
             self.lights = {lights[0]: Direction.NORTH,

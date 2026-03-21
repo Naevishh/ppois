@@ -9,7 +9,7 @@ class Sensor:
         self.domain = domain
         self.measurement_type = m_type
 
-    def set_value(self):
+    def set_value(self, value):
         pass
 
     def get_status(self):

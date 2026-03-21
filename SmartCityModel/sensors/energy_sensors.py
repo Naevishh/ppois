@@ -7,7 +7,7 @@ class LightLevelSensor(Sensor):
         super().__init__("light_sensor_", Domain.INFRASTRUCTURE, MeasurementType.LIGHT)
         self._ambient_light_level = 50
 
-    def set_light_level(self, level: int):
+    def set_value(self, level: int):
         if level < 0:
             raise SensorValueError("Уровень освещения не может быть отрицательным.")
         elif level > 100:
@@ -40,7 +40,7 @@ class WaterMeter(SmartDevice):
         super().__init__("watermtr_", Domain.HOUSING)
         self._water_volume = 5000
 
-    def set_water_volume(self, volume: int):
+    def set_value(self, volume: int):
         if volume < 0:
             raise SensorValueError("Объем воды не может быть отрицательным.")
         elif volume > 1000000:
@@ -56,7 +56,7 @@ class ElectricityMeter(SmartDevice):
         super().__init__("electrmtr_", Domain.HOUSING)
         self._energy = 5000
 
-    def set_energy(self, energy: int):
+    def set_value(self, energy: int):
         if energy < 0:
             raise SensorValueError("Энергия не может быть отрицательной.")
         elif energy > 1000000:

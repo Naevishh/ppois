@@ -1,5 +1,6 @@
 from citizens import Human
 from core import Domain
+from core.utils import NAME_VALIDATOR, GRADE_VALIDATOR, SafeInput
 from ui import show_menu
 from .base import PublicService
 
@@ -15,6 +16,8 @@ class EducationService(PublicService):
         # Хранилище успеваемости: { student_id: { subject: grade } }
         self.grade_book = {}
         self.courses = {"Python": 50, "DataScience": 30}
+        self.course_validator = NAME_VALIDATOR
+        self.grade_validator = GRADE_VALIDATOR
 
     def enroll_course(self, course_name: str, student: Human, print_func):
         sid = student.person_id
@@ -56,14 +59,26 @@ class EducationService(PublicService):
 
         match action_key:
             case "enroll_course":
-                print_func("Введите название курса:")
-                course = get_user_input()
+                course = SafeInput.get_string(
+                    "Введите название курса: ",
+                    self.course_validator,
+                    get_user_input,
+                    print_func
+                )
                 self.enroll_course(course, student, print_func)
             case "set_grade":
-                print_func("Введите название предмета:")
-                subject = get_user_input()
-                print_func("Введите оценку:")
-                grade = get_user_input
+                subject = SafeInput.get_string(
+                    "Введите название предмета: ",
+                    self.course_validator,
+                    get_user_input,
+                    print_func
+                )
+                grade = SafeInput.get_int(
+                    "Введите оценку (1-10): ",
+                    self.grade_validator,
+                    get_user_input,
+                    print_func
+                )
                 self.set_grade(student, subject, grade)
             case "get_grades":
                 self.get_grades(student, print_func)

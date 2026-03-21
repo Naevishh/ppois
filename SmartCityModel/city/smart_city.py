@@ -7,6 +7,7 @@ from energy.lighting import SmartLightningSystem
 from environment import EnvironmentMonitoringSystem, EnvironmentMonitoringUI
 from sensors import TemperatureSensor, AirQualitySensor, HumiditySensor, NoiseSensor, TrafficFlowSensor, \
     AITrafficCamera, PedestrianCrossingSensor, MotionSensor, LightLevelSensor, WaterMeter, ElectricityMeter
+from sensors.ui import SensorUI
 from services import Hospital, EducationService, UtilitiesService
 from transport import TransportMonitoringSystem, BusStop, PublicTransportVehicle, TransportRoute, RouteStop, \
     Intersection, SmartTrafficLight, TrafficManager
@@ -181,5 +182,6 @@ class CityUI:
         self.traffic_ui = TrafficManagementUI(self.city)
         self.env_ui = EnvironmentMonitoringUI(self.city)
         self.urban_planning_ui = UrbanPlanningDataAnalysisUI(self.city)
+        self.sensors_ui=SensorUI(self.city)
 
     def general_menu(self):

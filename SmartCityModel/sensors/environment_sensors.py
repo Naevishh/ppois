@@ -9,7 +9,7 @@ class AirQualitySensor(Sensor):
         super().__init__("air_", Domain.ECOLOGY, MeasurementType.CONCENTRATION)
         self._concentration = 60
 
-    def set_concentration(self, concentration: int):
+    def set_value(self, concentration: int):
         if concentration < 0:
             raise SensorValueError("Концентрация не может быть отрицательной.")
         elif concentration > 500:
@@ -37,7 +37,7 @@ class TemperatureSensor(Sensor):
         super().__init__("temp_", Domain.ECOLOGY, MeasurementType.TEMPERATURE)
         self._temperature = 20
 
-    def set_temperature(self, temperature: int):
+    def set_value(self, temperature: int):
         if temperature < -50:
             raise SensorValueError("Температура слишком низкая.")
         elif temperature > 60:
@@ -69,7 +69,7 @@ class HumiditySensor(Sensor):
         self._vapor_concentration = 9.0  # Концентрация пара (г/м³)
         self._temperature_sensor = temperature_sensor  # Температура по умолчанию (°C)
 
-    def set_vapor_concentration(self, concentration: float):
+    def set_value(self, concentration: float):
         """Устанавливает концентрацию водяного пара в г/м³"""
         if concentration < 0:
             raise SensorValueError("Концентрация пара не может быть отрицательной.")
@@ -140,7 +140,7 @@ class NoiseSensor(Sensor):
         super().__init__("noise_", Domain.ECOLOGY, MeasurementType.NOISE)
         self._decibels = 50.0  # Уровень шума в дБ
 
-    def set_decibels(self, decibels: float):
+    def set_value(self, decibels: float):
         """Устанавливает уровень шума в децибелах"""
         if decibels < 0:
             raise SensorValueError("Уровень шума не может быть отрицательным.")

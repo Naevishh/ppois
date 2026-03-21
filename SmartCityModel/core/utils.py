@@ -269,23 +269,51 @@ class SafeInput:
     """Помощник для безопасного ввода с валидацией."""
 
     @staticmethod
-    def get_string(prompt, str_validator, get_input_func, print_func):
+    def get_string(prompt: str, validator: StringValidator,get_input_func,print_func) -> str:
         print_func(prompt)
         while True:
             try:
                 raw = get_input_func()
-                return str_validator.validate(raw)
+                return validator.validate(raw)
             except Exception as e:
                 print_func(f"❌ Ошибка: {e}. Попробуйте снова.")
 
     @staticmethod
-    def get_int(prompt, int_validator, get_input_func, print_func):
+    def get_int(prompt: str, validator: NumberValidator, get_input_func, print_func) -> int:
         print_func(prompt)
         while True:
             try:
                 raw = get_input_func()
-                return int_validator.validate_int(raw)
+                return validator.validate_int(raw)
+            except Exception as e:
+                print_func(f"❌ Ошибка: {e}. Попробуйте снова.")
+
+    @staticmethod
+    def get_float(prompt: str, validator: NumberValidator, get_input_func, print_func) -> float:
+        print_func(prompt)
+        while True:
+            try:
+                raw = get_input_func()
+                return validator.validate_float(raw)
             except Exception as e:
                 print_func(f"❌ Ошибка: {e}. Попробуйте снова.")
 
 
+# Глобальные экземпляры валидаторов для удобного импорта
+# Для имён (ФИО, названия остановок, улиц)
+NAME_VALIDATOR = StringValidator(min_length=2, max_length=50)
+
+# Для адресов (улицы, названия)
+ADDRESS_VALIDATOR = StringValidator(min_length=2, max_length=100)
+
+# Для возраста (0-150 лет)
+AGE_VALIDATOR = NumberValidator(min_value=0, max_value=150, allow_negative=False)
+
+# Для номеров домов (1-9999)
+HOUSE_NUMBER_VALIDATOR = NumberValidator(min_value=1, max_value=9999, allow_negative=False)
+
+# Для количества пассажиров (0-1000)
+PASSENGER_VALIDATOR = NumberValidator(min_value=0, max_value=1000, allow_negative=False)
+
+# Для оценок (1-10)
+GRADE_VALIDATOR = NumberValidator(min_value=0, max_value=10, allow_negative=False)
