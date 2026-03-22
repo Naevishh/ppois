@@ -6,12 +6,11 @@ from city import SmartCity
 from core.utils import NAME_VALIDATOR, AGE_VALIDATOR, ADDRESS_VALIDATOR, HOUSE_NUMBER_VALIDATOR, SafeInput, \
     NumberValidationError
 from ui import show_menu
-from . import EducationService, UtilitiesService, Hospital
 
 
 class PublicServiceUI:
-    def __init__(self, city: SmartCity):
-        self.city=city
+    def __init__(self, city: SmartCity) -> None:
+        self.city = city
         self.user_repo = UserRepository()  # Подключаем базу
         self.current_user_id: Optional[str] = None  # Храним только ID
         self.available_actions = [
@@ -25,7 +24,7 @@ class PublicServiceUI:
         self.address_validator = ADDRESS_VALIDATOR
         self.house_validator = HOUSE_NUMBER_VALIDATOR
 
-    def register(self, get_user_input, print_func):
+    def register(self, get_user_input, print_func) -> str:
         name = SafeInput.get_string(
             "Введите имя: ",
             self.name_validator,
@@ -76,7 +75,7 @@ class PublicServiceUI:
         print_func(f"Пользователь зарегистрирован! Ваш ID: {person_id}")
         return person_id
 
-    def login(self, get_user_input, print_func):
+    def login(self, get_user_input, print_func) -> bool:
         print_func("Введите ваш ID для авторизации:")
         pid = get_user_input().strip()
 
@@ -90,7 +89,7 @@ class PublicServiceUI:
             self.current_user_id = pid
             return True
 
-    def menu(self, get_user_input, print_func):
+    def menu(self, get_user_input, print_func) -> None:
         print_func("Чтобы пользоваться сервисами, необходимо авторизоваться.")
         if not self.current_user_id:
             self.login(get_user_input, print_func)

@@ -1,18 +1,17 @@
 from core import AirQualityLevel, TemperatureLevel, HumidityLevel, NoiseLevel
-from sensors import AirQualitySensor, TemperatureSensor, HumiditySensor, NoiseSensor
 
 
 class EnvironmentMonitoringSystem:
-    def __init__(self):
+    def __init__(self) -> None:
         pass
 
-    def environmental_monitoring_operation(self, air, temp, humid, noise):
-        def get_average(sensors):
+    def environmental_monitoring_operation(self, air: list, temp: list, humid: list, noise: list) -> dict:
+        def get_average(sensors: list) -> float:
             if not sensors:
                 return 0
             return sum(s.get_status()[0] for s in sensors) / len(sensors)
 
-        def get_level(enum_class, average):
+        def get_level(enum_class, average: float):
             code = max(1, min(5, round(average)))
             return enum_class.from_code(code)
 

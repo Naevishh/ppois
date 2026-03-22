@@ -6,23 +6,23 @@ from ui import show_menu
 
 
 class SensorUI:
-    def __init__(self, city: SmartCity):
+    def __init__(self, city: SmartCity) -> None:
         self.city = city
-        self.value_validator=SENSOR_VALUE_VALIDATOR
+        self.value_validator = SENSOR_VALUE_VALIDATOR
         self.camera_incident_validator = NumberValidator(min_value=1, max_value=2, allow_negative=False)
 
-    def detect_camera_event(self, get_user_input, print_func, camera: AITrafficCamera):
+    def detect_camera_event(self, get_user_input, print_func, camera: AITrafficCamera) -> None:
         ops = [(vehicle.name, vehicle.value) for vehicle in VehicleType]
         v_type = show_menu(ops, get_user_input, get_user_input, "Выберите тип транспорта:")
         if v_type:
-            incident_ops=[(1, "да"), (2, "нет")]
+            incident_ops = [(1, "да"), (2, "нет")]
             incident = show_menu(incident_ops, get_user_input, print_func, "Случилась ли авария?")
             if incident:
                 incident = incident == 1
                 camera.detect_event(v_type, incident)
                 print_func("Средство зафиксировано.")
 
-    def set_sensor_value(self, get_user_input, print_func, sensor, val_name):
+    def set_sensor_value(self, get_user_input, print_func, sensor, val_name: str) -> None:
         value = SafeInput.get_int(
             f"Введите показания ({val_name}): ",
             self.value_validator,
@@ -35,13 +35,13 @@ class SensorUI:
         except SensorValueError as e:
             print_func(f"Ошибка: {e}")
 
-    def list_sensors(self, get_user_input, print_func, sensors, val_name):
+    def list_sensors(self, get_user_input, print_func, sensors: list, val_name: str) -> None:
         sensors_ops = [(i, sensor.sensor_id) for i, sensor in enumerate(sensors)]
         sensor_key = show_menu(sensors_ops, get_user_input, print_func, "Выберите сенсор")
         if sensor_key != '':
             self.set_sensor_value(get_user_input, print_func, sensors[sensor_key], val_name)
 
-    def update_sensor_data(self, get_user_input, print_func):
+    def update_sensor_data(self, get_user_input, print_func) -> None:
         ops = [(dist_id, dist_id) for dist_id in self.city.districts.keys()]
         while True:
             dist_key = show_menu(ops, get_user_input, print_func, "Выберите район:")
@@ -72,7 +72,8 @@ class SensorUI:
                             lights = [(i, light.device_id) for i, light in enumerate(home.lightning_system.smart_lights)]
                             l_key = show_menu(lights, get_user_input, print_func, "Выберите источник света")
                             if l_key != '':
-                                self.set_sensor_value(get_user_input, print_func, home.lightning_system.smart_lights[l_key].light_level_sensor,
+                                self.set_sensor_value(get_user_input, print_func,
+                                                      home.lightning_system.smart_lights[l_key].light_level_sensor,
                                                       "уровень света")
                 case 2:
                     lights = [(i, light.device_id) for i, light in enumerate(dist.lights)]
@@ -106,19 +107,21 @@ class SensorUI:
                         lights = [(light.device_id, light.device_id) for light in inter_lights.keys()]
                         light = show_menu(lights, get_user_input, print_func, "Выберите светофор")
                         if light != '':
-                            light_ops = [(1, "AI-камера(приближающийся транспорт и состояние)"), (2, "Сенсор транспортного потока"),
+                            light_ops = [(1, "AI-камера(приближающийся транспорт и состояние)"),
+                                         (2, "Сенсор транспортного потока"),
                                          (3, "Сенсор присутствия пешеходов")]
                             light_key = show_menu(light_ops, get_user_input, print_func)
                             match light_key:
                                 case 1:
-                                    self.detect_camera_event(get_user_input, print_func, inter_lights[light_key].camera)
+                                    self.detect_camera_event(get_user_input, print_func,
+                                                             inter_lights[light].camera)
                                 case 2:
                                     self.set_sensor_value(get_user_input, print_func,
-                                                          inter_lights[light_key].flow_sensor,
+                                                          inter_lights[light].flow_sensor,
                                                           "поток (транспорт в минуту)")
                                 case 3:
                                     self.set_sensor_value(get_user_input, print_func,
-                                                          inter_lights[light_key].pedestrian_sensor,
+                                                          inter_lights[light].pedestrian_sensor,
                                                           "число пешеходов")
                 case 9:
                     return

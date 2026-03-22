@@ -5,7 +5,7 @@ from core import Domain
 
 
 class PublicService(ABC):
-    def __init__(self, name: str, address: tuple[str, int], service_id: str, service_category: Domain):
+    def __init__(self, name: str, address: tuple, service_id: str, service_category: Domain) -> None:
         self.name = name
         self.address = address
         self.service_category = service_category
@@ -15,10 +15,10 @@ class PublicService(ABC):
         self.available_actions = []
 
     @abstractmethod
-    def provide_service(self, get_user_input, print_func, person: Human):
+    def provide_service(self, get_user_input, print_func, person: Human) -> None:
         pass
 
-    def get_status(self):
+    def get_status(self) -> dict:
         return {
             "active": self.is_active,
             "current_load": self.current_load

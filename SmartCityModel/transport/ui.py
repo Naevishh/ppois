@@ -1,5 +1,5 @@
 from city import SmartCity
-from core import VehicleType, TransportException
+from core import VehicleType
 from core.utils import NAME_VALIDATOR, PASSENGER_VALIDATOR, SafeInput
 from sensors import TrafficFlowSensor, AITrafficCamera, PedestrianCrossingSensor
 from ui import show_menu
@@ -7,7 +7,7 @@ from . import BusStop, PublicTransportVehicle, TransportRoute, RouteStop, SmartT
 
 
 class TransportSystemUI:
-    def __init__(self, city: SmartCity):
+    def __init__(self, city: SmartCity) -> None:
         self.city = city
         self.stop_name_validator = NAME_VALIDATOR
         self.passenger_validator = PASSENGER_VALIDATOR
@@ -21,7 +21,7 @@ class TransportSystemUI:
                    (4, "Обновить локацию средства"),
                    (5, "Прийти на остановку")]
 
-    def menu(self, get_user_input, print_func):
+    def menu(self, get_user_input, print_func) -> None:
         while True:
 
             key = show_menu(self.tms_options, get_user_input, print_func)
@@ -31,7 +31,7 @@ class TransportSystemUI:
                     stops = []
                     while True:
                         # Получаем ID уже добавленных остановок для фильтрации
-                        existing_stop_ids = [route_stop.stop.stop_id for route_stop in stops]
+                        existing_stop_ids = [route_stop.bus_stop.device_id for route_stop in stops]
 
                         # Формируем меню: только те остановки, которых нет в маршруте
                         ops = [(stop_id, stop_obj.name)
@@ -63,23 +63,24 @@ class TransportSystemUI:
                     # 1. Выбор типа транспорта
                     ops = [(v_type_key, v_type_val) for v_type_key, v_type_val in self.PublicVehicleType.items()]
                     v_type = show_menu(ops, get_user_input, print_func, "Выберите тип транспорта:")
-                    if v_type == '': break
+                    if v_type == '':
+                        break
 
                     # 2. Выбор маршрута (КЛЮЧЕВОЙ МОМЕНТ)
                     # В меню передаем ID маршрутов (строки "r1", "r2"...), чтобы пользователь выбрал конкретный
                     route_ops = [(r_id, f"{r_id}") for r_id in self.city.tms.routes.keys()]
                     route_id = show_menu(route_ops, get_user_input, print_func, "Выберите маршрут транспорта:")
 
-                    if route_id =='': break
+                    if route_id == '':
+                        break
 
                     # Регистрация: привязываем транспорт к выбранному route_id
                     self.city.tms.register_vehicle(
                         PublicTransportVehicle(v_type, route_id)
                     )
-                    print_func(f"Добавлен транспорт: {self.city.tms.vehicles[-1].device_id} на маршрут {route_id}")
+                    print_func(f"Добавлен транспорт: {list(self.city.tms.vehicles.values())[-1].device_id} на маршрут {route_id}")
 
                 case 3:  # Добавить остановку
-                    print_func("Введите название новой остановки: ")
                     new_st_name = SafeInput.get_string(
                         "Введите название новой остановки: ",
                         self.stop_name_validator,
@@ -94,11 +95,13 @@ class TransportSystemUI:
                     ops = [(vehicle_id, f"{self.PublicVehicleType[vehicle_obj.vehicle_type]}: {vehicle_id}")
                            for vehicle_id, vehicle_obj in self.city.tms.vehicles.items()]
                     v_key = show_menu(ops, get_user_input, print_func, "Выберите средство:")
-                    if v_key == '': break
+                    if v_key == '':
+                        break
                     vehicle = self.city.tms.vehicles[v_key]
                     ops = [(stop.index, stop.bus_stop.name) for stop in self.city.tms.routes[vehicle.route_id].stops]
                     stop_key = show_menu(ops, get_user_input, print_func, "Выберите остановку:")
-                    if stop_key == '': break
+                    if stop_key == '':
+                        break
                     print_func(self.city.tms.vehicles[v_key].report_stop_passed(stop_key))
 
                 case 5:  # Посмотреть табло
@@ -106,7 +109,8 @@ class TransportSystemUI:
                     ops = [(stop_id, stop_obj.name) for stop_id, stop_obj in self.city.tms.physical_stops.items()]
                     stop_id = show_menu(ops, get_user_input, print_func, "Выберите остановку:")
 
-                    if stop_id =='': break
+                    if stop_id == '':
+                        break
 
                     stop = self.city.tms.physical_stops[stop_id]
                     stop.update_passengers(stop.get_status()["passengers"] + 1)
@@ -147,7 +151,7 @@ class TransportSystemUI:
 
 
 class TrafficManagementUI:
-    def __init__(self, city: SmartCity):
+    def __init__(self, city: SmartCity) -> None:
         self.city = city
         self.available_options = [
             (1, "Добавить перекресток"),
@@ -155,7 +159,7 @@ class TrafficManagementUI:
             (3, "Управление транспортным потоком")
         ]
 
-    def menu(self, get_user_input, print_func):
+    def menu(self, get_user_input, print_func) -> None:
         while True:
 
             key = show_menu(self.available_options, get_user_input, print_func)
@@ -166,12 +170,14 @@ class TrafficManagementUI:
                         lights.append(SmartTrafficLight(TrafficFlowSensor(), AITrafficCamera(), PedestrianCrossingSensor()))
                     int_key = show_menu([(1, "Простой переход"), (2, "Перекресток")], get_user_input, print_func,
                                         "Вы хотите создать:")
-                    if int_key == '': break
+                    if int_key == '':
+                        break
                     dists = [(dist_id, dist) for dist_id, dist in self.city.districts.items()]
                     dist_key = show_menu(dists, get_user_input, print_func,
                                         "Выберите, в какой район добавить перекресток:")
-                    if dist_key=='': break
-                    dist=self.city.districts[dist_key]
+                    if dist_key == '':
+                        break
+                    dist = self.city.districts[dist_key]
                     int_id = f"{dist.district_id}_{len(dist.intersections) + 1}"
                     if int_key == 1:
                         lights = lights[:2]
@@ -188,7 +194,7 @@ class TrafficManagementUI:
 
                 case 3:
                     print_func("========== Операция управления транспортным потоком ==========")
-                    self.city.traffic_manager.prioritize_public_transport()
+                    self.city.traffic_manager.prioritize_public_transport(print_func)
                     for intersection in self.city.traffic_manager.intersections.values():
                         status = intersection.regulate_intersection()
                         if status:

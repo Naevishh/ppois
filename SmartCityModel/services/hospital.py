@@ -7,7 +7,7 @@ from .base import PublicService
 
 
 class Hospital(PublicService):
-    def __init__(self, name: str, address: tuple[str, int], service_id: str):
+    def __init__(self, name: str, address: tuple[str, int], service_id: str) -> None:
         super().__init__(name, address, service_id, Domain.HEALTHCARE)
         self.doctors = {
             'psychiatrist': {'name': 'Окулист', 'limit': 30, 'current': 0, 'serving': 0},
@@ -21,16 +21,16 @@ class Hospital(PublicService):
         ]
         self.purpose_validator = NAME_VALIDATOR
 
-    def order_ticket_to_doctor(self, doctor_name, patient):
+    def order_ticket_to_doctor(self, doctor_name: str, patient: Human) -> str:
         doctor = self.doctors[doctor_name]
         if doctor['current'] >= doctor['limit']:
-            return HospitalException(f"Все талоны к врачу {doctor['name']} были выписаны")
+            raise HospitalException(f"Все талоны к врачу {doctor['name']} были выписаны")
         else:
             doctor['current'] += 1
             return (f"Талон к врачу {doctor['name']} №{doctor['current']}."
                     f"\nПациент: {patient.name[1]} {patient.name[0][0]}.")
 
-    def order_ticket(self, get_user_input, print_func, patient: Human):
+    def order_ticket(self, get_user_input, print_func, patient: Human) -> None:
         options = [(key, doc['name']) for key, doc in self.doctors.items()]
 
         doctor_key = show_menu(
@@ -48,17 +48,17 @@ class Hospital(PublicService):
             except HospitalException as e:
                 print_func(f"Ошибка: {e}")
 
-    def order_certificate(self, purpose: str, patient: Human, print_func):
+    def order_certificate(self, purpose: str, patient: Human, print_func) -> None:
         address = patient.address
         print_func(f"Справка {purpose}"
                    f"\nУчреждение {self.name}"
                    f"\nВыдана пациенту: {patient.name[1]} {patient.name[0]}"
                    f"\nПроживающему по адресу: Улица {address[0]}, дом {address[1]}")
 
-    def call_ambulance(self, address: tuple, print_func):
+    def call_ambulance(self, address: tuple, print_func) -> None:
         print_func(f"Скорая выехала на адрес: Улица {address[0]}, дом {address[1]}")
 
-    def provide_service(self, get_user_input, print_func, patient: Human):
+    def provide_service(self, get_user_input, print_func, patient: Human) -> None:
         action_key = show_menu(self.available_actions, get_user_input, print_func)
         match action_key:
             case "get_ticket":

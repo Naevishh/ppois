@@ -44,10 +44,8 @@ class SmartCity:
 
     def _create_district(self, dist_id: str) -> District:
         light_sensor: list[LightLevelSensor] = [LightLevelSensor() for _ in range(13)]
-        self.light_sensors: dict[str, LightLevelSensor] = {sens.sensor_id: sens for sens in light_sensor}
 
         motion_sensor: list[MotionSensor] = [MotionSensor() for _ in range(12)]
-        self.motion_sensors: dict[str, MotionSensor] = {sens.sensor_id: sens for sens in motion_sensor}
 
         temp_sensors: list[TemperatureSensor] = [TemperatureSensor() for _ in range(2)]
 
@@ -183,7 +181,20 @@ class CityUI:
         self.urban_planning_ui = UrbanPlanningDataAnalysisUI(self.city)
         self.sensors_ui = SensorUI(self.city)
 
-    def general_menu(self, get_user_input, print_func):
+    def general_menu(self, get_user_input, print_func) -> None:
         ops = [(1, "Система общественного транспорта"), (2, "Управление движением"), (3, "Мониторинг окружающей среды"),
                     (4, "Сбор и анализ данных"), (5, "Сенсоры")]
         key=show_menu(ops, get_user_input, print_func, "Выберите область:")
+        match key:
+            case 1:
+                self.tms_ui.menu(input, print)
+            case 2:
+                self.traffic_ui.menu(input, print)
+            case 3:
+                self.env_ui.get_environment_state(print)
+            case 4:
+                self.urban_planning_ui.print_report(print)
+            case 5:
+                self.sensors_ui.update_sensor_data(input, print)
+            case 6:
+                self.tms_ui.menu(input, print)

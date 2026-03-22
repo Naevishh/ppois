@@ -1,4 +1,4 @@
-def show_menu(options, get_user_input, print_func, prompt="Выберите опцию:"):
+def show_menu(options: list, get_user_input, print_func, prompt: str = "Выберите опцию:") -> str | int | None:
     """
     Универсальная функция для вывода меню.
     options: список кортежей [(ключ, название), ...]

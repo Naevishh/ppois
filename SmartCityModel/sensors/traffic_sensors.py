@@ -3,11 +3,11 @@ from core import Domain, MeasurementType, VehicleType, SensorValueError
 
 
 class AITrafficCamera(Sensor):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__("aicam_", Domain.TRANSPORTATION, MeasurementType.VIDEO_ANALYTICS)
         self._last_event = {"vehicle_type": VehicleType.BICYCLE.value, "incident": None}
 
-    def detect_event(self, vehicle_type: VehicleType, incident: bool):
+    def detect_event(self, vehicle_type: VehicleType, incident: bool) -> None:
         self._last_event = {"vehicle_type": vehicle_type, "incident": incident}
 
     def get_status(self) -> dict:
@@ -15,11 +15,11 @@ class AITrafficCamera(Sensor):
 
 
 class TrafficFlowSensor(Sensor):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__("trfl_", Domain.TRANSPORTATION, MeasurementType.TRAFFIC_INTENSITY)
         self._vehicles_per_minute = 20
 
-    def set_value(self, count: int):
+    def set_value(self, count: int) -> None:
         if count < 0:
             raise SensorValueError("Количество транспортных средств не может быть отрицательным.")
         elif count > 200:
@@ -31,11 +31,11 @@ class TrafficFlowSensor(Sensor):
 
 
 class PedestrianCrossingSensor(Sensor):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__("pdstr_", Domain.TRANSPORTATION, MeasurementType.VEHICLE_PRESENCE)
         self._pedestrians_waiting = 5
 
-    def set_value(self, pedestrians: int):
+    def set_value(self, pedestrians: int) -> None:
         if pedestrians < 0:
             raise SensorValueError("Количество пешеходов не может быть отрицательным.")
         elif pedestrians > 50:

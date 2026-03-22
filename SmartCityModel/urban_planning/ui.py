@@ -1,14 +1,11 @@
 from city import SmartCity
-from environment import EnvironmentMonitoringSystem
-from sensors import AirQualitySensor, TemperatureSensor, TrafficFlowSensor, HumiditySensor, NoiseSensor
-from . import UrbanPlanningDataAnalyzer, District
 
 
 class UrbanPlanningDataAnalysisUI:
-    def __init__(self, city: SmartCity):
-        self.city=city
+    def __init__(self, city: SmartCity) -> None:
+        self.city = city
 
-    def print_report(self, print_func):
+    def print_report(self, print_func) -> None:
         """Красивый вывод отчёта в консоль"""
         report = self.city.analyzer.generate_planning_report()
 

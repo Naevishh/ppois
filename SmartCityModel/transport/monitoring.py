@@ -1,17 +1,17 @@
 from typing import Optional
 
 from core import ObjectNotFoundError, TransportException
-from . import TransportRoute, PublicTransportVehicle, BusStop, RouteStop
+from .models import TransportRoute, PublicTransportVehicle, BusStop, RouteStop
 
 
 class TransportMonitoringSystem:
-    def __init__(self):
-        self.routes: dict[str, TransportRoute] = {}
-        self.vehicles: dict[str, PublicTransportVehicle] = {}
+    def __init__(self) -> None:
+        self.routes = {}
+        self.vehicles = {}
         # Храним физические остановки отдельно
-        self.physical_stops: dict[str, BusStop] = {}
+        self.physical_stops = {}
 
-    def register_route(self, route: TransportRoute):
+    def register_route(self, route: TransportRoute) -> None:
         self.routes[route.route_id] = route
         for route_stop in route.stops:
             # Регистрируем физическую остановку (без перезаписи, если уже есть)
@@ -20,29 +20,27 @@ class TransportMonitoringSystem:
         for vehicle in route.get_vehicles():
             self.vehicles[vehicle.device_id] = vehicle
 
-    def register_vehicle(self, vehicle: PublicTransportVehicle):
+    def register_vehicle(self, vehicle: PublicTransportVehicle) -> None:
         self.vehicles[vehicle.device_id] = vehicle
         if vehicle.route_id in self.routes:
             self.routes[vehicle.route_id].add_vehicle(vehicle)
 
-    def update_vehicle_location(self, vehicle_id: str, stop_index: int):
+    def update_vehicle_location(self, vehicle_id: str, stop_index: int) -> str | None:
         if vehicle_id in self.vehicles:
             return self.vehicles[vehicle_id].report_stop_passed(stop_index)
         return None
 
-    def get_in_vehicle(self, vehicle_id: str):
-        if not vehicle_id in self.vehicles.keys():
+    def get_in_vehicle(self, vehicle_id: str) -> str:
+        if vehicle_id not in self.vehicles.keys():
             raise ObjectNotFoundError("Средство не найдено.")
-        vehicle=self.vehicles[vehicle_id]
+        vehicle = self.vehicles[vehicle_id]
         try:
-            vehicle.update_passengers(vehicle.get_status()["passengers"]+1)
+            vehicle.update_passengers(vehicle.get_status()["passengers"] + 1)
             return f"Добавлен пассажир на {vehicle.device_id}"
         except TransportException as e:
             return f"Ошибка: {e}"
 
-
     def calculate_eta(self, vehicle: PublicTransportVehicle, stop: RouteStop, route: TransportRoute) -> Optional[float]:
-
         current_idx = vehicle.get_last_stop_index
         target_idx = stop.index
 

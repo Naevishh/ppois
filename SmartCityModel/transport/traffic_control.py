@@ -1,8 +1,7 @@
-import uuid
-
 from core import SmartDevice, TrafficLightColor, VehicleType, Direction, Domain
 from core.exceptions import TransportException
 from sensors import TrafficFlowSensor, AITrafficCamera, PedestrianCrossingSensor
+from transport import TransportMonitoringSystem
 from urban_planning import District
 
 
@@ -10,14 +9,12 @@ class SmartTrafficLight(SmartDevice):
     def __init__(self,
                  flow_sensor: TrafficFlowSensor,
                  camera: AITrafficCamera,
-                 pedestrian_sensor: PedestrianCrossingSensor = None):
+                 pedestrian_sensor: PedestrianCrossingSensor = None) -> None:
         super().__init__("tl_", Domain.TRANSPORTATION)
         self.flow_sensor = flow_sensor
         self.camera = camera
         self._current_color = TrafficLightColor.RED
         self.pedestrian_sensor = pedestrian_sensor
-
-    # traffic light for vehicles
 
     def get_traffic_request(self) -> dict:
         status = self.camera.get_status()
@@ -55,12 +52,12 @@ class SmartTrafficLight(SmartDevice):
             "reason": reason
         }
 
-    def set_color(self, color: TrafficLightColor):
+    def set_color(self, color: TrafficLightColor) -> None:
         self._current_color = color
 
 
 class Intersection:
-    def __init__(self, intersection_id: str, lights: list[SmartTrafficLight]):  # def __init__(self, intersection_id: str, lights: list[SmartTrafficLight], conflict_map: dict)
+    def __init__(self, intersection_id: str, lights: list[SmartTrafficLight]) -> None:
         if len(lights) == 2:
             self.conflict_map = {}
             self.lights = {lights[0]: Direction.NORTH,
@@ -81,7 +78,7 @@ class Intersection:
         Direction.WEST: [Direction.NORTH, Direction.SOUTH]
     }
 
-    def regulate_intersection(self):
+    def regulate_intersection(self) -> bool:
         requests = [light.get_traffic_request() for light in self.lights]
 
         # 2. Находим направление с самым высоким приоритетом (Лидер)
@@ -89,14 +86,13 @@ class Intersection:
         requests.sort(key=lambda x: x['priority'], reverse=True)
         leader_request = requests[0]
         warning = leader_request["reason"] == "INCIDENT"
-        leader_direction=""
+        leader_direction = ""
         for light, direction in self.lights.items():
             if leader_request["device_id"] == light.device_id:
                 leader_direction = direction
 
         # 3. Расставляем цвета
         for light, direction in self.lights.items():
-
             conflicts_with_leader = direction in self.conflict_map.get(leader_direction, [])
 
             if conflicts_with_leader:
@@ -113,7 +109,7 @@ class TrafficManager:
     Реализует сценарий 'Зеленая волна' для общественного транспорта.
     """
 
-    def __init__(self, tms):
+    def __init__(self, tms: TransportMonitoringSystem) -> None:
         """
         :param tms: Экземпляр TransportMonitoringSystem
         """
@@ -124,7 +120,7 @@ class TrafficManager:
 
     PublicVehicleType = [VehicleType.BUS, VehicleType.TRAM, VehicleType.TROLLEYBUS]
 
-    def register_district(self, district: District):
+    def register_district(self, district: District) -> None:
         """Регистрирует перекрёстки района для управления"""
         for intersection in district.get_all_intersections():
             self.intersections[intersection.intersection_id] = intersection
@@ -137,22 +133,22 @@ class TrafficManager:
                 sensors.append(light.flow_sensor)
         return sensors
 
-    def register_intersection(self, intersection: Intersection):
+    def register_intersection(self, intersection: Intersection) -> None:
         self.intersections[intersection.intersection_id] = intersection
 
-    def link_stop_to_intersection(self, stop_id: str, intersection_id: str, stop_direction: Direction):
+    def link_stop_to_intersection(self, stop_id: str, intersection_id: str, stop_direction: Direction) -> str:
         """
         Связывает физическую остановку с ближайшим перекрестком.
         Когда автобус на остановке, светофор перекрестка знает об этом.
         """
-        if not stop_id in self.tms.physical_stops.keys():
+        if stop_id not in self.tms.physical_stops.keys():
             raise TransportException("Остановка не найдена")
-        elif not intersection_id in self.intersections:
+        elif intersection_id not in self.intersections:
             raise TransportException("Перекресток не найден")
         if not self.intersections[intersection_id].is_intersection:
-            if not (intersection_id, Direction.SOUTH) in self.stop_intersection_map.values():
+            if (intersection_id, Direction.SOUTH) not in self.stop_intersection_map.values():
                 stop_direction = Direction.SOUTH
-            elif not (intersection_id, Direction.NORTH) in self.stop_intersection_map.values():
+            elif (intersection_id, Direction.NORTH) not in self.stop_intersection_map.values():
                 stop_direction = Direction.NORTH
             else:
                 raise TransportException("Переход уже имеет остановки со всех сторон.")
@@ -162,7 +158,7 @@ class TrafficManager:
         self.stop_intersection_map[stop_id] = (intersection_id, stop_direction)
         return f"Связана остановка {stop_id} с перекрестком {intersection_id}"
 
-    def prioritize_public_transport(self, print_func):
+    def prioritize_public_transport(self, print_func) -> None:
         """
         Основная операция интеграции.
         1. Спрашиваем у TMS, где сейчас транспорт.
@@ -171,7 +167,7 @@ class TrafficManager:
         # Проходим по всем маршрутам в TMS
         for route in self.tms.routes.values():
             for vehicle in route.get_vehicles():
-                if not vehicle.vehicle_type in TrafficManager.PublicVehicleType:
+                if vehicle.vehicle_type not in TrafficManager.PublicVehicleType:
                     continue
 
                 current_stop_idx = vehicle.get_last_stop_index
@@ -187,9 +183,8 @@ class TrafficManager:
                         stop_intersection = self.stop_intersection_map[stop_id]
 
                         print_func(self._grant_green_wave(stop_intersection, vehicle))
-        return None
 
-    def _grant_green_wave(self, stop_intersection: tuple, vehicle):
+    def _grant_green_wave(self, stop_intersection: tuple, vehicle) -> str:
         """
         Внутренний метод: запрос к TrafficManager на продление зеленого света.
         """

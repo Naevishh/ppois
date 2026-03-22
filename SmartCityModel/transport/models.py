@@ -6,18 +6,18 @@ from core import SmartDevice, Domain, VehicleType, TransportException
 class BusStop(SmartDevice):
     """Остановка общественного транспорта"""
 
-    def __init__(self, name: str):
+    def __init__(self, name: str) -> None:
         super().__init__("stop_", Domain.TRANSPORTATION)
         self.name = name
         self._waiting_passengers = 0
         self._display_message = ""
 
-    def update_passengers(self, count: int):
+    def update_passengers(self, count: int) -> None:
         if count < 0:
             raise TransportException("Количество пассажиров не может быть отрицательным.")
         self._waiting_passengers = count
 
-    def set_display(self, message: str):
+    def set_display(self, message: str) -> None:
         self._display_message = message
 
     def get_status(self) -> dict:
@@ -32,7 +32,7 @@ class BusStop(SmartDevice):
 class RouteStop:
     """Связка: Остановка + её порядковый номер на конкретном маршруте"""
 
-    def __init__(self, bus_stop: BusStop, index: int):
+    def __init__(self, bus_stop: BusStop, index: int) -> None:
         self.bus_stop = bus_stop
         self.index = index
 
@@ -40,7 +40,7 @@ class RouteStop:
 class PublicTransportVehicle(SmartDevice):
     """Транспортное средство общественного транспорта"""
 
-    def __init__(self, vehicle_type: VehicleType, route_id: str):
+    def __init__(self, vehicle_type: VehicleType, route_id: str) -> None:
         super().__init__(f"{vehicle_type.value}_", Domain.TRANSPORTATION)
         self.vehicle_type = vehicle_type
         self.route_id = route_id
@@ -50,7 +50,7 @@ class PublicTransportVehicle(SmartDevice):
         self._last_update = datetime.now()
         self._passenger_count = 0
 
-    def report_stop_passed(self, stop_index: int):
+    def report_stop_passed(self, stop_index: int) -> str | None:
         """
         Транспорт сообщает: 'Я проехал остановку с индексом X'.
         Это заменяет отправку GPS координат.
@@ -62,7 +62,7 @@ class PublicTransportVehicle(SmartDevice):
         else:
             return None
 
-    def update_passengers(self, count: int):
+    def update_passengers(self, count: int) -> None:
         if count < 0:
             raise TransportException("Количество пассажиров не может быть отрицательным.")
         elif count > 60:
@@ -70,7 +70,7 @@ class PublicTransportVehicle(SmartDevice):
         self._passenger_count = count
 
     @property
-    def get_last_stop_index(self):
+    def get_last_stop_index(self) -> int:
         return self._last_passed_stop_index
 
     def get_status(self) -> dict:
@@ -86,14 +86,14 @@ class PublicTransportVehicle(SmartDevice):
 class TransportRoute:
     """Маршрут общественного транспорта"""
 
-    def __init__(self, route_id: str, stops: list[RouteStop], avg_time_between_stops: int = 3):
+    def __init__(self, route_id: str, stops: list[RouteStop], avg_time_between_stops: int = 3) -> None:
         self.route_id = route_id
         self.stops = stops  # Список остановок по порядку
         self._vehicles: list[PublicTransportVehicle] = []
         # Среднее время в пути между соседними остановками (минуты)
         self.avg_time_between_stops = avg_time_between_stops
 
-    def add_vehicle(self, vehicle: PublicTransportVehicle):
+    def add_vehicle(self, vehicle: PublicTransportVehicle) -> None:
         if vehicle.route_id == self.route_id:
             self._vehicles.append(vehicle)
 

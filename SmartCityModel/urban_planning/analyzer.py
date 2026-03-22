@@ -15,10 +15,10 @@ class UrbanPlanningDataAnalyzer:
     Возвращает рекомендации по развитию районов.
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.districts: dict[str, District] = {}
 
-    def register_district(self, district: District):
+    def register_district(self, district: District) -> None:
         """Регистрация района для анализа"""
         self.districts[district.district_id] = district
 
@@ -50,8 +50,8 @@ class UrbanPlanningDataAnalyzer:
 
         return {
             "district_id": district_id,
-            "metric": metric_type.value,
-            "value": round(district.get_average(metric_type.value), 2),
+            "metric": metric_type.value(),
+            "value": round(district.get_average(metric_type.value()), 2),
             "timestamp": datetime.now().isoformat(),
             "recommendation": recommendation
         }

@@ -6,7 +6,7 @@ from .base import PublicService
 
 
 class EducationService(PublicService):
-    def __init__(self, name: str, address: tuple[str, int], service_id: str):
+    def __init__(self, name: str, address: tuple[str, int], service_id: str) -> None:
         super().__init__(name, address, service_id, Domain.EDUCATION)
         self.available_actions = [
             ("enroll_course", "Записаться на курс"),
@@ -19,7 +19,7 @@ class EducationService(PublicService):
         self.course_validator = NAME_VALIDATOR
         self.grade_validator = GRADE_VALIDATOR
 
-    def enroll_course(self, course_name: str, student: Human, print_func):
+    def enroll_course(self, course_name: str, student: Human, print_func) -> None:
         sid = student.person_id
         if course_name in self.courses and self.courses[course_name] > 0:
             self.courses[course_name] -= 1
@@ -34,7 +34,7 @@ class EducationService(PublicService):
         else:
             print_func(f"На курс '{course_name}' мест нет.")
 
-    def set_grade(self, student: Human, subject, grade):
+    def set_grade(self, student: Human, subject: str, grade: int) -> None:
         # Получаем доступ к личному кабинету по ID
         sid = student.person_id
 
@@ -42,7 +42,7 @@ class EducationService(PublicService):
             self.grade_book[sid] = {}
         self.grade_book[sid][subject] = grade
 
-    def get_grades(self, student: Human, print_func):
+    def get_grades(self, student: Human, print_func) -> None:
         # Получаем доступ к личному кабинету по ID
         sid = student.person_id
         record = self.grade_book.get(sid)
@@ -54,7 +54,7 @@ class EducationService(PublicService):
         else:
             print_func("Записей пока нет.")
 
-    def provide_service(self, get_user_input, print_func, student: Human):
+    def provide_service(self, get_user_input, print_func, student: Human) -> None:
         action_key = show_menu(self.available_actions, get_user_input, print_func)
 
         match action_key:

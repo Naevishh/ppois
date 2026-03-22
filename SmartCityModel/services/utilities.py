@@ -2,16 +2,16 @@ from citizens import Human
 from core.utils import SafeInput
 from energy import SmartHome
 from ui import show_menu
-from . import PublicService
+from .base import PublicService
 from core import Domain, StringValidator
 
 
 class SmartHomeRegistry:
-    def __init__(self):
+    def __init__(self) -> None:
         # Ключ: кортеж адреса, Значение: объект SmartHome
         self._homes: dict[tuple, SmartHome] = {}
 
-    def register_home(self, home: SmartHome):
+    def register_home(self, home: SmartHome) -> None:
         self._homes[home.address] = home
 
     def get_home(self, address: tuple) -> SmartHome | None:
@@ -19,7 +19,7 @@ class SmartHomeRegistry:
 
 
 class UtilitiesService(PublicService):
-    def __init__(self, name: str, address: tuple[str, int], service_id: str):
+    def __init__(self, name: str, address: tuple[str, int], service_id: str) -> None:
         super().__init__(name, address, service_id, Domain.HOUSING)
         # Хранилище данных: { (street, house): { water: int, electricity: int, last_update: str } }
         self.sensor_data = {}
@@ -30,7 +30,7 @@ class UtilitiesService(PublicService):
         self.registry = SmartHomeRegistry()
         self.issue_validator = StringValidator(min_length=10, max_length=500)
 
-    def auto_collect_metrics(self, address: tuple):
+    def auto_collect_metrics(self, address: tuple) -> None:
         """Симуляция автоматического сбора данных с IoT-датчиков"""
         metrics = self.registry.get_home(address).get_metrics()
         self.sensor_data[address] = {
@@ -38,7 +38,7 @@ class UtilitiesService(PublicService):
             "electricity": metrics["electricity"]
         }
 
-    def view_metrics(self, address: tuple, print_func):
+    def view_metrics(self, address: tuple, print_func) -> None:
         """Просмотр показаний в личном кабинете по адресу"""
         self.auto_collect_metrics(address)
         data = self.sensor_data.get(address)
@@ -52,12 +52,12 @@ class UtilitiesService(PublicService):
         else:
             print_func("Данные с датчиков еще не поступили.")
 
-    def report_issue(self, description: str, print_func):
+    def report_issue(self, description: str, print_func) -> None:
         print_func(f"Заявка №{hash(description) % 1000} создана.")
         print_func(f"Описание: {description}")
         print_func("Статус: Передано в диспетчерскую.")
 
-    def provide_service(self, get_user_input, print_func, person: Human):
+    def provide_service(self, get_user_input, print_func, person: Human) -> None:
         action_key = show_menu(self.available_actions, get_user_input, print_func)
 
         # Получаем адрес из профиля человека для доступа к данным

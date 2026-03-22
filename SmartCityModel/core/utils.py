@@ -1,5 +1,5 @@
 from decimal import Decimal, InvalidOperation
-from typing import Union, Optional, Callable
+from typing import Union, Optional
 
 
 class ValidationError(Exception):
@@ -209,8 +209,7 @@ class SafeInput:
     """Помощник для безопасного ввода с валидацией."""
 
     @staticmethod
-    def get_string(prompt: str, validator: StringValidator, get_input_func: Callable[[], str],
-                   print_func: Callable[[str], None]) -> str:
+    def get_string(prompt: str, validator: StringValidator, get_input_func, print_func) -> str:
         print_func(prompt)
         while True:
             try:
@@ -220,8 +219,7 @@ class SafeInput:
                 print_func(f"❌ Ошибка: {e}. Попробуйте снова.")
 
     @staticmethod
-    def get_int(prompt: str, validator: NumberValidator, get_input_func: Callable[[], str],
-                print_func: Callable[[str], None]) -> int:
+    def get_int(prompt: str, validator: NumberValidator, get_input_func, print_func) -> int:
         print_func(prompt)
         while True:
             try:
@@ -231,8 +229,7 @@ class SafeInput:
                 print_func(f"❌ Ошибка: {e}. Попробуйте снова.")
 
     @staticmethod
-    def get_float(prompt: str, validator: NumberValidator, get_input_func: Callable[[], str],
-                  print_func: Callable[[str], None]) -> float:
+    def get_float(prompt: str, validator: NumberValidator, get_input_func, print_func) -> float:
         print_func(prompt)
         while True:
             try:
