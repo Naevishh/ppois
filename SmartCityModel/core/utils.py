@@ -1,5 +1,5 @@
-from typing import Union, Optional
 from decimal import Decimal, InvalidOperation
+from typing import Union, Optional, Callable
 
 
 class ValidationError(Exception):
@@ -8,7 +8,7 @@ class ValidationError(Exception):
 
 
 class StringValidator:
-    def __init__(self, min_length: int = 1, max_length: int = 100):
+    def __init__(self, min_length: int = 1, max_length: int = 100) -> None:
         """
         Инициализация валидатора.
         :param min_length: Минимальная допустимая длина строки.
@@ -33,9 +33,6 @@ class StringValidator:
         Проверяет строку. Если все хорошо — возвращает очищенную строку.
         Если нет — выбрасывает ValidationError с понятным сообщением.
         """
-        # 1. Проверка типа данных (защита от None, int, list и т.д.)
-        if not isinstance(value, str):
-            raise ValidationError(f"Ожидалась строка, а получен тип: {type(value).__name__}")
 
         # 2. Убираем лишние пробелы по краям (пользователь часто ставит пробелы случайно)
         cleaned_value = value.strip()
@@ -68,29 +65,6 @@ class StringValidator:
 
         return cleaned_value
 
-    @staticmethod
-    def get_valid_input(prompt: str, str_validator: 'StringValidator') -> str:
-        """
-        Функция для безопасного ввода от пользователя.
-        Будет спрашивать до тех пор, пока пользователь не введет корректное значение.
-        """
-        while True:
-            try:
-                user_input = input(prompt)
-                # Пытаемся валидировать
-                valid_string = str_validator.validate(user_input)
-                return valid_string
-            except ValidationError as err:
-                print(f"❌ Ошибка ввода: {err}")
-                print("Попробуйте еще раз.\n")
-            except KeyboardInterrupt:
-                print("\n\n⚠️ Ввод прерван пользователем.")
-                exit(0)
-            except Exception as err:
-                # Ловим любые другие непредвиденные ошибки, чтобы программа не упала
-                print(f"⚠️ Неожиданная ошибка: {err}")
-                print("Попробуйте еще раз.\n")
-
 
 class NumberValidationError(Exception):
     """Специальное исключение для ошибок валидации чисел."""
@@ -105,7 +79,7 @@ class NumberValidator:
             max_digits: int = 15,
             max_decimal_places: int = 5,
             allow_negative: bool = True
-    ):
+    ) -> None:
         """
         Инициализация валидатора чисел.
 
@@ -235,7 +209,8 @@ class SafeInput:
     """Помощник для безопасного ввода с валидацией."""
 
     @staticmethod
-    def get_string(prompt: str, validator: StringValidator,get_input_func,print_func) -> str:
+    def get_string(prompt: str, validator: StringValidator, get_input_func: Callable[[], str],
+                   print_func: Callable[[str], None]) -> str:
         print_func(prompt)
         while True:
             try:
@@ -245,7 +220,8 @@ class SafeInput:
                 print_func(f"❌ Ошибка: {e}. Попробуйте снова.")
 
     @staticmethod
-    def get_int(prompt: str, validator: NumberValidator, get_input_func, print_func) -> int:
+    def get_int(prompt: str, validator: NumberValidator, get_input_func: Callable[[], str],
+                print_func: Callable[[str], None]) -> int:
         print_func(prompt)
         while True:
             try:
@@ -255,7 +231,8 @@ class SafeInput:
                 print_func(f"❌ Ошибка: {e}. Попробуйте снова.")
 
     @staticmethod
-    def get_float(prompt: str, validator: NumberValidator, get_input_func, print_func) -> float:
+    def get_float(prompt: str, validator: NumberValidator, get_input_func: Callable[[], str],
+                  print_func: Callable[[str], None]) -> float:
         print_func(prompt)
         while True:
             try:
@@ -284,4 +261,4 @@ PASSENGER_VALIDATOR = NumberValidator(min_value=0, max_value=1000, allow_negativ
 # Для оценок (1-10)
 GRADE_VALIDATOR = NumberValidator(min_value=0, max_value=10, allow_negative=False)
 
-SENSOR_VALUE_VALIDATOR=NumberValidator(min_value=-60, max_value=1000000, allow_negative=True)
+SENSOR_VALUE_VALIDATOR = NumberValidator(min_value=-60, max_value=1000000, allow_negative=True)

@@ -27,19 +27,19 @@ class VehicleType(Enum):
 class LabeledEnum(Enum):
     """Базовый класс для Enum с кодом и меткой"""
 
-    def __init__(self, code, label):
+    def __init__(self, code: int, label: str) -> None:
         self.code = code
         self.label = label
 
     @classmethod
-    def from_code(cls, code):
+    def from_code(cls, code: int) -> "LabeledEnum":
         for level in cls:
             if level.code == code:
                 return level
         raise ValueError(f"Нет элемента {cls.__name__} с кодом {code}")
 
     @classmethod
-    def from_label(cls, label):
+    def from_label(cls, label: str) -> "LabeledEnum":
         for level in cls:
             if level.label == label:
                 return level

@@ -1,5 +1,5 @@
 import json
-from typing import Optional
+from typing import Optional, Any
 
 from .models import Human
 
@@ -7,7 +7,7 @@ from .models import Human
 class UserRepository:
     def __init__(self, file_name: str = "users_db.json") -> None:
         self.file_name = file_name
-        self._cache: dict[str, dict] = {}  # Кеш: {id: данные}
+        self._cache: dict[str, dict[str, Any]] = {}  # Кеш: {id: данные}
         self._load_from_file()
 
     def _load_from_file(self) -> None:
