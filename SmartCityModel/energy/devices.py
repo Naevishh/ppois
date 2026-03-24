@@ -1,6 +1,6 @@
-from sensors import LightLevelSensor, MotionSensor, WaterMeter, ElectricityMeter, TemperatureSensor
+from ..sensors import LightLevelSensor, MotionSensor, WaterMeter, ElectricityMeter, TemperatureSensor
 from .lighting import SmartLightningSystem
-from core import Domain, SmartDevice
+from ..core import Domain, SmartDevice
 
 
 class SmartThermostat(SmartDevice):
@@ -35,7 +35,7 @@ class SmartHome:
         self.thermostat = thermostat
         self.lightning_system = lightning_system
 
-    def get_energy_consumption(self) -> int:
+    def get_energy_consumption(self) -> float:
         current_consumption = self.thermostat.get_energy_consumption() + self.lightning_system.get_energy_consumption()
         self.electricity_meter.set_value(current_consumption)
         return current_consumption

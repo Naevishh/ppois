@@ -1,7 +1,7 @@
 from datetime import datetime
 
-from core import PlanningMetricType
-from . import District
+from ..core import PlanningMetricType
+from .models import District
 
 
 class UrbanPlanningDataAnalyzer:

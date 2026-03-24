@@ -1,4 +1,4 @@
-from core import SmartDevice, Domain, SensorValueError
+from ..core import SmartDevice, Domain, SensorValueError
 
 
 class SolarPanel:

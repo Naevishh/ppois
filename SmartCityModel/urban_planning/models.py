@@ -2,9 +2,9 @@ import statistics
 from datetime import datetime, timedelta
 from typing import Optional
 
-from energy import SmartHome, BatteryStorage, SmartLight
-from sensors import TrafficFlowSensor, AirQualitySensor, TemperatureSensor, HumiditySensor, NoiseSensor
-from transport import Intersection
+from ..energy import SmartHome, BatteryStorage, SmartLight
+from ..sensors import TrafficFlowSensor, AirQualitySensor, TemperatureSensor, HumiditySensor, NoiseSensor
+from ..transport import Intersection
 
 
 class District:

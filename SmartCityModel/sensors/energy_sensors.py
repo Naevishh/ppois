@@ -1,4 +1,4 @@
-from core import MeasurementType, Domain, SmartDevice, SensorValueError
+from ..core import MeasurementType, Domain, SmartDevice, SensorValueError
 from .base_sensor import Sensor
 
 
@@ -56,7 +56,7 @@ class ElectricityMeter(SmartDevice):
         super().__init__("electrmtr_", Domain.HOUSING)
         self._energy = 5000
 
-    def set_value(self, energy: int) -> None:
+    def set_value(self, energy: float) -> None:
         if energy < 0:
             raise SensorValueError("Энергия не может быть отрицательной.")
         elif energy > 1000000:

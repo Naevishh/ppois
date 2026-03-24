@@ -1,8 +1,7 @@
-from city import SmartCity
-from core import SensorValueError, VehicleType
-from core.utils import SafeInput, SENSOR_VALUE_VALIDATOR, NumberValidator
-from sensors import AITrafficCamera
-from ui import show_menu
+from ..city import SmartCity
+from ..core import SensorValueError, VehicleType, show_menu
+from ..core.utils import SafeInput, SENSOR_VALUE_VALIDATOR, NumberValidator
+from ..sensors import AITrafficCamera
 
 
 class SensorUI:
@@ -12,7 +11,7 @@ class SensorUI:
         self.camera_incident_validator = NumberValidator(min_value=1, max_value=2, allow_negative=False)
 
     def detect_camera_event(self, get_user_input, print_func, camera: AITrafficCamera) -> None:
-        ops = [(vehicle.name, vehicle.value) for vehicle in VehicleType]
+        ops = [(vehicle, vehicle.value) for vehicle in VehicleType]
         v_type = show_menu(ops, get_user_input, get_user_input, "Выберите тип транспорта:")
         if v_type:
             incident_ops = [(1, "да"), (2, "нет")]

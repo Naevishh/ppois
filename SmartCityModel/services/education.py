@@ -1,7 +1,7 @@
-from citizens import Human
-from core import Domain
-from core.utils import NAME_VALIDATOR, GRADE_VALIDATOR, SafeInput
-from ui import show_menu
+from ..citizens import Human
+from ..core import Domain
+from ..core.utils import NAME_VALIDATOR, GRADE_VALIDATOR, SafeInput
+from ..core import show_menu
 from .base import PublicService
 
 

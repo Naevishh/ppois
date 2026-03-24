@@ -1,4 +1,4 @@
-from city import SmartCity
+from ..city import SmartCity
 
 
 class EnvironmentMonitoringUI:

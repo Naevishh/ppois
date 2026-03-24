@@ -1,4 +1,4 @@
-from core import AirQualityLevel, TemperatureLevel, HumidityLevel, NoiseLevel
+from ..core import AirQualityLevel, TemperatureLevel, HumidityLevel, NoiseLevel
 
 
 class EnvironmentMonitoringSystem:

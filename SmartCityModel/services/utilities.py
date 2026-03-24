@@ -1,9 +1,9 @@
-from citizens import Human
-from core.utils import SafeInput
-from energy import SmartHome
-from ui import show_menu
+from ..citizens import Human
+from ..core.utils import SafeInput
+from ..energy import SmartHome
+from ..core import show_menu
 from .base import PublicService
-from core import Domain, StringValidator
+from ..core import Domain, StringValidator
 
 
 class SmartHomeRegistry:

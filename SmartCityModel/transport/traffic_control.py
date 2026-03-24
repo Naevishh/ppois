@@ -1,8 +1,7 @@
-from core import SmartDevice, TrafficLightColor, VehicleType, Direction, Domain
-from core.exceptions import TransportException
-from sensors import TrafficFlowSensor, AITrafficCamera, PedestrianCrossingSensor
-from transport import TransportMonitoringSystem
-from urban_planning import District
+from ..core import SmartDevice, TrafficLightColor, VehicleType, Direction, Domain
+from ..core.exceptions import TransportException
+from ..sensors import TrafficFlowSensor, AITrafficCamera, PedestrianCrossingSensor
+from ..transport import TransportMonitoringSystem
 
 
 class SmartTrafficLight(SmartDevice):
@@ -114,15 +113,15 @@ class TrafficManager:
         :param tms: Экземпляр TransportMonitoringSystem
         """
         self.tms = tms
-        self.intersections = {}
+        self.intersections: dict[str, Intersection] = {}
         # Маппинг: ID остановки TMS -> ID перекрестка TrafficSystem
         self.stop_intersection_map: dict[str, tuple] = {}
 
     PublicVehicleType = [VehicleType.BUS, VehicleType.TRAM, VehicleType.TROLLEYBUS]
 
-    def register_district(self, district: District) -> None:
+    def register_district_intersections(self, intersections: list[Intersection]) -> None:
         """Регистрирует перекрёстки района для управления"""
-        for intersection in district.get_all_intersections():
+        for intersection in intersections:
             self.intersections[intersection.intersection_id] = intersection
 
     def get_all_sensors(self) -> list[TrafficFlowSensor]:
@@ -166,7 +165,7 @@ class TrafficManager:
         """
         # Проходим по всем маршрутам в TMS
         for route in self.tms.routes.values():
-            for vehicle in route.get_vehicles():
+            for vehicle in route.vehicles:
                 if vehicle.vehicle_type not in TrafficManager.PublicVehicleType:
                     continue
 
@@ -189,7 +188,7 @@ class TrafficManager:
         Внутренний метод: запрос к TrafficManager на продление зеленого света.
         """
         # Ищем перекресток в системе трафика (предполагаем, что есть метод поиска)
-        intersection = stop_intersection[0]
+        intersection = self.intersections[stop_intersection[0]]
 
         if intersection:
             for light, direction in intersection.lights.items():

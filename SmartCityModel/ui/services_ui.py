@@ -1,11 +1,11 @@
 import uuid
 from typing import Optional
 
-from citizens import UserRepository, Human
-from city import SmartCity
-from core.utils import NAME_VALIDATOR, AGE_VALIDATOR, ADDRESS_VALIDATOR, HOUSE_NUMBER_VALIDATOR, SafeInput, \
+from ..citizens import UserRepository, Human
+from ..city import SmartCity
+from ..core.utils import NAME_VALIDATOR, AGE_VALIDATOR, ADDRESS_VALIDATOR, HOUSE_NUMBER_VALIDATOR, SafeInput, \
     NumberValidationError
-from ui import show_menu
+from ..core import show_menu
 
 
 class PublicServiceUI:

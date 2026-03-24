@@ -1,9 +1,11 @@
-from city import SmartCity
-from core import VehicleType
-from core.utils import NAME_VALIDATOR, PASSENGER_VALIDATOR, SafeInput
-from sensors import TrafficFlowSensor, AITrafficCamera, PedestrianCrossingSensor
-from ui import show_menu
-from . import BusStop, PublicTransportVehicle, TransportRoute, RouteStop, SmartTrafficLight, Intersection
+from ..city import SmartCity
+from ..core import VehicleType
+from ..core.utils import NAME_VALIDATOR, PASSENGER_VALIDATOR, SafeInput
+from ..sensors import TrafficFlowSensor, AITrafficCamera, PedestrianCrossingSensor
+from ..core import show_menu
+from ..transport.traffic_control import SmartTrafficLight, Intersection
+from ..transport.models import BusStop, PublicTransportVehicle, TransportRoute, RouteStop
+
 
 
 class TransportSystemUI:
@@ -19,7 +21,7 @@ class TransportSystemUI:
     }
     tms_options = [(1, "Добавить маршрут"), (2, "Добавить транспортное средство"), (3, "Добавить остановку"),
                    (4, "Обновить локацию средства"),
-                   (5, "Прийти на остановку")]
+                   (5, "Прийти на остановку"), (6, "Посмотреть маршруты")]
 
     def menu(self, get_user_input, print_func) -> None:
         while True:
@@ -124,12 +126,13 @@ class TransportSystemUI:
                                 just_arrived.append(arrival)
                                 print_func(f"Сейчас на остановке: "
                                            f"\n - {arrival['type'].upper()}, маршрут: {arrival['route']}")
-                        print_func("Ближайший транспорт:")
-                        for arrival in info["arrivals"]:
-                            if arrival["eta_minutes"] > 0:
-                                print_func(
-                                    f" - {arrival['type'].upper()}, маршрут: {arrival['route']}: "
-                                    f"через {arrival['eta_minutes']} мин.")
+                        if len(just_arrived) != len(info["arrivals"]):
+                            print_func("Ближайший транспорт:")
+                            for arrival in info["arrivals"]:
+                                if arrival["eta_minutes"] > 0:
+                                    print_func(
+                                        f" - {arrival['type'].upper()}, маршрут: {arrival['route']}: "
+                                        f"через {arrival['eta_minutes']} мин.")
                     else:
                         print_func("Нет ближайшего транспорта.")
 
@@ -145,6 +148,18 @@ class TransportSystemUI:
                                 print_func(self.city.tms.get_in_vehicle(key_id))
 
                     stop.update_passengers(stop.get_status()["passengers"] - 1)
+
+                case 6:
+                    for i, (route_id, route) in enumerate(self.city.tms.routes.items(), 1):
+                        print_func(f"{i}) {route_id}"
+                                   f"\n"
+                                   f"\nОстановки:")
+                        for j, stop in enumerate(route.stops, 1):
+                            print_func(f"{j}. {stop.bus_stop.name}")
+                        print_func(f"\nТранспорт:")
+                        for j, veh in enumerate(route.vehicles, 1):
+                            print_func(f"{j}. {veh.device_id}")
+                            print_func()
 
                 case '':
                     return
@@ -190,7 +205,7 @@ class TrafficManagementUI:
                     int_key = show_menu(ops, get_user_input, print_func, "Выберите переход:")
                     if int_key:
                         lights = self.city.traffic_manager.intersections[int_key].lights
-                        lights[next(iter(lights))].camera.detect_event(VehicleType.CAR, True)
+                        next(iter(lights)).camera.detect_event(VehicleType.CAR, True)
 
                 case 3:
                     print_func("========== Операция управления транспортным потоком ==========")

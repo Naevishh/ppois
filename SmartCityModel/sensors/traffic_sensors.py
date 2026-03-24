@@ -1,5 +1,5 @@
 from .base_sensor import Sensor
-from core import Domain, MeasurementType, VehicleType, SensorValueError
+from ..core import Domain, MeasurementType, VehicleType, SensorValueError
 
 
 class AITrafficCamera(Sensor):

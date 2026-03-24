@@ -1,6 +1,6 @@
 from typing import Optional
 
-from core import ObjectNotFoundError, TransportException
+from ..core import ObjectNotFoundError, TransportException
 from .models import TransportRoute, PublicTransportVehicle, BusStop, RouteStop
 
 
@@ -17,7 +17,7 @@ class TransportMonitoringSystem:
             # Регистрируем физическую остановку (без перезаписи, если уже есть)
             if route_stop.bus_stop.device_id not in self.physical_stops:
                 self.physical_stops[route_stop.bus_stop.device_id] = route_stop.bus_stop
-        for vehicle in route.get_vehicles():
+        for vehicle in route.vehicles:
             self.vehicles[vehicle.device_id] = vehicle
 
     def register_vehicle(self, vehicle: PublicTransportVehicle) -> None:
@@ -77,7 +77,7 @@ class TransportMonitoringSystem:
                 continue  # Этой остановки нет на маршруте
 
             # 3. Проверяем транспорт на этом маршруте
-            for vehicle in route.get_vehicles():
+            for vehicle in route.vehicles:
                 eta = self.calculate_eta(vehicle, route_stop, route)
                 if eta is not None and eta >= 0:
                     arrivals.append({

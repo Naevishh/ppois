@@ -1,7 +1,7 @@
 import math
 
 from .base_sensor import Sensor
-from core import Domain, MeasurementType, AirQualityLevel, TemperatureLevel, HumidityLevel, NoiseLevel, SensorValueError
+from ..core import Domain, MeasurementType, AirQualityLevel, TemperatureLevel, HumidityLevel, NoiseLevel, SensorValueError
 
 
 class AirQualitySensor(Sensor):

@@ -1,20 +1,16 @@
 import random
 
-from citizens import UserRepository
-from core import VehicleType, StringValidator, Direction
-from energy import SmartThermostat, SmartHome, SolarPanel, WindTurbine, BatteryStorage, SmartLight, CityEnergyGrid
-from energy.lighting import SmartLightningSystem
-from environment import EnvironmentMonitoringSystem, EnvironmentMonitoringUI
-from sensors import TemperatureSensor, AirQualitySensor, HumiditySensor, NoiseSensor, TrafficFlowSensor, \
+from ..citizens import UserRepository
+from ..core import VehicleType, StringValidator, Direction
+from ..energy import SmartThermostat, SmartHome, SolarPanel, WindTurbine, BatteryStorage, SmartLight, CityEnergyGrid
+from ..energy.lighting import SmartLightningSystem
+from ..environment.monitoring import EnvironmentMonitoringSystem
+from ..sensors import TemperatureSensor, AirQualitySensor, HumiditySensor, NoiseSensor, TrafficFlowSensor, \
     AITrafficCamera, PedestrianCrossingSensor, MotionSensor, LightLevelSensor, WaterMeter, ElectricityMeter
-from sensors.ui import SensorUI
-from services import Hospital, EducationService, UtilitiesService
-from transport import TransportMonitoringSystem, BusStop, PublicTransportVehicle, TransportRoute, RouteStop, \
+from ..services import Hospital, EducationService, UtilitiesService
+from ..transport import TransportMonitoringSystem, BusStop, PublicTransportVehicle, TransportRoute, RouteStop, \
     Intersection, SmartTrafficLight, TrafficManager
-from transport.ui import TransportSystemUI, TrafficManagementUI
-from ui import show_menu
-from urban_planning import UrbanPlanningDataAnalyzer, District, UrbanPlanningDataAnalysisUI
-
+from ..urban_planning import UrbanPlanningDataAnalyzer, District
 
 class SmartCity:
     def __init__(self) -> None:
@@ -39,7 +35,7 @@ class SmartCity:
         dists: list[District] = [dist1, dist2, dist3]
         self.districts = {dist.district_id: dist for dist in dists}
         for dist in self.districts.values():
-            self.traffic_manager.register_district(dist)
+            self.traffic_manager.register_district_intersections(dist.intersections)
             self.analyzer.register_district(dist)
 
     def _create_district(self, dist_id: str) -> District:
@@ -147,10 +143,14 @@ class SmartCity:
                                         if i > 2], avg_time_between_stops=4)
         }
 
+        for veh, route in zip(vehicles, self.tms.routes.values()):
+            route.add_vehicle(veh)
+
     def _init_traffic(self) -> None:
         all_intersection_ids: list[str] = []
         for dist in self.districts.values():
             for inter in dist.intersections:
+                self.traffic_manager.intersections[inter.intersection_id]=inter
                 all_intersection_ids.append(inter.intersection_id)
 
         for inter_id, stop_id in zip(all_intersection_ids, self.tms.physical_stops.keys()):
@@ -170,31 +170,3 @@ class SmartCity:
             consumers.extend(dist.smart_homes + dist.lights)
 
         return CityEnergyGrid(generators, storages, consumers)
-
-
-class CityUI:
-    def __init__(self) -> None:
-        self.city = SmartCity()
-        self.tms_ui = TransportSystemUI(self.city)
-        self.traffic_ui = TrafficManagementUI(self.city)
-        self.env_ui = EnvironmentMonitoringUI(self.city)
-        self.urban_planning_ui = UrbanPlanningDataAnalysisUI(self.city)
-        self.sensors_ui = SensorUI(self.city)
-
-    def general_menu(self, get_user_input, print_func) -> None:
-        ops = [(1, "Система общественного транспорта"), (2, "Управление движением"), (3, "Мониторинг окружающей среды"),
-                    (4, "Сбор и анализ данных"), (5, "Сенсоры")]
-        key=show_menu(ops, get_user_input, print_func, "Выберите область:")
-        match key:
-            case 1:
-                self.tms_ui.menu(input, print)
-            case 2:
-                self.traffic_ui.menu(input, print)
-            case 3:
-                self.env_ui.get_environment_state(print)
-            case 4:
-                self.urban_planning_ui.print_report(print)
-            case 5:
-                self.sensors_ui.update_sensor_data(input, print)
-            case 6:
-                self.tms_ui.menu(input, print)

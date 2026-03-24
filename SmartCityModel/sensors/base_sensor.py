@@ -1,6 +1,6 @@
 import uuid
 
-from core import Domain, MeasurementType
+from ..core import Domain, MeasurementType
 
 
 class Sensor:

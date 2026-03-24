@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from core import SmartDevice, Domain, VehicleType, TransportException
+from ..core import SmartDevice, Domain, VehicleType, TransportException
 
 
 class BusStop(SmartDevice):
@@ -89,20 +89,17 @@ class TransportRoute:
     def __init__(self, route_id: str, stops: list[RouteStop], avg_time_between_stops: int = 3) -> None:
         self.route_id = route_id
         self.stops = stops  # Список остановок по порядку
-        self._vehicles: list[PublicTransportVehicle] = []
+        self.vehicles: list[PublicTransportVehicle] = []
         # Среднее время в пути между соседними остановками (минуты)
         self.avg_time_between_stops = avg_time_between_stops
 
     def add_vehicle(self, vehicle: PublicTransportVehicle) -> None:
         if vehicle.route_id == self.route_id:
-            self._vehicles.append(vehicle)
-
-    def get_vehicles(self) -> list[PublicTransportVehicle]:
-        return [v for v in self._vehicles]
+            self.vehicles.append(vehicle)
 
     def get_status(self) -> dict:
         return {
             "route_id": self.route_id,
             "total_stops": len(self.stops),
-            "active_vehicles": len(self.get_vehicles())
+            "active_vehicles": len(self.vehicles)
         }

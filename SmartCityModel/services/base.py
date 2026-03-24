@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
-from citizens import Human
-from core import Domain
+from ..citizens import Human
+from ..core import Domain
 
 
 class PublicService(ABC):
