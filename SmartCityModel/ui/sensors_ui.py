@@ -3,124 +3,249 @@ from ..core import SensorValueError, VehicleType, show_menu
 from ..core.utils import SafeInput, SENSOR_VALUE_VALIDATOR, NumberValidator
 from ..sensors import AITrafficCamera
 
+from typing import Optional, Dict, Any
 
 class SensorUI:
+    """UI модуль для управления сенсорами"""
+
     def __init__(self, city: SmartCity) -> None:
         self.city = city
         self.value_validator = SENSOR_VALUE_VALIDATOR
         self.camera_incident_validator = NumberValidator(min_value=1, max_value=2, allow_negative=False)
 
-    def detect_camera_event(self, get_user_input, print_func, camera: AITrafficCamera) -> None:
-        ops = [(vehicle, vehicle.value) for vehicle in VehicleType]
-        v_type = show_menu(ops, get_user_input, get_user_input, "Выберите тип транспорта:")
-        if v_type:
-            incident_ops = [(1, "да"), (2, "нет")]
-            incident = show_menu(incident_ops, get_user_input, print_func, "Случилась ли авария?")
-            if incident:
-                incident = incident == 1
-                camera.detect_event(v_type, incident)
-                print_func("Средство зафиксировано.")
+        # SmartCityModel/ui/sensors_ui.py (фрагмент)
 
-    def set_sensor_value(self, get_user_input, print_func, sensor, val_name: str) -> None:
-        value = SafeInput.get_int(
-            f"Введите показания ({val_name}): ",
-            self.value_validator,
-            get_user_input,
-            print_func
-        )
-        try:
+    def set_smart_home_sensor(self, district_id: str, home_index: int,
+                              sensor_type: str, value: int,
+                              light_index: Optional[int] = None) -> str:
+        """
+        Установить значение сенсора умного дома.
+        :param district_id: ID района
+        :param home_index: Индекс умного дома в районе
+        :param sensor_type: Тип сенсора (water, thermostat, light)
+        :param value: Значение сенсора
+        :param light_index: Индекс светильника (требуется только для типа 'light')
+        :return: Сообщение о результате
+        """
+        if district_id not in self.city.districts:
+            raise ValueError(f"Район {district_id} не найден")
+
+        dist = self.city.districts[district_id]
+
+        if home_index < 0 or home_index >= len(dist.smart_homes):
+            raise ValueError(f"Некорректный индекс дома: {home_index}")
+
+        home = dist.smart_homes[home_index]
+
+        if sensor_type == "water":
+            home.water_meter.set_value(value)
+            return "Значение счетчика воды установлено"
+
+        elif sensor_type == "thermostat":
+            home.thermostat.temp_sensor.set_value(value)
+            return "Значение термостата установлено"
+
+        elif sensor_type == "light":
+            if light_index is None:
+                raise ValueError("Для типа 'light' требуется параметр --light-index")
+
+            if light_index < 0 or light_index >= len(home.lightning_system.smart_lights):
+                raise ValueError(f"Некорректный индекс светильника: {light_index}")
+
+            sensor = home.lightning_system.smart_lights[light_index].light_level_sensor
             sensor.set_value(value)
-            print_func("Значение задано.")
-        except SensorValueError as e:
-            print_func(f"Ошибка: {e}")
+            return f"Значение сенсора светильника [{light_index}] установлено"
 
-    def list_sensors(self, get_user_input, print_func, sensors: list, val_name: str) -> None:
-        sensors_ops = [(i, sensor.sensor_id) for i, sensor in enumerate(sensors)]
-        sensor_key = show_menu(sensors_ops, get_user_input, print_func, "Выберите сенсор")
-        if sensor_key != '':
-            self.set_sensor_value(get_user_input, print_func, sensors[sensor_key], val_name)
+        else:
+            raise ValueError(f"Неизвестный тип сенсора: {sensor_type}")
 
-    def update_sensor_data(self, get_user_input, print_func) -> None:
-        ops = [(dist_id, dist_id) for dist_id in self.city.districts.keys()]
-        while True:
-            dist_key = show_menu(ops, get_user_input, print_func, "Выберите район:")
-            dist = self.city.districts[dist_key]
+    def set_street_light_sensor(self, district_id: str, light_index: int,
+                                value: int) -> str:
+        """
+        Установить значение сенсора уличного фонаря.
+        :param district_id: ID района
+        :param light_index: Индекс фонаря
+        :param value: Значение уровня света
+        :return: Сообщение о результате
+        """
+        if district_id not in self.city.districts:
+            raise ValueError(f"Район {district_id} не найден")
 
-            ops_dist = [(1, "Сенсоры умного дома"), (2, "Сенсоры фонарей"), (3, "Сенсоры генераторов"),
-                        (4, "Сенсоры качества воздуха"), (5, "Сенсоры температуры"), (6, "Сенсоры влажности"),
-                        (7, "Сенсоры уровня шума"), (8, "Сенсоры транспорта")]
-            key = show_menu(ops_dist, get_user_input, print_func, "Выберите объекты:")
+        dist = self.city.districts[district_id]
 
-            match key:
-                case 1:
-                    homes = [(i, f"{home.address[0]}, {home.address[1]}") for i, home in enumerate(dist.smart_homes)]
-                    home_index = show_menu(homes, get_user_input, print_func, "Выберите умный дом:")
-                    if home_index == '':
-                        break
-                    home = dist.smart_homes[home_index]
-                    home_ops = [(1, "Счетчик воды"), (2, "Сенсор термостата"),
-                                (3, "Сенсоры уровня освещения в системе освещения")]
-                    home_key = show_menu(home_ops, get_user_input, print_func)
-                    match home_key:
-                        case 1:
-                            self.set_sensor_value(get_user_input, print_func, home.water_meter, "вода")
-                        case 2:
-                            self.set_sensor_value(get_user_input, print_func, home.thermostat.temp_sensor,
-                                                  "температура")
-                        case 3:
-                            lights = [(i, light.device_id) for i, light in enumerate(home.lightning_system.smart_lights)]
-                            l_key = show_menu(lights, get_user_input, print_func, "Выберите источник света")
-                            if l_key != '':
-                                self.set_sensor_value(get_user_input, print_func,
-                                                      home.lightning_system.smart_lights[l_key].light_level_sensor,
-                                                      "уровень света")
-                case 2:
-                    lights = [(i, light.device_id) for i, light in enumerate(dist.lights)]
-                    l_key = show_menu(lights, get_user_input, print_func, "Выберите фонарь")
-                    if l_key != '':
-                        self.set_sensor_value(get_user_input, print_func, dist.lights[l_key].light_level_sensor,
-                                              "уровень света")
-                case 3:
-                    generators = [(1, "Сенсор солнечной панели"), (2, "Скорость ветра")]
-                    gen_key = show_menu(generators, get_user_input, print_func, "Выберите генератор")
-                    if gen_key == 1:
-                        self.set_sensor_value(get_user_input, print_func, dist.generators[0].light_level_sensor,
-                                              "уровень света")
-                    elif gen_key == 2:
-                        self.set_sensor_value(get_user_input, print_func, dist.generators[1],
-                                              "скорость ветра")
+        if light_index < 0 or light_index >= len(dist.lights):
+            raise ValueError(f"Некорректный индекс фонаря: {light_index}")
 
-                case 4:
-                    self.list_sensors(get_user_input, print_func, dist.air_quality_sensors, "концентрация газа")
-                case 5:
-                    self.list_sensors(get_user_input, print_func, dist.temperature_sensors, "температура")
-                case 6:
-                    self.list_sensors(get_user_input, print_func, dist.humidity_sensors, "концентрация пара")
-                case 7:
-                    self.list_sensors(get_user_input, print_func, dist.noise_sensors, "уровень шума")
-                case 8:
-                    inters = [(i, inter.intersection_id) for i, inter in enumerate(dist.intersections)]
-                    inters_key = show_menu(inters, get_user_input, print_func, "Выберите переход")
-                    if inters_key != '':
-                        inter_lights = dist.intersections[inters_key].lights
-                        lights = [(light.device_id, light.device_id) for light in inter_lights.keys()]
-                        light = show_menu(lights, get_user_input, print_func, "Выберите светофор")
-                        if light != '':
-                            light_ops = [(1, "AI-камера(приближающийся транспорт и состояние)"),
-                                         (2, "Сенсор транспортного потока"),
-                                         (3, "Сенсор присутствия пешеходов")]
-                            light_key = show_menu(light_ops, get_user_input, print_func)
-                            match light_key:
-                                case 1:
-                                    self.detect_camera_event(get_user_input, print_func,
-                                                             inter_lights[light].camera)
-                                case 2:
-                                    self.set_sensor_value(get_user_input, print_func,
-                                                          inter_lights[light].flow_sensor,
-                                                          "поток (транспорт в минуту)")
-                                case 3:
-                                    self.set_sensor_value(get_user_input, print_func,
-                                                          inter_lights[light].pedestrian_sensor,
-                                                          "число пешеходов")
-                case 9:
-                    return
+        dist.lights[light_index].light_level_sensor.set_value(value)
+        return "Значение сенсора фонаря установлено"
+
+    def set_generator_sensor(self, district_id: str, sensor_type: str,
+                             value: int) -> str:
+        """
+        Установить значение сенсора генератора.
+        :param district_id: ID района
+        :param sensor_type: Тип (solar или wind)
+        :param value: Значение
+        :return: Сообщение о результате
+        """
+        if district_id not in self.city.districts:
+            raise ValueError(f"Район {district_id} не найден")
+
+        dist = self.city.districts[district_id]
+
+        if sensor_type == "solar":
+            dist.generators[0].light_level_sensor.set_value(value)
+            return "Значение сенсора солнечной панели установлено"
+        elif sensor_type == "wind":
+            dist.generators[1].set_value(value)
+            return "Значение скорости ветра установлено"
+        else:
+            raise ValueError(f"Неизвестный тип генератора: {sensor_type}")
+
+    def set_district_sensor(self, district_id: str, sensor_category: str,
+                            sensor_index: int, value: int) -> str:
+        """
+        Установить значение сенсора района (воздух, температура, влажность, шум).
+        :param district_id: ID района
+        :param sensor_category: Категория (air, temperature, humidity, noise)
+        :param sensor_index: Индекс сенсора
+        :param value: Значение
+        :return: Сообщение о результате
+        """
+        if district_id not in self.city.districts:
+            raise ValueError(f"Район {district_id} не найден")
+
+        dist = self.city.districts[district_id]
+
+        sensor_map = {
+            "air": dist.air_quality_sensors,
+            "temperature": dist.temperature_sensors,
+            "humidity": dist.humidity_sensors,
+            "noise": dist.noise_sensors
+        }
+
+        if sensor_category not in sensor_map:
+            raise ValueError(f"Неизвестная категория: {sensor_category}")
+
+        sensors = sensor_map[sensor_category]
+
+        if sensor_index < 0 or sensor_index >= len(sensors):
+            raise ValueError(f"Некорректный индекс сенсора: {sensor_index}")
+
+        sensors[sensor_index].set_value(value)
+        return f"Значение сенсора {sensor_category} установлено"
+
+    def set_traffic_sensor(self, district_id: str, intersection_index: int,
+                           light_device_id: str, sensor_type: str,
+                           value: Any) -> str:
+        """
+        Установить значение сенсора транспорта на перекрестке.
+        :param district_id: ID района
+        :param intersection_index: Индекс перекрестка
+        :param light_device_id: ID светофора
+        :param sensor_type: Тип (camera, flow, pedestrian)
+        :param value: Значение (для camera - кортеж (vehicle_type, is_incident))
+        :return: Сообщение о результате
+        """
+        if district_id not in self.city.districts:
+            raise ValueError(f"Район {district_id} не найден")
+
+        dist = self.city.districts[district_id]
+
+        if intersection_index < 0 or intersection_index >= len(dist.intersections):
+            raise ValueError(f"Некорректный индекс перекрестка: {intersection_index}")
+
+        inter = dist.intersections[intersection_index]
+        inter_lights = inter.lights
+
+        if light_device_id not in inter_lights:
+            raise ValueError(f"Светофор {light_device_id} не найден")
+
+        light = inter_lights[light_device_id]
+
+        if sensor_type == "camera":
+            # value должен быть кортежем (VehicleType, is_incident)
+            light.camera.detect_event(value[0], value[1])
+            return "Событие камеры зафиксировано"
+        elif sensor_type == "flow":
+            light.flow_sensor.set_value(value)
+            return "Значение потока транспорта установлено"
+        elif sensor_type == "pedestrian":
+            light.pedestrian_sensor.set_value(value)
+            return "Значение сенсора пешеходов установлено"
+        else:
+            raise ValueError(f"Неизвестный тип сенсора: {sensor_type}")
+
+    def detect_camera_event(self, camera: AITrafficCamera,
+                            vehicle_type: VehicleType, is_incident: bool) -> str:
+        """
+        Зафиксировать событие на камере.
+        :param camera: Объект камеры
+        :param vehicle_type: Тип транспорта
+        :param is_incident: Было ли ДТП
+        :return: Сообщение о результате
+        """
+        camera.detect_event(vehicle_type, is_incident)
+        return "Средство зафиксировано"
+
+    def get_sensor_list(self, district_id: str, sensor_category: str) -> list[dict]:
+        """
+        Получить список сенсоров категории.
+        :param district_id: ID района
+        :param sensor_category: Категория сенсоров
+        :return: Список словарей с информацией о сенсорах
+        """
+        if district_id not in self.city.districts:
+            raise ValueError(f"Район {district_id} не найден")
+
+        dist = self.city.districts[district_id]
+
+        sensor_map = {
+            "air": dist.air_quality_sensors,
+            "temperature": dist.temperature_sensors,
+            "humidity": dist.humidity_sensors,
+            "noise": dist.noise_sensors,
+            "lights": dist.lights,
+            "smart_homes": dist.smart_homes
+        }
+
+        if sensor_category not in sensor_map:
+            raise ValueError(f"Неизвестная категория: {sensor_category}")
+
+        sensors = sensor_map[sensor_category]
+
+        result = []
+        for i, sensor in enumerate(sensors):
+            sensor_data = {
+                "index": i,
+                "device_id": getattr(sensor, 'device_id', getattr(sensor, 'sensor_id', f'{sensor_category}_{i}')),
+                "type": sensor_category
+            }
+            result.append(sensor_data)
+
+        return result
+
+    def get_district_list(self) -> list[str]:
+        """
+        Получить список ID районов.
+        :return: Список ID районов
+        """
+        return list(self.city.districts.keys())
+
+    def format_sensor_list(self, sensors: list[dict]) -> str:
+        """Отформатировать список сенсоров"""
+        if not sensors:
+            return "Сенсоры не найдены"
+
+        lines = []
+        for sensor in sensors:
+            lines.append(f"[{sensor['index']}] {sensor['device_id']} ({sensor['type']})")
+
+        return "\n".join(lines)
+
+    def format_district_list(self, districts: list[str]) -> str:
+        """Отформатировать список районов"""
+        if not districts:
+            return "Районы не найдены"
+
+        return "\n".join(f"[{i}] {d}" for i, d in enumerate(districts))

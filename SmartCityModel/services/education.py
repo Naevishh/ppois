@@ -1,11 +1,13 @@
+from typing import Dict, Any, Optional
 from ..citizens import Human
 from ..core import Domain
 from ..core.utils import NAME_VALIDATOR, GRADE_VALIDATOR, SafeInput
-from ..core import show_menu
 from .base import PublicService
 
 
 class EducationService(PublicService):
+    """Сервис образовательных услуг"""
+
     def __init__(self, name: str, address: tuple[str, int], service_id: str) -> None:
         super().__init__(name, address, service_id, Domain.EDUCATION)
         self.available_actions = [
@@ -19,66 +21,139 @@ class EducationService(PublicService):
         self.course_validator = NAME_VALIDATOR
         self.grade_validator = GRADE_VALIDATOR
 
-    def enroll_course(self, course_name: str, student: Human, print_func) -> None:
+    # ============================================================
+    # МЕТОДЫ ДЛЯ CLI (принимают аргументы, возвращают значения)
+    # ============================================================
+
+    def enroll_course(self, course_name: str, student: Human) -> str:
+        """
+        Записать студента на курс.
+        :param course_name: Название курса
+        :param student: Объект студента
+        :return: Сообщение о результате
+        """
         sid = student.person_id
-        if course_name in self.courses and self.courses[course_name] > 0:
-            self.courses[course_name] -= 1
 
-            # Инициализируем запись в журнале, если студент еще не записан
-            if sid not in self.grade_book:
-                self.grade_book[sid] = {}
+        if course_name not in self.courses:
+            return f"Курс '{course_name}' не найден."
 
-            # Добавляем курс
-            self.grade_book[sid][course_name] = "Зачислен"
-            print_func(f"Вы записаны на курс '{course_name}'.")
-        else:
-            print_func(f"На курс '{course_name}' мест нет.")
+        if self.courses[course_name] <= 0:
+            return f"На курс '{course_name}' мест нет."
 
-    def set_grade(self, student: Human, subject: str, grade: int) -> None:
-        # Получаем доступ к личному кабинету по ID
+        self.courses[course_name] -= 1
+
+        # Инициализируем запись в журнале, если студент еще не записан
+        if sid not in self.grade_book:
+            self.grade_book[sid] = {}
+
+        # Добавляем курс
+        self.grade_book[sid][course_name] = "Зачислен"
+        return f"Вы записаны на курс '{course_name}'."
+
+    def set_grade(self, student: Human, subject: str, grade: int) -> str:
+        """
+        Поставить оценку студенту.
+        :param student: Объект студента
+        :param subject: Название предмета
+        :param grade: Оценка (1-10)
+        :return: Сообщение о результате
+        """
+        if not self.grade_validator(grade):
+            return f"Некорректная оценка: {grade}. Допустимый диапазон 1-10."
+
         sid = student.person_id
 
         if sid not in self.grade_book:
             self.grade_book[sid] = {}
+
         self.grade_book[sid][subject] = grade
+        return f"Оценка {grade} по предмету '{subject}' установлена."
 
-    def get_grades(self, student: Human, print_func) -> None:
-        # Получаем доступ к личному кабинету по ID
+    def get_grades(self, student: Human) -> Dict[str, Any]:
+        """
+        Получить оценки студента.
+        :param student: Объект студента
+        :return: Словарь с информацией об оценках
+        """
         sid = student.person_id
-        record = self.grade_book.get(sid)
+        record = self.grade_book.get(sid, {})
 
-        print_func(f"Личный кабинет: {student.name[1]} {student.name[0][0]} (ID: {sid})")
-        if record:
-            for subj, grade in record.items():
-                print_func(f"- {subj}: {grade}")
+        return {
+            "student_id": sid,
+            "student_name": f"{student.surname} {student.name[0][0]}.",
+            "grades": record
+        }
+
+    def get_available_courses(self) -> Dict[str, int]:
+        """
+        Получить список доступных курсов.
+        :return: Словарь {название_курса: количество_мест}
+        """
+        return self.courses.copy()
+
+    def format_grades_output(self, grades_data: Dict[str, Any]) -> str:
+        """
+        Отформатировать данные об оценках для вывода.
+        :param grades_data Словарь с данными об оценках
+        :return: Отформатированная строка
+        """
+        lines = [f"Личный кабинет: {grades_data['student_name']} (ID: {grades_data['student_id']})"]
+
+        if grades_data['grades']:
+            for subj, grade in grades_data['grades'].items():
+                lines.append(f"- {subj}: {grade}")
         else:
-            print_func("Записей пока нет.")
+            lines.append("Записей пока нет.")
 
-    def provide_service(self, get_user_input, print_func, student: Human) -> None:
-        action_key = show_menu(self.available_actions, get_user_input, print_func)
+        return "\n".join(lines)
 
-        match action_key:
-            case "enroll_course":
-                course = SafeInput.get_string(
-                    "Введите название курса: ",
-                    self.course_validator,
-                    get_user_input,
-                    print_func
-                )
-                self.enroll_course(course, student, print_func)
-            case "set_grade":
-                subject = SafeInput.get_string(
-                    "Введите название предмета: ",
-                    self.course_validator,
-                    get_user_input,
-                    print_func
-                )
-                grade = SafeInput.get_int(
-                    "Введите оценку (1-10): ",
-                    self.grade_validator,
-                    get_user_input,
-                    print_func
-                )
-                self.set_grade(student, subject, grade)
-            case "get_grades":
-                self.get_grades(student, print_func)
+    def format_courses_output(self, courses: Dict[str, int]) -> str:
+        """
+        Отформатировать список курсов для вывода.
+        :param courses: Словарь курсов
+        :return: Отформатированная строка
+        """
+        lines = ["Доступные курсы:"]
+
+        for course_name, seats in courses.items():
+            status = f"{seats} мест" if seats > 0 else "Нет мест"
+            lines.append(f"- {course_name}: {status}")
+
+        return "\n".join(lines)
+
+    # ============================================================
+    # МЕТОДЫ ДЛЯ ИНТЕРАКТИВНОГО МЕНЮ (используют input)
+    # ============================================================
+
+    def provide_service(self, student: Human, action: str = None,
+                            course_name: str = None, subject: str = None,
+                            grade: int = None) -> str:
+        """
+        Универсальный метод для вызова из CLI.
+        :param student: Объект студента
+        :param action: Действие (enroll_course, set_grade, get_grades, list_courses)
+        :param course_name: Название курса (для enroll_course)
+        :param subject: Название предмета (для set_grade)
+        :param grade: Оценка (для set_grade)
+        :return: Результат выполнения
+        """
+        if action == "enroll_course":
+            if not course_name:
+                raise ValueError("Требуется параметр course_name")
+            return self.enroll_course(course_name, student)
+
+        elif action == "set_grade":
+            if not subject or grade is None:
+                raise ValueError("Требуются параметры subject и grade")
+            return self.set_grade(student, subject, grade)
+
+        elif action == "get_grades":
+            grades_data = self.get_grades(student)
+            return self.format_grades_output(grades_data)
+
+        elif action == "list_courses":
+            courses = self.get_available_courses()
+            return self.format_courses_output(courses)
+
+        else:
+            raise ValueError(f"Неизвестное действие: {action}")

@@ -7,7 +7,7 @@ class ValidationError(Exception):
     pass
 
 
-class StringValidator:
+class RussianStringValidator:
     def __init__(self, min_length: int = 1, max_length: int = 100) -> None:
         """
         Инициализация валидатора.
@@ -209,7 +209,7 @@ class SafeInput:
     """Помощник для безопасного ввода с валидацией."""
 
     @staticmethod
-    def get_string(prompt: str, validator: StringValidator, get_input_func, print_func) -> str:
+    def get_string_russian(prompt: str, validator: RussianStringValidator, get_input_func, print_func) -> str:
         print_func(prompt)
         while True:
             try:
@@ -239,12 +239,151 @@ class SafeInput:
                 print_func(f"❌ Ошибка: {e}. Попробуйте снова.")
 
 
+class CommandValidator:
+    """
+    Валидатор для строк на латинице.
+    Разрешает латинские буквы, цифры и базовые символы.
+    """
+
+    def __init__(
+            self,
+            min_length: int = 1,
+            max_length: int = 100,
+            allow_hyphen: bool = False,
+            allow_spaces: bool = False
+    ) -> None:
+        """
+        Инициализация валидатора.
+
+        :param min_length: Минимальная допустимая длина строки.
+        :param max_length: Максимальная допустимая длина.
+        :param allow_hyphen: Разрешен ли дефис (-).
+        :param allow_spaces: Разрешены ли пробелы внутри строки.
+        """
+        if min_length < 1:
+            raise ValueError("Минимальная длина не может быть меньше 1")
+        if max_length < min_length:
+            raise ValueError("Максимальная длина не может быть меньше минимальной")
+
+        self.min_length = min_length
+        self.max_length = max_length
+        self.allow_hyphen = allow_hyphen
+        self.allow_spaces = allow_spaces
+
+        # Набор допустимых латинских букв
+        self.latin_letters = set(
+            "abcdefghijklmnopqrstuvwxyz"
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        )
+
+    def validate(self, value: str) -> str:
+        """
+        Проверяет строку. Если все хорошо — возвращает очищенную строку.
+        Если нет — выбрасывает ValidationError.
+        """
+
+        # 1. Проверка на None
+        if value is None:
+            raise ValidationError("Значение не может быть пустым (None)")
+
+        # 2. Убираем лишние пробелы по краям
+        cleaned_value = value.strip()
+
+        # 4. Проверка длины
+        if len(cleaned_value) < self.min_length:
+            raise ValidationError(f"Строка слишком короткая (минимум {self.min_length} симв.)")
+
+        if len(cleaned_value) > self.max_length:
+            raise ValidationError(f"Строка слишком длинная (максимум {self.max_length} симв.)")
+
+        # 5. Посимвольная проверка (Белый список)
+        has_letter = False
+        for char in cleaned_value:
+            if char in self.latin_letters:
+                has_letter = True
+            elif self.allow_hyphen and char == '-':
+                continue
+            elif self.allow_spaces and char == ' ':
+                continue
+            else:
+                raise ValidationError("Невалидная команда")
+
+        # 6. Проверка обязательного наличия хотя бы одной буквы
+        if not has_letter:
+            raise ValidationError("Невалидная команда")
+
+        return cleaned_value
+
+
+class IdentifierValidator:
+    """
+    Валидатор для идентификаторов (ID).
+    Разрешает латинские буквы, цифры и нижнее подчеркивание.
+    Подходит для имен переменных, технических идентификаторов.
+    """
+
+    def __init__(self, min_length: int = 1, max_length: int = 50) -> None:
+        """
+        Инициализация валидатора.
+
+        :param min_length: Минимальная допустимая длина.
+        :param max_length: Максимальная допустимая длина.
+        """
+        if min_length < 1:
+            raise ValueError("Минимальная длина не может быть меньше 1")
+        if max_length < min_length:
+            raise ValueError("Максимальная длина не может быть меньше минимальной")
+
+        self.min_length = min_length
+        self.max_length = max_length
+
+        self.latin_letters = set(
+            "abcdefghijklmnopqrstuvwxyz"
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        )
+        self.digits = set("0123456789")
+
+    def validate(self, value: str) -> str:
+        """
+        Проверяет идентификатор.
+        Возвращает очищенную строку или выбрасывает ValidationError.
+        """
+        # 1. Проверка на None
+        if value is None:
+            raise ValidationError("ID не может быть пустым (None)")
+
+        # 2. Нормализация (убираем пробелы по краям)
+        cleaned_value = value.strip()
+
+        # 3. Проверка на пустоту
+        if not cleaned_value:
+            raise ValidationError("ID не может быть пустым")
+
+        # 4. Проверка длины
+        if len(cleaned_value) < self.min_length:
+            raise ValidationError(f"ID слишком короткий (минимум {self.min_length} симв.)")
+
+        if len(cleaned_value) > self.max_length:
+            raise ValidationError(f"ID слишком длинный (максимум {self.max_length} симв.)")
+
+        # 6. Проверка всех символов (только латиница, цифры, подчеркивание)
+        allowed_chars = self.latin_letters | self.digits | {'_'}
+        for char in cleaned_value:
+            if char not in allowed_chars:
+                raise ValidationError(
+                    f"Недопустимый символ в ID: '{char}'. "
+                    f"Разрешены только латинские буквы, цифры и нижнее подчеркивание"
+                )
+
+        return cleaned_value
+
+
 # Глобальные экземпляры валидаторов для удобного импорта
 # Для имён (ФИО, названия остановок, улиц)
-NAME_VALIDATOR = StringValidator(min_length=2, max_length=50)
+NAME_VALIDATOR = RussianStringValidator(min_length=2, max_length=50)
 
 # Для адресов (улицы, названия)
-ADDRESS_VALIDATOR = StringValidator(min_length=2, max_length=100)
+ADDRESS_VALIDATOR = RussianStringValidator(min_length=2, max_length=100)
 
 # Для возраста (0-150 лет)
 AGE_VALIDATOR = NumberValidator(min_value=0, max_value=150, allow_negative=False)
@@ -259,3 +398,14 @@ PASSENGER_VALIDATOR = NumberValidator(min_value=0, max_value=1000, allow_negativ
 GRADE_VALIDATOR = NumberValidator(min_value=0, max_value=10, allow_negative=False)
 
 SENSOR_VALUE_VALIDATOR = NumberValidator(min_value=-60, max_value=1000000, allow_negative=True)
+
+ID_VALIDATOR = IdentifierValidator()
+
+LATIN_NAME_VALIDATOR = LatinStringValidator(
+    min_length=2,
+    max_length=100,
+    allow_digits=False,
+    allow_underscore=False,
+    allow_hyphen=True,
+    allow_spaces=True
+)

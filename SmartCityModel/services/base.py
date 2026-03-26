@@ -15,7 +15,7 @@ class PublicService(ABC):
         self.available_actions = []
 
     @abstractmethod
-    def provide_service(self, get_user_input, print_func, person: Human) -> None:
+    def provide_service(self, action_type, person: Human) -> None:
         pass
 
     def get_status(self) -> dict:

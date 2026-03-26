@@ -1,35 +1,57 @@
+# SmartCityModel/ui/urban_planning_ui.py
+
+from typing import Any
 from ..city import SmartCity
 
 
 class UrbanPlanningDataAnalysisUI:
+    """UI модуль для анализа данных городского планирования"""
+
     def __init__(self, city: SmartCity) -> None:
         self.city = city
 
-    def print_report(self, print_func) -> None:
-        """Красивый вывод отчёта в консоль"""
-        report = self.city.analyzer.generate_planning_report()
+    def generate_report(self) -> dict[str, Any]:
+        """
+        Сгенерировать отчет по улучшению планировки районов.
+        :return: Словарь с данными отчета
+        """
+        return self.city.analyzer.generate_planning_report()
 
-        print_func(f"Отчет по улучшению планировки районов")
-        print_func(f"Сгенерирован: {report['generated_at']}")
+    def format_report(self, report: dict[str, Any]) -> str:
+        """
+        Отформатировать отчет для вывода.
+        :param report: Словарь с данными отчета
+        :return: Отформатированная строка
+        """
+        lines = ["Отчет по улучшению планировки районов", f"Сгенерирован: {report['generated_at']}"]
 
         for district in report['districts']:
-            print_func(f"\nРайон: {district['district_id'].upper()}")
+            lines.append(f"\nРайон: {district['district_id'].upper()}")
 
-            print_func("Метрики:")
+            lines.append("Метрики:")
             for metric_name, metric_data in district['metrics'].items():
                 value = metric_data.get('value', 'N/A')
-                # Добавляем цветовой индикатор (условно)
-                print_func(f" {metric_name}: {value}")
+                lines.append(f" {metric_name}: {value}")
 
             if 'development_priority' in district:
                 priority = district['development_priority']
-                print_func("\nПриоритет развития:")
-                print_func(f"\nПроблема: {priority['focus_area']}")
-                print_func(f"\nЗначение: {priority['current_value']}")
-                print_func(f"\nРекомендации:")
-                # Делаем отступ для текста рекомендации
+                lines.append("\nПриоритет развития:")
+                lines.append(f"\nПроблема: {priority['focus_area']}")
+                lines.append(f"\nЗначение: {priority['current_value']}")
+                lines.append("\nРекомендации:")
                 for line in priority['action'].split('. '):
                     if line:
-                        print_func(f"      {line.strip()}.")
+                        lines.append(f"      {line.strip()}.")
             else:
-                print_func("\nНет данных для определения приоритетов")
+                lines.append("\nНет данных для определения приоритетов")
+
+        return "\n".join(lines)
+
+    def print_report(self, print_func) -> None:
+        """
+        Сгенерировать и вывести отчет (удобно для меню).
+        :param print_func: Функция для вывода
+        """
+        report = self.generate_report()
+        output = self.format_report(report)
+        print_func(output)

@@ -1,7 +1,7 @@
 import random
 
 from ..citizens import UserRepository
-from ..core import VehicleType, StringValidator, Direction
+from ..core import VehicleType, RussianStringValidator, Direction
 from ..energy import SmartThermostat, SmartHome, SolarPanel, WindTurbine, BatteryStorage, SmartLight, CityEnergyGrid
 from ..energy.lighting import SmartLightningSystem
 from ..environment.monitoring import EnvironmentMonitoringSystem
@@ -14,7 +14,7 @@ from ..urban_planning import UrbanPlanningDataAnalyzer, District
 
 class SmartCity:
     def __init__(self) -> None:
-        self.validator = StringValidator(min_length=1, max_length=50)
+        self.validator = RussianStringValidator(min_length=1, max_length=50)
 
         self.tms = TransportMonitoringSystem()
         self.analyzer = UrbanPlanningDataAnalyzer()
