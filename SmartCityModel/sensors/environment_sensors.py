@@ -68,6 +68,7 @@ class HumiditySensor(Sensor):
         super().__init__("humid_", Domain.ECOLOGY, MeasurementType.HUMIDITY)
         self._vapor_concentration = 9.0  # Концентрация пара (г/м³)
         self._temperature_sensor = temperature_sensor  # Температура по умолчанию (°C)
+        self._humidity_percent=0.0
 
     def set_value(self, concentration: float) -> None:
         """Устанавливает концентрацию водяного пара в г/м³"""
@@ -117,12 +118,9 @@ class HumiditySensor(Sensor):
         """Возвращает уровень влажности (1-5)"""
         return self._get_humidity_level()
 
-    def get_humidity_percent(self) -> float:
-        """Возвращает влажность в процентах (точное значение)"""
-        return round(self._humidity_percent, 2)
-
     def _get_humidity_level(self) -> HumidityLevel:
         """Определяет уровень влажности по процентам"""
+        self._update_humidity()
         if self._humidity_percent < 30:
             return HumidityLevel.VERY_DRY
         elif self._humidity_percent < 45:

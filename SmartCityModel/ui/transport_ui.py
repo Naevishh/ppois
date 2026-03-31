@@ -1,6 +1,6 @@
 from ..city import SmartCity
 from ..core import VehicleType
-from ..core.utils import NAME_VALIDATOR, PASSENGER_VALIDATOR, SafeInput
+from ..core.utils import NAME_VALIDATOR, PASSENGER_VALIDATOR
 from ..sensors import TrafficFlowSensor, AITrafficCamera, PedestrianCrossingSensor
 from ..transport.traffic_control import SmartTrafficLight, Intersection
 from ..transport.models import BusStop, PublicTransportVehicle, TransportRoute, RouteStop
@@ -59,7 +59,7 @@ class TransportSystemUI:
 
         # 2. Валидация: все остановки должны существовать
         for stop_id in stop_ids:
-            if stop_id not in self.city.tms.physical_stops:
+            if stop_id not in self.city.tms.physical_stops.keys():
                 raise ValueError(f"Остановка {stop_id} не найдена")
 
         # 3. Создаём RouteStop объекты
@@ -111,9 +111,6 @@ class TransportSystemUI:
             raise ValueError(f"Транспорт {vehicle_id} не найден")
 
         vehicle = self.city.tms.vehicles[vehicle_id]
-
-        if vehicle.route_id not in self.city.tms.routes:
-            raise ValueError(f"Маршрут {vehicle.route_id} не найден")
 
         route = self.city.tms.routes[vehicle.route_id]
 
@@ -195,21 +192,6 @@ class TransportSystemUI:
 
         return stops_info
 
-    def passenger_board(self, stop_id: str, vehicle_id: str) -> str:
-        """
-        Посадить пассажира на транспорт.
-        :param stop_id: ID остановки
-        :param vehicle_id: ID транспортного средства
-        :return: Сообщение о результате
-        """
-        if stop_id not in self.city.tms.physical_stops:
-            raise ValueError(f"Остановка {stop_id} не найдена")
-
-        if vehicle_id not in self.city.tms.vehicles:
-            raise ValueError(f"Транспорт {vehicle_id} не найден")
-
-        return self.city.tms.get_in_vehicle(vehicle_id)
-
     # ============================================================
     # ВСПОМОГАТЕЛЬНЫЕ МЕТОДЫ для парсера в cli.py
     # ============================================================
@@ -284,6 +266,12 @@ class TrafficManagementUI:
         else:
             raise ValueError("Перекресток не найден")
 
-    # --- 2. Метод для Интерактивного Меню (Если нужно) ---
-    # Если вы хотите оставить меню с цифрами, оно теперь просто
-    # запрашивает данные и передает их в методы выше.
+    def manage_flow(self):
+        result=self.city.traffic_manager.prioritize_public_transport()
+        for intersection in self.city.traffic_manager.intersections.values():
+            status = intersection.regulate_intersection()
+            if status:
+                result+= f"\nВнимание! Авария на переходе {intersection.intersection_id}!"
+            else:
+                result+= f"\nДвижение на переходе {intersection.intersection_id} отрегулировано."
+        return result

@@ -1,29 +1,11 @@
 # SmartCityModel/cli.py
 
-import typer
-
-from core import VehicleType, SensorValueError, HospitalException
-from ui import TransportSystemUI, EnvironmentMonitoringUI, UrbanPlanningDataAnalysisUI, PublicServiceUI, SensorUI
-from .core.helpers import smooth_print, print_help
+from .core import VehicleType, SensorValueError, HospitalException
+from .ui import TransportSystemUI, EnvironmentMonitoringUI, UrbanPlanningDataAnalysisUI, PublicServiceUI, SensorUI, TrafficManagementUI, EnergyUI
+from .core.helpers import smooth_print, print_help, print_detailed_help
 from .ui.city_ui import CityUI
 
-app = typer.Typer(
-    name="smartcity",
-    help="Модель умного города",
-    add_completion=False
-)
-
 VERSION = "1.0.0"
-
-# Сопоставление команд с методами CityUI
-MODULE_MAP = {
-    "tms": ("tms_ui", "menu"),
-    "traffic": ("traffic_ui", "menu"),
-    "env": ("env_ui", "get_environment_state"),
-    "data": ("urban_planning_ui", "print_report"),
-    "sensors": ("sensors_ui", "update_sensor_data"),
-}
-
 
 def print_welcome():
     """Вывод приветственного экрана"""
@@ -47,88 +29,80 @@ modules = [
     ("env", "Окружающая среда"),
     ("data", "Анализ данных города"),
     ("sensors", "Задание значений сенсоров"),
-    ("services", "Общественные сервисы")
-]
-
-tms_options = [
-    (1, "--add-route", "Добавить маршрут"),
-    (2, "--add-vehicle", "Добавить транспортное средство"),
-    (3, "--add-stop", "Добавить остановку"),
-    (4, "--update-location", "Обновить локацию средства"),
-    (5, "--arrive-stop", "Прийти на остановку"),
-    (6, "--view-routes", "Посмотреть маршруты")
-]
-
-traffic_options = [
-    (1, "--add-intersection", "Добавить перекресток"),
-    (2, "--accident", "Попасть в аварию"),
-    (3, "--manage-flow", "Управление транспортным потоком")
-]
-
-sensors_options = [
-    ("--smart-home", "Сенсоры умного дома"),
-    ("--street-lights", "Сенсоры фонарей"),
-    ("--generators", "Сенсоры генераторов"),
-    ("--air-quality", "Сенсоры качества воздуха"),
-    ("--temperature", "Сенсоры температуры"),
-    ("--humidity", "Сенсоры влажности"),
-    ("--noise-level", "Сенсоры уровня шума")
-]
-
-service_actions = [
-    ("--hospital", "Больница"),
-    ("--school", "Школа"),
-    ("--utility", "Коммунальные услуги")
+    ("services", "Общественные сервисы"),
+    ("energy", "Система управления энергией")  # Новый модуль
 ]
 
 commands = {
     "tms": {
-        "--add-route": "Добавить маршрут",
-        "--add-vehicle": "Добавить транспортное средство",
-        "--add-stop": "Добавить остановку",
-        "--update-location": "Обновить локацию средства",
-        "--arrive-stop": "Прийти на остановку",
-        "--view-routes": "Посмотреть маршруты"
+        "--add-stop": "Добавить остановку (--name <Название>)",
+        "--add-route": "Создать маршрут (--stops <ID1,ID2>)",
+        "--add-vehicle": "Добавить транспорт (--type <bus|tram> --route <ID>)",
+        "--update-location": "Обновить местоположение (--vehicle <ID> --stop-index <N>)",
+        "--arrive-stop": "Информация о прибытии (--stop <ID>)",
+        "--view-routes": "Показать список маршрутов",
+        "--list-vehicles": "Показать список транспорта",
+        "--list-stops": "Показать список остановок"
     },
 
     "traffic": {
-        "--add-intersection": "Добавить перекресток",
-        "--accident": "Попасть в аварию",
-        "--manage-flow": "Управление транспортным потоком"
+        "--add-intersection": "Добавить перекресток (--district <ID> --type <simple>)",
+        "--accident": "Симулировать аварию (--id <ID перекрестка>)",
+        "--manage-flow":  "Регулировать поток транспорта"
     },
 
-    "env": {"--state": "Получить состояние среды"},
-    "data": {"--print-report": "Распечатать отчет"},
+    "env": {
+        "--state": "Получить текущее состояние окружающей среды"
+    },
+
+    "data": {
+        "--print-report": "Сгенерировать и распечатать отчет по городу"
+    },
 
     "sensors": {
-        "--smart-home": "Сенсоры умного дома",
-        "--street-lights": "Сенсоры фонарей",
-        "--generators": "Сенсоры генераторов",
-        "--air-quality": "Сенсоры качества воздуха",
-        "--temperature": "Сенсоры температуры",
-        "--humidity": "Сенсоры влажности",
-        "--noise-level": "Сенсоры уровня шума"
+        "--list-districts": "Список доступных районов",
+        "--list-sensors": "Список сенсоров (--district <ID> --category <type>)",
+        "--set": "Установить значение сенсора (--district, --type, --value, ...)",
+        "--traffic": "Настроить сенсор трафика (--district, --intersection, --light, --type)",
+        "--camera-event": "Симулировать событие камеры (--district, --intersection, --light, --vehicle)"
     },
 
     "services": {
-        "--hospital": "Больница",
-        "--school": "Школа",
-        "--utility": "Коммунальные услуги",
-        "--exit": "Выйти"
+        "--register": "Регистрация пользователя (--name, --surname, --age, --street, --house)",
+        "--login": "Вход в систему (--id <USER_ID>)",
+        "--whoami": "Показать информацию о текущем пользователе",
+        "--hospital": "Действия с больницей (--action <get_ticket|order_certificate|call_ambulance|list_doctors>)",
+        "--school": "Действия со школой (--action <enroll_course|set_grade|get_grades|list_courses>)",
+        "--utility": "Коммунальные услуги (--action <view_metrics|report_issue>)"
+    },
+
+    "energy": {  # Новый модуль
+        "--optimize": "Оптимизировать энергопотребление города"
     }
 }
 
 
 def parse_flags(args_list):
-    """Превращает ['--name', 'Роща', '--type', 'simple'] в {'--name': 'Роща', ...}"""
     params = {}
     i = 0
     while i < len(args_list):
         if args_list[i].startswith("--"):
             key = args_list[i]
+            # if args_list[i+1].startswith('"'):
+            #     j = i + 1
+            #     str_arg=args_list[j]
+            #     print(str_arg)
+            #     while not args_list[j].endswith('"'):
+            #         str_arg+=' '+args_list[j]
+            #         j+=1
+            #     str_arg += ' ' + args_list[j]
+            #     params[key] = str_arg.strip('"')
+            #     print(str_arg)
+            #     i=j+1
             if i + 1 < len(args_list) and not args_list[i + 1].startswith("--"):
                 params[key] = args_list[i + 1]
                 i += 2
+
             else:
                 params[key] = True
                 i += 1
@@ -137,18 +111,18 @@ def parse_flags(args_list):
     return params
 
 
-@app.command()
-def run():
-    """🚀 Запустить интерактивное меню (режим по умолчанию)"""
-    print_welcome()
+def main():
+    """Точка входа в CLI"""
+    # print_welcome()
     input("\nНажмите Enter для продолжения...")
     print('\033[2J\033[H', end='')  # Очистка экрана
 
     print("Вы в CLI умного города\n")
     print("На выбор доступны следующие системы: \n")
-    print_help(print, modules)
+    print_help(modules, print)
     print("Для справки введите --help")
     print("Для выхода введите --exit")
+    city_ui = CityUI()
 
     while True:
 
@@ -162,9 +136,9 @@ def run():
                 for comm, desc in command_list.items():
                     print(f"    {module} {comm} :   {desc}")
             print("Для справки по командам отдельно введите команду с флагом --help\n")
-            print("Пример использования комманды:")
+            print("Пример использования команды:")
             print("    tms --arrive-stop --name 'Пл. Ленина'")
-            print("Для справки:\n    tms --arrive-stop --help")
+            print("Пример использования справки:\n    tms --arrive-stop --help")
 
             print("\nexit — выход из программы")
             continue
@@ -176,9 +150,7 @@ def run():
 
         module = parts[0]
         command = parts[1]
-        args = parts[2:]
-
-        city_ui = CityUI()
+        args = parts[1:]
 
         try:
 
@@ -191,11 +163,13 @@ def run():
                 elif module == "env":
                     handle_env(city_ui.env_ui, args, print)
                 elif module == "data":
-                    handle_data(city_ui.env_ui, args, print)
+                    handle_data(city_ui.urban_planning_ui, args, print)
                 elif module == "sensors":
-                    handle_services(city_ui.env_ui, args, print)
+                    handle_sensors(city_ui.sensors_ui, args, print)
+                elif module == "energy":  # Новый модуль
+                    handle_energy(city_ui.energy_ui, args, print)
                 else:
-                    handle_sensors(city_ui.env_ui, args, print)
+                    handle_services(city_ui.services_ui, args, print)
 
             else:
                 print("Неизвестная команда")
@@ -208,13 +182,46 @@ def run():
         except Exception as e:
             print(f"Ошибка выполнения: {e}")
 
-    city_ui.general_menu(input, print)
+
+def handle_energy(ui: EnergyUI, args: list[str], print_func):
+    """Обработчик команд модуля Energy"""
+    if not args:
+        print_func("Не указана команда. Пример: energy --optimize")
+        return
+
+    if "--help" in args:
+        cmd = args[0] if args[0] != "--help" else (args[1] if len(args) > 1 else "unknown")
+        if cmd == "unknown":
+            print_func(f"Неизвестная команда energy")
+        else:
+            print_detailed_help("energy", cmd, ui, print_func)
+        return
+
+    cmd = args[0]
+
+    if cmd == "--optimize":
+        try:
+            output = ui.generate_report()
+            print_func(output)
+        except Exception as e:
+            print_func(f"Ошибка при оптимизации энергии: {e}")
+    else:
+        print_func(f"Неизвестная команда energy: {cmd}")
 
 
-def handle_traffic(ui, args, print_func):
+def handle_traffic(ui: TrafficManagementUI, args: list[str], print_func) -> None :
     """Парсер для модуля Traffic"""
     if not args:
         return
+
+    if "--help" in args:
+        cmd = args[0] if args[0] != "--help" else (args[1] if len(args) > 1 else "unknown")
+        if cmd == "unknown":
+            print_func(f"Неизвестная команда services")
+        else:
+            print_detailed_help("traffic", cmd, ui, print_func)
+        return
+
     cmd = args[0]
     params = parse_flags(args[1:])
 
@@ -241,6 +248,9 @@ def handle_traffic(ui, args, print_func):
         except Exception as e:
             print_func(f"Ошибка при создании аварии: {e}")
 
+    elif cmd == "--manage-flow":
+        print(ui.manage_flow())
+
     else:
         print_func(f"Неизвестная команда traffic: {cmd}")
 
@@ -249,6 +259,14 @@ def handle_tms(ui: TransportSystemUI, args: list[str], print_func) -> None:
     """Обработчик команд модуля TMS"""
     if not args:
         print_func("Не указана команда. Пример: tms --add-stop --name 'Роща'")
+        return
+
+    if "--help" in args:
+        cmd = args[0] if args[0] != "--help" else (args[1] if len(args) > 1 else "unknown")
+        if cmd == "unknown":
+            print_func(f"Неизвестная команда services")
+        else:
+            print_detailed_help("tms", cmd, ui, print_func)
         return
 
     cmd = args[0]
@@ -347,6 +365,14 @@ def handle_env(ui: EnvironmentMonitoringUI, args: list, print_func) -> None:
         print_func("Не указана команда. Пример: env --state")
         return
 
+    if "--help" in args:
+        cmd = args[0] if args[0] != "--help" else (args[1] if len(args) > 1 else "unknown")
+        if cmd == "unknown":
+            print_func(f"Неизвестная команда services")
+        else:
+            print_detailed_help("env", cmd, ui, print_func)
+        return
+
     cmd = args[0]
 
     if cmd == "--state":
@@ -361,6 +387,14 @@ def handle_data(ui: UrbanPlanningDataAnalysisUI, args: list, print_func) -> None
     """Обработчик команд модуля Data Analysis"""
     if not args:
         print_func("Не указана команда. Пример: data --print-report")
+        return
+
+    if "--help" in args:
+        cmd = args[0] if args[0] != "--help" else (args[1] if len(args) > 1 else "unknown")
+        if cmd == "unknown":
+            print_func(f"Неизвестная команда services")
+        else:
+            print_detailed_help("data", cmd, ui, print_func)
         return
 
     cmd = args[0]
@@ -379,8 +413,17 @@ def handle_services(ui: PublicServiceUI, args: list, print_func) -> None:
         print_func("Не указана команда. Пример: services --register --name Иван --surname Иванов ...")
         return
 
+    if "--help" in args:
+        cmd = args[0] if args[0] != "--help" else (args[1] if len(args) > 1 else "unknown")
+        if cmd == "unknown":
+            print_func(f"Неизвестная команда services")
+        else:
+            print_detailed_help("services", cmd, ui, print_func)
+        return
+
     cmd = args[0]
     params = parse_flags(args[1:])
+
 
     if cmd == "--register":
         name = params.get("--name")
@@ -420,7 +463,7 @@ def handle_services(ui: PublicServiceUI, args: list, print_func) -> None:
             output = ui.format_user_info(user_data)
             print_func(output)
         else:
-            print_func("Пользователь не авторизован.")
+            print_func("Пользователь не авторизован. Необходимо авторизоваться")
 
     elif cmd == "--hospital":
         action = params.get("--action")  # get_ticket, order_certificate, call_ambulance, list_doctors
@@ -526,12 +569,18 @@ def handle_services(ui: PublicServiceUI, args: list, print_func) -> None:
         print_func(f"Неизвестная команда services: {cmd}")
 
 
-# SmartCityModel/cli.py (фрагмент)
-
 def handle_sensors(ui: SensorUI, args: list, print_func) -> None:
     """Обработчик команд модуля Sensors"""
     if not args:
         print_func("Не указана команда. Пример: sensors --set --district center --type temperature --value 25")
+        return
+
+    if "--help" in args:
+        cmd = args[0] if args[0] != "--help" else (args[1] if len(args) > 1 else "unknown")
+        if cmd == "unknown":
+            print_func(f"Неизвестная команда services")
+        else:
+            print_detailed_help("sensors", cmd, ui, print_func)
         return
 
     cmd = args[0]
@@ -553,7 +602,7 @@ def handle_sensors(ui: SensorUI, args: list, print_func) -> None:
             sensors = ui.get_sensor_list(district_id, category)
             output = ui.format_sensor_list(sensors)
             print_func(output)
-        except ValueError as e: #:))))
+        except ValueError as e:
             print_func(f"Ошибка: {e}")
 
     elif cmd == "--set":
@@ -638,7 +687,9 @@ def handle_sensors(ui: SensorUI, args: list, print_func) -> None:
         try:
             dist = ui.city.districts[district_id]
             inter = dist.intersections[int(intersection_index)]
-            camera = inter.lights[light_id].camera
+            camera = None
+            for l in inter.lights.keys():
+                if l.device_id == light_id: camera = l.camera
             result = ui.detect_camera_event(camera, vehicle_type_key, is_incident)
             print_func(result)
         except Exception as e:
@@ -649,4 +700,4 @@ def handle_sensors(ui: SensorUI, args: list, print_func) -> None:
 
 
 if __name__ == "__main__":
-    app()
+    main()

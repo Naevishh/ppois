@@ -157,7 +157,7 @@ class TrafficManager:
         self.stop_intersection_map[stop_id] = (intersection_id, stop_direction)
         return f"Связана остановка {stop_id} с перекрестком {intersection_id}"
 
-    def prioritize_public_transport(self, print_func) -> None:
+    def prioritize_public_transport(self) -> str | None:
         """
         Основная операция интеграции.
         1. Спрашиваем у TMS, где сейчас транспорт.
@@ -171,6 +171,7 @@ class TrafficManager:
 
                 current_stop_idx = vehicle.get_last_stop_index
                 next_stop_idx = current_stop_idx + 1
+                # if next_stop_idx==0: continue
 
                 # Проверяем, есть ли следующая остановка в маршруте
                 if next_stop_idx < len(route.stops):
@@ -181,7 +182,8 @@ class TrafficManager:
                     if stop_id in self.stop_intersection_map:
                         stop_intersection = self.stop_intersection_map[stop_id]
 
-                        print_func(self._grant_green_wave(stop_intersection, vehicle))
+                        return self._grant_green_wave(stop_intersection, vehicle)
+        return None
 
     def _grant_green_wave(self, stop_intersection: tuple, vehicle) -> str:
         """

@@ -9,7 +9,7 @@ class EnvironmentMonitoringSystem:
         def get_average(sensors: list) -> float:
             if not sensors:
                 return 0
-            return sum(s.get_status()[0] for s in sensors) / len(sensors)
+            return sum(s.get_status().value[0] for s in sensors) / len(sensors)
 
         def get_level(enum_class, average: float):
             code = max(1, min(5, round(average)))

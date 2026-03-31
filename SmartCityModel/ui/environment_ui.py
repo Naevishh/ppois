@@ -36,10 +36,10 @@ class EnvironmentMonitoringUI:
         """
         output = (
             "Состояние окружающей среды:\n"
-            f"Качество воздуха: {results['air']}.\n"
-            f"Температура: {results['temperature']}.\n"
-            f"Влажность: {results['humidity']}.\n"
-            f"Шум: {results['noise']}."
+            f"Качество воздуха: {results['air'].label}.\n"
+            f"Температура: {results['temperature'].label}.\n"
+            f"Влажность: {results['humidity'].label}.\n"
+            f"Шум: {results['noise'].label}."
         )
         return output
 

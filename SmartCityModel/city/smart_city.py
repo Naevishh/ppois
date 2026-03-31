@@ -21,11 +21,11 @@ class SmartCity:
         self.districts: dict[str, District] = {}
         self.traffic_manager = TrafficManager(self.tms)
         self.monitoring_system = EnvironmentMonitoringSystem()
-        self.energy_grid = self._init_energy()
         self._init_services()
         self._init_tms()
 
         self._initialize_default_data()
+        self.energy_grid = self._init_energy()
         self._init_traffic()
 
     def _initialize_default_data(self) -> None:
@@ -90,9 +90,9 @@ class SmartCity:
         lights2: list[SmartTrafficLight] = [SmartTrafficLight(TrafficFlowSensor(), AITrafficCamera(), PedestrianCrossingSensor()) for _ in range(2)]
         lights3: list[SmartTrafficLight] = [SmartTrafficLight(TrafficFlowSensor(), AITrafficCamera(), PedestrianCrossingSensor()) for _ in range(4)]
 
-        inter_1 = Intersection(f"{dist_id}_1", lights1)
-        cross_2 = Intersection(f"{dist_id}_2", lights2)
-        inter_3 = Intersection(f"{dist_id}_3", lights3)
+        inter_1 = Intersection(f"{dist_id}_inter_1", lights1)
+        cross_2 = Intersection(f"{dist_id}_cross_2", lights2)
+        inter_3 = Intersection(f"{dist_id}_inter_3", lights3)
         inters: list[Intersection] = [inter_1, cross_2, inter_3]
 
         traffic_sensors: list[TrafficFlowSensor] = [TrafficFlowSensor() for _ in range(2)]
@@ -166,7 +166,7 @@ class SmartCity:
         consumers: list = []
         for dist in self.districts.values():
             generators.extend(dist.generators)
-            storages.append(dist.storages)
+            storages.extend(dist.storages)
             consumers.extend(dist.smart_homes + dist.lights)
 
         return CityEnergyGrid(generators, storages, consumers)

@@ -22,7 +22,7 @@ class UrbanPlanningDataAnalyzer:
         """Регистрация района для анализа"""
         self.districts[district.district_id] = district
 
-    def calculate_metric(self, district_id: str, metric_type: PlanningMetricType) -> dict:
+    def calculate_metric(self, district_id: str, metric_type: PlanningMetricType, ecology=None) -> dict:
         """Расчёт конкретной метрики для района"""
         district = self.districts.get(district_id)
         if not district:
@@ -50,8 +50,8 @@ class UrbanPlanningDataAnalyzer:
 
         return {
             "district_id": district_id,
-            "metric": metric_type.value(),
-            "value": round(district.get_average(metric_type.value()), 2),
+            "metric": metric_type.value,
+            "value": round(value, 2),
             "timestamp": datetime.now().isoformat(),
             "recommendation": recommendation
         }

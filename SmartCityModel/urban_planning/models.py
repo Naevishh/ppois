@@ -36,22 +36,17 @@ class District:
         self.intersections.append(intersection)
 
     def auto_collect_sensor_data(self, ecology: float) -> None:
-        # ecology = self.environment_system.environmental_monitoring_operation()["average"]
+        #
         traffic = sum(t.get_status() for t in self.traffic_sensors) / len(self.traffic_sensors)
         self.metrics_readings.append({
             "ecology_score": ecology * 20,
             "transport_load": traffic,
             "infrastructure_density": 70,
-            "timestamp": datetime.now()
         })
         self.last_updated = datetime.now()
 
-    def get_average(self, metric: str, hours: int = 24) -> float | None:
-        cutoff = datetime.now() - timedelta(hours=hours)
-        values = [
-            r[metric] for r in self.metrics_readings
-            if r["timestamp"] >= cutoff
-        ]
+    def get_average(self, metric: str) -> float | None:
+        values = [r[metric] for r in self.metrics_readings]
         return statistics.mean(values) if values else None
 
     def get_all_intersections(self) -> list[Intersection]:

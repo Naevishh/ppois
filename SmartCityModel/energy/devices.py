@@ -69,5 +69,5 @@ class SmartLight(SmartDevice):
             self._is_on = True
             self._light_level = 100 - status
 
-    def get_energy_consumption_estimate(self) -> float:
+    def get_energy_consumption(self) -> float:
         return self._light_level * 0.95

@@ -1,8 +1,8 @@
 # SmartCityModel/ui/public_service_ui.py
 
 import uuid
-from typing import Optional, Tuple
-from ..citizens import UserRepository, Human
+from typing import Optional
+from ..citizens import Human
 from ..city import SmartCity
 from ..core.utils import NAME_VALIDATOR, AGE_VALIDATOR, ADDRESS_VALIDATOR, HOUSE_NUMBER_VALIDATOR
 
@@ -12,7 +12,6 @@ class PublicServiceUI:
 
     def __init__(self, city: SmartCity) -> None:
         self.city = city
-        self.user_repo = UserRepository()
         self.current_user_id: Optional[str] = None
         self.available_actions = [
             ("hospital", self.city.hospital.name),
@@ -41,25 +40,25 @@ class PublicServiceUI:
         :param apartment: Номер квартиры (опционально)
         :return: ID пользователя
         """
-        if not self.name_validator(name):
+        if not self.name_validator.validate(name):
             raise ValueError(f"Некорректное имя: {name}")
 
-        if not self.name_validator(surname):
+        if not self.name_validator.validate(surname):
             raise ValueError(f"Некорректная фамилия: {surname}")
 
-        if not self.age_validator(age):
+        if not self.age_validator.validate(age):
             raise ValueError(f"Некорректный возраст: {age}")
 
-        if not self.address_validator(street):
+        if not self.address_validator.validate(street):
             raise ValueError(f"Некорректный адрес: {street}")
 
-        if not self.house_validator(house):
+        if not self.house_validator.validate(house):
             raise ValueError(f"Некорректный номер дома: {house}")
 
         address = (street, house, apartment) if apartment else (street, house)
         person_id = str(uuid.uuid4())[:6]
         new_user = Human(name, surname, age, address, person_id)
-        self.user_repo.add_user(new_user)
+        self.city.user_repo.add_user(new_user)
 
         return person_id
 
@@ -69,7 +68,7 @@ class PublicServiceUI:
         :param user_id: ID пользователя
         :return: True если успешно
         """
-        if self.user_repo.authenticate(user_id):
+        if self.city.user_repo.authenticate(user_id):
             self.current_user_id = user_id
             return True
         return False
@@ -80,7 +79,7 @@ class PublicServiceUI:
         :return: Объект Human или None
         """
         if self.current_user_id:
-            return self.user_repo.get_user(self.current_user_id)
+            return self.city.user_repo.get_user(self.current_user_id)
         return None
 
         # SmartCityModel/ui/public_service_ui.py (фрагмент)

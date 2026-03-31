@@ -1,7 +1,7 @@
 from typing import Dict, Any, Optional
 from ..citizens import Human
 from ..core import Domain
-from ..core.utils import NAME_VALIDATOR, GRADE_VALIDATOR, SafeInput
+from ..core.utils import NAME_VALIDATOR, GRADE_VALIDATOR, LATIN_STR_VALIDATOR
 from .base import PublicService
 
 
@@ -18,7 +18,8 @@ class EducationService(PublicService):
         # Хранилище успеваемости: { student_id: { subject: grade } }
         self.grade_book = {}
         self.courses = {"Python": 50, "DataScience": 30}
-        self.course_validator = NAME_VALIDATOR
+        self.course_validator = LATIN_STR_VALIDATOR
+        self.subject_validator=NAME_VALIDATOR
         self.grade_validator = GRADE_VALIDATOR
 
     # ============================================================
@@ -58,8 +59,11 @@ class EducationService(PublicService):
         :param grade: Оценка (1-10)
         :return: Сообщение о результате
         """
-        if not self.grade_validator(grade):
-            return f"Некорректная оценка: {grade}. Допустимый диапазон 1-10."
+        if not self.subject_validator.validate(subject) and not self.course_validator.validate(subject):
+            raise ValueError(f"Некорректное название предмета: {grade}. Допустимый диапазон 1-10.")
+
+        if not self.grade_validator.validate_int(grade):
+            raise ValueError(f"Некорректная оценка: {grade}. Допустимый диапазон 1-10.")
 
         sid = student.person_id
 

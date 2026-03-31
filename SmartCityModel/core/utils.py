@@ -51,7 +51,7 @@ class RussianStringValidator:
         # 5. Посимвольная проверка (Белый список)
         has_letter = False
         for char in cleaned_value:
-            if char == '.':
+            if char == '.': # or char == ' ':
                 continue  # Точки разрешены
             elif char in self.russian_letters:
                 has_letter = True  # Нашли русскую букву
@@ -205,41 +205,7 @@ class NumberValidator:
         return float_value
 
 
-class SafeInput:
-    """Помощник для безопасного ввода с валидацией."""
-
-    @staticmethod
-    def get_string_russian(prompt: str, validator: RussianStringValidator, get_input_func, print_func) -> str:
-        print_func(prompt)
-        while True:
-            try:
-                raw = get_input_func()
-                return validator.validate(raw)
-            except Exception as e:
-                print_func(f"❌ Ошибка: {e}. Попробуйте снова.")
-
-    @staticmethod
-    def get_int(prompt: str, validator: NumberValidator, get_input_func, print_func) -> int:
-        print_func(prompt)
-        while True:
-            try:
-                raw = get_input_func()
-                return validator.validate_int(raw)
-            except Exception as e:
-                print_func(f"❌ Ошибка: {e}. Попробуйте снова.")
-
-    @staticmethod
-    def get_float(prompt: str, validator: NumberValidator, get_input_func, print_func) -> float:
-        print_func(prompt)
-        while True:
-            try:
-                raw = get_input_func()
-                return validator.validate_float(raw)
-            except Exception as e:
-                print_func(f"❌ Ошибка: {e}. Попробуйте снова.")
-
-
-class CommandValidator:
+class LatinStringValidator:
     """
     Валидатор для строк на латинице.
     Разрешает латинские буквы, цифры и базовые символы.
@@ -401,11 +367,9 @@ SENSOR_VALUE_VALIDATOR = NumberValidator(min_value=-60, max_value=1000000, allow
 
 ID_VALIDATOR = IdentifierValidator()
 
-LATIN_NAME_VALIDATOR = LatinStringValidator(
+LATIN_STR_VALIDATOR = LatinStringValidator(
     min_length=2,
     max_length=100,
-    allow_digits=False,
-    allow_underscore=False,
     allow_hyphen=True,
     allow_spaces=True
 )

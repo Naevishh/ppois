@@ -15,6 +15,17 @@ class UrbanPlanningDataAnalysisUI:
         Сгенерировать отчет по улучшению планировки районов.
         :return: Словарь с данными отчета
         """
+        air, temp, humid, noise = [], [], [], []
+
+        for dist in self.city.districts.values():
+            air.extend(dist.air_quality_sensors)
+            temp.extend(dist.temperature_sensors)
+            humid.extend(dist.humidity_sensors)
+            noise.extend(dist.noise_sensors)
+
+        ecology=self.city.monitoring_system.environmental_monitoring_operation(air, temp, humid, noise)["average"]
+        for dist in self.city.districts.values():
+            dist.auto_collect_sensor_data(ecology)
         return self.city.analyzer.generate_planning_report()
 
     def format_report(self, report: dict[str, Any]) -> str:
@@ -41,7 +52,7 @@ class UrbanPlanningDataAnalysisUI:
                 lines.append("\nРекомендации:")
                 for line in priority['action'].split('. '):
                     if line:
-                        lines.append(f"      {line.strip()}.")
+                        lines.append(f"      {line.strip()}")
             else:
                 lines.append("\nНет данных для определения приоритетов")
 

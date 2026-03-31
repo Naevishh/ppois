@@ -25,21 +25,6 @@ class TransportMonitoringSystem:
         if vehicle.route_id in self.routes:
             self.routes[vehicle.route_id].add_vehicle(vehicle)
 
-    def update_vehicle_location(self, vehicle_id: str, stop_index: int) -> str | None:
-        if vehicle_id in self.vehicles:
-            return self.vehicles[vehicle_id].report_stop_passed(stop_index)
-        return None
-
-    def get_in_vehicle(self, vehicle_id: str) -> str:
-        if vehicle_id not in self.vehicles.keys():
-            raise ObjectNotFoundError("Средство не найдено.")
-        vehicle = self.vehicles[vehicle_id]
-        try:
-            vehicle.update_passengers(vehicle.get_status()["passengers"] + 1)
-            return f"Добавлен пассажир на {vehicle.device_id}"
-        except TransportException as e:
-            return f"Ошибка: {e}"
-
     def calculate_eta(self, vehicle: PublicTransportVehicle, stop: RouteStop, route: TransportRoute) -> Optional[float]:
         current_idx = vehicle.get_last_stop_index
         target_idx = stop.index

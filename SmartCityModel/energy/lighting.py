@@ -7,4 +7,4 @@ class SmartLightningSystem:
             light.set_level()
 
     def get_energy_consumption(self) -> float:
-        return sum(l.get_energy_consumption_estimate() for l in self.smart_lights)
+        return sum(l.get_energy_consumption() for l in self.smart_lights)
