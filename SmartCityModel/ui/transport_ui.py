@@ -2,8 +2,8 @@ from ..city import SmartCity
 from ..core import VehicleType
 from ..core.utils import NAME_VALIDATOR, PASSENGER_VALIDATOR
 from ..sensors import TrafficFlowSensor, AITrafficCamera, PedestrianCrossingSensor
-from ..transport.traffic_control import SmartTrafficLight, Intersection
 from ..transport.models import BusStop, PublicTransportVehicle, TransportRoute, RouteStop
+from ..transport.traffic_control import SmartTrafficLight, Intersection
 
 
 class TransportSystemUI:
@@ -267,11 +267,11 @@ class TrafficManagementUI:
             raise ValueError("Перекресток не найден")
 
     def manage_flow(self):
-        result=self.city.traffic_manager.prioritize_public_transport()
+        result = self.city.traffic_manager.prioritize_public_transport()
         for intersection in self.city.traffic_manager.intersections.values():
             status = intersection.regulate_intersection()
             if status:
-                result+= f"\nВнимание! Авария на переходе {intersection.intersection_id}!"
+                result += f"\nВнимание! Авария на переходе {intersection.intersection_id}!"
             else:
-                result+= f"\nДвижение на переходе {intersection.intersection_id} отрегулировано."
+                result += f"\nДвижение на переходе {intersection.intersection_id} отрегулировано."
         return result

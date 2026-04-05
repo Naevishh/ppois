@@ -2,6 +2,7 @@
 
 import uuid
 from typing import Optional
+
 from ..citizens import Human
 from ..city import SmartCity
 from ..core.utils import NAME_VALIDATOR, AGE_VALIDATOR, ADDRESS_VALIDATOR, HOUSE_NUMBER_VALIDATOR

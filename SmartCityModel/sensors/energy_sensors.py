@@ -1,5 +1,5 @@
-from ..core import MeasurementType, Domain, SmartDevice, SensorValueError
 from .base_sensor import Sensor
+from ..core import MeasurementType, Domain, SmartDevice, SensorValueError
 
 
 class LightLevelSensor(Sensor):

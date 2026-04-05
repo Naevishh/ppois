@@ -12,6 +12,7 @@ from ..transport import TransportMonitoringSystem, BusStop, PublicTransportVehic
     Intersection, SmartTrafficLight, TrafficManager
 from ..urban_planning import UrbanPlanningDataAnalyzer, District
 
+
 class SmartCity:
     def __init__(self) -> None:
         self.validator = RussianStringValidator(min_length=1, max_length=50)
@@ -86,9 +87,12 @@ class SmartCity:
             lighting_system_2
         )
 
-        lights1: list[SmartTrafficLight] = [SmartTrafficLight(TrafficFlowSensor(), AITrafficCamera(), PedestrianCrossingSensor()) for _ in range(4)]
-        lights2: list[SmartTrafficLight] = [SmartTrafficLight(TrafficFlowSensor(), AITrafficCamera(), PedestrianCrossingSensor()) for _ in range(2)]
-        lights3: list[SmartTrafficLight] = [SmartTrafficLight(TrafficFlowSensor(), AITrafficCamera(), PedestrianCrossingSensor()) for _ in range(4)]
+        lights1: list[SmartTrafficLight] = [
+            SmartTrafficLight(TrafficFlowSensor(), AITrafficCamera(), PedestrianCrossingSensor()) for _ in range(4)]
+        lights2: list[SmartTrafficLight] = [
+            SmartTrafficLight(TrafficFlowSensor(), AITrafficCamera(), PedestrianCrossingSensor()) for _ in range(2)]
+        lights3: list[SmartTrafficLight] = [
+            SmartTrafficLight(TrafficFlowSensor(), AITrafficCamera(), PedestrianCrossingSensor()) for _ in range(4)]
 
         inter_1 = Intersection(f"{dist_id}_inter_1", lights1)
         cross_2 = Intersection(f"{dist_id}_cross_2", lights2)
@@ -150,7 +154,7 @@ class SmartCity:
         all_intersection_ids: list[str] = []
         for dist in self.districts.values():
             for inter in dist.intersections:
-                self.traffic_manager.intersections[inter.intersection_id]=inter
+                self.traffic_manager.intersections[inter.intersection_id] = inter
                 all_intersection_ids.append(inter.intersection_id)
 
         for inter_id, stop_id in zip(all_intersection_ids, self.tms.physical_stops.keys()):

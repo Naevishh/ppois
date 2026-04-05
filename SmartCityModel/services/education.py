@@ -1,8 +1,9 @@
-from typing import Dict, Any, Optional
+from typing import Dict, Any
+
+from .base import PublicService
 from ..citizens import Human
 from ..core import Domain
 from ..core.utils import NAME_VALIDATOR, GRADE_VALIDATOR, LATIN_STR_VALIDATOR
-from .base import PublicService
 
 
 class EducationService(PublicService):
@@ -19,7 +20,7 @@ class EducationService(PublicService):
         self.grade_book = {}
         self.courses = {"Python": 50, "DataScience": 30}
         self.course_validator = LATIN_STR_VALIDATOR
-        self.subject_validator=NAME_VALIDATOR
+        self.subject_validator = NAME_VALIDATOR
         self.grade_validator = GRADE_VALIDATOR
 
     # ============================================================
@@ -33,6 +34,8 @@ class EducationService(PublicService):
         :param student: Объект студента
         :return: Сообщение о результате
         """
+        if not self.course_validator.validate(course_name):
+            raise ValueError(f"Некорректное название курса: {course_name}.")
         sid = student.person_id
 
         if course_name not in self.courses:
@@ -60,7 +63,7 @@ class EducationService(PublicService):
         :return: Сообщение о результате
         """
         if not self.subject_validator.validate(subject) and not self.course_validator.validate(subject):
-            raise ValueError(f"Некорректное название предмета: {grade}. Допустимый диапазон 1-10.")
+            raise ValueError(f"Некорректное название предмета: {subject}.")
 
         if not self.grade_validator.validate_int(grade):
             raise ValueError(f"Некорректная оценка: {grade}. Допустимый диапазон 1-10.")
@@ -130,8 +133,8 @@ class EducationService(PublicService):
     # ============================================================
 
     def provide_service(self, student: Human, action: str = None,
-                            course_name: str = None, subject: str = None,
-                            grade: int = None) -> str:
+                        course_name: str = None, subject: str = None,
+                        grade: int = None) -> str:
         """
         Универсальный метод для вызова из CLI.
         :param student: Объект студента

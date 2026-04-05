@@ -31,7 +31,7 @@ class SmartTrafficLight(SmartDevice):
             reason = "EMERGENCY"
         elif status['vehicle_type'] in [VehicleType.TROLLEYBUS, VehicleType.TRAM, VehicleType.BUS]:
             priority = 60
-            reason = "HIGH_FLOW"
+            reason = "PUBLIC_TRANSPORT"
         elif intensity > 15:
             priority = 50
             reason = "HIGH_FLOW"
@@ -39,7 +39,7 @@ class SmartTrafficLight(SmartDevice):
         # Пешеходы
         if self.pedestrian_sensor:
             p_status = self.pedestrian_sensor.get_status()
-            if p_status > intensity:
+            if p_status > intensity and priority < 60:
                 pedestrian_waiting = True
                 priority = 5
                 reason = "PEDESTRIANS_WAITING"
@@ -135,26 +135,47 @@ class TrafficManager:
     def register_intersection(self, intersection: Intersection) -> None:
         self.intersections[intersection.intersection_id] = intersection
 
+    opposite_directions = {
+        Direction.NORTH: Direction.SOUTH,
+        Direction.SOUTH: Direction.NORTH,
+        Direction.EAST: Direction.WEST,
+        Direction.WEST: Direction.EAST,
+    }
+
     def link_stop_to_intersection(self, stop_id: str, intersection_id: str, stop_direction: Direction) -> str:
-        """
-        Связывает физическую остановку с ближайшим перекрестком.
-        Когда автобус на остановке, светофор перекрестка знает об этом.
-        """
-        if stop_id not in self.tms.physical_stops.keys():
+        if stop_id not in self.tms.physical_stops:
             raise TransportException("Остановка не найдена")
-        elif intersection_id not in self.intersections:
+        if intersection_id not in self.intersections:
             raise TransportException("Перекресток не найден")
+
+        # Collect directions already linked to this intersection
+        existing_directions = {
+            d for iid, d in self.stop_intersection_map.values() if iid == intersection_id
+        }
+
+        target_direction = stop_direction
+
         if not self.intersections[intersection_id].is_intersection:
-            if (intersection_id, Direction.SOUTH) not in self.stop_intersection_map.values():
-                stop_direction = Direction.SOUTH
-            elif (intersection_id, Direction.NORTH) not in self.stop_intersection_map.values():
-                stop_direction = Direction.NORTH
-            else:
-                raise TransportException("Переход уже имеет остановки со всех сторон.")
-        else:
-            if (intersection_id, stop_direction) in self.stop_intersection_map.values():
-                raise TransportException("Перекресток уже имеет остановку с этой стороны.")
-        self.stop_intersection_map[stop_id] = (intersection_id, stop_direction)
+            # 2-light intersection: enforce axis alignment
+            if existing_directions:
+                ref_dir = next(iter(existing_directions))
+                opposite_dir = self.opposite_directions.get(ref_dir)
+                if opposite_dir is None:
+                    raise TransportException("Некорректная конфигурация направлений в системе")
+
+                valid_axis = {ref_dir, opposite_dir}
+
+                # Reject perpendicular directions
+                if target_direction not in valid_axis:
+                    raise TransportException(
+                        f"Недопустимое направление {target_direction.name}. "
+                        f"Для данного перекрестка допустимы только направления оси: {[d.name for d in valid_axis]}"
+                    )
+
+        if target_direction in existing_directions:
+            raise TransportException("Перекресток уже имеет остановку с этой стороны.")
+
+        self.stop_intersection_map[stop_id] = (intersection_id, target_direction)
         return f"Связана остановка {stop_id} с перекрестком {intersection_id}"
 
     def prioritize_public_transport(self) -> str | None:
@@ -190,7 +211,7 @@ class TrafficManager:
         Внутренний метод: запрос к TrafficManager на продление зеленого света.
         """
         # Ищем перекресток в системе трафика (предполагаем, что есть метод поиска)
-        intersection = self.intersections[stop_intersection[0]]
+        intersection = self.intersections.get(stop_intersection[0])
 
         if intersection:
             for light, direction in intersection.lights.items():
@@ -199,4 +220,4 @@ class TrafficManager:
 
             return f"Общественный транспорт: {vehicle.vehicle_type.value.upper()} №{vehicle.route_id} на переходе {intersection.intersection_id}!"
         else:
-            return f"[ОШИБКА] Перекресток {intersection.intersection_id} не найден в системе трафика."
+            return f"[ОШИБКА] Перекресток {stop_intersection[0]} не найден в системе трафика."

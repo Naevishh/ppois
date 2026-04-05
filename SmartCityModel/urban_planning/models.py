@@ -1,5 +1,5 @@
 import statistics
-from datetime import datetime, timedelta
+from datetime import datetime
 from typing import Optional
 
 from ..energy import SmartHome, BatteryStorage, SmartLight

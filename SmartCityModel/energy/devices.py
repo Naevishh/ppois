@@ -1,6 +1,6 @@
-from ..sensors import LightLevelSensor, MotionSensor, WaterMeter, ElectricityMeter, TemperatureSensor
 from .lighting import SmartLightningSystem
 from ..core import Domain, SmartDevice
+from ..sensors import LightLevelSensor, MotionSensor, WaterMeter, ElectricityMeter, TemperatureSensor
 
 
 class SmartThermostat(SmartDevice):

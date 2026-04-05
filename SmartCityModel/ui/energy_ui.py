@@ -3,10 +3,10 @@ from ..city import SmartCity
 
 class EnergyUI:
     def __init__(self, city: SmartCity) -> None:
-        self.city=city
+        self.city = city
 
     def generate_report(self) -> str:
-        result=self.city.energy_grid.optimize_all()
+        result = self.city.energy_grid.optimize_all()
         """Форматирует результат оптимизации энергии для вывода"""
         output = []
         output.append("=" * 50)

@@ -8,7 +8,7 @@ class ValidationError(Exception):
 
 
 class RussianStringValidator:
-    def __init__(self, min_length: int = 1, max_length: int = 100) -> None:
+    def __init__(self, min_length: int = 1, max_length: int = 100, allow_spaces: bool = False) -> None:
         """
         Инициализация валидатора.
         :param min_length: Минимальная допустимая длина строки.
@@ -21,6 +21,7 @@ class RussianStringValidator:
 
         self.min_length = min_length
         self.max_length = max_length
+        self.allow_spaces = allow_spaces
 
         # Набор допустимых русских букв (включая ё)
         self.russian_letters = set(
@@ -51,13 +52,15 @@ class RussianStringValidator:
         # 5. Посимвольная проверка (Белый список)
         has_letter = False
         for char in cleaned_value:
-            if char == '.': # or char == ' ':
+            if char == '.' or char == '-':
                 continue  # Точки разрешены
+            elif char == ' ' and self.allow_spaces:
+                continue
             elif char in self.russian_letters:
                 has_letter = True  # Нашли русскую букву
             else:
                 # Сюда попадут цифры, латиница, пробелы внутри, смайлики и т.д.
-                raise ValidationError(f"Недопустимый символ: '{char}' (разрешены только русские буквы и точки)")
+                raise ValidationError(f"Недопустимый символ: '{char}' (разрешены только русские буквы, дефисы и точки)")
 
         # 6. Проверка обязательного наличия букв
         if not has_letter:
@@ -216,7 +219,8 @@ class LatinStringValidator:
             min_length: int = 1,
             max_length: int = 100,
             allow_hyphen: bool = False,
-            allow_spaces: bool = False
+            allow_spaces: bool = False,
+            allow_underscore: bool = False
     ) -> None:
         """
         Инициализация валидатора.
@@ -235,6 +239,7 @@ class LatinStringValidator:
         self.max_length = max_length
         self.allow_hyphen = allow_hyphen
         self.allow_spaces = allow_spaces
+        self.allow_underscore = allow_underscore
 
         # Набор допустимых латинских букв
         self.latin_letters = set(
@@ -271,12 +276,14 @@ class LatinStringValidator:
                 continue
             elif self.allow_spaces and char == ' ':
                 continue
+            elif self.allow_underscore and char == '_':
+                continue
             else:
-                raise ValidationError("Невалидная команда")
+                raise ValidationError("Невалидная строка")
 
         # 6. Проверка обязательного наличия хотя бы одной буквы
         if not has_letter:
-            raise ValidationError("Невалидная команда")
+            raise ValidationError("Невалидная строка")
 
         return cleaned_value
 
@@ -338,7 +345,7 @@ class IdentifierValidator:
             if char not in allowed_chars:
                 raise ValidationError(
                     f"Недопустимый символ в ID: '{char}'. "
-                    f"Разрешены только латинские буквы, цифры и нижнее подчеркивание"
+                    f"Разрешены только латинские буквы, цифры, нижнее подчеркивание и дефис"
                 )
 
         return cleaned_value

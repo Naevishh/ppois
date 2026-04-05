@@ -85,9 +85,9 @@ def print_detailed_help(module: str, command: str, ui, print_func) -> None:
                     for i, system in enumerate(consumers):
                         system_name = type(system).__name__
                         if hasattr(system, 'device_id'):
-                            dev_id=system.device_id
+                            dev_id = system.device_id
                         else:
-                            dev_id=f"{system.address[0]} {system.address[1]}"
+                            dev_id = f"{system.address[0]} {system.address[1]}"
                         context += f"\n  {i + 1}. {system_name} {dev_id}"
 
             context += "\n\nСовет: Запускайте оптимизацию после изменения настроек сенсоров энергии."

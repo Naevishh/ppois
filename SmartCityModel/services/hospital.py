@@ -1,11 +1,12 @@
 # SmartCityModel/services/hospital.py
 
-from typing import Optional, Dict, Any
+from typing import Dict, Any
+
+from .base import PublicService
 from ..citizens import Human
 from ..core import Domain
 from ..core import HospitalException
-from ..core.utils import NAME_VALIDATOR, SafeInput
-from .base import PublicService
+from ..core.utils import RussianStringValidator
 
 
 class Hospital(PublicService):
@@ -23,7 +24,7 @@ class Hospital(PublicService):
             ("order_certificate", "Заказать справку"),
             ("call_ambulance", "Вызов скорой")
         ]
-        self.purpose_validator = NAME_VALIDATOR
+        self.purpose_validator = RussianStringValidator(min_length=2, allow_spaces=True)
 
     # ============================================================
     # МЕТОДЫ ДЛЯ CLI (принимают аргументы, возвращают значения)
@@ -114,7 +115,7 @@ class Hospital(PublicService):
     # ============================================================
 
     def provide_service(self, patient: Human, action: str = None,
-                            doctor_name: str = None, purpose: str = None) -> str:
+                        doctor_name: str = None, purpose: str = None) -> str:
         """
         Универсальный метод для вызова из CLI.
         :param patient: Объект пациента

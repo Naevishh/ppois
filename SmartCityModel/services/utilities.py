@@ -1,8 +1,9 @@
 from typing import Dict, Any, Optional
-from ..citizens import Human
-from ..energy import SmartHome
+
 from .base import PublicService
+from ..citizens import Human
 from ..core import Domain, RussianStringValidator
+from ..energy import SmartHome
 
 
 class SmartHomeRegistry:
@@ -132,7 +133,7 @@ class UtilitiesService(PublicService):
         return output
 
     def provide_service(self, person: Human, action: str = None,
-                            description: str = None) -> str:
+                        description: str = None) -> str:
         """
         Универсальный метод для вызова из CLI.
         :param person: Объект пользователя

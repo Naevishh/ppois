@@ -1,11 +1,13 @@
 # SmartCityModel/cli.py
 
 from .core import VehicleType, SensorValueError, HospitalException
-from .ui import TransportSystemUI, EnvironmentMonitoringUI, UrbanPlanningDataAnalysisUI, PublicServiceUI, SensorUI, TrafficManagementUI, EnergyUI
 from .core.helpers import smooth_print, print_help, print_detailed_help
+from .ui import TransportSystemUI, EnvironmentMonitoringUI, UrbanPlanningDataAnalysisUI, PublicServiceUI, SensorUI, \
+    TrafficManagementUI, EnergyUI
 from .ui.city_ui import CityUI
 
 VERSION = "1.0.0"
+
 
 def print_welcome():
     """Вывод приветственного экрана"""
@@ -48,7 +50,7 @@ commands = {
     "traffic": {
         "--add-intersection": "Добавить перекресток (--district <ID> --type <simple>)",
         "--accident": "Симулировать аварию (--id <ID перекрестка>)",
-        "--manage-flow":  "Регулировать поток транспорта"
+        "--manage-flow": "Регулировать поток транспорта"
     },
 
     "env": {
@@ -88,26 +90,39 @@ def parse_flags(args_list):
     while i < len(args_list):
         if args_list[i].startswith("--"):
             key = args_list[i]
-            # if args_list[i+1].startswith('"'):
-            #     j = i + 1
-            #     str_arg=args_list[j]
-            #     print(str_arg)
-            #     while not args_list[j].endswith('"'):
-            #         str_arg+=' '+args_list[j]
-            #         j+=1
-            #     str_arg += ' ' + args_list[j]
-            #     params[key] = str_arg.strip('"')
-            #     print(str_arg)
-            #     i=j+1
-            if i + 1 < len(args_list) and not args_list[i + 1].startswith("--"):
-                params[key] = args_list[i + 1]
-                i += 2
 
-            else:
+            # 1. Защита от выхода за границы списка
+            if i + 1 >= len(args_list):
                 params[key] = True
                 i += 1
+                continue
+
+            next_arg = args_list[i + 1]
+
+            # 2. Если следующий элемент тоже флаг -> текущий флаг булевый
+            if next_arg.startswith("--"):
+                params[key] = True
+                i += 1
+                continue
+
+            # 3. Обработка значения (в т.ч. в кавычках)
+            if next_arg.startswith('"'):
+                full_value = next_arg
+                j = i + 1
+                # Собираем части аргумента, пока не встретим закрывающую кавычку
+                while not full_value.endswith('"') and j + 1 < len(args_list):
+                    j += 1
+                    full_value += ' ' + args_list[j]
+
+                # Убираем кавычки по краям
+                params[key] = full_value.strip('"')
+                i = j + 1  # Перемещаем указатель за последний обработанный элемент
+            else:
+                params[key] = next_arg
+                i += 2
         else:
             i += 1
+
     return params
 
 
@@ -209,7 +224,7 @@ def handle_energy(ui: EnergyUI, args: list[str], print_func):
         print_func(f"Неизвестная команда energy: {cmd}")
 
 
-def handle_traffic(ui: TrafficManagementUI, args: list[str], print_func) -> None :
+def handle_traffic(ui: TrafficManagementUI, args: list[str], print_func) -> None:
     """Парсер для модуля Traffic"""
     if not args:
         return
@@ -423,7 +438,6 @@ def handle_services(ui: PublicServiceUI, args: list, print_func) -> None:
 
     cmd = args[0]
     params = parse_flags(args[1:])
-
 
     if cmd == "--register":
         name = params.get("--name")

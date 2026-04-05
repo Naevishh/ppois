@@ -1,7 +1,6 @@
 from typing import Optional
 
-from ..core import ObjectNotFoundError, TransportException
-from .models import TransportRoute, PublicTransportVehicle, BusStop, RouteStop
+from .models import TransportRoute, PublicTransportVehicle, RouteStop
 
 
 class TransportMonitoringSystem:

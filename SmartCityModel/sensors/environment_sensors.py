@@ -1,7 +1,8 @@
 import math
 
 from .base_sensor import Sensor
-from ..core import Domain, MeasurementType, AirQualityLevel, TemperatureLevel, HumidityLevel, NoiseLevel, SensorValueError
+from ..core import Domain, MeasurementType, AirQualityLevel, TemperatureLevel, HumidityLevel, NoiseLevel, \
+    SensorValueError
 
 
 class AirQualitySensor(Sensor):
@@ -68,7 +69,7 @@ class HumiditySensor(Sensor):
         super().__init__("humid_", Domain.ECOLOGY, MeasurementType.HUMIDITY)
         self._vapor_concentration = 9.0  # Концентрация пара (г/м³)
         self._temperature_sensor = temperature_sensor  # Температура по умолчанию (°C)
-        self._humidity_percent=0.0
+        self._humidity_percent = 0.0
 
     def set_value(self, concentration: float) -> None:
         """Устанавливает концентрацию водяного пара в г/м³"""

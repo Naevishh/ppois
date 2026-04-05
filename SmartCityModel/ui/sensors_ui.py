@@ -1,9 +1,10 @@
+from typing import Optional, Any
+
 from ..city import SmartCity
-from ..core import SensorValueError, VehicleType, show_menu
+from ..core import VehicleType
 from ..core.utils import SENSOR_VALUE_VALIDATOR, NumberValidator
 from ..sensors import AITrafficCamera
 
-from typing import Optional, Dict, Any
 
 class SensorUI:
     """UI модуль для управления сенсорами"""
@@ -156,10 +157,10 @@ class SensorUI:
             raise ValueError(f"Некорректный индекс перекрестка: {intersection_index}")
 
         inter = dist.intersections[intersection_index]
-        light=None
+        light = None
         for l in inter.lights.keys():
-            if l.device_id==light_device_id:
-                light=l
+            if l.device_id == light_device_id:
+                light = l
 
         if not light:
             raise ValueError(f"Светофор {light_device_id} не найден")

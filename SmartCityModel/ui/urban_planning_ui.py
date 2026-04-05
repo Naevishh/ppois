@@ -1,6 +1,7 @@
 # SmartCityModel/ui/urban_planning_ui.py
 
 from typing import Any
+
 from ..city import SmartCity
 
 
@@ -23,7 +24,7 @@ class UrbanPlanningDataAnalysisUI:
             humid.extend(dist.humidity_sensors)
             noise.extend(dist.noise_sensors)
 
-        ecology=self.city.monitoring_system.environmental_monitoring_operation(air, temp, humid, noise)["average"]
+        ecology = self.city.monitoring_system.environmental_monitoring_operation(air, temp, humid, noise)["average"]
         for dist in self.city.districts.values():
             dist.auto_collect_sensor_data(ecology)
         return self.city.analyzer.generate_planning_report()
