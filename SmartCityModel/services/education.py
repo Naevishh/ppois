@@ -16,16 +16,12 @@ class EducationService(PublicService):
             ("set_grades", "Поставить оценку"),
             ("get_grades", "Узнать оценки")
         ]
-        # Хранилище успеваемости: { student_id: { subject: grade } }
+
         self.grade_book = {}
         self.courses = {"Python": 50, "DataScience": 30}
         self.course_validator = LATIN_STR_VALIDATOR
         self.subject_validator = NAME_VALIDATOR
         self.grade_validator = GRADE_VALIDATOR
-
-    # ============================================================
-    # МЕТОДЫ ДЛЯ CLI (принимают аргументы, возвращают значения)
-    # ============================================================
 
     def enroll_course(self, course_name: str, student: Human) -> str:
         """
@@ -46,11 +42,9 @@ class EducationService(PublicService):
 
         self.courses[course_name] -= 1
 
-        # Инициализируем запись в журнале, если студент еще не записан
         if sid not in self.grade_book:
             self.grade_book[sid] = {}
 
-        # Добавляем курс
         self.grade_book[sid][course_name] = "Зачислен"
         return f"Вы записаны на курс '{course_name}'."
 
@@ -127,10 +121,6 @@ class EducationService(PublicService):
             lines.append(f"- {course_name}: {status}")
 
         return "\n".join(lines)
-
-    # ============================================================
-    # МЕТОДЫ ДЛЯ ИНТЕРАКТИВНОГО МЕНЮ (используют input)
-    # ============================================================
 
     def provide_service(self, student: Human, action: str = None,
                         course_name: str = None, subject: str = None,

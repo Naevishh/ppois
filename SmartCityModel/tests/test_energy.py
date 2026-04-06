@@ -7,7 +7,6 @@ from unittest.mock import Mock
 
 import pytest
 from SmartCityModel.core.exceptions import SensorValueError
-# Импорт тестируемых классов
 from SmartCityModel.energy.devices import SmartThermostat, SmartLight, SmartHome
 from SmartCityModel.energy.generation import SolarPanel, WindTurbine, BatteryStorage
 from SmartCityModel.energy.grid import CityEnergyGrid
@@ -15,10 +14,6 @@ from SmartCityModel.energy.lighting import SmartLightningSystem
 from SmartCityModel.sensors.energy_sensors import WaterMeter, ElectricityMeter, LightLevelSensor, MotionSensor
 from SmartCityModel.sensors.environment_sensors import TemperatureSensor
 
-
-# =============================================================================
-# Mock сенсоры для тестирования
-# =============================================================================
 
 class MockTemperatureSensor:
     """Моковый температурный сенсор"""
@@ -88,10 +83,6 @@ class MockElectricityMeter:
         self._energy = energy
 
 
-# =============================================================================
-# Тесты для SmartThermostat (devices.py)
-# =============================================================================
-
 class TestSmartThermostat:
     """Тесты класса SmartThermostat"""
 
@@ -129,13 +120,13 @@ class TestSmartThermostat:
 
         thermostat.optimize_climate()
 
-        assert thermostat._is_heating is True  # > 22, значит False
+        assert thermostat._is_heating is True
 
     def test_get_energy_consumption_high_when_heating(self):
         """Высокое потребление при включённом отоплении"""
         sensor = MockTemperatureSensor(20)
         thermostat = SmartThermostat(sensor)
-        thermostat.optimize_climate()  # Включает отопление
+        thermostat.optimize_climate()
 
         consumption = thermostat.get_energy_consumption()
 
@@ -145,16 +136,12 @@ class TestSmartThermostat:
         """Низкое потребление при выключенном отоплении"""
         sensor = MockTemperatureSensor(25)
         thermostat = SmartThermostat(sensor)
-        thermostat.optimize_climate()  # Выключает отопление
+        thermostat.optimize_climate()
 
         consumption = thermostat.get_energy_consumption()
 
         assert consumption == 10
 
-
-# =============================================================================
-# Тесты для SmartLight (devices.py)
-# =============================================================================
 
 class TestSmartLight:
     """Тесты класса SmartLight"""
@@ -180,7 +167,7 @@ class TestSmartLight:
         light.turn_on()
 
         assert light._is_on is True
-        assert light._light_level == 70  # 100 - 30
+        assert light._light_level == 70
 
     def test_set_level_turns_off_when_bright(self):
         """Свет выключается при высоком уровне освещения (>=70)"""
@@ -201,7 +188,7 @@ class TestSmartLight:
         light.set_level()
 
         assert light._is_on is True
-        assert light._light_level == 60  # 100 - 40
+        assert light._light_level == 60
 
     def test_get_energy_consumption_calculation(self):
         """Расчёт потребления энергии"""
@@ -212,7 +199,7 @@ class TestSmartLight:
 
         consumption = light.get_energy_consumption()
 
-        assert consumption == 50 * 0.95  # 47.5
+        assert consumption == 50 * 0.95
 
     def test_motion_sensor_callback_triggers_turn_on(self):
         """Сенсор движения вызывает turn_on при обнаружении"""
@@ -224,10 +211,6 @@ class TestSmartLight:
 
         assert light._is_on is True
 
-
-# =============================================================================
-# Тесты для SmartHome (devices.py)
-# =============================================================================
 
 class TestSmartHome:
     """Тесты класса SmartHome"""
@@ -298,10 +281,6 @@ class TestSmartHome:
         assert metrics["electricity"] == 6000
 
 
-# =============================================================================
-# Тесты для SolarPanel (generation.py)
-# =============================================================================
-
 class TestSolarPanel:
     """Тесты класса SolarPanel"""
 
@@ -319,7 +298,7 @@ class TestSolarPanel:
 
         production = panel.produce_electricity()
 
-        assert production == 50.0  # 100 * 0.5
+        assert production == 50.0
 
     def test_produce_electricity_zero_when_dark(self):
         """Нулевая выработка в темноте"""
@@ -337,12 +316,8 @@ class TestSolarPanel:
 
         production = panel.produce_electricity()
 
-        assert production == 30.0  # 60 * 0.5
+        assert production == 30.0
 
-
-# =============================================================================
-# Тесты для WindTurbine (generation.py)
-# =============================================================================
 
 class TestWindTurbine:
     """Тесты класса WindTurbine"""
@@ -391,7 +366,7 @@ class TestWindTurbine:
 
         production = turbine.produce_electricity()
 
-        assert production == 70  # (10 - 3) * 10
+        assert production == 70
 
     def test_produce_electricity_boundary_at_3(self):
         """Граничное значение 3 м/с"""
@@ -400,22 +375,18 @@ class TestWindTurbine:
 
         production = turbine.produce_electricity()
 
-        assert production == 0  # (3 - 3) * 10 = 0
+        assert production == 0
 
     def test_set_wind_speed_boundary_values(self):
         """Граничные значения скорости ветра"""
         turbine = WindTurbine()
 
-        turbine.set_wind_speed(0)  # Минимум
+        turbine.set_wind_speed(0)
         assert turbine._wind_speed == 0
 
-        turbine.set_wind_speed(25)  # Максимум
+        turbine.set_wind_speed(25)
         assert turbine._wind_speed == 25
 
-
-# =============================================================================
-# Тесты для BatteryStorage (generation.py)
-# =============================================================================
 
 class TestBatteryStorage:
     """Тесты класса BatteryStorage"""
@@ -443,7 +414,7 @@ class TestBatteryStorage:
         battery = BatteryStorage(capacity=1000)
         battery.store_energy(800)
 
-        stored = battery.store_energy(500)  # Только 200 войдёт
+        stored = battery.store_energy(500)
 
         assert stored == 200
         assert battery.current_charge == 1000
@@ -513,10 +484,6 @@ class TestBatteryStorage:
         assert percentage == 0.0
 
 
-# =============================================================================
-# Тесты для SmartLightningSystem (lighting.py)
-# =============================================================================
-
 class TestSmartLightningSystem:
     """Тесты класса SmartLightningSystem"""
 
@@ -560,10 +527,6 @@ class TestSmartLightningSystem:
         assert consumption == 0
 
 
-# =============================================================================
-# Тесты для CityEnergyGrid (grid.py)
-# =============================================================================
-
 class TestCityEnergyGrid:
     """Тесты класса CityEnergyGrid"""
 
@@ -585,7 +548,7 @@ class TestCityEnergyGrid:
         generator.produce_electricity.return_value = 1000
 
         battery = Mock()
-        battery.store_energy.return_value = 500  # Приняли 500
+        battery.store_energy.return_value = 500
 
         consumer = Mock()
         consumer.get_energy_consumption.return_value = 500
@@ -650,9 +613,9 @@ class TestCityEnergyGrid:
 
     def test_optimize_all_calls_lightning_optimization(self):
         lightning_system = Mock(spec=SmartLightningSystem)
-        lightning_system.get_energy_consumption.return_value = 0  # ← Возвращает число!
+        lightning_system.get_energy_consumption.return_value = 0
         consumer = Mock()
-        consumer.get_energy_consumption.return_value = 0  # ← Возвращает число!
+        consumer.get_energy_consumption.return_value = 0
 
         grid = CityEnergyGrid(
             generators=[],
@@ -693,28 +656,21 @@ class TestCityEnergyGrid:
         assert battery2.store_energy.called
 
 
-# =============================================================================
-# Интеграционные тесты
-# =============================================================================
-
 class TestEnergyModuleIntegration:
     """Интеграционные тесты модуля energy"""
 
     def test_full_energy_cycle(self):
         """Полный цикл работы энергосистемы"""
-        # Создаём сенсоры
+
         light_sensor = MockLightLevelSensor(80)
         temp_sensor = MockTemperatureSensor(20)
 
-        # Создаём генераторы
         solar_panel = SolarPanel(light_sensor)
         wind_turbine = WindTurbine()
         wind_turbine.set_wind_speed(10)
 
-        # Создаём накопитель
         battery = BatteryStorage(capacity=2000)
 
-        # Создаём потребителей
         thermostat = SmartThermostat(temp_sensor)
         thermostat.optimize_climate()
 
@@ -725,14 +681,12 @@ class TestEnergyModuleIntegration:
 
         lightning_system = SmartLightningSystem([smart_light])
 
-        # Создаём энергосеть
         grid = CityEnergyGrid(
             generators=[solar_panel, wind_turbine],
             storages=[battery],
             consumers=[thermostat, lightning_system]
         )
 
-        # Балансируем энергию
         result = grid.balance_energy()
 
         assert result["production"] > 0
@@ -763,14 +717,10 @@ class TestEnergyModuleIntegration:
         consumption = home.get_energy_consumption()
         metrics = home.get_metrics()
 
-        assert consumption >= 0  # ← Может быть 0 если сенсоры не настроены
+        assert consumption >= 0
         assert "water" in metrics
         assert "electricity" in metrics
 
-
-# =============================================================================
-# Запуск тестов
-# =============================================================================
 
 if __name__ == "__main__":
     pytest.main([__file__, "-v", "--tb=short"])

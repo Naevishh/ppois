@@ -1,5 +1,3 @@
-import time
-
 from .energy_ui import EnergyUI
 from .environment_ui import EnvironmentMonitoringUI
 from .sensors_ui import SensorUI

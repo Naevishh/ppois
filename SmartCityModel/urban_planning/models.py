@@ -36,7 +36,6 @@ class District:
         self.intersections.append(intersection)
 
     def auto_collect_sensor_data(self, ecology: float) -> None:
-        #
         traffic = sum(t.get_status() for t in self.traffic_sensors) / len(self.traffic_sensors)
         self.metrics_readings.append({
             "ecology_score": ecology * 20,

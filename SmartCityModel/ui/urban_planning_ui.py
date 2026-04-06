@@ -1,5 +1,3 @@
-# SmartCityModel/ui/urban_planning_ui.py
-
 from typing import Any
 
 from ..city import SmartCity

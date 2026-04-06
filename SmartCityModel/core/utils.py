@@ -23,7 +23,6 @@ class RussianStringValidator:
         self.max_length = max_length
         self.allow_spaces = allow_spaces
 
-        # Набор допустимых русских букв (включая ё)
         self.russian_letters = set(
             "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
             "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"
@@ -35,34 +34,29 @@ class RussianStringValidator:
         Если нет — выбрасывает ValidationError с понятным сообщением.
         """
 
-        # 2. Убираем лишние пробелы по краям (пользователь часто ставит пробелы случайно)
         cleaned_value = value.strip()
 
-        # 3. Проверка на пустоту (после trim)
         if not cleaned_value:
             raise ValidationError("Строка не может быть пустой или состоять из пробелов")
 
-        # 4. Проверка длины (защита от очень длинных строк)
         if len(cleaned_value) < self.min_length:
             raise ValidationError(f"Строка слишком короткая (минимум {self.min_length} симв.)")
 
         if len(cleaned_value) > self.max_length:
             raise ValidationError(f"Строка слишком длинная (максимум {self.max_length} симв.)")
 
-        # 5. Посимвольная проверка (Белый список)
         has_letter = False
         for char in cleaned_value:
             if char == '.' or char == '-':
-                continue  # Точки разрешены
+                continue
             elif char == ' ' and self.allow_spaces:
                 continue
             elif char in self.russian_letters:
-                has_letter = True  # Нашли русскую букву
+                has_letter = True
             else:
-                # Сюда попадут цифры, латиница, пробелы внутри, смайлики и т.д.
+
                 raise ValidationError(f"Недопустимый символ: '{char}' (разрешены только русские буквы, дефисы и точки)")
 
-        # 6. Проверка обязательного наличия букв
         if not has_letter:
             raise ValidationError("Строка должна содержать хотя бы одну букву")
 
@@ -110,39 +104,33 @@ class NumberValidator:
         Валидация целого числа.
         Возвращает int, если успешно.
         """
-        # 1. Проверка типа
+
         if value is None:
             raise NumberValidationError("Значение не может быть пустым (None)")
 
         if isinstance(value, bool):
             raise NumberValidationError("Булевый тип не допускается")
 
-        # 2. Преобразование к строке для анализа
         str_value = str(value).strip()
 
         if not str_value:
             raise NumberValidationError("Строка не может быть пустой")
 
-        # 3. Проверка на допустимые символы (цифры и минус)
         if not str_value.lstrip('-').isdigit():
             raise NumberValidationError(f"Недопустимые символы в числе: '{str_value}'")
 
-        # 4. Проверка на отрицательность
         if str_value.startswith('-') and not self.allow_negative:
             raise NumberValidationError("Отрицательные числа не разрешены")
 
-        # 5. Проверка длины (защита от переполнения)
         digit_count = len(str_value.lstrip('-'))
         if digit_count > self.max_digits:
             raise NumberValidationError(f"Слишком много цифр (максимум {self.max_digits})")
 
-        # 6. Преобразование в int
         try:
             int_value = int(str_value)
         except (ValueError, OverflowError):
             raise NumberValidationError("Не удалось преобразовать в целое число")
 
-        # 7. Проверка диапазона
         if self.min_value is not None and int_value < self.min_value:
             raise NumberValidationError(f"Число меньше минимума ({self.min_value})")
         if self.max_value is not None and int_value > self.max_value:
@@ -155,51 +143,42 @@ class NumberValidator:
         Валидация числа с плавающей точкой.
         Возвращает float, если успешно.
         """
-        # 1. Проверка типа
+
         if value is None:
             raise NumberValidationError("Значение не может быть пустым (None)")
 
         if isinstance(value, bool):
             raise NumberValidationError("Булевый тип не допускается")
 
-        # 2. Преобразование к строке и нормализация
         str_value = str(value).strip()
 
         if not str_value:
             raise NumberValidationError("Строка не может быть пустой")
 
-        # Замена запятой на точку (для русской раскладки)
         str_value = str_value.replace(',', '.')
 
-        # 3. Проверка формата с помощью Decimal (точнее, чем float)
         try:
             decimal_value = Decimal(str_value)
         except InvalidOperation:
             raise NumberValidationError(f"Недопустимый формат числа: '{str_value}'")
 
-        # 4. Проверка на отрицательность
         if decimal_value < 0 and not self.allow_negative:
             raise NumberValidationError("Отрицательные числа не разрешены")
 
-        # 5. Проверка количества цифр
-        # Убираем знак и точку для подсчета цифр
         digits_only = str_value.replace('-', '').replace('.', '')
         if len(digits_only) > self.max_digits:
             raise NumberValidationError(f"Слишком много цифр (максимум {self.max_digits})")
 
-        # 6. Проверка знаков после запятой
         if '.' in str_value:
             decimal_part = str_value.split('.')[1]
             if len(decimal_part) > self.max_decimal_places:
                 raise NumberValidationError(f"Слишком много знаков после запятой (максимум {self.max_decimal_places})")
 
-        # 7. Преобразование в float
         try:
             float_value = float(decimal_value)
         except (ValueError, OverflowError):
             raise NumberValidationError("Не удалось преобразовать в число с плавающей точкой")
 
-        # 8. Проверка диапазона
         if self.min_value is not None and float_value < self.min_value:
             raise NumberValidationError(f"Число меньше минимума ({self.min_value})")
         if self.max_value is not None and float_value > self.max_value:
@@ -241,7 +220,6 @@ class LatinStringValidator:
         self.allow_spaces = allow_spaces
         self.allow_underscore = allow_underscore
 
-        # Набор допустимых латинских букв
         self.latin_letters = set(
             "abcdefghijklmnopqrstuvwxyz"
             "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -253,21 +231,17 @@ class LatinStringValidator:
         Если нет — выбрасывает ValidationError.
         """
 
-        # 1. Проверка на None
         if value is None:
             raise ValidationError("Значение не может быть пустым (None)")
 
-        # 2. Убираем лишние пробелы по краям
         cleaned_value = value.strip()
 
-        # 4. Проверка длины
         if len(cleaned_value) < self.min_length:
             raise ValidationError(f"Строка слишком короткая (минимум {self.min_length} симв.)")
 
         if len(cleaned_value) > self.max_length:
             raise ValidationError(f"Строка слишком длинная (максимум {self.max_length} симв.)")
 
-        # 5. Посимвольная проверка (Белый список)
         has_letter = False
         for char in cleaned_value:
             if char in self.latin_letters:
@@ -281,7 +255,6 @@ class LatinStringValidator:
             else:
                 raise ValidationError("Невалидная строка")
 
-        # 6. Проверка обязательного наличия хотя бы одной буквы
         if not has_letter:
             raise ValidationError("Невалидная строка")
 
@@ -321,25 +294,20 @@ class IdentifierValidator:
         Проверяет идентификатор.
         Возвращает очищенную строку или выбрасывает ValidationError.
         """
-        # 1. Проверка на None
         if value is None:
             raise ValidationError("ID не может быть пустым (None)")
 
-        # 2. Нормализация (убираем пробелы по краям)
         cleaned_value = value.strip()
 
-        # 3. Проверка на пустоту
         if not cleaned_value:
             raise ValidationError("ID не может быть пустым")
 
-        # 4. Проверка длины
         if len(cleaned_value) < self.min_length:
             raise ValidationError(f"ID слишком короткий (минимум {self.min_length} симв.)")
 
         if len(cleaned_value) > self.max_length:
             raise ValidationError(f"ID слишком длинный (максимум {self.max_length} симв.)")
 
-        # 6. Проверка всех символов (только латиница, цифры, подчеркивание)
         allowed_chars = self.latin_letters | self.digits | {'_'}
         for char in cleaned_value:
             if char not in allowed_chars:
@@ -351,23 +319,16 @@ class IdentifierValidator:
         return cleaned_value
 
 
-# Глобальные экземпляры валидаторов для удобного импорта
-# Для имён (ФИО, названия остановок, улиц)
 NAME_VALIDATOR = RussianStringValidator(min_length=2, max_length=50)
 
-# Для адресов (улицы, названия)
 ADDRESS_VALIDATOR = RussianStringValidator(min_length=2, max_length=100)
 
-# Для возраста (0-150 лет)
 AGE_VALIDATOR = NumberValidator(min_value=0, max_value=150, allow_negative=False)
 
-# Для номеров домов (1-9999)
 HOUSE_NUMBER_VALIDATOR = NumberValidator(min_value=1, max_value=9999, allow_negative=False)
 
-# Для количества пассажиров (0-1000)
 PASSENGER_VALIDATOR = NumberValidator(min_value=0, max_value=1000, allow_negative=False)
 
-# Для оценок (1-10)
 GRADE_VALIDATOR = NumberValidator(min_value=0, max_value=10, allow_negative=False)
 
 SENSOR_VALUE_VALIDATOR = NumberValidator(min_value=-60, max_value=1000000, allow_negative=True)

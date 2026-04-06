@@ -41,7 +41,7 @@ class UrbanPlanningDataAnalyzer:
             recommendation = self._get_infrastructure_recommendation(value)
 
         else:
-            # Композитный индекс: экология + транспорт + доступность сервисов
+
             eco = district.get_average("ecology_score") * 0.4
             transport = (100 - district.get_average("transport_load")) * 0.3
             services = district.get_average("infrastructure_density")
@@ -113,7 +113,6 @@ class UrbanPlanningDataAnalyzer:
                 if "error" not in result:
                     district_report["metrics"][metric.value] = result
 
-            # Приоритет развития на основе худшей метрики
             priorities = [
                 (m, data["value"])
                 for m, data in district_report["metrics"].items()

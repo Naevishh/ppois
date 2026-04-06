@@ -7,7 +7,6 @@ import unittest
 from pathlib import Path
 from unittest.mock import Mock, patch
 
-# Добавляем корень проекта в path для импортов
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from SmartCityModel.services.base import PublicService
@@ -18,10 +17,6 @@ from SmartCityModel.core import Domain, HospitalException, ValidationError
 from SmartCityModel.citizens import Human
 from SmartCityModel.energy import SmartHome
 
-
-# =============================================================================
-# ТЕСТЫ ДЛЯ БАЗОВОГО КЛАССА PublicService
-# =============================================================================
 
 class ConcreteService(PublicService):
     """Конкретная реализация для тестирования абстрактного класса."""
@@ -65,10 +60,6 @@ class TestPublicService(unittest.TestCase):
         with self.assertRaises(TypeError):
             PublicService("Test", ("St", 1), "ID", Domain.HOUSING)
 
-
-# =============================================================================
-# ТЕСТЫ ДЛЯ КЛАССА Hospital
-# =============================================================================
 
 class TestHospital(unittest.TestCase):
 
@@ -160,10 +151,6 @@ class TestHospital(unittest.TestCase):
         self.assertIn("Неизвестное действие", str(context.exception))
 
 
-# =============================================================================
-# ТЕСТЫ ДЛЯ КЛАССА EducationService
-# =============================================================================
-
 class TestEducationService(unittest.TestCase):
 
     def setUp(self):
@@ -247,10 +234,6 @@ class TestEducationService(unittest.TestCase):
             self.edu_service.provide_service(self.student, action="delete_course")
 
 
-# =============================================================================
-# ТЕСТЫ ДЛЯ КЛАССА SmartHomeRegistry
-# =============================================================================
-
 class TestSmartHomeRegistry(unittest.TestCase):
 
     def setUp(self):
@@ -269,10 +252,6 @@ class TestSmartHomeRegistry(unittest.TestCase):
         result = self.registry.get_home(("Unknown", 999))
         self.assertIsNone(result)
 
-
-# =============================================================================
-# ТЕСТЫ ДЛЯ КЛАССА UtilitiesService
-# =============================================================================
 
 class TestUtilitiesService(unittest.TestCase):
 
@@ -365,16 +344,5 @@ class TestUtilitiesService(unittest.TestCase):
             self.util_service.provide_service(person=self.user, action="report_issue")
 
 
-# =============================================================================
-# ЗАПУСК ТЕСТОВ
-# =============================================================================
-
 if __name__ == "__main__":
-    # Запустить все тесты
     unittest.main(verbosity=2)
-
-    # Или запустить только конкретный класс:
-    # loader = unittest.TestLoader()
-    # suite = loader.loadTestsFromTestCase(TestHospital)
-    # runner = unittest.TextTestRunner(verbosity=2)
-    # runner.run(suite)

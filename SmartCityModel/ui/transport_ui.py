@@ -20,10 +20,6 @@ class TransportSystemUI:
         self.stop_name_validator = NAME_VALIDATOR
         self.passenger_validator = PASSENGER_VALIDATOR
 
-    # ============================================================
-    # CLI МЕТОДЫ (принимают аргументы напрямую, без input/menu)
-    # ============================================================
-
     def add_stop(self, name: str) -> str:
         """
         Добавить остановку по имени.
@@ -45,7 +41,6 @@ class TransportSystemUI:
         if not stop_ids:
             raise ValueError("Маршрут не может быть пустым")
 
-        # 1. Проверка на дубликаты остановок
         seen = set()
         duplicates = set()
         for stop_id in stop_ids:
@@ -57,18 +52,15 @@ class TransportSystemUI:
         if duplicates:
             raise ValueError(f"Обнаружены дубликаты остановок: {', '.join(sorted(duplicates))}")
 
-        # 2. Валидация: все остановки должны существовать
         for stop_id in stop_ids:
             if stop_id not in self.city.tms.physical_stops.keys():
                 raise ValueError(f"Остановка {stop_id} не найдена")
 
-        # 3. Создаём RouteStop объекты
         stops = [
             RouteStop(self.city.tms.physical_stops[stop_id], index)
             for index, stop_id in enumerate(stop_ids)
         ]
 
-        # 4. Регистрируем маршрут
         new_r_id = f"r{len(self.city.tms.routes) + 1}"
         self.city.tms.register_route(TransportRoute(new_r_id, stops))
         return new_r_id
@@ -80,7 +72,7 @@ class TransportSystemUI:
         :param route_id: ID маршрута (например: "r1")
         :return: device_id созданного транспорта
         """
-        # Преобразуем строку в VehicleType
+
         type_map = {
             "bus": VehicleType.BUS,
             "tram": VehicleType.TRAM,
@@ -131,12 +123,10 @@ class TransportSystemUI:
 
         stop = self.city.tms.physical_stops[stop_id]
 
-        # Симуляция прихода пассажира
         stop.update_passengers(stop.get_status()["passengers"] + 1)
 
         info = self.city.tms.get_arrival_info(stop_id)
 
-        # Уменьшаем обратно (так как это просто запрос информации)
         stop.update_passengers(stop.get_status()["passengers"] - 1)
 
         return info
@@ -192,10 +182,6 @@ class TransportSystemUI:
 
         return stops_info
 
-    # ============================================================
-    # ВСПОМОГАТЕЛЬНЫЕ МЕТОДЫ для парсера в cli.py
-    # ============================================================
-
     def format_routes_output(self, routes: list[dict], print_func) -> None:
         """Красиво вывести информацию о маршрутах"""
         if not routes:
@@ -248,7 +234,6 @@ class TrafficManagementUI:
         dist = self.city.districts[district_id]
         int_id = f"{dist.district_id}_{len(dist.intersections) + 1}"
 
-        # Логика создания светофоров
         lights = []
         count = 2 if type_ == "simple" else 4
         for _ in range(count):

@@ -22,7 +22,7 @@ class MotionSensor(Sensor):
     def __init__(self) -> None:
         super().__init__("motion_", Domain.INFRASTRUCTURE, MeasurementType.MOTION)
         self.movement = False
-        self._callback = None  # Храним функцию-реакцию
+        self._callback = None
 
     def set_callback(self, func) -> None:
         """Устанавливаем функцию, которая сработает при движении"""
@@ -32,7 +32,7 @@ class MotionSensor(Sensor):
         """Симуляция получения сигнала от сенсора"""
         self.movement = is_moving
         if self.movement and self._callback:
-            self._callback()  # Вызываем фонарь сразу же
+            self._callback()
 
 
 class WaterMeter(SmartDevice):

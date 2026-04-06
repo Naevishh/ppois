@@ -2,13 +2,11 @@
 Юнит-тесты для всех классов модуля ui.
 Запуск: python -m unittest tests.test_ui -v
 """
-import unittest
-from unittest.mock import Mock, patch, MagicMock, call
-from datetime import datetime
 import sys
+import unittest
 from pathlib import Path
+from unittest.mock import Mock, patch
 
-# Добавляем корень проекта в path для импортов
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from SmartCityModel.ui.city_ui import CityUI
@@ -23,14 +21,9 @@ from SmartCityModel.citizens import Human
 from SmartCityModel.sensors import TrafficFlowSensor, AITrafficCamera, PedestrianCrossingSensor
 
 
-# =============================================================================
-# ТЕСТЫ ДЛЯ КЛАССА PublicServiceUI
-# =============================================================================
-
 class TestPublicServiceUI(unittest.TestCase):
 
     def setUp(self):
-        # Мокаем SmartCity и все зависимости
         self.mock_city = Mock()
         self.mock_user_repo = Mock()
         self.mock_hospital = Mock()
@@ -44,7 +37,6 @@ class TestPublicServiceUI(unittest.TestCase):
 
         self.ui = PublicServiceUI(self.mock_city)
 
-        # Мокаем валидаторы
         self.ui.name_validator.validate = Mock(return_value=True)
         self.ui.age_validator.validate = Mock(return_value=True)
         self.ui.address_validator.validate = Mock(return_value=True)
@@ -64,9 +56,9 @@ class TestPublicServiceUI(unittest.TestCase):
         )
 
         self.assertIsNotNone(user_id)
-        self.assertEqual(len(user_id), 6)  # uuid[:6]
+        self.assertEqual(len(user_id), 6)
         self.mock_user_repo.add_user.assert_called_once()
-        # Проверяем, что был создан Human
+
         call_args = self.mock_user_repo.add_user.call_args[0][0]
         self.assertIsInstance(call_args, Human)
         self.assertEqual(call_args.name, "Анна")
@@ -217,10 +209,6 @@ class TestPublicServiceUI(unittest.TestCase):
         self.assertNotIn("квартира", result)
 
 
-# =============================================================================
-# ТЕСТЫ ДЛЯ КЛАССА TransportSystemUI
-# =============================================================================
-
 class TestTransportSystemUI(unittest.TestCase):
 
     def setUp(self):
@@ -252,7 +240,7 @@ class TestTransportSystemUI(unittest.TestCase):
 
     def test_add_route_success(self):
         """Успешное добавление маршрута."""
-        # Создаём моки остановок
+
         stop1_id, stop2_id = "stop_1", "stop_2"
         self.mock_tms.physical_stops = {stop1_id: Mock(), stop2_id: Mock()}
 
@@ -311,7 +299,7 @@ class TestTransportSystemUI(unittest.TestCase):
         self.mock_tms.vehicles = {"bus_1": mock_vehicle}
 
         mock_route = Mock()
-        mock_route.stops = [Mock(), Mock(), Mock()]  # 3 остановки
+        mock_route.stops = [Mock(), Mock(), Mock()]
         self.mock_tms.routes = {"r1": mock_route}
         mock_vehicle.route_id = "r1"
 
@@ -326,7 +314,7 @@ class TestTransportSystemUI(unittest.TestCase):
         self.mock_tms.vehicles = {"bus_1": mock_vehicle}
 
         mock_route = Mock()
-        mock_route.stops = [Mock()]  # 1 остановка
+        mock_route.stops = [Mock()]
         self.mock_tms.routes = {"r1": mock_route}
         mock_vehicle.route_id = "r1"
 
@@ -347,9 +335,9 @@ class TestTransportSystemUI(unittest.TestCase):
         result = self.ui.arrive_at_stop("stop_1")
 
         self.assertEqual(result["stop_name"], "Центральная")
-        # Проверяем, что пассажиров сначала добавили, потом убрали
+
         calls = mock_stop.update_passengers.call_args_list
-        self.assertEqual(len(calls), 2)  # +1 и -1
+        self.assertEqual(len(calls), 2)
 
     def test_list_routes_empty(self):
         """Список маршрутов, когда их нет."""
@@ -387,7 +375,6 @@ class TestTransportSystemUI(unittest.TestCase):
         mock_print = Mock()
         self.ui.format_arrival_info(info, mock_print)
 
-        # Проверяем, что были вызовы print
         self.assertTrue(mock_print.called)
         calls_str = str(mock_print.call_args_list)
         self.assertIn("Сейчас на остановке", calls_str)
@@ -402,10 +389,6 @@ class TestTransportSystemUI(unittest.TestCase):
         calls_str = str(mock_print.call_args_list)
         self.assertIn("Нет ближайшего транспорта", calls_str)
 
-
-# =============================================================================
-# ТЕСТЫ ДЛЯ КЛАССА TrafficManagementUI
-# =============================================================================
 
 class TestTrafficManagementUI(unittest.TestCase):
 
@@ -445,7 +428,7 @@ class TestTrafficManagementUI(unittest.TestCase):
         int_id = self.ui.add_intersection("D2", "full")
 
         self.assertEqual(int_id, "D2_1")
-        # Проверяем, что было создано 4 светофора
+
         call_args = mock_district.register_intersection.call_args[0][0]
         self.assertEqual(len(call_args.lights), 4)
 
@@ -475,7 +458,7 @@ class TestTrafficManagementUI(unittest.TestCase):
         self.mock_city.traffic_manager.prioritize_public_transport.return_value = "Приоритет установлен"
 
         mock_intersection = Mock()
-        mock_intersection.regulate_intersection.return_value = False  # Нет аварии
+        mock_intersection.regulate_intersection.return_value = False
         mock_intersection.intersection_id = "INT_1"
         self.mock_city.traffic_manager.intersections = {"INT_1": mock_intersection}
 
@@ -489,7 +472,7 @@ class TestTrafficManagementUI(unittest.TestCase):
         self.mock_city.traffic_manager.prioritize_public_transport.return_value = ""
 
         mock_intersection = Mock()
-        mock_intersection.regulate_intersection.return_value = True  # Есть авария
+        mock_intersection.regulate_intersection.return_value = True
         mock_intersection.intersection_id = "INT_ACC"
         self.mock_city.traffic_manager.intersections = {"INT_ACC": mock_intersection}
 
@@ -498,10 +481,6 @@ class TestTrafficManagementUI(unittest.TestCase):
         self.assertIn("Внимание! Авария", result)
         self.assertIn("INT_ACC", result)
 
-
-# =============================================================================
-# ТЕСТЫ ДЛЯ КЛАССА SensorUI
-# =============================================================================
 
 class TestSensorUI(unittest.TestCase):
 
@@ -535,7 +514,7 @@ class TestSensorUI(unittest.TestCase):
     def test_set_smart_home_sensor_light_index_out_of_range(self):
         """Некорректный индекс светильника (строки 46-47)."""
         mock_home = Mock()
-        mock_home.lightning_system.smart_lights = [Mock()]  # Только 1 светильник
+        mock_home.lightning_system.smart_lights = [Mock()]
         self.mock_district.smart_homes = [mock_home]
 
         with self.assertRaises(ValueError) as context:
@@ -579,7 +558,7 @@ class TestSensorUI(unittest.TestCase):
     def test_set_generator_sensor_solar_success(self):
         """Установка сенсора солнечной панели (строки 92-94)."""
         mock_generator = Mock()
-        self.mock_district.generators = [mock_generator, Mock()]  # [solar, wind]
+        self.mock_district.generators = [mock_generator, Mock()]
 
         result = self.ui.set_generator_sensor("D1", "solar", 900)
 
@@ -692,7 +671,7 @@ class TestSensorUI(unittest.TestCase):
         ]
         result = self.ui.format_sensor_list(sensors)
 
-        self.assertIn("[светильник #2]", result)
+        self.assertIn("[светильник
 
     def test_format_sensor_list_with_intersection(self):
         """Форматирование списка сенсоров с перекрёстками."""
@@ -704,13 +683,9 @@ class TestSensorUI(unittest.TestCase):
         ]
         result = self.ui.format_sensor_list(sensors)
 
-        self.assertIn("[перекресток #0]", result)
+        self.assertIn("[перекресток
         self.assertIn("[светофор TL_1]", result)
 
-
-# =============================================================================
-# ТЕСТЫ ДЛЯ КЛАССА EnergyUI
-# =============================================================================
 
 class TestEnergyUI(unittest.TestCase):
 
@@ -737,10 +712,6 @@ class TestEnergyUI(unittest.TestCase):
         self.assertIn("Избыток энергии", result)
         self.assertIn("=" * 50, result)
 
-
-# =============================================================================
-# ТЕСТЫ ДЛЯ КЛАССА EnvironmentMonitoringUI
-# =============================================================================
 
 class TestEnvironmentMonitoringUI(unittest.TestCase):
 
@@ -802,10 +773,6 @@ class TestEnvironmentMonitoringUI(unittest.TestCase):
         mock_print.assert_called_once()
         self.assertIn("Хорошее", str(mock_print.call_args))
 
-
-# =============================================================================
-# ТЕСТЫ ДЛЯ КЛАССА UrbanPlanningDataAnalysisUI
-# =============================================================================
 
 class TestUrbanPlanningDataAnalysisUI(unittest.TestCase):
 
@@ -892,10 +859,6 @@ class TestUrbanPlanningDataAnalysisUI(unittest.TestCase):
         mock_print.assert_called_with("Отчет готов")
 
 
-# =============================================================================
-# ТЕСТЫ ДЛЯ КЛАССА CityUI
-# =============================================================================
-
 class TestCityUI(unittest.TestCase):
 
     @patch('SmartCityModel.ui.city_ui.SmartCity')
@@ -903,7 +866,6 @@ class TestCityUI(unittest.TestCase):
     @patch('SmartCityModel.ui.city_ui.TrafficManagementUI')
     @patch('SmartCityModel.ui.city_ui.PublicServiceUI')
     def setUp(self, mock_pub_ui, mock_traffic_ui, mock_tms_ui, mock_city_cls):
-        # Мокаем инициализацию зависимостей
         self.mock_city = Mock()
         mock_city_cls.return_value = self.mock_city
 
@@ -915,13 +877,12 @@ class TestCityUI(unittest.TestCase):
         mock_traffic_ui.return_value = self.mock_traffic_ui
         mock_pub_ui.return_value = self.mock_pub_ui
 
-        # Импортируем после моков, чтобы они сработали
         from SmartCityModel.ui.city_ui import CityUI
         self.ui = CityUI()
 
     def test_init_creates_sub_uis(self):
         """Проверка, что при инициализации создаются под-модули UI."""
-        # Проверяем, что атрибуты созданы
+
         self.assertIsNotNone(self.ui.tms_ui)
         self.assertIsNotNone(self.ui.traffic_ui)
         self.assertIsNotNone(self.ui.services_ui)
@@ -930,10 +891,6 @@ class TestCityUI(unittest.TestCase):
         self.assertIsNotNone(self.ui.env_ui)
         self.assertIsNotNone(self.ui.urban_planning_ui)
 
-
-# =============================================================================
-# ЗАПУСК ТЕСТОВ
-# =============================================================================
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

@@ -9,13 +9,8 @@ from pathlib import Path
 from unittest.mock import patch, MagicMock
 
 import pytest
-# Импорты тестируемых классов
 from SmartCityModel.citizens import Human, UserRepository
 
-
-# =============================================================================
-# ТЕСТЫ ДЛЯ КЛАССА Human
-# =============================================================================
 
 class TestHuman:
     """Тесты для класса Human (модель пользователя)"""
@@ -58,11 +53,8 @@ class TestHuman:
         """Проверка, что адрес возвращается как кортеж (неизменяемый)"""
         human = Human("Тест", "Тестов", 30, ("адрес1", "адрес2"), "user_004")
 
-        # Попытка изменить адрес через возвращённое значение не должна влиять на внутренний _address
         addr = human.address
-        # addr[0] = "новый"  # Это вызовет TypeError для tuple, что и ожидается
 
-        # Но через сеттер — можно заменить целиком
         human.address = ("новый", "адрес", "полностью")
         assert human.address == ("новый", "адрес", "полностью")
 
@@ -88,10 +80,6 @@ class TestHuman:
         assert human.name == "Марія"
         assert human.surname == "O'Браен-Смит"
 
-
-# =============================================================================
-# ТЕСТЫ ДЛЯ КЛАССА UserRepository
-# =============================================================================
 
 class TestUserRepository:
     """Тесты для класса UserRepository (репозиторий пользователей)"""
@@ -131,7 +119,7 @@ class TestUserRepository:
         """Проверка инициализации с именем файла по умолчанию"""
         with patch.object(Path, 'exists', return_value=True):
             repo = UserRepository()
-        # Проверяем, что файл по умолчанию установлен
+
         assert "users_db.json" in str(repo.file_path)
 
     def test_init_custom_filename(self, tmp_path):
@@ -142,7 +130,7 @@ class TestUserRepository:
 
     def test_load_from_file_success(self, tmp_path, mock_json_data):
         """Проверка успешной загрузки данных из файла"""
-        # Создаём временный файл с тестовыми данными
+
         test_file = tmp_path / "users_db.json"
         test_file.write_text(json.dumps(mock_json_data, ensure_ascii=False), encoding="utf-8")
 
@@ -166,7 +154,6 @@ class TestUserRepository:
                 repo._cache = {"old": "data"}
                 UserRepository._load_from_file(repo)
 
-        # При ошибке файл не найден — кэш должен быть очищен
         assert repo._cache == {}
 
     def test_load_from_file_invalid_json(self, tmp_path):
@@ -216,13 +203,12 @@ class TestUserRepository:
             }
             UserRepository.save_to_file(repo)
 
-        # Читаем и проверяем содержимое
         with open(test_file, 'r', encoding='utf-8') as f:
             saved_data = json.load(f)
 
         assert len(saved_data) == 1
         assert saved_data[0]["name"] == "Анна"
-        # Кортеж должен сохраниться как список в JSON
+
         assert isinstance(saved_data[0]["address"], list)
 
     def test_get_user_exists(self, tmp_path, sample_human):
@@ -236,7 +222,7 @@ class TestUserRepository:
                         "name": sample_human.name,
                         "surname": sample_human.surname,
                         "age": sample_human.age,
-                        "address": list(sample_human.address),  # как в JSON
+                        "address": list(sample_human.address),
                         "person_id": sample_human.person_id
                     }
                 }
@@ -246,7 +232,7 @@ class TestUserRepository:
         assert isinstance(result, Human)
         assert result.name == sample_human.name
         assert result.person_id == sample_human.person_id
-        assert isinstance(result.address, tuple)  # адрес должен вернуться как tuple
+        assert isinstance(result.address, tuple)
 
     def test_get_user_not_exists(self, tmp_path):
         """Проверка получения несуществующего пользователя"""
@@ -268,7 +254,7 @@ class TestUserRepository:
                 repo = UserRepository.__new__(UserRepository)
                 repo.file_path = test_file
                 repo._cache = {}
-                # Мокаем save_to_file, чтобы не писать на диск в тесте
+
                 repo.save_to_file = MagicMock()
 
         repo.add_user(sample_human)
@@ -277,7 +263,7 @@ class TestUserRepository:
         saved = repo._cache[sample_human.person_id]
         assert saved["name"] == sample_human.name
         assert saved["address"] == sample_human.address
-        # Проверяем, что save_to_file был вызван
+
         repo.save_to_file.assert_called_once()
 
     def test_get_all_users(self, tmp_path):
@@ -324,19 +310,19 @@ class TestUserRepository:
             with patch.object(UserRepository, '__init__', lambda self, file_name="users_db.json": None):
                 repo = UserRepository.__new__(UserRepository)
                 repo.file_path = tmp_path / "test.json"
-                # Данные как из JSON — адрес в виде списка
+
                 repo._cache = {
                     "user_1": {
                         "name": "Test",
                         "surname": "User",
                         "age": 30,
-                        "address": ["г. Тест", "ул. Тестовая"],  # list из JSON
+                        "address": ["г. Тест", "ул. Тестовая"],
                         "person_id": "user_1"
                     }
                 }
 
         user = repo.get_user("user_1")
-        assert isinstance(user.address, tuple)  # должен вернуться tuple
+        assert isinstance(user.address, tuple)
         assert user.address == ("г. Тест", "ул. Тестовая")
 
     def test_add_user_preserves_tuple_address(self, tmp_path, sample_human):
@@ -350,6 +336,5 @@ class TestUserRepository:
 
         repo.add_user(sample_human)
 
-        # В кэше адрес может быть сохранён как tuple или list — главное, что данные верны
         cached = repo._cache[sample_human.person_id]
         assert cached["address"] == sample_human.address

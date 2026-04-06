@@ -7,13 +7,13 @@ class TransportMonitoringSystem:
     def __init__(self) -> None:
         self.routes = {}
         self.vehicles = {}
-        # Храним физические остановки отдельно
+
         self.physical_stops = {}
 
     def register_route(self, route: TransportRoute) -> None:
         self.routes[route.route_id] = route
         for route_stop in route.stops:
-            # Регистрируем физическую остановку (без перезаписи, если уже есть)
+
             if route_stop.bus_stop.device_id not in self.physical_stops:
                 self.physical_stops[route_stop.bus_stop.device_id] = route_stop.bus_stop
         for vehicle in route.vehicles:
@@ -41,16 +41,15 @@ class TransportMonitoringSystem:
         return round(minutes_remaining, 1)
 
     def get_arrival_info(self, stop_id: str) -> dict:
-        # 1. Ищем физическую остановку
+
         if stop_id not in self.physical_stops:
             return {"error": "Остановка не найдена"}
 
         physical_stop = self.physical_stops[stop_id]
         arrivals = []
 
-        # 2. Ищем эту остановку на всех маршрутах
         for route in self.routes.values():
-            # Находим индекс остановки на текущем маршруте
+
             route_stop = None
             for rs in route.stops:
                 if rs.bus_stop.device_id == stop_id:
@@ -58,22 +57,20 @@ class TransportMonitoringSystem:
                     break
 
             if not route_stop:
-                continue  # Этой остановки нет на маршруте
+                continue
 
-            # 3. Проверяем транспорт на этом маршруте
             for vehicle in route.vehicles:
                 eta = self.calculate_eta(vehicle, route_stop, route)
                 if eta is not None and eta >= 0:
                     arrivals.append({
                         "vehicle_id": vehicle.device_id,
                         "type": vehicle.vehicle_type.value,
-                        "route": route.route_id,  # Показываем номер маршрута пассажиру
+                        "route": route.route_id,
                         "eta_minutes": eta
                     })
 
         arrivals.sort(key=lambda x: x["eta_minutes"])
 
-        # 4. Обновляем табло
         if arrivals:
             next_arrival = arrivals[0]
             physical_stop.set_display(

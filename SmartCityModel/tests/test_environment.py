@@ -9,14 +9,10 @@
 import pytest
 from SmartCityModel.core.enums import AirQualityLevel, TemperatureLevel, HumidityLevel, NoiseLevel
 from SmartCityModel.core.exceptions import SensorValueError
-# Импорт тестируемых классов (реальные из вашего проекта)
+
 from SmartCityModel.environment.monitoring import EnvironmentMonitoringSystem
 from SmartCityModel.sensors.environment_sensors import AirQualitySensor, TemperatureSensor, HumiditySensor, NoiseSensor
 
-
-# =============================================================================
-# Тесты для EnvironmentMonitoringSystem (monitoring.py)
-# =============================================================================
 
 class TestEnvironmentMonitoringSystem:
     """Тесты класса EnvironmentMonitoringSystem"""
@@ -43,7 +39,7 @@ class TestEnvironmentMonitoringSystem:
         assert "humidity" in result
         assert "noise" in result
         assert "average" in result
-        # При пустых списках должно вернуться значение по умолчанию (код 1 или близкий)
+
         assert isinstance(result["air"], AirQualityLevel)
         assert isinstance(result["temperature"], TemperatureLevel)
         assert isinstance(result["humidity"], HumidityLevel)
@@ -53,12 +49,11 @@ class TestEnvironmentMonitoringSystem:
         """Обработка сенсоров качества воздуха"""
         system = EnvironmentMonitoringSystem()
 
-        # Создаём сенсоры с разными значениями
         sensor1 = AirQualitySensor()
-        sensor1.set_value(30)  # EXCELLENT (код 1)
+        sensor1.set_value(30)
 
         sensor2 = AirQualitySensor()
-        sensor2.set_value(80)  # GOOD (код 2)
+        sensor2.set_value(80)
 
         result = system.environmental_monitoring_operation(
             air=[sensor1, sensor2],
@@ -67,7 +62,6 @@ class TestEnvironmentMonitoringSystem:
             noise=[]
         )
 
-        # Среднее: (1 + 2) / 2 = 1.5 -> округляется до 2 -> GOOD
         assert result["air"] in [AirQualityLevel.EXCELLENT, AirQualityLevel.GOOD]
 
     def test_environmental_monitoring_operation_with_temp_sensors(self):
@@ -75,10 +69,10 @@ class TestEnvironmentMonitoringSystem:
         system = EnvironmentMonitoringSystem()
 
         sensor1 = TemperatureSensor()
-        sensor1.set_value(15)  # COLD (код 2)
+        sensor1.set_value(15)
 
         sensor2 = TemperatureSensor()
-        sensor2.set_value(22)  # COMFORTABLE (код 3)
+        sensor2.set_value(22)
 
         result = system.environmental_monitoring_operation(
             air=[],
@@ -93,15 +87,14 @@ class TestEnvironmentMonitoringSystem:
         """Обработка сенсоров влажности"""
         system = EnvironmentMonitoringSystem()
 
-        # HumiditySensor требует TemperatureSensor в конструкторе
         temp_sensor = TemperatureSensor()
         temp_sensor.set_value(20)
 
         humid_sensor1 = HumiditySensor(temperature_sensor=temp_sensor)
-        humid_sensor1.set_value(10.0)  # ~60% -> COMFORTABLE (код 3)
+        humid_sensor1.set_value(10.0)
 
         humid_sensor2 = HumiditySensor(temperature_sensor=temp_sensor)
-        humid_sensor2.set_value(5.0)  # ~30% -> DRY (код 2)
+        humid_sensor2.set_value(5.0)
 
         result = system.environmental_monitoring_operation(
             air=[],
@@ -117,10 +110,10 @@ class TestEnvironmentMonitoringSystem:
         system = EnvironmentMonitoringSystem()
 
         sensor1 = NoiseSensor()
-        sensor1.set_value(35)  # QUIET (код 1)
+        sensor1.set_value(35)
 
         sensor2 = NoiseSensor()
-        sensor2.set_value(70)  # LOUD (код 3)
+        sensor2.set_value(70)
 
         result = system.environmental_monitoring_operation(
             air=[],
@@ -129,27 +122,25 @@ class TestEnvironmentMonitoringSystem:
             noise=[sensor1, sensor2]
         )
 
-        # Среднее: (1 + 3) / 2 = 2 -> MODERATE
         assert result["noise"] in [NoiseLevel.MODERATE, NoiseLevel.QUIET, NoiseLevel.LOUD]
 
     def test_environmental_monitoring_operation_returns_average(self):
         """Проверка расчёта среднего результата"""
         system = EnvironmentMonitoringSystem()
 
-        # Все сенсоры с кодом 3 (умеренный уровень)
         air_sensor = AirQualitySensor()
-        air_sensor.set_value(120)  # MODERATE = код 3
+        air_sensor.set_value(120)
 
         temp_sensor = TemperatureSensor()
-        temp_sensor.set_value(20)  # COMFORTABLE = код 3
+        temp_sensor.set_value(20)
 
         temp_for_humid = TemperatureSensor()
         temp_for_humid.set_value(20)
         humid_sensor = HumiditySensor(temperature_sensor=temp_for_humid)
-        humid_sensor.set_value(8.0)  # ~50% -> COMFORTABLE = код 3
+        humid_sensor.set_value(8.0)
 
         noise_sensor = NoiseSensor()
-        noise_sensor.set_value(50)  # MODERATE = код 2 (40-60 дБ)
+        noise_sensor.set_value(50)
 
         result = system.environmental_monitoring_operation(
             air=[air_sensor],
@@ -160,31 +151,30 @@ class TestEnvironmentMonitoringSystem:
 
         assert "average" in result
         assert isinstance(result["average"], (int, float))
-        # Среднее должно быть около 2.75
+
         assert 2.0 <= result["average"] <= 4.0
 
     def test_environmental_monitoring_operation_all_types(self):
         """Полный тест со всеми типами сенсоров"""
         system = EnvironmentMonitoringSystem()
 
-        # Создаём набор сенсоров
         air = [AirQualitySensor() for _ in range(3)]
         for i, s in enumerate(air):
-            s.set_value(40 + i * 30)  # 40, 70, 100
+            s.set_value(40 + i * 30)
 
         temp = [TemperatureSensor() for _ in range(2)]
         for i, s in enumerate(temp):
-            s.set_value(15 + i * 5)  # 15, 20
+            s.set_value(15 + i * 5)
 
         temp_for_humid = TemperatureSensor()
         temp_for_humid.set_value(20)
         humid = [HumiditySensor(temperature_sensor=temp_for_humid) for _ in range(2)]
         for i, s in enumerate(humid):
-            s.set_value(7.0 + i)  # 7.0, 8.0
+            s.set_value(7.0 + i)
 
         noise = [NoiseSensor() for _ in range(2)]
         for i, s in enumerate(noise):
-            s.set_value(45 + i * 10)  # 45, 55
+            s.set_value(45 + i * 10)
 
         result = system.environmental_monitoring_operation(
             air=air,
@@ -193,7 +183,6 @@ class TestEnvironmentMonitoringSystem:
             noise=noise
         )
 
-        # Проверяем структуру результата
         assert set(result.keys()) == {"air", "temperature", "humidity", "noise", "average"}
         assert isinstance(result["air"], AirQualityLevel)
         assert isinstance(result["temperature"], TemperatureLevel)
@@ -201,10 +190,6 @@ class TestEnvironmentMonitoringSystem:
         assert isinstance(result["noise"], NoiseLevel)
         assert isinstance(result["average"], (int, float))
 
-
-# =============================================================================
-# Тесты для сенсоров (environment_sensors.py)
-# =============================================================================
 
 class TestAirQualitySensor:
     """Тесты класса AirQualitySensor"""
@@ -214,7 +199,7 @@ class TestAirQualitySensor:
         sensor = AirQualitySensor()
 
         assert sensor.sensor_id.startswith("air_")
-        assert sensor._concentration == 60  # Значение по умолчанию
+        assert sensor._concentration == 60
 
     def test_set_value_valid(self):
         """Установка корректного значения"""
@@ -365,16 +350,12 @@ class TestHumiditySensor:
 
     def test_get_status_depends_on_temperature(self):
         """Статус влажности зависит от температуры"""
-        # При одной и той же концентрации пара, но разной температуре
-        # относительная влажность будет разной
 
-        # Холодная температура -> высокая относительная влажность
         cold_temp = TemperatureSensor()
         cold_temp.set_value(5)
         humid_cold = HumiditySensor(temperature_sensor=cold_temp)
         humid_cold.set_value(5.0)
 
-        # Тёплая температура -> низкая относительная влажность
         warm_temp = TemperatureSensor()
         warm_temp.set_value(30)
         humid_warm = HumiditySensor(temperature_sensor=warm_temp)
@@ -383,14 +364,13 @@ class TestHumiditySensor:
         status_cold = humid_cold.get_status()
         status_warm = humid_warm.get_status()
 
-        # При одинаковой концентрации пара, в холоде влажность будет выше
-        assert status_cold.code >= status_warm.code or True  # Допускаем разные сценарии
+        assert status_cold.code >= status_warm.code or True
 
     @pytest.mark.parametrize("vapor_concentration,temp,expected_level_range", [
-        # (концентрация, температура, ожидаемый диапазон кодов уровня)
-        (1.0, 20, (1, 3)),  # Очень сухо
-        (10.0, 20, (2, 4)),  # Сухо/Комфортно
-        (15.0, 20, (3, 5)),  # Комфортно/Влажно
+
+        (1.0, 20, (1, 3)),
+        (10.0, 20, (2, 4)),
+        (15.0, 20, (3, 5)),
     ])
     def test_humidity_level_calculation(self, vapor_concentration, temp, expected_level_range):
         """Расчёт уровня влажности"""
@@ -459,10 +439,6 @@ class TestNoiseSensor:
         assert status == expected_level
 
 
-# =============================================================================
-# Тесты для Enum-классов (core/enums.py)
-# =============================================================================
-
 class TestLabeledEnum:
     """Тесты базового класса LabeledEnum"""
 
@@ -496,10 +472,6 @@ class TestLabeledEnum:
             NoiseLevel.from_label("Неизвестный уровень")
 
 
-# =============================================================================
-# Интеграционные тесты
-# =============================================================================
-
 class TestEnvironmentIntegration:
     """Интеграционные тесты модуля environment"""
 
@@ -507,26 +479,24 @@ class TestEnvironmentIntegration:
         """Полный рабочий процесс мониторинга"""
         system = EnvironmentMonitoringSystem()
 
-        # Создаём реалистичный набор сенсоров
         air_sensors = [AirQualitySensor() for _ in range(5)]
         for i, s in enumerate(air_sensors):
-            s.set_value(30 + i * 20)  # 30, 50, 70, 90, 110
+            s.set_value(30 + i * 20)
 
         temp_sensors = [TemperatureSensor() for _ in range(3)]
         for i, s in enumerate(temp_sensors):
-            s.set_value(18 + i * 2)  # 18, 20, 22
+            s.set_value(18 + i * 2)
 
         base_temp = TemperatureSensor()
         base_temp.set_value(20)
         humid_sensors = [HumiditySensor(temperature_sensor=base_temp) for _ in range(2)]
         for i, s in enumerate(humid_sensors):
-            s.set_value(8.0 + i)  # 8.0, 9.0
+            s.set_value(8.0 + i)
 
         noise_sensors = [NoiseSensor() for _ in range(4)]
         for i, s in enumerate(noise_sensors):
-            s.set_value(40 + i * 15)  # 40, 55, 70, 85
+            s.set_value(40 + i * 15)
 
-        # Запускаем мониторинг
         result = system.environmental_monitoring_operation(
             air=air_sensors,
             temp=temp_sensors,
@@ -534,15 +504,10 @@ class TestEnvironmentIntegration:
             noise=noise_sensors
         )
 
-        # Проверяем результат
         assert all(k in result for k in ["air", "temperature", "humidity", "noise", "average"])
         assert isinstance(result["average"], (int, float))
-        assert 1 <= result["average"] <= 5  # Среднее должно быть в диапазоне кодов
+        assert 1 <= result["average"] <= 5
 
-
-# =============================================================================
-# Запуск тестов
-# =============================================================================
 
 if __name__ == "__main__":
     pytest.main([__file__, "-v", "--tb=short"])

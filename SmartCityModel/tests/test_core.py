@@ -4,29 +4,22 @@
 Запуск: pytest tests/test_core.py -v
 """
 
-import pytest
-import uuid
-from decimal import Decimal, InvalidOperation
-from typing import Optional, Union
+from typing import Optional
 
-# Импорты тестируемых компонентов
+import pytest
 from SmartCityModel.core import (
-    # Enums
+
     Domain, VehicleType, Direction, TrafficLightColor, PlanningMetricType,
     MeasurementType, AirQualityLevel, TemperatureLevel, HumidityLevel, NoiseLevel,
-    # Base
+
     SmartDevice,
-    # Exceptions
+
     HospitalException, TransportException, SensorValueError, ObjectNotFoundError,
-    # Validators
+
     ValidationError, NumberValidationError,
     RussianStringValidator, NumberValidator, LatinStringValidator, IdentifierValidator,
 )
 
-
-# =============================================================================
-# ТЕСТЫ ДЛЯ ENUM-КЛАССОВ
-# =============================================================================
 
 class TestDomainEnum:
     """Тесты для Enum Domain"""
@@ -66,7 +59,7 @@ class TestVehicleTypeEnum:
     def test_vehicle_type_count(self):
         """Проверка количества типов транспорта"""
         assert len(list(
-            VehicleType)) == 10  # CAR, BUS, TRAM, TROLLEYBUS, TRUCK, AMBULANCE, FIRE_TRUCK, POLICE, BICYCLE, MOTORCYCLE
+            VehicleType)) == 10
 
     def test_vehicle_type_from_string(self):
         """Проверка создания из строки"""
@@ -177,16 +170,12 @@ class TestNoiseLevelEnum:
 
     def test_noise_levels_range(self):
         """Проверка диапазонов уровней шума по кодам"""
-        assert NoiseLevel.QUIET.code == 1  # < 40 дБ
-        assert NoiseLevel.MODERATE.code == 2  # 40-60 дБ
-        assert NoiseLevel.LOUD.code == 3  # 60-80 дБ
-        assert NoiseLevel.VERY_LOUD.code == 4  # 80-100 дБ
-        assert NoiseLevel.DANGEROUS.code == 5  # > 100 дБ
+        assert NoiseLevel.QUIET.code == 1
+        assert NoiseLevel.MODERATE.code == 2
+        assert NoiseLevel.LOUD.code == 3
+        assert NoiseLevel.VERY_LOUD.code == 4
+        assert NoiseLevel.DANGEROUS.code == 5
 
-
-# =============================================================================
-# ТЕСТЫ ДЛЯ КЛАССА SmartDevice
-# =============================================================================
 
 class TestSmartDevice:
     """Тесты для базового класса устройств"""
@@ -197,7 +186,7 @@ class TestSmartDevice:
 
         assert device.domain is Domain.ECOLOGY
         assert device.device_id.startswith("sensor_")
-        # Проверяем, что device_id имеет формат: keyword + 6 символов UUID
+
         assert len(device.device_id) == len("sensor_") + 6
 
     def test_smart_device_unique_ids(self):
@@ -223,14 +212,9 @@ class TestSmartDevice:
         device = SmartDevice("test_", Domain.SAFETY)
         suffix = device.device_id[len("test_"):]
 
-        # suffix должен быть 6 символов из hex-представления UUID
         assert len(suffix) == 6
         assert all(c in "0123456789abcdef" for c in suffix.lower())
 
-
-# =============================================================================
-# ТЕСТЫ ДЛЯ ИСКЛЮЧЕНИЙ
-# =============================================================================
 
 class TestCoreExceptions:
     """Тесты для кастомных исключений"""
@@ -275,10 +259,6 @@ class TestCoreExceptions:
         assert "Критическая" in str(exc_info.value)
 
 
-# =============================================================================
-# ТЕСТЫ ДЛЯ VALIDATIONERROR И NumberValidationError
-# =============================================================================
-
 class TestValidationError:
     """Тесты для базовых исключений валидации"""
 
@@ -297,10 +277,6 @@ class TestValidationError:
         assert issubclass(ValidationError, Exception)
         assert issubclass(NumberValidationError, Exception)
 
-
-# =============================================================================
-# ТЕСТЫ ДЛЯ RussianStringValidator
-# =============================================================================
 
 class TestRussianStringValidator:
     """Тесты для валидатора русских строк"""
@@ -332,8 +308,8 @@ class TestRussianStringValidator:
         "Иван Петров",
         "г. Москва",
         "ул.Ленина",
-        "Ёлки-Палки",  # с буквой Ё
-        "Тест.Строка",  # с точками
+        "Ёлки-Палки",
+        "Тест.Строка",
     ])
     def test_validate_success(self, valid_string):
         """Проверка успешной валидации корректных строк"""
@@ -344,11 +320,11 @@ class TestRussianStringValidator:
     @pytest.mark.parametrize("invalid_string,expected_error", [
         ("", "Строка не может быть пустой"),
         ("   ", "Строка не может быть пустой"),
-        ("A", "Недопустимый символ"),  # латиница
+        ("A", "Недопустимый символ"),
         ("..", "Строка должна содержать хотя бы одну букву"),
         ("Test123", "Недопустимый символ"),
-        ("Иван@Mail", "Недопустимый символ"),  # спецсимвол
-        ("а" * 101, "Строка слишком длинная"),  # при max_length=100
+        ("Иван@Mail", "Недопустимый символ"),
+        ("а" * 101, "Строка слишком длинная"),
     ])
     def test_validate_failure(self, invalid_string, expected_error):
         """Проверка отклонения некорректных строк"""
@@ -360,36 +336,32 @@ class TestRussianStringValidator:
         """Проверка удаления пробелов по краям"""
         validator = RussianStringValidator(allow_spaces=True)
         result = validator.validate("  Анна Петрова  ")
-        assert result == "Анна Петрова"  # после strip
+        assert result == "Анна Петрова"
 
     def test_validate_min_length_custom(self):
         """Проверка минимальной длины с кастомным параметром"""
         validator = RussianStringValidator(min_length=5)
         with pytest.raises(ValidationError, match="слишком короткая"):
-            validator.validate("Анна")  # 4 символа
+            validator.validate("Анна")
 
-        result = validator.validate("АннаП")  # 5 символов
+        result = validator.validate("АннаП")
         assert result == "АннаП"
 
     def test_validate_max_length_custom(self):
         """Проверка максимальной длины с кастомным параметром"""
         validator = RussianStringValidator(max_length=10)
         with pytest.raises(ValidationError, match="слишком длинная"):
-            validator.validate("ОченьДлинноеИмя")  # 15 символов
+            validator.validate("ОченьДлинноеИмя")
 
-        result = validator.validate("Коротко")  # 7 символов
+        result = validator.validate("Коротко")
         assert result == "Коротко"
 
     def test_validate_allows_dots(self):
         """Проверка разрешения точек в строке"""
         validator = RussianStringValidator()
-        result = validator.validate("г.Санкт-Петербург")  # точка разрешена, дефис - нет
+        result = validator.validate("г.Санкт-Петербург")
         assert result
 
-
-# =============================================================================
-# ТЕСТЫ ДЛЯ NumberValidator
-# =============================================================================
 
 class TestNumberValidator:
     """Тесты для валидатора чисел"""
@@ -424,13 +396,12 @@ class TestNumberValidator:
         with pytest.raises(ValueError, match="min_value не может быть больше"):
             NumberValidator(min_value=100, max_value=50)
 
-    # validate_int tests
     @pytest.mark.parametrize("valid_input,expected", [
         ("42", 42),
         (42, 42),
         ("-10", -10),
         ("0", 0),
-        ("999999999999999", 999999999999999),  # 15 цифр
+        ("999999999999999", 999999999999999),
     ])
     def test_validate_int_success(self, valid_input, expected):
         """Проверка успешной валидации целых чисел"""
@@ -444,10 +415,10 @@ class TestNumberValidator:
         (True, "Булевый тип не допускается"),
         ("", "Строка не может быть пустой"),
         ("   ", "Строка не может быть пустой"),
-        ("12.34", "Недопустимые символы"),  # точка для int
+        ("12.34", "Недопустимые символы"),
         ("abc", "Недопустимые символы"),
         ("123.45.67", "Недопустимые символы"),
-        ("1" * 16, "Слишком много цифр"),  # 16 цифр > max_digits=15
+        ("1" * 16, "Слишком много цифр"),
     ])
     def test_validate_int_failure(self, invalid_input, expected_error):
         """Проверка отклонения некорректных целых чисел"""
@@ -476,14 +447,13 @@ class TestNumberValidator:
         with pytest.raises(NumberValidationError, match="Отрицательные"):
             validator.validate_int(-1)
 
-    # validate_float tests
     @pytest.mark.parametrize("valid_input,expected", [
         ("3.14", 3.14),
         (3.14, 3.14),
-        ("3,14", 3.14),  # запятая как десятичный разделитель
+        ("3,14", 3.14),
         ("-2.5", -2.5),
         ("0.001", 0.001),
-        (100, 100.0),  # int -> float
+        (100, 100.0),
     ])
     def test_validate_float_success(self, valid_input, expected):
         """Проверка успешной валидации чисел с плавающей точкой"""
@@ -529,10 +499,6 @@ class TestNumberValidator:
             validator.validate_float(10.1)
 
 
-# =============================================================================
-# ТЕСТЫ ДЛЯ LatinStringValidator
-# =============================================================================
-
 class TestLatinStringValidator:
     """Тесты для валидатора латинских строк"""
 
@@ -566,9 +532,9 @@ class TestLatinStringValidator:
 
     @pytest.mark.parametrize("invalid_string,expected_error", [
         ("", "Строка слишком короткая"),
-        ("Тест", "Невалидная строка"),  # кириллица
-        ("123", "Невалидная строка"),  # только цифры
-        ("test@email", "Невалидная строка"),  # спецсимвол
+        ("Тест", "Невалидная строка"),
+        ("123", "Невалидная строка"),
+        ("test@email", "Невалидная строка"),
         ("a" * 101, "Строка слишком длинная"),
     ])
     def test_validate_failure(self, invalid_string, expected_error):
@@ -583,7 +549,6 @@ class TestLatinStringValidator:
         result = validator.validate("test-name")
         assert result == "test-name"
 
-        # Без разрешения дефиса должна быть ошибка
         validator_no_hyphen = LatinStringValidator(allow_hyphen=False)
         with pytest.raises(ValidationError):
             validator_no_hyphen.validate("test-name")
@@ -594,7 +559,6 @@ class TestLatinStringValidator:
         result = validator.validate("test name")
         assert result == "test name"
 
-        # Без разрешения пробелов должна быть ошибка
         validator_no_spaces = LatinStringValidator(allow_spaces=False)
         with pytest.raises(ValidationError):
             validator_no_spaces.validate("test name")
@@ -603,12 +567,8 @@ class TestLatinStringValidator:
         """Проверка обязательного наличия буквы"""
         validator = LatinStringValidator()
         with pytest.raises(ValidationError, match="Невалидная строка"):
-            validator.validate("12345")  # только цифры
+            validator.validate("12345")
 
-
-# =============================================================================
-# ТЕСТЫ ДЛЯ IdentifierValidator
-# =============================================================================
 
 class TestIdentifierValidator:
     """Тесты для валидатора идентификаторов"""
@@ -632,7 +592,7 @@ class TestIdentifierValidator:
         "ABC",
         "test_id_99",
         "_private",
-        "a",  # минимальная длина 1
+        "a",
     ])
     def test_validate_success(self, valid_id):
         """Проверка успешной валидации идентификаторов"""
@@ -643,9 +603,9 @@ class TestIdentifierValidator:
     @pytest.mark.parametrize("invalid_id,expected_error", [
         ("", "ID не может быть пустым"),
         ("   ", "ID не может быть пустым"),
-        ("Тест", "Недопустимый символ"),  # кириллица
-        ("test.id", "Недопустимый символ"),  # точка не разрешена
-        ("test id", "Недопустимый символ"),  # пробел не разрешён
+        ("Тест", "Недопустимый символ"),
+        ("test.id", "Недопустимый символ"),
+        ("test id", "Недопустимый символ"),
         ("a" * 51, "ID слишком длинный")
     ])
     def test_validate_failure(self, invalid_id, expected_error):
@@ -670,19 +630,15 @@ class TestIdentifierValidator:
         """Проверка удаления пробелов по краям"""
         validator = IdentifierValidator()
         result = validator.validate("  test_id  ")
-        assert result == "test_id"  # после strip
+        assert result == "test_id"
 
-
-# =============================================================================
-# ИНТЕГРАЦИОННЫЕ ТЕСТЫ
-# =============================================================================
 
 class TestCoreIntegration:
     """Интеграционные тесты взаимодействия компонентов core"""
 
     def test_smart_device_with_validators(self):
         """Проверка использования валидаторов с устройствами"""
-        # Валидируем keyword для устройства
+
         keyword_validator = LatinStringValidator(min_length=3, max_length=20, allow_underscore=True)
         keyword = keyword_validator.validate("sensor_")
 
@@ -691,11 +647,10 @@ class TestCoreIntegration:
 
     def test_enum_with_validator(self):
         """Проверка использования Enum с валидаторами"""
-        # Валидируем значение домена как строку
+
         domain_validator = LatinStringValidator()
         domain_str = domain_validator.validate("transportation")
 
-        # Преобразуем в Enum
         domain = Domain(domain_str)
         assert domain is Domain.TRANSPORTATION
 
@@ -719,11 +674,10 @@ class TestCoreIntegration:
 
     def test_labeled_enum_workflow(self):
         """Проверка рабочего процесса с LabeledEnum"""
-        # Получаем уровень по коду
+
         level = NoiseLevel.from_code(3)
         assert level.label == "Шумный"
 
-        # Используем в логике
         if level.code >= 4:
             action = "Требуется шумоизоляция"
         else:

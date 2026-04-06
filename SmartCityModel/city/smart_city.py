@@ -46,25 +46,20 @@ class SmartCity:
 
         temp_sensors: list[TemperatureSensor] = [TemperatureSensor() for _ in range(2)]
 
-        # === Генераторы (generators) ===
         solar_panel = SolarPanel(light_sensor[0])
         wind_turbine = WindTurbine()
         generators: list[SolarPanel | WindTurbine] = [solar_panel, wind_turbine]
 
-        # === Хранилища (storages) ===
         battery_1 = BatteryStorage(capacity=1000)
         battery_2 = BatteryStorage(capacity=1500)
         storages: list[BatteryStorage] = [battery_1, battery_2]
 
-        # === Потребители (consumers) ===
-        # Умное освещение
         smart_lights_1: list[SmartLight] = [SmartLight(light_sensor[i + 1], motion_sensor[i]) for i in range(4)]
         lighting_system_1 = SmartLightningSystem(smart_lights_1)
         smart_lights_2: list[SmartLight] = [SmartLight(light_sensor[i + 5], motion_sensor[i + 4]) for i in range(4)]
         lighting_system_2 = SmartLightningSystem(smart_lights_2)
         street_lights: list[SmartLight] = [SmartLight(light_sensor[i + 9], motion_sensor[i + 8]) for i in range(4)]
 
-        # Умные дома
         water_meter_1 = WaterMeter()
         electricity_meter_1 = ElectricityMeter()
         thermostat_1 = SmartThermostat(temp_sensors[0])

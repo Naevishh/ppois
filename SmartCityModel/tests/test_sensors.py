@@ -20,10 +20,6 @@ from SmartCityModel.sensors.environment_sensors import AirQualitySensor, Tempera
 from SmartCityModel.sensors.traffic_sensors import AITrafficCamera, TrafficFlowSensor, PedestrianCrossingSensor
 
 
-# =============================================================================
-# Тесты для базового класса Sensor (base_sensor.py)
-# =============================================================================
-
 class TestSensorBase:
     """Тесты базового класса Sensor"""
 
@@ -32,9 +28,9 @@ class TestSensorBase:
         sensor = Sensor("test_", Domain.ECOLOGY, MeasurementType.TEMPERATURE)
 
         assert sensor.sensor_id.startswith("test_")
-        # UUID обрезан до 6 символов
+
         assert len(sensor.sensor_id) == len("test_") + 6
-        # Последние 6 символов — hex-символы
+
         assert re.match(r'^[0-9a-f]{6}$', sensor.sensor_id[-6:])
 
     def test_init_sets_domain_and_measurement_type(self):
@@ -48,7 +44,6 @@ class TestSensorBase:
         """Базовый set_value ничего не делает (переопределяется в наследниках)"""
         sensor = Sensor("base_", Domain.ECOLOGY, MeasurementType.CONCENTRATION)
 
-        # Не должно вызывать исключений
         sensor.set_value(42)
 
     def test_get_status_base_returns_none(self):
@@ -59,10 +54,6 @@ class TestSensorBase:
 
         assert result is None
 
-
-# =============================================================================
-# Тесты для energy_sensors.py
-# =============================================================================
 
 class TestLightLevelSensor:
     """Тесты класса LightLevelSensor"""
@@ -289,10 +280,6 @@ class TestElectricityMeter:
         assert result == 7500.25
 
 
-# =============================================================================
-# Тесты для environment_sensors.py
-# =============================================================================
-
 class TestAirQualitySensor:
     """Тесты класса AirQualitySensor"""
 
@@ -489,16 +476,12 @@ class TestHumiditySensor:
 
     def test_get_status_depends_on_temperature(self):
         """Статус влажности зависит от температуры через расчёт относительной влажности"""
-        # При одинаковой концентрации пара, но разной температуре
-        # относительная влажность будет разной
 
-        # Холодная температура -> выше относительная влажность
         cold_temp = TemperatureSensor()
         cold_temp.set_value(5)
         humid_cold = HumiditySensor(temperature_sensor=cold_temp)
         humid_cold.set_value(5.0)
 
-        # Тёплая температура -> ниже относительная влажность
         warm_temp = TemperatureSensor()
         warm_temp.set_value(25)
         humid_warm = HumiditySensor(temperature_sensor=warm_temp)
@@ -507,8 +490,7 @@ class TestHumiditySensor:
         status_cold = humid_cold.get_status()
         status_warm = humid_warm.get_status()
 
-        # При одинаковой концентрации, в холоде влажность будет выше
-        assert status_cold.code >= status_warm.code or True  # Допускаем разные сценарии
+        assert status_cold.code >= status_warm.code or True
 
     def test_get_status_returns_humidity_level_enum(self):
         """get_status возвращает HumidityLevel enum"""
@@ -589,10 +571,6 @@ class TestNoiseSensor:
 
         assert status == expected_level
 
-
-# =============================================================================
-# Тесты для traffic_sensors.py
-# =============================================================================
 
 class TestAITrafficCamera:
     """Тесты класса AITrafficCamera"""
@@ -745,25 +723,19 @@ class TestPedestrianCrossingSensor:
         assert result == 12
 
 
-# =============================================================================
-# Интеграционные тесты
-# =============================================================================
-
 class TestSensorsIntegration:
     """Интеграционные тесты модуля sensors"""
 
     def test_sensor_inheritance_hierarchy(self):
         """Проверка иерархии наследования"""
-        # Sensor — базовый класс
+
         assert issubclass(LightLevelSensor, Sensor)
         assert issubclass(AirQualitySensor, Sensor)
         assert issubclass(TrafficFlowSensor, Sensor)
 
-        # SmartDevice — отдельная иерархия
         assert issubclass(WaterMeter, SmartDevice)
         assert issubclass(ElectricityMeter, SmartDevice)
 
-        # Sensor и SmartDevice — разные базовые классы
         assert not issubclass(Sensor, SmartDevice)
         assert not issubclass(SmartDevice, Sensor)
 
@@ -783,18 +755,16 @@ class TestSensorsIntegration:
 
         ids = [s.sensor_id if hasattr(s, 'sensor_id') else s.device_id for s in sensors]
 
-        # Все ID должны быть уникальными
         assert len(ids) == len(set(ids))
 
     def test_enum_consistency_across_sensors(self):
         """Enum-значения согласованы между сенсорами"""
-        # Все сенсоры используют Domain из core.enums
+
         assert LightLevelSensor().domain == Domain.INFRASTRUCTURE
         assert AirQualitySensor().domain == Domain.ECOLOGY
         assert TrafficFlowSensor().domain == Domain.TRANSPORTATION
         assert WaterMeter().domain == Domain.HOUSING
 
-        # MeasurementType согласован
         assert LightLevelSensor().measurement_type == MeasurementType.LIGHT
         assert AirQualitySensor().measurement_type == MeasurementType.CONCENTRATION
         assert TrafficFlowSensor().measurement_type == MeasurementType.TRAFFIC_INTENSITY
@@ -816,10 +786,6 @@ class TestSensorsIntegration:
                 invalid_call(sensor)
 
 
-# =============================================================================
-# Параметризированные тесты для граничных значений
-# =============================================================================
-
 class TestSensorsParametrized:
     """Параметризированные тесты для валидации"""
 
@@ -833,31 +799,23 @@ class TestSensorsParametrized:
     ])
     def test_sensor_value_boundaries(self, sensor_class, valid_min, valid_max, invalid_low, invalid_high):
         """Тест граничных значений для всех сенсоров с set_value"""
-        # Для HumiditySensor нужен temperature_sensor
+
         if sensor_class == HumiditySensor:
             temp = TemperatureSensor()
             sensor = sensor_class(temperature_sensor=temp)
         else:
             sensor = sensor_class()
 
-        # Минимальное допустимое
         sensor.set_value(valid_min)
 
-        # Максимальное допустимое
         sensor.set_value(valid_max)
 
-        # Ниже минимума — ошибка
         with pytest.raises(SensorValueError):
             sensor.set_value(invalid_low)
 
-        # Выше максимума — ошибка
         with pytest.raises(SensorValueError):
             sensor.set_value(invalid_high)
 
-
-# =============================================================================
-# Запуск тестов
-# =============================================================================
 
 if __name__ == "__main__":
     pytest.main([__file__, "-v", "--tb=short"])

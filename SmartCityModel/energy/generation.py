@@ -7,8 +7,7 @@ class SolarPanel:
 
     def produce_electricity(self) -> float:
         light_level = self.light_level_sensor.get_status()
-        # Выработка энергии пропорциональна уровню освещения (0-100%)
-        return light_level * 0.5  # например, 50 Вт при 100% света
+        return light_level * 0.5
 
 
 class WindTurbine:
@@ -23,18 +22,17 @@ class WindTurbine:
         self._wind_speed = wind_speed
 
     def produce_electricity(self) -> float:
-        # Выработка энергии начинается с определённой скорости ветра
         if self._wind_speed < 3:
-            return 0  # слишком слабый ветер
+            return 0
         else:
-            return (self._wind_speed - 3) * 10  # например, 10 Вт на каждый м/с
+            return (self._wind_speed - 3) * 10
 
 
 class BatteryStorage(SmartDevice):
     def __init__(self, capacity: int) -> None:
         super().__init__("battery_", Domain.INFRASTRUCTURE)
-        self.capacity = capacity  # Максимальная емкость в Вт*ч
-        self.current_charge = 0  # Текущий заряд
+        self.capacity = capacity
+        self.current_charge = 0
         self._is_charging = False
 
     def store_energy(self, amount: int) -> int:
@@ -43,7 +41,7 @@ class BatteryStorage(SmartDevice):
             self.current_charge += amount
             return amount
         else:
-            # Батарея полная, возвращаем сколько не влезло (потери)
+
             added = self.capacity - self.current_charge
             self.current_charge = self.capacity
             return added
@@ -53,7 +51,7 @@ class BatteryStorage(SmartDevice):
         if self.current_charge >= amount:
             self.current_charge -= amount
             return amount
-        return 0  # Батарея разряжена
+        return 0
 
     def get_charge_percentage(self) -> float:
         return (self.current_charge / self.capacity) * 100

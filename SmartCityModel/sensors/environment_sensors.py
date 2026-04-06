@@ -19,15 +19,15 @@ class AirQualitySensor(Sensor):
 
     def _calculate_quality_level(self) -> AirQualityLevel:
         if self._concentration <= 50:
-            return AirQualityLevel.EXCELLENT  # Отличное
+            return AirQualityLevel.EXCELLENT
         elif self._concentration <= 100:
-            return AirQualityLevel.GOOD  # Хорошее
+            return AirQualityLevel.GOOD
         elif self._concentration <= 150:
-            return AirQualityLevel.MODERATE  # Умеренное
+            return AirQualityLevel.MODERATE
         elif self._concentration <= 200:
-            return AirQualityLevel.POOR  # Плохое
+            return AirQualityLevel.POOR
         else:
-            return AirQualityLevel.HAZARDOUS  # Опасное
+            return AirQualityLevel.HAZARDOUS
 
     def get_status(self) -> AirQualityLevel:
         return self._calculate_quality_level()
@@ -67,8 +67,8 @@ class TemperatureSensor(Sensor):
 class HumiditySensor(Sensor):
     def __init__(self, temperature_sensor: TemperatureSensor) -> None:
         super().__init__("humid_", Domain.ECOLOGY, MeasurementType.HUMIDITY)
-        self._vapor_concentration = 9.0  # Концентрация пара (г/м³)
-        self._temperature_sensor = temperature_sensor  # Температура по умолчанию (°C)
+        self._vapor_concentration = 9.0
+        self._temperature_sensor = temperature_sensor
         self._humidity_percent = 0.0
 
     def set_value(self, concentration: float) -> None:
@@ -86,20 +86,18 @@ class HumiditySensor(Sensor):
         Возвращает плотность насыщенного водяного пара при данной температуре.
         Формула на основе уравнения Арден-Бака (г/м³).
         """
-        # Коэффициенты для расчёта давления насыщенного пара (в Па)
+
         t = self._temperature_sensor.get_temperature()
         if t >= 0:
-            # Для положительных температур
+
             p_sat = 611.21 * math.exp((18.678 - t / 234.5) * (t / (257.14 + t)))
         else:
-            # Для отрицательных температур
+
             p_sat = 611.15 * math.exp((23.036 - t / 333.7) * (t / (279.82 + t)))
 
-        # Перевод давления в плотность (г/м³) через уравнение состояния идеального газа
-        # ρ = (P * M) / (R * T)
-        M = 18.01528  # Молярная масса воды (г/моль)
-        R = 8.31446  # Универсальная газовая постоянная (Дж/(моль·К))
-        T = t + 273.15  # Температура в Кельвинах
+        M = 18.01528
+        R = 8.31446
+        T = t + 273.15
 
         density = (p_sat * M) / (R * T)
         return density
@@ -110,7 +108,7 @@ class HumiditySensor(Sensor):
 
         if saturation > 0:
             self._humidity_percent = (self._vapor_concentration / saturation) * 100
-            # Ограничиваем 100% (перенасыщение возможно, но для RH обычно обрезают)
+
             self._humidity_percent = min(100.0, max(0.0, self._humidity_percent))
         else:
             self._humidity_percent = 0.0
@@ -137,7 +135,7 @@ class HumiditySensor(Sensor):
 class NoiseSensor(Sensor):
     def __init__(self) -> None:
         super().__init__("noise_", Domain.ECOLOGY, MeasurementType.NOISE)
-        self._decibels = 50.0  # Уровень шума в дБ
+        self._decibels = 50.0
 
     def set_value(self, decibels: float) -> None:
         """Устанавливает уровень шума в децибелах"""

@@ -3,9 +3,9 @@ from enum import Enum
 
 class Domain(Enum):
     TRANSPORTATION = "transportation"
-    ECOLOGY = "ecology"  # ENVIRONMENT = "environment"
+    ECOLOGY = "ecology"
     INFRASTRUCTURE = "infrastructure"
-    SAFETY = "safety"  # SECURITY = "security"
+    SAFETY = "safety"
     HEALTHCARE = "healthcare"
     EDUCATION = "education"
     HOUSING = "housing"
@@ -64,28 +64,28 @@ class TemperatureLevel(LabeledEnum):
 
 class HumidityLevel(LabeledEnum):
     """Уровни влажности для удобства оценки"""
-    VERY_DRY = (1, "Очень сухо")  # < 30%
-    DRY = (2, "Сухо")  # 30-45%
-    COMFORTABLE = (3, "Комфортно")  # 45-60%
-    HUMID = (4, "Влажно")  # 60-75%
+    VERY_DRY = (1, "Очень сухо")
+    DRY = (2, "Сухо")
+    COMFORTABLE = (3, "Комфортно")
+    HUMID = (4, "Влажно")
     VERY_HUMID = (5, "Очень влажно")
 
 
 class NoiseLevel(LabeledEnum):
     """Уровни шума по степени воздействия на человека"""
-    QUIET = (1, "Тишина")  # < 40 дБ
-    MODERATE = (2, "Нормальный")  # 40-60 дБ
-    LOUD = (3, "Шумный")  # 60-80 дБ
-    VERY_LOUD = (4, "Очень шумный")  # 80-100 дБ
+    QUIET = (1, "Тишина")
+    MODERATE = (2, "Нормальный")
+    LOUD = (3, "Шумный")
+    VERY_LOUD = (4, "Очень шумный")
     DANGEROUS = (5, "Опасный")
 
 
 class PlanningMetricType(Enum):
     """Типы метрик для городского планирования"""
-    ECOLOGY_SCORE = "ecology_score"  # Комплексный экологический рейтинг
-    TRANSPORT_LOAD = "transport_load"  # Загруженность транспортной сети
-    INFRASTRUCTURE_DENSITY = "infrastructure_density"  # Плотность сервисов
-    LIVEABILITY_INDEX = "liveability_index"  # Индекс комфорта проживания
+    ECOLOGY_SCORE = "ecology_score"
+    TRANSPORT_LOAD = "transport_load"
+    INFRASTRUCTURE_DENSITY = "infrastructure_density"
+    LIVEABILITY_INDEX = "liveability_index"
 
 
 class MeasurementType(Enum):

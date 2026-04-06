@@ -1,5 +1,3 @@
-# ui/helpers.py
-
 import time
 from typing import Any
 
@@ -17,7 +15,7 @@ def smooth_print(text: str, print_func, char_delay: float = 0.02, line_delay: fl
         for char in line:
             print_func(char, end='', flush=True)
             time.sleep(char_delay)
-        print_func()  # перенос строки
+        print_func()
         time.sleep(line_delay)
 
 
@@ -28,7 +26,7 @@ def show_menu(options: list, get_user_input, print_func, prompt: str = "Выбе
     Возвращает выбранный ключ или None при ошибке.
     """
     print_func()
-    # Важно: создаём копию, чтобы не модифицировать исходный список при каждом вызове
+
     options_with_exit = options + [('', "Выход")]
 
     print_func(prompt)
@@ -68,15 +66,11 @@ def print_detailed_help(module: str, command: str, ui, print_func) -> None:
     usage = ""
     context = ""
 
-    # ============================================================
-    # ENERGY MODULE (Energy Management System)
-    # ============================================================
     if module == "energy":
         if command == "--optimize":
             usage = "energy --optimize"
             context = "Запускает оптимизацию энергопотребления во всех системах города."
 
-            # Информация о потребителях энергии
             if city and hasattr(city, 'energy_grid'):
                 grid = city.energy_grid
                 if hasattr(grid, 'consumers'):
@@ -92,9 +86,6 @@ def print_detailed_help(module: str, command: str, ui, print_func) -> None:
 
             context += "\n\nСовет: Запускайте оптимизацию после изменения настроек сенсоров энергии."
 
-    # ============================================================
-    # TRAFFIC MODULE
-    # ============================================================
     elif module == "traffic":
         if command == "--add-intersection":
             usage = "traffic --add-intersection --district <ID> [--type <simple|smart>]"
@@ -123,9 +114,6 @@ def print_detailed_help(module: str, command: str, ui, print_func) -> None:
             usage = "traffic --manage-flow"
             context = "Управление транспортным потоком."
 
-    # ============================================================
-    # TMS MODULE (Transport Management System)
-    # ============================================================
     elif module == "tms":
         if command == "--add-stop":
             usage = "tms --add-stop --name <Название>"
@@ -175,25 +163,16 @@ def print_detailed_help(module: str, command: str, ui, print_func) -> None:
             usage = "tms --list-stops"
             context = "Показать список всех остановок с количеством пассажиров."
 
-    # ============================================================
-    # ENV MODULE (Environment Monitoring)
-    # ============================================================
     elif module == "env":
         if command == "--state":
             usage = "env --state"
             context = "Получить текущее состояние окружающей среды по всем районам."
 
-    # ============================================================
-    # DATA MODULE (Urban Planning Data Analysis)
-    # ============================================================
     elif module == "data":
         if command == "--print-report":
             usage = "data --print-report"
             context = "Распечатать отчет по анализу данных города."
 
-    # ============================================================
-    # SENSORS MODULE
-    # ============================================================
     elif module == "sensors":
         if command == "--list-districts":
             usage = "sensors --list-districts"
@@ -203,12 +182,10 @@ def print_detailed_help(module: str, command: str, ui, print_func) -> None:
             usage = "sensors --list-sensors --district <ID> --category <type>"
             context = "Показать список сенсоров в районе."
 
-            # Доступные районы
             if city and hasattr(city, 'districts'):
                 dists = list(city.districts.keys())
                 context += f"\nДоступные районы: {', '.join(dists) if dists else 'Нет'}"
 
-            # Доступные категории
             context += "\nДоступные категории:"
             context += "\n  air          — Датчики качества воздуха"
             context += "\n  temperature  — Датчики температуры"
@@ -222,12 +199,10 @@ def print_detailed_help(module: str, command: str, ui, print_func) -> None:
             usage = "sensors --set --district <ID> --type <type> --value <N> [--home-index <N>] [--light-index <N>] [--sensor-index <N>]"
             context = "Установить значение сенсора."
 
-            # Доступные районы
             if city and hasattr(city, 'districts'):
                 dists = list(city.districts.keys())
                 context += f"\nДоступные районы: {', '.join(dists) if dists else 'Нет'}"
 
-            # Типы сенсоров и требуемые параметры
             context += "\nДоступные типы сенсоров:"
             context += "\n  water       — Счетчик воды (требуется --home-index)"
             context += "\n  thermostat  — Термостат (требуется --home-index)"
@@ -239,7 +214,6 @@ def print_detailed_help(module: str, command: str, ui, print_func) -> None:
             context += "\n  humidity    — Влажность (требуется --sensor-index)"
             context += "\n  noise       — Уровень шума (требуется --sensor-index)"
 
-            # Индексы умных домов по районам
             if city and hasattr(city, 'districts'):
                 context += "\n\nДиапазон индексов умных домов (--home-index) по районам:"
                 for dist_id, dist in city.districts.items():
@@ -247,19 +221,16 @@ def print_detailed_help(module: str, command: str, ui, print_func) -> None:
                         count = len(dist.smart_homes)
                         context += f"\n  {dist_id}: 0-{count - 1}" if count > 0 else f"\n  {dist_id}: нет умных домов"
 
-            # Диапазон значений
             context += "\n\nДиапазон значений: 0-100 (для большинства сенсоров)"
 
         elif command == "--traffic":
             usage = "sensors --traffic --district <ID> --intersection <N> --light <ID> --type <type> --value <N>"
             context = "Установить значение транспортного сенсора на перекрестке."
 
-            # Доступные районы
             if city and hasattr(city, 'districts'):
                 dists = list(city.districts.keys())
                 context += f"\nДоступные районы: {', '.join(dists) if dists else 'Нет'}"
 
-            # Индексы перекрестков по районам
             if city and hasattr(city, 'districts'):
                 context += "\nДиапазон индексов перекрестков (--intersection) по районам:"
                 for dist_id, dist in city.districts.items():
@@ -267,7 +238,7 @@ def print_detailed_help(module: str, command: str, ui, print_func) -> None:
                         count = len(dist.intersections)
                         if count > 0:
                             context += f"\n  {dist_id}: 0-{count - 1}"
-                            # ID светофоров на каждом перекрестке
+
                             for i in range(len(dist.intersections)):
                                 inter = dist.intersections[i]
                                 if hasattr(inter, 'lights'):
@@ -276,7 +247,6 @@ def print_detailed_help(module: str, command: str, ui, print_func) -> None:
                         else:
                             context += f"\n  {dist_id}: нет перекрестков"
 
-            # Типы транспортных сенсоров
             context += "\n\nТипы сенсоров (--type):"
             context += "\n  camera     — Камера (используйте --camera-event для событий)"
             context += "\n  flow       — Датчик потока транспорта"
@@ -288,12 +258,10 @@ def print_detailed_help(module: str, command: str, ui, print_func) -> None:
             usage = "sensors --camera-event --district <ID> --intersection <N> --light <ID> --vehicle <type> [--incident <true|false>]"
             context = "Симулировать событие камеры (проезд транспорта или ДТП)."
 
-            # Доступные районы
             if city and hasattr(city, 'districts'):
                 dists = list(city.districts.keys())
                 context += f"\nДоступные районы: {', '.join(dists) if dists else 'Нет'}"
 
-            # Индексы перекрестков
             if city and hasattr(city, 'districts'):
                 context += "\nИндексы перекрестков (--intersection):"
                 for dist_id, dist in city.districts.items():
@@ -301,23 +269,19 @@ def print_detailed_help(module: str, command: str, ui, print_func) -> None:
                         count = len(dist.intersections)
                         context += f"\n  {dist_id}: 0-{count - 1}" if count > 0 else f"\n  {dist_id}: нет перекрестков"
 
-            # Типы транспорта
             context += "\n\nТипы транспорта (--vehicle):"
             context += "\n  bus        — Автобус"
             context += "\n  tram       — Трамвай"
             context += "\n  trolleybus — Троллейбус"
             context += "\n  car        — Легковой автомобиль"
-
-            # Параметр incident
             context += "\n\nПараметр --incident:"
             context += "\n  true  — Зафиксировано ДТП"
             context += "\n  false — Обычный проезд (по умолчанию)"
 
-    # ============================================================
-    # SERVICES MODULE (Public Services)
-    # ============================================================
+
+
     elif module == "services":
-        # --- Регистрация и авторизация ---
+
         if command == "--register":
             usage = ("services --register --name <Имя> --surname <Фамилия> "
                      "--age <N> --street <Улица> --house <N> [--apartment <N>]")
@@ -343,7 +307,6 @@ def print_detailed_help(module: str, command: str, ui, print_func) -> None:
             else:
                 context += "\nПользователь не авторизован"
 
-        # --- Больница (Hospital Service) ---
         elif command == "--hospital":
             usage = "services --hospital --action <action> [--doctor <key>] [--purpose <text>]"
             context = "Взаимодействие с больницей."
@@ -353,7 +316,6 @@ def print_detailed_help(module: str, command: str, ui, print_func) -> None:
             context += "\n  call_ambulance    — Вызвать скорую"
             context += "\n  list_doctors      — Показать список врачей и свободные места"
 
-            # Показываем доступных врачей из hospital
             if city and hasattr(city, 'hospital'):
                 hospital = city.hospital
                 if hasattr(hospital, 'doctors'):
@@ -368,7 +330,6 @@ def print_detailed_help(module: str, command: str, ui, print_func) -> None:
             if hasattr(ui, 'current_user_id') and not ui.current_user_id:
                 context += "\nТребуется авторизация (services --login)"
 
-        # --- Школа (Education Service) ---
         elif command == "--school":
             usage = "services --school --action <action> [--course <name>] [--subject <name>] [--grade <1-10>]"
             context = "Взаимодействие со школой/образованием."
@@ -378,7 +339,6 @@ def print_detailed_help(module: str, command: str, ui, print_func) -> None:
             context += "\n  get_grades    — Получить свои оценки"
             context += "\n  list_courses  — Показать доступные курсы"
 
-            # Показываем доступные курсы из educational_service
             if city and hasattr(city, 'educational_service'):
                 edu_service = city.educational_service
                 if hasattr(edu_service, 'courses'):
@@ -392,7 +352,6 @@ def print_detailed_help(module: str, command: str, ui, print_func) -> None:
             if hasattr(ui, 'current_user_id') and not ui.current_user_id:
                 context += "\nТребуется авторизация (services --login)"
 
-        # --- Коммунальные услуги ---
         elif command == "--utility":
             usage = "services --utility --action <action> [--description <text>]"
             context = "Взаимодействие с коммунальными службами."
@@ -406,9 +365,6 @@ def print_detailed_help(module: str, command: str, ui, print_func) -> None:
             usage = "services --exit"
             context = "Выйти из меню общественных сервисов."
 
-    # ============================================================
-    # ВЫВОД СПРАВКИ
-    # ============================================================
     print_func(header)
     print_func(f"Использование:\n  {usage}\n")
     if context:

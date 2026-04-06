@@ -45,7 +45,6 @@ class PublicTransportVehicle(SmartDevice):
         self.vehicle_type = vehicle_type
         self.route_id = route_id
 
-        # храним индекс последней пройденной остановки
         self._last_passed_stop_index = -1
         self._last_update = datetime.now()
         self._passenger_count = 0
@@ -58,7 +57,7 @@ class PublicTransportVehicle(SmartDevice):
         if stop_index > self._last_passed_stop_index:
             self._last_passed_stop_index = stop_index
             self._last_update = datetime.now()
-            return f"[{self.device_id}] Пройдена остановка индекса #{stop_index}"
+            return f"[{self.device_id}] Пройдена остановка индекса  
         else:
             return None
 
@@ -88,9 +87,9 @@ class TransportRoute:
 
     def __init__(self, route_id: str, stops: list[RouteStop], avg_time_between_stops: int = 3) -> None:
         self.route_id = route_id
-        self.stops = stops  # Список остановок по порядку
+        self.stops = stops
         self.vehicles: list[PublicTransportVehicle] = []
-        # Среднее время в пути между соседними остановками (минуты)
+
         self.avg_time_between_stops = avg_time_between_stops
 
     def add_vehicle(self, vehicle: PublicTransportVehicle) -> None:

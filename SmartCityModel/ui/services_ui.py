@@ -1,5 +1,3 @@
-# SmartCityModel/ui/public_service_ui.py
-
 import uuid
 from typing import Optional
 
@@ -24,10 +22,6 @@ class PublicServiceUI:
         self.age_validator = AGE_VALIDATOR
         self.address_validator = ADDRESS_VALIDATOR
         self.house_validator = HOUSE_NUMBER_VALIDATOR
-
-    # ============================================================
-    # МЕТОДЫ ДЛЯ CLI (принимают аргументы напрямую)
-    # ============================================================
 
     def register_user(self, name: str, surname: str, age: int, street: str,
                       house: int, apartment: Optional[int] = None) -> str:
@@ -82,8 +76,6 @@ class PublicServiceUI:
         if self.current_user_id:
             return self.city.user_repo.get_user(self.current_user_id)
         return None
-
-        # SmartCityModel/ui/public_service_ui.py (фрагмент)
 
     def access_hospital(self, action: str = None, doctor_name: str = None,
                         purpose: str = None) -> str:

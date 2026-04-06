@@ -3,18 +3,13 @@
 Запуск: pytest tests/test_urban_planning.py -v
 """
 
-import pytest
-from unittest.mock import Mock, MagicMock, patch
 from datetime import datetime
+from unittest.mock import Mock
 
-# Импорты тестируемых модулей
+import pytest
 from SmartCityModel.core import PlanningMetricType
 from SmartCityModel.urban_planning import District, UrbanPlanningDataAnalyzer
 
-
-# =============================================================================
-# ФИКСТУРЫ И МОКИ
-# =============================================================================
 
 @pytest.fixture
 def mock_sensor():
@@ -72,10 +67,6 @@ def analyzer():
     return UrbanPlanningDataAnalyzer()
 
 
-# =============================================================================
-# ТЕСТЫ ДЛЯ КЛАССА District
-# =============================================================================
-
 class TestDistrict:
     """Тесты для класса District"""
 
@@ -100,9 +91,8 @@ class TestDistrict:
         assert len(district.metrics_readings) == 1
         reading = district.metrics_readings[0]
 
-        # Проверяем расчёт метрик
-        assert reading["ecology_score"] == ecology_value * 20  # 90.0
-        assert reading["transport_load"] == 50.0  # mock возвращает 50.0
+        assert reading["ecology_score"] == ecology_value * 20
+        assert reading["transport_load"] == 50.0
         assert reading["infrastructure_density"] == 70
         assert district.last_updated is not None
         assert isinstance(district.last_updated, datetime)
@@ -127,10 +117,6 @@ class TestDistrict:
         with pytest.raises(KeyError):
             district.get_average("nonexistent_metric")
 
-
-# =============================================================================
-# ТЕСТЫ ДЛЯ КЛАССА UrbanPlanningDataAnalyzer
-# =============================================================================
 
 class TestUrbanPlanningDataAnalyzer:
     """Тесты для класса UrbanPlanningDataAnalyzer"""
@@ -216,13 +202,11 @@ class TestUrbanPlanningDataAnalyzer:
             "infrastructure_density": 70
         }]
 
-        # Используем Mock для триггера composite-логики
         result = analyzer.calculate_metric(
             district.district_id,
             Mock(value="composite")
         )
 
-        # Формула: eco*0.4 + (100-transport)*0.3 + services*0.3
         expected = 80 * 0.4 + (100 - 40) * 0.3 + 70 * 0.3
         assert abs(result["value"] - expected) < 0.01
 
@@ -245,7 +229,7 @@ class TestUrbanPlanningDataAnalyzer:
     def test_generate_planning_report_specific_districts(self, analyzer, district):
         """Проверка генерации отчёта для указанных районов"""
         district2 = Mock(district_id="district_002", metrics_readings=[], get_average=Mock(return_value=50))
-        district.get_average=Mock(return_value=50)
+        district.get_average = Mock(return_value=50)
         analyzer.register_district(district)
         analyzer.register_district(district2)
 
@@ -267,4 +251,4 @@ class TestUrbanPlanningDataAnalyzer:
         required_keys = {"district_id", "metric", "value", "timestamp", "recommendation"}
         assert required_keys.issubset(result.keys())
         assert isinstance(result["value"], (int, float))
-        assert isinstance(result["timestamp"], str)  # ISO format
+        assert isinstance(result["timestamp"], str)

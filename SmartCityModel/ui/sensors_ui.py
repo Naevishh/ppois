@@ -14,8 +14,6 @@ class SensorUI:
         self.value_validator = SENSOR_VALUE_VALIDATOR
         self.camera_incident_validator = NumberValidator(min_value=1, max_value=2, allow_negative=False)
 
-        # SmartCityModel/ui/sensors_ui.py (фрагмент)
-
     def set_smart_home_sensor(self, district_id: str, home_index: int,
                               sensor_type: str, value: int,
                               light_index: Optional[int] = None) -> str:
@@ -166,7 +164,7 @@ class SensorUI:
             raise ValueError(f"Светофор {light_device_id} не найден")
 
         if sensor_type == "camera":
-            # value должен быть кортежем (VehicleType, is_incident)
+
             light.camera.detect_event(value[0], value[1])
             return "Событие камеры зафиксировано"
         elif sensor_type == "flow":
@@ -218,21 +216,18 @@ class SensorUI:
         sensors = sensor_map[sensor_category]
         result = []
 
-        # --- Специфическая логика для Умных Домов ---
         if sensor_category == "smart_homes":
             for i, home in enumerate(sensors):
                 adr = f"{home.address[0]} {home.address[1]}"
-                # 1. Водосчетчик
+
                 water_meter_id = getattr(home.water_meter, 'device_id', f"Home_{i}_Water")
                 result.append({
-                    "index": i,  # home_index для set_smart_home_sensor
+                    "index": i,
                     "device_id": f"{water_meter_id}",
                     "type": "water",
                     "description": f"Счетчик воды ({adr})"
                 })
 
-                # 2. Термостат (температура)
-                # Используем device_id из сенсора, если есть, или генерируем
                 thermo_sensor_id = getattr(home.thermostat.temp_sensor, 'sensor_id', f"Thermo_{i}_Temp")
                 result.append({
                     "index": i,
@@ -241,36 +236,33 @@ class SensorUI:
                     "description": f"Термостат ({adr})"
                 })
 
-                # 3. Светильники (вложенный список)
                 if hasattr(home, 'lightning_system') and hasattr(home.lightning_system, 'smart_lights'):
                     for l_idx, light in enumerate(home.lightning_system.smart_lights):
                         light_sensor = light.light_level_sensor
                         light_id = getattr(light_sensor, 'sensor_id', f"Light_{i}_{l_idx}")
                         result.append({
-                            "index": i,  # home_index
-                            "light_index": l_idx,  # light_index для set_smart_home_sensor
+                            "index": i,
+                            "light_index": l_idx,
                             "device_id": light_id,
                             "type": "light",
                             "description": f"Светильник {l_idx} ({adr})"
                         })
             return result
 
-        # --- Специфическая логика для Трафика (Перекрестки) ---
+
         elif sensor_category == "traffic":
             for i, intersection in enumerate(sensors):
-                # intersection.lights - это словарь {device_id: light_object}
+
                 if hasattr(intersection, 'lights'):
                     for light in intersection.lights.keys():
-                        # 1. Камера
                         result.append({
-                            "intersection_index": i,  # Для set_traffic_sensor
+                            "intersection_index": i,
                             "light_device_id": light.device_id,
                             "device_id": light.camera.sensor_id,
                             "type": "camera",
                             "description": f"Камера перекрестка {i}"
                         })
 
-                        # 2. Датчик потока
                         result.append({
                             "intersection_index": i,
                             "light_device_id": light.device_id,
@@ -279,7 +271,6 @@ class SensorUI:
                             "description": f"Датчик потока перекрестка {i}"
                         })
 
-                        # 3. Датчик пешеходов
                         result.append({
                             "intersection_index": i,
                             "light_device_id": light.device_id,
@@ -289,10 +280,9 @@ class SensorUI:
                         })
             return result
 
-        # --- Общая логика для простых сенсоров (air, temperature и т.д.) ---
+
         else:
             for i, sensor in enumerate(sensors):
-                # Пытаемся получить device_id или sensor_id, иначе генерируем
                 dev_id = getattr(sensor, 'device_id', getattr(sensor, 'sensor_id', f'{sensor_category}_{i}'))
                 sensor_data = {
                     "index": i,
@@ -317,25 +307,22 @@ class SensorUI:
 
         lines = []
         for sensor in sensors:
-            # Базовая информация (есть у всех сенсоров)
+
             index = sensor.get('index')
             device_id = sensor.get('device_id', 'N/A')
             sensor_type = sensor.get('type', 'unknown')
 
-            # Формируем основную строку
             if index is not None:
                 line = f"[{index}] {device_id} ({sensor_type})"
             else:
-                # Для трафика, где index может быть intersection_index
+
                 line = f"{device_id} ({sensor_type})"
 
-            # Добавляем специфичные поля для умных домов
             if 'light_index' in sensor:
-                line += f" [светильник #{sensor['light_index']}]"
+                line += f" [светильник  
 
-            # Добавляем специфичные поля для трафика
             if 'intersection_index' in sensor:
-                line += f" [перекресток #{sensor['intersection_index']}]"
+                line += f" [перекресток  
 
             if 'light_device_id' in sensor:
                 line += f" [светофор {sensor['light_device_id']}]"

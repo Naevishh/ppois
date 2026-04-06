@@ -13,14 +13,12 @@ class SmartThermostat(SmartDevice):
 
     def optimize_climate(self) -> None:
         """Энергосберегающая логика"""
-        # Если никого нет, снижаем активность отопления/кондиционирования
         if self.temp_sensor.get_temperature() > 22:
             self._is_heating = False
         else:
             self._is_heating = True
 
     def get_energy_consumption(self) -> int:
-        # Грубая оценка: если нагрев включен, потребление высокое
         return 500 if self._is_heating else 10
 
 

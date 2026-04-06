@@ -19,7 +19,7 @@ class SmartTrafficLight(SmartDevice):
         status = self.camera.get_status()
         intensity = self.flow_sensor.get_status()
 
-        priority = 10  # Базовый низкий приоритет
+        priority = 10
         pedestrian_waiting = False
         reason = "FLOW"
 
@@ -36,7 +36,6 @@ class SmartTrafficLight(SmartDevice):
             priority = 50
             reason = "HIGH_FLOW"
 
-        # Пешеходы
         if self.pedestrian_sensor:
             p_status = self.pedestrian_sensor.get_status()
             if p_status > intensity and priority < 60:
@@ -80,8 +79,6 @@ class Intersection:
     def regulate_intersection(self) -> bool:
         requests = [light.get_traffic_request() for light in self.lights]
 
-        # 2. Находим направление с самым высоким приоритетом (Лидер)
-        # Сортируем: кто важнее всех (скорая, потом плотный поток)
         requests.sort(key=lambda x: x['priority'], reverse=True)
         leader_request = requests[0]
         warning = leader_request["reason"] == "INCIDENT"
@@ -90,7 +87,6 @@ class Intersection:
             if leader_request["device_id"] == light.device_id:
                 leader_direction = direction
 
-        # 3. Расставляем цвета
         for light, direction in self.lights.items():
             conflicts_with_leader = direction in self.conflict_map.get(leader_direction, [])
 
@@ -114,7 +110,7 @@ class TrafficManager:
         """
         self.tms = tms
         self.intersections: dict[str, Intersection] = {}
-        # Маппинг: ID остановки TMS -> ID перекрестка TrafficSystem
+
         self.stop_intersection_map: dict[str, tuple] = {}
 
     PublicVehicleType = [VehicleType.BUS, VehicleType.TRAM, VehicleType.TROLLEYBUS]
@@ -148,7 +144,6 @@ class TrafficManager:
         if intersection_id not in self.intersections:
             raise TransportException("Перекресток не найден")
 
-        # Collect directions already linked to this intersection
         existing_directions = {
             d for iid, d in self.stop_intersection_map.values() if iid == intersection_id
         }
@@ -156,7 +151,7 @@ class TrafficManager:
         target_direction = stop_direction
 
         if not self.intersections[intersection_id].is_intersection:
-            # 2-light intersection: enforce axis alignment
+
             if existing_directions:
                 ref_dir = next(iter(existing_directions))
                 opposite_dir = self.opposite_directions.get(ref_dir)
@@ -165,7 +160,6 @@ class TrafficManager:
 
                 valid_axis = {ref_dir, opposite_dir}
 
-                # Reject perpendicular directions
                 if target_direction not in valid_axis:
                     raise TransportException(
                         f"Недопустимое направление {target_direction.name}. "
@@ -184,7 +178,7 @@ class TrafficManager:
         1. Спрашиваем у TMS, где сейчас транспорт.
         2. Если автобус приближается к связанному перекрестку -> даем приоритет.
         """
-        # Проходим по всем маршрутам в TMS
+
         for route in self.tms.routes.values():
             for vehicle in route.vehicles:
                 if vehicle.vehicle_type not in TrafficManager.PublicVehicleType:
@@ -192,14 +186,11 @@ class TrafficManager:
 
                 current_stop_idx = vehicle.get_last_stop_index
                 next_stop_idx = current_stop_idx + 1
-                # if next_stop_idx==0: continue
 
-                # Проверяем, есть ли следующая остановка в маршруте
                 if next_stop_idx < len(route.stops):
                     next_route_stop = route.stops[next_stop_idx]
                     stop_id = next_route_stop.bus_stop.device_id
 
-                    # Проверяем, связана ли эта остановка с перекрестком
                     if stop_id in self.stop_intersection_map:
                         stop_intersection = self.stop_intersection_map[stop_id]
 
@@ -210,7 +201,7 @@ class TrafficManager:
         """
         Внутренний метод: запрос к TrafficManager на продление зеленого света.
         """
-        # Ищем перекресток в системе трафика (предполагаем, что есть метод поиска)
+
         intersection = self.intersections.get(stop_intersection[0])
 
         if intersection:

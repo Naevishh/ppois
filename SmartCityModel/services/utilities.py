@@ -10,7 +10,6 @@ class SmartHomeRegistry:
     """Реестр умных домов"""
 
     def __init__(self) -> None:
-        # Ключ: кортеж адреса, Значение: объект SmartHome
         self._homes: dict[tuple, SmartHome] = {}
 
     def register_home(self, home: SmartHome) -> None:
@@ -25,7 +24,7 @@ class UtilitiesService(PublicService):
 
     def __init__(self, name: str, address: tuple[str, int], service_id: str) -> None:
         super().__init__(name, address, service_id, Domain.HOUSING)
-        # Хранилище данных: { (street, house): { water: int, electricity: int, last_update: str } }
+
         self.sensor_data = {}
         self.available_actions = [
             ("view_metrics", "Показания счетчиков"),
@@ -33,10 +32,6 @@ class UtilitiesService(PublicService):
         ]
         self.registry = SmartHomeRegistry()
         self.issue_validator = RussianStringValidator(min_length=10, max_length=500)
-
-    # ============================================================
-    # МЕТОДЫ ДЛЯ CLI (принимают аргументы, возвращают значения)
-    # ============================================================
 
     def auto_collect_metrics(self, address: tuple) -> Dict[str, int]:
         """

@@ -1,5 +1,3 @@
-# SmartCityModel/services/hospital.py
-
 from typing import Dict, Any
 
 from .base import PublicService
@@ -25,10 +23,6 @@ class Hospital(PublicService):
             ("call_ambulance", "Вызов скорой")
         ]
         self.purpose_validator = RussianStringValidator(min_length=2, allow_spaces=True)
-
-    # ============================================================
-    # МЕТОДЫ ДЛЯ CLI (принимают аргументы, возвращают значения)
-    # ============================================================
 
     def order_ticket_to_doctor(self, doctor_name: str, patient: Human) -> str:
         """
@@ -109,10 +103,6 @@ class Hospital(PublicService):
             lines.append(f"- {key}: {data['name']} ({status})")
 
         return "\n".join(lines)
-
-    # ============================================================
-    # МЕТОДЫ ДЛЯ ИНТЕРАКТИВНОГО МЕНЮ (используют input)
-    # ============================================================
 
     def provide_service(self, patient: Human, action: str = None,
                         doctor_name: str = None, purpose: str = None) -> str:

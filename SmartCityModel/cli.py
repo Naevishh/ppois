@@ -1,5 +1,3 @@
-# SmartCityModel/cli.py
-
 from .core import VehicleType, SensorValueError, HospitalException
 from .core.helpers import smooth_print, print_help, print_detailed_help
 from .ui import TransportSystemUI, EnvironmentMonitoringUI, UrbanPlanningDataAnalysisUI, PublicServiceUI, SensorUI, \
@@ -32,7 +30,7 @@ modules = [
     ("data", "Анализ данных города"),
     ("sensors", "Задание значений сенсоров"),
     ("services", "Общественные сервисы"),
-    ("energy", "Система управления энергией")  # Новый модуль
+    ("energy", "Система управления энергией")
 ]
 
 commands = {
@@ -78,7 +76,7 @@ commands = {
         "--utility": "Коммунальные услуги (--action <view_metrics|report_issue>)"
     },
 
-    "energy": {  # Новый модуль
+    "energy": {
         "--optimize": "Оптимизировать энергопотребление города"
     }
 }
@@ -90,33 +88,24 @@ def parse_flags(args_list):
     while i < len(args_list):
         if args_list[i].startswith("--"):
             key = args_list[i]
-
-            # 1. Защита от выхода за границы списка
             if i + 1 >= len(args_list):
                 params[key] = True
                 i += 1
                 continue
 
             next_arg = args_list[i + 1]
-
-            # 2. Если следующий элемент тоже флаг -> текущий флаг булевый
             if next_arg.startswith("--"):
                 params[key] = True
                 i += 1
                 continue
-
-            # 3. Обработка значения (в т.ч. в кавычках)
             if next_arg.startswith('"'):
                 full_value = next_arg
                 j = i + 1
-                # Собираем части аргумента, пока не встретим закрывающую кавычку
                 while not full_value.endswith('"') and j + 1 < len(args_list):
                     j += 1
                     full_value += ' ' + args_list[j]
-
-                # Убираем кавычки по краям
                 params[key] = full_value.strip('"')
-                i = j + 1  # Перемещаем указатель за последний обработанный элемент
+                i = j + 1
             else:
                 params[key] = next_arg
                 i += 2
@@ -128,9 +117,9 @@ def parse_flags(args_list):
 
 def main():
     """Точка входа в CLI"""
-    # print_welcome()
+    print_welcome()
     input("\nНажмите Enter для продолжения...")
-    print('\033[2J\033[H', end='')  # Очистка экрана
+    print('\033[2J\033[H', end='')
 
     print("Вы в CLI умного города\n")
     print("На выбор доступны следующие системы: \n")
@@ -181,7 +170,7 @@ def main():
                     handle_data(city_ui.urban_planning_ui, args, print)
                 elif module == "sensors":
                     handle_sensors(city_ui.sensors_ui, args, print)
-                elif module == "energy":  # Новый модуль
+                elif module == "energy":
                     handle_energy(city_ui.energy_ui, args, print)
                 else:
                     handle_services(city_ui.services_ui, args, print)
@@ -480,7 +469,7 @@ def handle_services(ui: PublicServiceUI, args: list, print_func) -> None:
             print_func("Пользователь не авторизован. Необходимо авторизоваться")
 
     elif cmd == "--hospital":
-        action = params.get("--action")  # get_ticket, order_certificate, call_ambulance, list_doctors
+        action = params.get("--action")
 
         if not action:
             print_func("Требуется: --action <get_ticket|order_certificate|call_ambulance|list_doctors>")
@@ -517,7 +506,7 @@ def handle_services(ui: PublicServiceUI, args: list, print_func) -> None:
 
 
     elif cmd == "--school":
-        action = params.get("--action")  # enroll_course, set_grade, get_grades, list_courses
+        action = params.get("--action")
 
         if not action:
             print_func("Требуется: --action <enroll_course|set_grade|get_grades|list_courses>")
@@ -554,7 +543,7 @@ def handle_services(ui: PublicServiceUI, args: list, print_func) -> None:
             print_func(f"Ошибка: {e}")
 
     elif cmd == "--utility":
-        action = params.get("--action")  # view_metrics, report_issue
+        action = params.get("--action")
 
         if not action:
             print_func("Требуется: --action <view_metrics|report_issue>")
@@ -607,7 +596,7 @@ def handle_sensors(ui: SensorUI, args: list, print_func) -> None:
 
     elif cmd == "--list-sensors":
         district_id = params.get("--district")
-        category = params.get("--category")  # air, temperature, humidity, noise, lights, smart_homes
+        category = params.get("--category")
         if not district_id or not category:
             print_func("Требуется: --district <ID> и --category <type>")
             return
@@ -634,7 +623,6 @@ def handle_sensors(ui: SensorUI, args: list, print_func) -> None:
                 home_index = int(params.get("--home-index", 0))
                 result = ui.set_smart_home_sensor(district_id, home_index, sensor_type, int(value))
             elif sensor_type == "light":
-                # Для света нужны индексы дома и светильника
                 home_index = int(params.get("--home-index", 0))
                 light_index = int(params.get("--light-index", 0))
                 result = ui.set_smart_home_sensor(district_id, home_index, sensor_type, int(value), light_index)
@@ -657,7 +645,7 @@ def handle_sensors(ui: SensorUI, args: list, print_func) -> None:
         district_id = params.get("--district")
         intersection_index = params.get("--intersection")
         light_id = params.get("--light")
-        sensor_type = params.get("--type")  # camera, flow, pedestrian
+        sensor_type = params.get("--type")
         value = params.get("--value")
 
         if not all([district_id, intersection_index, light_id, sensor_type]):
@@ -666,7 +654,6 @@ def handle_sensors(ui: SensorUI, args: list, print_func) -> None:
 
         try:
             if sensor_type == "camera":
-                # Для камеры нужна дополнительная логика
                 print_func("Для камеры используйте отдельную команду --camera-event")
                 return
             else:
@@ -682,14 +669,12 @@ def handle_sensors(ui: SensorUI, args: list, print_func) -> None:
         district_id = params.get("--district")
         intersection_index = params.get("--intersection")
         light_id = params.get("--light")
-        vehicle_type = params.get("--vehicle")  # bus, tram, trolleybus, car
+        vehicle_type = params.get("--vehicle")
         is_incident = params.get("--incident", "false").lower() == "true"
 
         if not all([district_id, intersection_index, light_id, vehicle_type]):
             print_func("Требуется: --district, --intersection, --light, --vehicle")
             return
-
-        # Маппинг типов транспорта
         vehicle_type_key = None
         for veh in VehicleType:
             if veh.value == vehicle_type.lower():

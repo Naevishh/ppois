@@ -6,18 +6,12 @@
 Исправлено: моки теперь возвращают объекты с атрибутами device_id, intersection_id и др.
 """
 
-import pytest
-from unittest.mock import Mock, MagicMock, patch, PropertyMock
-from collections import defaultdict
+from unittest.mock import Mock, patch
 
-# Импорты тестируемого класса и зависимостей
+import pytest
 from SmartCityModel.city import SmartCity
 from SmartCityModel.core import VehicleType, Direction
 
-
-# =============================================================================
-# ВСПОМОГАТЕЛЬНЫЕ ФАБРИКИ ДЛЯ МОКОВ
-# =============================================================================
 
 def make_mock_with_attrs(**attrs):
     """Создаёт мок с заданными атрибутами"""
@@ -141,10 +135,6 @@ def mock_district(district_id):
     return district
 
 
-# =============================================================================
-# ФИКСТУРЫ
-# =============================================================================
-
 @pytest.fixture
 def mock_validator():
     """Мок для RussianStringValidator"""
@@ -221,24 +211,22 @@ def mock_services():
 
 @pytest.fixture
 def smart_city_mocks(
-    mock_validator,
-    mock_transport_monitoring_system,
-    mock_urban_planning_analyzer,
-    mock_traffic_manager,
-    mock_environment_monitoring,
-    mock_city_energy_grid,
-    mock_services
+        mock_validator,
+        mock_transport_monitoring_system,
+        mock_urban_planning_analyzer,
+        mock_traffic_manager,
+        mock_environment_monitoring,
+        mock_city_energy_grid,
+        mock_services
 ):
     """Комплексная фикстура: все моки с правильно настроенными фабриками"""
 
-    # Патчим с возвратом объектов, имеющих нужные атрибуты
     patches = {
-        # Core
+
         "SmartCityModel.city.smart_city.RussianStringValidator": Mock(return_value=mock_validator),
         "SmartCityModel.city.smart_city.VehicleType": VehicleType,
         "SmartCityModel.city.smart_city.Direction": Direction,
 
-        # Sensors - возвращают моки с device_id
         "SmartCityModel.city.smart_city.TemperatureSensor": lambda *a, **kw: mock_sensor("temp_1", "temperature"),
         "SmartCityModel.city.smart_city.AirQualitySensor": lambda *a, **kw: mock_sensor("air_1", "air_quality"),
         "SmartCityModel.city.smart_city.HumiditySensor": lambda *a, **kw: mock_sensor("hum_1", "humidity"),
@@ -251,7 +239,6 @@ def smart_city_mocks(
         "SmartCityModel.city.smart_city.WaterMeter": lambda *a, **kw: mock_sensor("water_1", "water"),
         "SmartCityModel.city.smart_city.ElectricityMeter": lambda *a, **kw: mock_sensor("elec_1", "electricity"),
 
-        # Energy components
         "SmartCityModel.city.smart_city.SmartThermostat": lambda *a, **kw: make_mock_with_attrs(device_id="thermo_1"),
         "SmartCityModel.city.smart_city.SmartHome": lambda *a, **kw: mock_smart_home("home_1"),
         "SmartCityModel.city.smart_city.SolarPanel": lambda *a, **kw: mock_generator("solar_1", 200),
@@ -261,35 +248,33 @@ def smart_city_mocks(
         "SmartCityModel.city.smart_city.CityEnergyGrid": Mock(return_value=mock_city_energy_grid),
         "SmartCityModel.city.smart_city.SmartLightningSystem": Mock(return_value=Mock()),
 
-        # Transport components - возвращают объекты с device_id/intersection_id
         "SmartCityModel.city.smart_city.BusStop": lambda *a, **kw: mock_bus_stop(f"stop_{kw.get('device_id', 'x')}"),
-        "SmartCityModel.city.smart_city.PublicTransportVehicle": lambda vtype, *a, **kw: mock_vehicle(f"veh_{kw.get('device_id', 'x')}", vtype),
-        "SmartCityModel.city.smart_city.TransportRoute": lambda *a, **kw: mock_route(f"route_{kw.get('route_id', 'x')}"),
+        "SmartCityModel.city.smart_city.PublicTransportVehicle": lambda vtype, *a, **kw: mock_vehicle(
+            f"veh_{kw.get('device_id', 'x')}", vtype),
+        "SmartCityModel.city.smart_city.TransportRoute": lambda *a, **kw: mock_route(
+            f"route_{kw.get('route_id', 'x')}"),
         "SmartCityModel.city.smart_city.RouteStop": Mock,
-        "SmartCityModel.city.smart_city.Intersection": lambda *a, **kw: mock_intersection(f"inter_{kw.get('intersection_id', 'x')}"),
-        "SmartCityModel.city.smart_city.SmartTrafficLight": lambda intersection_id=None, *a, **kw: mock_traffic_light("tl_1", intersection_id or "inter_1"),
+        "SmartCityModel.city.smart_city.Intersection": lambda *a, **kw: mock_intersection(
+            f"inter_{kw.get('intersection_id', 'x')}"),
+        "SmartCityModel.city.smart_city.SmartTrafficLight": lambda intersection_id=None, *a, **kw: mock_traffic_light(
+            "tl_1", intersection_id or "inter_1"),
         "SmartCityModel.city.smart_city.TrafficManager": Mock(return_value=mock_traffic_manager),
 
-        # Services
         "SmartCityModel.city.smart_city.Hospital": Mock(return_value=mock_services["hospital"]),
         "SmartCityModel.city.smart_city.EducationService": Mock(return_value=mock_services["education"]),
         "SmartCityModel.city.smart_city.UtilitiesService": Mock(return_value=mock_services["utilities"]),
 
-        # Citizens
         "SmartCityModel.city.smart_city.UserRepository": Mock(return_value=mock_services["user_repo"]),
 
-        # Urban planning
         "SmartCityModel.city.smart_city.UrbanPlanningDataAnalyzer": Mock(return_value=mock_urban_planning_analyzer),
-        "SmartCityModel.city.smart_city.District": lambda *a, **kw: mock_district(kw.get('district_id', a[0] if a else 'default')),
+        "SmartCityModel.city.smart_city.District": lambda *a, **kw: mock_district(
+            kw.get('district_id', a[0] if a else 'default')),
 
-        # Environment
         "SmartCityModel.city.smart_city.EnvironmentMonitoringSystem": Mock(return_value=mock_environment_monitoring),
 
-        # Transport monitoring
         "SmartCityModel.city.smart_city.TransportMonitoringSystem": Mock(return_value=mock_transport_monitoring_system),
     }
 
-    # Запускаем патчи
     patchers = [patch(path, factory) for path, factory in patches.items()]
     for p in patchers:
         p.start()
@@ -304,14 +289,9 @@ def smart_city_mocks(
         "services": mock_services,
     }
 
-    # Останавливаем патчи
     for p in patchers:
         p.stop()
 
-
-# =============================================================================
-# ТЕСТЫ
-# =============================================================================
 
 class TestSmartCityInitialization:
     """Базовые тесты инициализации"""
@@ -330,9 +310,9 @@ class TestSmartCityInitialization:
     def test_districts_created_and_registered(self, smart_city_mocks):
         """Проверка создания и регистрации районов"""
         city = SmartCity()
-        # Должно быть 3 района по умолчанию
+
         assert len(city.districts) == 3
-        # Анализатор должен получить регистрацию для каждого
+
         assert smart_city_mocks["analyzer"].register_district.call_count == 3
 
     def test_services_initialized(self, smart_city_mocks):
@@ -346,7 +326,7 @@ class TestSmartCityInitialization:
     def test_tms_initialized_with_stops_and_routes(self, smart_city_mocks):
         """Проверка инициализации транспортной системы"""
         city = SmartCity()
-        # TMS должен иметь словари для остановок, транспорта и маршрутов
+
         assert isinstance(city.tms.physical_stops, dict)
         assert isinstance(city.tms.vehicles, dict)
         assert isinstance(city.tms.routes, dict)
@@ -358,17 +338,16 @@ class TestSmartCityCreateDistrict:
     def test_create_district_has_required_attributes(self, smart_city_mocks):
         """Проверка, что созданный район имеет нужные атрибуты"""
         city = SmartCity()
-        # Проверяем, что фабрику District вызывали с district_id
+
         from SmartCityModel.city.smart_city import District
-        # District замокан, проверяем через mock
+
         assert smart_city_mocks["analyzer"].register_district.called
 
     def test_create_district_sensors_have_device_id(self, smart_city_mocks):
         """Проверка, что сенсоры имеют атрибут device_id"""
         city = SmartCity()
-        # Если код пытается прочитать device_id у сенсора — моки должны это поддерживать
-        # Тест проходит, если нет AttributeError
-        assert True  # Отсутствие ошибки = успех
+
+        assert True
 
 
 class TestSmartCityTransport:
@@ -377,7 +356,7 @@ class TestSmartCityTransport:
     def test_tms_stops_have_device_id(self, smart_city_mocks):
         """Проверка, что остановки имеют device_id для словаря"""
         city = SmartCity()
-        # Код делает {stop.device_id: stop}, моки должны поддерживать device_id
+
         assert True
 
     def test_tms_vehicles_have_device_id(self, smart_city_mocks):
@@ -407,7 +386,7 @@ class TestSmartCityEnergy:
     def test_energy_grid_receives_components(self, smart_city_mocks):
         """Проверка передачи компонентов в энергосеть"""
         city = SmartCity()
-        # CityEnergyGrid должен быть создан
+
         assert smart_city_mocks["energy_grid"] is not None
 
 
@@ -435,6 +414,6 @@ class TestSmartCityErrorHandling:
 
     def test_smart_city_handles_mock_attributes_gracefully(self, smart_city_mocks):
         """Проверка, что код не падает при доступе к атрибутам моков"""
-        # Если этот тест проходит — моки настроены правильно
+
         city = SmartCity()
         assert city is not None
