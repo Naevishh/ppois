@@ -307,22 +307,30 @@ class SensorUI:
 
         lines = []
         for sensor in sensors:
-
+            # Базовая информация (есть у всех сенсоров)
             index = sensor.get('index')
             device_id = sensor.get('device_id', 'N/A')
             sensor_type = sensor.get('type', 'unknown')
+            description = sensor.get('description', '')
 
+            # Формируем основную строку
             if index is not None:
                 line = f"[{index}] {device_id} ({sensor_type})"
             else:
-
+                # Для трафика, где index может быть intersection_index
                 line = f"{device_id} ({sensor_type})"
 
-            if 'light_index' in sensor:
-                line += f" [светильник  
+            # Добавляем описание, если есть
+            if description:
+                line += f" — {description}"
 
+            # Добавляем специфичные поля для умных домов
+            if 'light_index' in sensor:
+                line += f" [светильник #{sensor['light_index']}]"
+
+            # Добавляем специфичные поля для трафика
             if 'intersection_index' in sensor:
-                line += f" [перекресток  
+                line += f" [перекресток #{sensor['intersection_index']}]"
 
             if 'light_device_id' in sensor:
                 line += f" [светофор {sensor['light_device_id']}]"

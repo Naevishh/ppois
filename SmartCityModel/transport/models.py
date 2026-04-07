@@ -57,7 +57,7 @@ class PublicTransportVehicle(SmartDevice):
         if stop_index > self._last_passed_stop_index:
             self._last_passed_stop_index = stop_index
             self._last_update = datetime.now()
-            return f"[{self.device_id}] Пройдена остановка индекса  
+            return f"[{self.device_id}] Пройдена остановка индекса #{stop_index}"
         else:
             return None
 

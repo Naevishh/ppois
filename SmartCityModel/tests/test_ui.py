@@ -671,7 +671,7 @@ class TestSensorUI(unittest.TestCase):
         ]
         result = self.ui.format_sensor_list(sensors)
 
-        self.assertIn("[светильник
+        self.assertIn("[светильник #2]", result)
 
     def test_format_sensor_list_with_intersection(self):
         """Форматирование списка сенсоров с перекрёстками."""
@@ -683,7 +683,7 @@ class TestSensorUI(unittest.TestCase):
         ]
         result = self.ui.format_sensor_list(sensors)
 
-        self.assertIn("[перекресток
+        self.assertIn("[перекресток #0]", result)
         self.assertIn("[светофор TL_1]", result)
 
 
