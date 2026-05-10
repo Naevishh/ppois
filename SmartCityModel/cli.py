@@ -6,7 +6,6 @@ from .ui.city_ui import CityUI
 
 VERSION = "1.0.0"
 
-
 def print_welcome():
     """Вывод приветственного экрана"""
     text = (
